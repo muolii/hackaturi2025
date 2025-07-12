@@ -1,12 +1,64 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 20px;
-  background: #f9f9f9;
+  padding: 0;
+  background-color: #0e437d;
+}
+
+#header{
+  background-color: white;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+nav {
+  border-radius: 25px;
+  display: flex;
+  width: 100%;
+  margin: 20px;
 }
 
 nav a {
   margin-right: 10px;
   text-decoration: none;
   color: #333;
+  flex: 1;
+  text-align: center;
+  font-size: 30px;
 }
+
+nav a:hover {
+  color: #0e437d;
+}
+
+nav a.active {
+  color: #4c9aed;
+}
+ 
+
+.content{
+  margin-top: 15px;
+  border-radius: 15px;
+  color: #fff;
+  text-align: center;
+}
+
+.container {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  margin:0;
+}
+
+.leftContent {
+  width:50%;
+}
+
+.rightContent {
+  width: 50%;
+}
+/* To make an image into a link, use HTML like:
+<a href="https://example.com">
+  <img src="your-image.jpg" alt="Description">
+</a>
+*/
