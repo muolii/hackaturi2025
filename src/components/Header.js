@@ -1,5 +1,6 @@
 // src/components/Header.js
 import React from 'react';
+import image from '../assets/logo.png'; // Adjust the path as necessary
 
 const Header = ({ currentPage, setCurrentPage }) => {
   const navigationItems = [
@@ -15,7 +16,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
     <div className="header">
       <div className="container">
         <a onClick={() => setCurrentPage('home')} className="logo-link">
-          <img src="/assets/logo.png" alt="Logo" width="100" />
+          <img src={image} alt="Logo" width="100" />
         </a>
         <nav>
           {navigationItems.map((item) => (
