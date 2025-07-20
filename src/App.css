@@ -1,0 +1,102 @@
+/* src/App.css */
+.app {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #0e437d;
+  min-height: 100vh;
+}
+
+.header {
+  background-color: white;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+nav {
+  border-radius: 25px;
+  display: flex;
+  width: 100%;
+  margin: 20px;
+}
+
+nav a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #333;
+  flex: 1;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: #0e437d;
+}
+
+nav a.active {
+  color: #4c9aed;
+}
+
+.logo-link {
+  cursor: pointer;
+}
+
+.content {
+  margin-top: 15px;
+  border-radius: 15px;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.container {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.leftContent {
+  width: 50%;
+}
+
+.rightContent {
+  width: 50%;
+}
+
+.back-link {
+  color: #4c9aed;
+  text-decoration: underline;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.back-link:hover {
+  color: #fff;
+}
+
+ul {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+li {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 20px;
+}
