@@ -1,12 +1,12 @@
-// src/App.js
+// src/App.jsx
 import React, { useState } from 'react';
-import Header from './components/Header';
-import Home from './pages/Home';
-import About from './pages/About';
-import Sponsors from './pages/Sponsors';
-import Schedule from './pages/Schedule';
-import Team from './pages/Team';
-import FAQ from './pages/FAQ';
+import Header from './components/Header.jsx';
+import Home from './pages/Home.jsx';
+import About from './pages/About.jsx';
+import Sponsors from './pages/Sponsors.jsx';
+import Schedule from './pages/Schedule.jsx';
+import Team from './pages/Team.jsx';
+import FAQ from './pages/FAQ.jsx';
 import './App.css';
 
 const App = () => {

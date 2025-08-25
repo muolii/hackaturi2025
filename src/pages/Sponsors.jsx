@@ -1,13 +1,14 @@
-// src/pages/Schedule.js
+// src/pages/Sponsors.jsx
 import React from 'react';
 
-const Schedule = ({ setCurrentPage }) => {
+const Sponsors = ({ setCurrentPage }) => {
   return (
     <div className="content">
-      <h1>Event Schedule</h1>
+      <h1>Our Sponsors</h1>
       <ul>
-        <li>[Day 1 - Time - Event]</li>
-        <li>[Day 2 - Time - Event]</li>
+        <li>[Sponsor 1]</li>
+        <li>[Sponsor 2]</li>
+        <li>[Sponsor 3]</li>
       </ul>
       <a onClick={() => setCurrentPage('home')} className="back-link">
         Back to Home
@@ -16,4 +17,4 @@ const Schedule = ({ setCurrentPage }) => {
   );
 };
 
-export default Schedule;
+export default Sponsors;

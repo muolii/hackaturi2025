@@ -1,4 +1,4 @@
-// src/components/Header.js
+// src/components/Header.jsx
 import React from 'react';
 import image from '../assets/logo.png'; // Adjust the path as necessary
 

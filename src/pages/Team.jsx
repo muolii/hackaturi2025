@@ -1,14 +1,13 @@
-// src/pages/Sponsors.js
+// src/pages/Team.jsx
 import React from 'react';
 
-const Sponsors = ({ setCurrentPage }) => {
+const Team = ({ setCurrentPage }) => {
   return (
     <div className="content">
-      <h1>Our Sponsors</h1>
+      <h1>[Team Title]</h1>
       <ul>
-        <li>[Sponsor 1]</li>
-        <li>[Sponsor 2]</li>
-        <li>[Sponsor 3]</li>
+        <li>[Team Member 1 - Role]</li>
+        <li>[Team Member 2 - Role]</li>
       </ul>
       <a onClick={() => setCurrentPage('home')} className="back-link">
         Back to Home
@@ -17,4 +16,4 @@ const Sponsors = ({ setCurrentPage }) => {
   );
 };
 
-export default Sponsors;
+export default Team;

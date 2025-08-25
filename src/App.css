@@ -5,12 +5,18 @@
   padding: 0;
   background-color: #0e437d;
   min-height: 100vh;
+  width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
 }
 
 .header {
   background-color: white;
   padding-left: 40px;
   padding-right: 40px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 nav {
@@ -18,6 +24,7 @@ nav {
   display: flex;
   width: 100%;
   margin: 20px;
+  box-sizing: border-box;
 }
 
 nav a {
@@ -49,6 +56,8 @@ nav a.active {
   color: #fff;
   text-align: center;
   padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .container {
@@ -56,14 +65,25 @@ nav a.active {
   display: flex;
   align-items: center;
   margin: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .leftContent {
   width: 50%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .rightContent {
   width: 50%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .back-link {

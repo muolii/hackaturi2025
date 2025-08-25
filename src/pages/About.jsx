@@ -1,4 +1,4 @@
-// src/pages/About.js
+// src/pages/About.jsx
 import React from 'react';
 
 const About = ({ setCurrentPage }) => {

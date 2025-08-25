@@ -1,12 +1,13 @@
+// src/pages/Schedule.jsx
 import React from 'react';
 
-const Team = ({ setCurrentPage }) => {
+const Schedule = ({ setCurrentPage }) => {
   return (
     <div className="content">
-      <h1>[Team Title]</h1>
+      <h1>Event Schedule</h1>
       <ul>
-        <li>[Team Member 1 - Role]</li>
-        <li>[Team Member 2 - Role]</li>
+        <li>[Day 1 - Time - Event]</li>
+        <li>[Day 2 - Time - Event]</li>
       </ul>
       <a onClick={() => setCurrentPage('home')} className="back-link">
         Back to Home
@@ -15,4 +16,4 @@ const Team = ({ setCurrentPage }) => {
   );
 };
 
-export default Team;
+export default Schedule;

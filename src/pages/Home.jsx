@@ -1,4 +1,4 @@
-// src/pages/Home.js
+// src/pages/Home.jsx
 import React from 'react';
 import image from '../assets/ram.png'; // Adjust the path as necessary
 
