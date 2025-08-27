@@ -1,6 +1,7 @@
 // src/App.jsx
 import React, { useState } from 'react';
 import Header from './components/Header.jsx';
+import CountdownTimer from './components/Countdown.jsx';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 import Sponsors from './pages/Sponsors.jsx';
@@ -33,6 +34,7 @@ const App = () => {
 
   return (
     <div className="app">
+      <CountdownTimer />
       <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
       {renderPage()}
     </div>
