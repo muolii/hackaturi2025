@@ -1,7 +1,7 @@
 // src/pages/Schedule.jsx
 import React from 'react';
 
-const Schedule = ({ setCurrentPage }) => {
+const Schedule = () => {
   return (
     <div className="content">
       <h1>Event Schedule</h1>
@@ -9,9 +9,6 @@ const Schedule = ({ setCurrentPage }) => {
         <li>[Day 1 - Time - Event]</li>
         <li>[Day 2 - Time - Event]</li>
       </ul>
-      <a onClick={() => setCurrentPage('home')} className="back-link">
-        Back to Home
-      </a>
     </div>
   );
 };

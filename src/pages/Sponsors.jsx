@@ -1,7 +1,7 @@
 // src/pages/Sponsors.jsx
 import React from 'react';
 
-const Sponsors = ({ setCurrentPage }) => {
+const Sponsors = () => {
   return (
     <div className="content">
       <h1>Our Sponsors</h1>
@@ -10,9 +10,6 @@ const Sponsors = ({ setCurrentPage }) => {
         <li>[Sponsor 2]</li>
         <li>[Sponsor 3]</li>
       </ul>
-      <a onClick={() => setCurrentPage('home')} className="back-link">
-        Back to Home
-      </a>
     </div>
   );
 };

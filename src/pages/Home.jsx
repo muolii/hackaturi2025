@@ -1,6 +1,7 @@
 // src/pages/Home.jsx
 import React from 'react';
-import image from '../assets/ram.png'; // Adjust the path as necessary
+import image from '../assets/logo.png'; // Adjust the path as necessary
+import CountdownTimer from '../components/Countdown.jsx';
 
 const Home = () => {
   return (
@@ -10,7 +11,7 @@ const Home = () => {
           <img src={image} width="300" alt="URI Ram" />
         </div>
         <div className="rightContent">
-          <h1>Welcome to Hack@URI 2025!</h1>
+          <CountdownTimer />
         </div>
       </div>
     </div>

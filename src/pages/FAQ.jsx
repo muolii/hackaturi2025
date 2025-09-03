@@ -1,7 +1,7 @@
 // src/pages/FAQ.jsx
 import React from 'react';
 
-const FAQ = ({ setCurrentPage }) => {
+const FAQ = () => {
   return (
     <div className="content">
       <h1>Frequently Asked Questions</h1>
@@ -13,9 +13,6 @@ const FAQ = ({ setCurrentPage }) => {
         <strong>Q:</strong> What should I bring?<br/>
         <strong>A:</strong> [Insert Answer]
       </p>
-      <a onClick={() => setCurrentPage('home')} className="back-link">
-        Back to Home
-      </a>
     </div>
   );
 };
