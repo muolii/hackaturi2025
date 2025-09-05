@@ -416,12 +416,13 @@ nav a.active {
 
 .team-member-card {
   background: rgba(255, 255, 255, 0.1);
-  padding: 30px;
   border-radius: 15px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
   text-align: center;
+  perspective: 1000px;
+  height: 400px;
 }
 
 .team-member-card:hover {
@@ -429,13 +430,43 @@ nav a.active {
   background: rgba(255, 255, 255, 0.15);
 }
 
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.team-member-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background: rgba(76, 154, 237, 0.1);
+  border-radius: 15px;
+}
+
 .member-avatar {
-  width: 120px;
+  width: 120px;            
   height: 120px;
   border-radius: 50%;
-  margin: 0 auto 20px auto;
-  display: block;
   object-fit: cover;
+  display: block;
+  margin: 0 auto;         
 }
 
 .team-member-card h3 {
@@ -446,11 +477,114 @@ nav a.active {
 }
 
 .member-role {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9em;
+  margin: 0 0 15px 0;
   font-weight: 500;
-  margin-bottom: 0;
+}
+
+.member-avatar-container {
+  display: inline-block;  
+  position: relative;       
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.social-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 18px;
+}
+
+.social-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.linkedin-btn:hover {
+  background: rgba(0, 119, 181, 0.3);
+  border-color: rgba(0, 119, 181, 0.6);
+}
+
+.flip-arrow {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  margin: 10px auto 0 auto;
+}
+
+.flip-arrow:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+
+.flip-arrow.back {
+  margin-top: auto;
+  margin-bottom: 10px;
+}
+
+.member-info {
+  text-align: left;
+  color: #fff;
+}
+
+.member-info h3 {
+  color: #4c9aed;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.info-item {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #4c9aed;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-value {
+  color: rgba(255, 255, 255, 0.9);
   font-size: 1em;
-  opacity: 0.9;
+  line-height: 1.4;
+}
+
+.info-item.quote .info-value {
+  font-style: italic;
+  font-size: 1.1em;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .join-team {
