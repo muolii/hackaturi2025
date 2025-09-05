@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './countdown.css';
+import './Countdown.css';
 
 const CountdownTimer = () => {
     // Set your hackathon date here - update this to your actual event date
