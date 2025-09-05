@@ -51,7 +51,10 @@ This serves the production build locally for testing before deployment.
 
 ```
 src/
-├── components/          # Reusable UI components
+├── components/         # Reusable UI components
+│   ├── Countdown.css   # Countdown module styles
+│   ├── Countdown.jsx   # Countdown module
+│   ├── Footer.jsx      # Footer
 │   └── Header.jsx      # Navigation header
 ├── pages/              # Page components
 │   ├── Home.jsx        # Homepage
@@ -59,6 +62,7 @@ src/
 │   ├── Sponsors.jsx    # Sponsors page
 │   ├── Schedule.jsx    # Event schedule
 │   ├── Team.jsx        # Team members
+│   ├── Tracks.jsx      # Hackathon Tracks
 │   └── FAQ.jsx         # Frequently asked questions
 ├── assets/             # Images and static files
 │   ├── logo.png        # Website logo
