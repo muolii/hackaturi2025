@@ -1,5 +1,6 @@
 // src/pages/FAQ.jsx
 import React, { useState } from 'react';
+import { FaChevronDown } from 'react-icons/fa';
 
 const FAQ = () => {
   const [activeTab, setActiveTab] = useState('general');
@@ -133,7 +134,7 @@ const FAQ = () => {
                 onClick={() => toggleItem(activeTab, index)}
               >
                 <h3>{item.question}</h3>
-                <span className={`faq-arrow ${openItems[key] ? 'open' : ''}`}>▼</span>
+                <span className={`faq-arrow ${openItems[key] ? 'open' : ''}`}><FaChevronDown /></span>
               </div>
               {openItems[key] && (
                 <div className="faq-answer">

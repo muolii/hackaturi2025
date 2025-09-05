@@ -1,5 +1,6 @@
 // src/pages/Team.jsx
 import React, { useState } from 'react';
+import { FaLinkedin, FaGithub, FaArrowRight } from 'react-icons/fa';
 
 const Team = () => {
   const [activeTab, setActiveTab] = useState('leadership');
@@ -296,24 +297,26 @@ const Team = () => {
                         className="social-btn linkedin-btn"
                         title="LinkedIn Profile"
                       >
-                        <span>💼</span>
+                        <FaLinkedin style={{ color: '#fff', background: 'none', border: 'none', boxShadow: 'none' }} />
                       </a>
-                      <a 
-                        href={member.social} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="social-btn social-btn"
-                        title="Social Media Profile"
-                      >
-                        <span>📱</span>
-                      </a>
+                      {member.social && (
+                        <a 
+                          href={member.social} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="social-btn social-btn"
+                          title="GitHub Profile"
+                        >
+                          <FaGithub style={{ color: '#fff', background: 'none', border: 'none', boxShadow: 'none' }} />
+                        </a>
+                      )}
                     </div>
                     <button 
                       className="flip-arrow" 
                       onClick={() => toggleCardFlip(memberId)}
-                      title="Click to see more info"
+                      title="Show more info"
                     >
-                      ⬇️
+                      <FaArrowRight style={{ color: '#fff', background: 'none', border: 'none' }} />
                     </button>
                   </div>
                   
@@ -337,9 +340,9 @@ const Team = () => {
                     <button 
                       className="flip-arrow back" 
                       onClick={() => toggleCardFlip(memberId)}
-                      title="Click to go back"
+                      title="Show less info"
                     >
-                      ⬆️
+                      <FaArrowRight style={{ color: '#fff', background: 'none', border: 'none' }} />
                     </button>
                   </div>
                 </div>

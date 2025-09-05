@@ -1,5 +1,6 @@
 // src/pages/Schedule.jsx
 import React from 'react';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 
 const Schedule = () => {
   const scheduleData = {
@@ -97,7 +98,7 @@ const Schedule = () => {
                       style={{ backgroundColor: getEventTypeColor(event.type) }}
                     >
                       <div className="event-title">{event.event}</div>
-                      <div className="event-location">📍 {event.location}</div>
+                      <div className="event-location"><FaMapMarkerAlt style={{ marginRight: '6px', verticalAlign: 'middle' }} />{event.location}</div>
                       <div className="event-type-badge">
                         {event.type.charAt(0).toUpperCase() + event.type.slice(1)}
                       </div>

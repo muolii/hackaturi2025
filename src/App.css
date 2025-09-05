@@ -1,3 +1,22 @@
+.social-btn svg {
+  font-size: 2em;
+}
+/* Team card arrow positioning */
+.flip-arrow, .flip-arrow.back {
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.5em;
+  color: #fff;
+  z-index: 2;
+}
+.card-front, .card-back {
+  position: relative;
+}
 /* src/App.css */
 .app {
   font-family: Arial, sans-serif;
@@ -496,23 +515,27 @@ nav a.active {
 }
 
 .social-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: none;
+  border: none;
   border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  display: flex;
+  width: auto;
+  height: auto;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.2s;
   font-size: 18px;
+  box-shadow: none;
+  padding: 12px;
 }
 
 .social-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px);
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 50%;
+  box-shadow: none;
+  padding: 12px;
 }
 
 .linkedin-btn:hover {
@@ -521,24 +544,29 @@ nav a.active {
 }
 
 .flip-arrow {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: none;
+  border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
+  width: auto;
+  height: auto;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 16px;
-  margin: 10px auto 0 auto;
+  transition: background 0.2s;
+  font-size: 1.5em;
+  margin: 0;
+  color: #fff;
+  box-shadow: none;
+  padding: 12px;
 }
 
 .flip-arrow:hover {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: scale(1.1);
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 50%;
+  box-shadow: none;
+  padding: 12px;
 }
 
 .flip-arrow.back {
