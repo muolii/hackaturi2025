@@ -5,6 +5,7 @@
 Before you begin, ensure you have the following installed:
 - [Node.js](https://nodejs.org/) (version 18 or higher)
 - [npm](https://www.npmjs.com/) (comes with Node.js)
+- [react-icons](https://react-icons.github.io/react-icons/) (installed via npm)
 
 ## Installation
 
@@ -17,6 +18,7 @@ Before you begin, ensure you have the following installed:
 2. **Install dependencies:**
    ```bash
    npm install
+   npm install react-icons
    ```
 
 ## Development
@@ -135,4 +137,4 @@ npm install
 
 ## License
 
-This project is licensed under the MIT License 
+This project is licensed under the MIT License
