@@ -10,9 +10,9 @@ const Header = ({ scrollToSection }) => {
     { id: 'about', label: 'About' },
     { id: 'tracks', label: 'Tracks' },
     { id: 'schedule', label: 'Schedule' },
-    { id: 'team', label: 'Team' },
     { id: 'faq', label: 'FAQ' },
     { id: 'sponsors', label: 'Sponsors' }
+    { id: 'team', label: 'Team' },
   ];
 
   // Update active section based on scroll position
