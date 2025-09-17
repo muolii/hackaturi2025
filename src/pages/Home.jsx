@@ -8,7 +8,18 @@ const Home = () => {
     <div className="content">
       <div className="container">
         <div className="leftContent">
-          <img src={image} width="300" alt="URI Ram" />
+          <div className="browser-window">
+            <div className="browser-header">
+              <div className="browser-controls">
+                <div className="control close"></div>
+                <div className="control minimize"></div>
+                <div className="control maximize"></div>
+              </div>
+            </div>
+            <div className="browser-content">
+              <img src={image} width="300" alt="Hack@URI Logo" />
+            </div>
+          </div>
         </div>
         <div className="rightContent">
           <CountdownTimer />

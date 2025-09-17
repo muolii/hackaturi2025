@@ -1,30 +1,31 @@
 // src/components/Footer.jsx
 import React from 'react';
+import { FaLinkedin, FaInstagram, FaGithub, FaDiscord, FaHeart } from 'react-icons/fa';
 
 const Footer = () => {
   const socialLinks = [
     {
       name: 'LinkedIn',
       url: 'https://linkedin.com/company/hackaturi',
-      icon: '💼',
+      icon: <FaLinkedin />,
       color: '#0077B5'
     },
     {
       name: 'Instagram',
       url: 'https://instagram.com/hackaturi',
-      icon: '📷',
+      icon: <FaInstagram />,
       color: '#E4405F'
     },
     {
       name: 'GitHub',
       url: 'https://github.com/hackaturi',
-      icon: '💻',
+      icon: <FaGithub />,
       color: '#333'
     },
     {
       name: 'Discord',
       url: 'https://discord.gg/hackaturi',
-      icon: '🎮',
+      icon: <FaDiscord />,
       color: '#5865F2'
     }
   ];
@@ -56,7 +57,7 @@ const Footer = () => {
       
       <div className="footer-bottom">
         <p>&copy; 2025 Hack@URI. All rights reserved.</p>
-        <p>Made with ❤️ by the Hack@URI Team</p>
+  <p>Made with <FaHeart style={{ color: 'red', verticalAlign: 'middle' }} /> by the Hack@URI Team</p>
       </div>
     </footer>
   );

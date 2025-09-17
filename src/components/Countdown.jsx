@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './countdown.css';
+import './Countdown.css';
 
 const CountdownTimer = () => {
     // Set your hackathon date here - update this to your actual event date
@@ -84,12 +84,18 @@ const CountdownTimer = () => {
     };
 
     const formatDate = () => {
+        const eventDate = new Date(HACKATHON_DATE);
+        
         const options = { 
-            year: 'numeric', 
             month: 'long', 
             day: 'numeric'
         };
-        return new Date(HACKATHON_DATE).toLocaleDateString("en-US", options);
+        
+        const firstDay = eventDate.toLocaleDateString("en-US", options);
+        const secondDay = eventDate.getDate() + 1;
+        const year = eventDate.getFullYear();
+        
+        return `${firstDay}-${secondDay}, ${year}`;
     };
 
     return (

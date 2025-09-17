@@ -1,3 +1,22 @@
+.social-btn svg {
+  font-size: 2em;
+}
+/* Team card arrow positioning */
+.flip-arrow, .flip-arrow.back {
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.5em;
+  color: #fff;
+  z-index: 2;
+}
+.card-front, .card-back {
+  position: relative;
+}
 /* src/App.css */
 .app {
   font-family: Arial, sans-serif;
@@ -13,33 +32,43 @@
 
 .header {
   background-color: white;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   width: 100%;
   box-sizing: border-box;
   position: fixed;
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.header.hidden {
+  transform: translateY(-100%);
 }
 
 nav {
   border-radius: 25px;
   display: flex;
-  width: 100%;
-  margin: 20px;
+  width: auto;
+  margin: 5px 0;
   box-sizing: border-box;
+  justify-content: flex-start;
 }
 
 nav a {
-  margin-right: 10px;
+  margin-right: 5px;
   text-decoration: none;
   color: #333;
-  flex: 1;
-  text-align: center;
-  font-size: 30px;
+  flex: none;
+  text-align: left;
+  font-size: 18px;
   cursor: pointer;
   transition: color 0.2s;
+  padding: 5px 10px;
+  white-space: nowrap;
 }
 
 nav a:hover {
@@ -55,15 +84,15 @@ nav a.active {
 }
 
 .main-content {
-  margin-top: 120px; /* Account for fixed header */
+  margin-top: 60px; /* Account for fixed header */
 }
 
 .section {
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 20px;
   box-sizing: border-box;
 }
 
@@ -79,12 +108,13 @@ nav a.active {
 }
 
 .container {
-  justify-content: space-between;
+  justify-content: flex-start;
   display: flex;
   align-items: center;
   margin: 0;
   width: 100%;
   box-sizing: border-box;
+  gap: 20px;
 }
 
 .leftContent {
@@ -173,57 +203,229 @@ nav a.active {
 }
 
 /* Schedule Section Styles */
-.schedule-container {
+.schedule-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
   margin-top: 30px;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.day-schedule {
-  margin-bottom: 40px;
+.calendar-column {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  padding: 25px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
-.day-schedule h3 {
-  color: #4c9aed;
-  margin-bottom: 20px;
-}
-
-.timeline {
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.timeline-item {
-  display: flex;
-  margin-bottom: 30px;
-  align-items: flex-start;
-}
-
-.time {
-  background: #4c9aed;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 25px;
-  font-weight: bold;
-  min-width: 100px;
+.calendar-header {
   text-align: center;
-  margin-right: 20px;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(76, 154, 237, 0.3);
 }
 
-.event {
-  flex: 1;
+.calendar-header h2 {
+  color: #4c9aed;
+  font-size: 1.6em;
+  margin: 0;
+  font-weight: 600;
+}
+
+.calendar-grid {
+  display: grid;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.calendar-slot {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  min-height: 60px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.calendar-slot:last-child {
+  border-bottom: none;
+}
+
+.time-label {
+  background: rgba(76, 154, 237, 0.1);
+  color: #4c9aed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9em;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.events-container {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.calendar-event {
+  padding: 12px 15px;
+  border-radius: 8px;
+  color: white;
+  font-size: 0.85em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.calendar-event:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.event-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.event-location {
+  font-size: 0.8em;
+  opacity: 0.9;
+  margin-bottom: 6px;
+}
+
+.event-type-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.7em;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.schedule-legend {
+  margin-top: 50px;
   background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
+  padding: 30px;
   border-radius: 15px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.event h4 {
+.schedule-legend h3 {
   color: #4c9aed;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.legend-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-label {
+  color: #fff;
+  font-size: 0.9em;
 }
 
 /* Team Section Styles */
+.team-tabs {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.team-tab {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 140px;
+  justify-content: center;
+}
+
+.team-tab:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #4c9aed;
+  transform: translateY(-2px);
+}
+
+.team-tab.active {
+  background: #4c9aed;
+  border-color: #4c9aed;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.tab-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+}
+
+.tab-label {
+  font-size: 0.9em;
+}
+
+.team-section {
+  margin-top: 30px;
+}
+
+.team-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.team-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+}
+
+.team-header h2 {
+  color: #4c9aed;
+  font-size: 2.2em;
+  margin: 0;
+}
+
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -231,34 +433,186 @@ nav a.active {
   margin-top: 30px;
 }
 
-.team-member {
+.team-member-card {
   background: rgba(255, 255, 255, 0.1);
-  padding: 30px;
   border-radius: 15px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  text-align: center;
+  perspective: 1000px;
+  height: 400px;
 }
 
-.team-member:hover {
+.team-member-card:hover {
   transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.team-member-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background: rgba(76, 154, 237, 0.1);
+  border-radius: 15px;
 }
 
 .member-avatar {
-  font-size: 3em;
-  margin-bottom: 15px;
+  width: 120px;            
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;         
 }
 
-.team-member h3 {
+.team-member-card h3 {
   color: #4c9aed;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.member-role {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9em;
+  margin: 0 0 15px 0;
+  font-weight: 500;
+}
+
+.member-avatar-container {
+  display: inline-block;  
+  position: relative;       
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.social-btn {
+  background: none;
+  border: none;
+  border-radius: 50%;
+  width: auto;
+  height: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 18px;
+  box-shadow: none;
+  padding: 12px;
+}
+
+.social-btn:hover {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 50%;
+  box-shadow: none;
+  padding: 12px;
+}
+
+.linkedin-btn:hover {
+  background: rgba(0, 119, 181, 0.3);
+  border-color: rgba(0, 119, 181, 0.6);
+}
+
+.flip-arrow {
+  background: none;
+  border: none;
+  border-radius: 50%;
+  width: auto;
+  height: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 1.5em;
+  margin: 0;
+  color: #fff;
+  box-shadow: none;
+  padding: 12px;
+}
+
+.flip-arrow:hover {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 50%;
+  box-shadow: none;
+  padding: 12px;
+}
+
+.flip-arrow.back {
+  margin-top: auto;
   margin-bottom: 10px;
 }
 
-.role {
+.member-info {
+  text-align: left;
+  color: #fff;
+}
+
+.member-info h3 {
   color: #4c9aed;
-  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.info-item {
   margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #4c9aed;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-value {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+.info-item.quote .info-value {
   font-style: italic;
+  font-size: 1.1em;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .join-team {
@@ -276,26 +630,113 @@ nav a.active {
 }
 
 /* FAQ Section Styles */
+.faq-tabs {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.faq-tab {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.faq-tab:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #4c9aed;
+}
+
+.faq-tab.active {
+  background: #4c9aed;
+  border-color: #4c9aed;
+  color: #fff;
+}
+
 .faq-container {
-  margin-top: 30px;
-  max-width: 900px;
+  margin-top: 20px;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .faq-item {
   background: rgba(255, 255, 255, 0.1);
-  padding: 25px;
   border-radius: 15px;
   margin-bottom: 20px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   text-align: left;
+  overflow: hidden;
 }
 
-.faq-item h3 {
+.faq-question {
+  padding: 30px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.faq-question h3 {
   color: #4c9aed;
-  margin-bottom: 15px;
+  margin: 0;
+  flex: 1;
+  font-size: 1.4em;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.faq-arrow {
+  color: #4c9aed;
+  font-size: 1.4em;
+  transition: transform 0.3s ease;
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+.faq-arrow.open {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 30px 30px 30px;
+  animation: slideDown 0.3s ease-out;
+}
+
+.faq-answer p {
+  color: #fff;
+  margin: 0;
+  line-height: 1.8;
+  font-size: 1.1em;
+  font-weight: 400;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 300px;
+    padding-top: 20px;
+  }
 }
 
 .contact-info {
@@ -348,12 +789,14 @@ p {
 /* Responsive Design */
 @media (max-width: 768px) {
   .header {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
   
   nav a {
-    font-size: 20px;
+    font-size: 16px;
+    padding: 3px 8px;
+    margin-right: 3px;
   }
   
   .section {
@@ -390,6 +833,242 @@ p {
   .sponsor-cards {
     grid-template-columns: 1fr;
   }
+  
+  .schedule-columns {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .calendar-column {
+    padding: 20px;
+  }
+  
+  .calendar-slot {
+    grid-template-columns: 60px 1fr;
+    min-height: 50px;
+  }
+  
+  .time-label {
+    font-size: 0.8em;
+  }
+  
+  .calendar-event {
+    padding: 8px 12px;
+    font-size: 0.8em;
+  }
+  
+  .event-title {
+    font-size: 0.9em;
+  }
+  
+  .event-location {
+    font-size: 0.75em;
+  }
+}
+
+/* Browser Window Styles */
+.browser-window {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  width: 450px;
+  height: 450px;
+  margin: 0 auto;
+}
+
+.browser-header {
+  background: #0e437d;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.browser-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: white;
+}
+
+.browser-content {
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 60px);
+}
+
+/* Tracks Section Styles */
+.tracks-intro {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 40px;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.track-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.track-button:hover {
+  transform: translateY(-5px);
+  border-color: var(--track-color);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.track-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--track-color);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.track-button:hover::before {
+  transform: scaleX(1);
+}
+
+.track-icon {
+  font-size: 3em;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.track-button h3 {
+  color: var(--track-color);
+  margin: 0 0 15px 0;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.track-button p {
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* Track Modal Styles */
+.track-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.track-modal {
+  background: rgba(14, 67, 125, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2em;
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-icon {
+  font-size: 3em;
+  margin-bottom: 15px;
+}
+
+.modal-header h2 {
+  color: #4c9aed;
+  margin: 0 0 10px 0;
+  font-size: 2em;
+}
+
+.modal-description {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1em;
+  margin: 0;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.track-description {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1em;
+  line-height: 1.7;
+  margin: 0;
+  text-align: left;
 }
 
 /* Footer Styles */

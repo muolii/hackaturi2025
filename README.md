@@ -5,6 +5,7 @@
 Before you begin, ensure you have the following installed:
 - [Node.js](https://nodejs.org/) (version 18 or higher)
 - [npm](https://www.npmjs.com/) (comes with Node.js)
+- [react-icons](https://react-icons.github.io/react-icons/) (installed via npm)
 
 ## Installation
 
@@ -17,6 +18,7 @@ Before you begin, ensure you have the following installed:
 2. **Install dependencies:**
    ```bash
    npm install
+   npm install react-icons
    ```
 
 ## Development
@@ -51,7 +53,10 @@ This serves the production build locally for testing before deployment.
 
 ```
 src/
-├── components/          # Reusable UI components
+├── components/         # Reusable UI components
+│   ├── Countdown.css   # Countdown module styles
+│   ├── Countdown.jsx   # Countdown module
+│   ├── Footer.jsx      # Footer
 │   └── Header.jsx      # Navigation header
 ├── pages/              # Page components
 │   ├── Home.jsx        # Homepage
@@ -59,6 +64,7 @@ src/
 │   ├── Sponsors.jsx    # Sponsors page
 │   ├── Schedule.jsx    # Event schedule
 │   ├── Team.jsx        # Team members
+│   ├── Tracks.jsx      # Hackathon Tracks
 │   └── FAQ.jsx         # Frequently asked questions
 ├── assets/             # Images and static files
 │   ├── logo.png        # Website logo
@@ -131,4 +137,4 @@ npm install
 
 ## License
 
-This project is licensed under the MIT License 
+This project is licensed under the MIT License

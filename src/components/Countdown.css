@@ -29,7 +29,7 @@
 .countdown-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 40px;
     flex-wrap: wrap;
     position: relative;
