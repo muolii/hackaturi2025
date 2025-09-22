@@ -33,8 +33,13 @@ const App = () => {
   }, []);
 
   const handleRevealSite = () => {
-    setIsSiteRevealed(true);
-    localStorage.setItem('hackaturi-site-revealed', 'true');
+    const code = prompt("Enter access code:");
+    if (code === "hackaturi-secret") {
+      setIsSiteRevealed(true);
+      localStorage.setItem('hackaturi-site-revealed', 'true');
+    } else {
+      alert("Incorrect code.");
+    }
   };
 
   const handleBackToLanding = () => {
