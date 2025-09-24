@@ -13,33 +13,21 @@ const Team = () => {
         //TODO: Add leadership team members
         { 
           name: 'Lily Nguyen', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          role: 'Director',
+          avatar: '/images/team-photos/execs/lily.png', 
+          role: 'Co-Director',
           major: 'Computer Science',
-          classYear: 'Fall 2025',
-          funFact: 'I\'m a Twin and I\'m From Vietnam',
-          linkedin: 'https://linkedin.com/in/johndoe',
-          social: 'https://twitter.com/johndoe'
-        },
-        { 
-          name: 'Jane Smith', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          role: 'Vice President',
-          major: 'Business Administration',
           classYear: '2026',
-          funFact: 'Has visited 15 countries',
-          linkedin: 'https://linkedin.com/in/janesmith',
-          social: 'https://instagram.com/janesmith'
+          funFact: 'I am a twin!',
+          linkedin: 'https://www.linkedin.com/in/lily-nguyen02/'
         },
         { 
-          name: 'Mike Johnson', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          role: 'Secretary',
-          major: 'Engineering',
-          classYear: '2025',
-          funFact: 'Plays guitar in a local band',
-          linkedin: 'https://linkedin.com/in/mikejohnson',
-          social: 'https://github.com/mikejohnson'
+          name: 'Ayishat', 
+          avatar: '/images/team-photos/execs/ayishat.jpg', 
+          role: 'Co-Director',
+          major: 'Computer Science',
+          classYear: '2026',
+          funFact: 'I am a twin!',
+          linkedin: 'https://www.linkedin.com/in/lily-nguyen02/'
         }
       ]
     },
@@ -48,41 +36,31 @@ const Team = () => {
       members: [
         //TODO: Add tech dev team members
         { 
-          name: 'Alex Chen', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          role: 'Lead Developer',
+          name: 'Jenny You', 
+          avatar: '/images/team-photos/tech/jenny.jpg', 
+          role: 'Lead',
           major: 'Computer Science',
           classYear: '2025',
-          funFact: 'Built their first website at age 12',
-          linkedin: 'https://linkedin.com/in/alexchen',
-          social: 'https://github.com/alexchen'
+          funFact: 'I lived in China for 5 years',
+          linkedin: 'http://linkedin.com/in/j-you',
+          social: 'https://github.com/muolii'
         },
         { 
-          name: 'Sarah Wilson', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          major: 'Software Engineering',
+          name: 'Ryan Butera', 
+          avatar: '/images/team-photos/tech/ryan.jpg', 
+          major: 'Computer Science',
           classYear: '2026',
-          funFact: 'Loves hiking and photography',
-          linkedin: 'https://linkedin.com/in/sarahwilson',
-          social: 'https://instagram.com/sarahwilson'
+          funFact: 'I\'m in the process of watching every Disney Channel Original Movie with my friends',
+          linkedin: 'linkedin.com/in/ryan-butera', 
+          social: 'https://github.com/rbutera03' 
         },
         { 
-          name: 'David Kim', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          major: 'Data Science',
-          classYear: '2025',
-          funFact: 'Speaks 4 languages fluently',
-          linkedin: 'https://linkedin.com/in/davidkim',
-          social: 'https://twitter.com/davidkim'
-        },
-        { 
-          name: 'Emma Davis', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          major: 'Cybersecurity',
+          name: 'Kanz Giwa', 
+          avatar: '/images/team-photos/tech/kanz.jpg', 
+          major: 'Computer & Data Science ',
           classYear: '2026',
-          funFact: 'Competes in cybersecurity competitions',
-          linkedin: 'https://linkedin.com/in/emmadavis',
-          social: 'https://github.com/emmadavis'
+          funFact: 'Born and raised in Nigeria for 8 years',
+          social: 'https://github.com/KanzGiwa'
         }
       ]
     },
@@ -91,32 +69,24 @@ const Team = () => {
       members: [
         //TODO: Add marketing outreach team members
         { 
-          name: 'Lisa Brown', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          role: 'Marketing Director',
-          major: 'Marketing',
-          classYear: '2025',
-          funFact: 'Runs a successful Instagram with 10K+ followers',
-          linkedin: 'https://linkedin.com/in/lisabrown',
-          social: 'https://instagram.com/lisabrown'
+          name: 'Nathan Azevedo', 
+          avatar: '/images/team-photos/market/nathanazevedoheadshot.png', 
+          role: 'Lead',
+          //TODO: Nathan major
+          major: '',
+          classYear: '2028',
+          funFact: 'I make balloon animals',
+          linkedin: 'https://www.linkedin.com/in/nathan-azevedo'
         },
         { 
-          name: 'Tom Wilson', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          major: 'Communications',
+          name: 'Lawrence Cabbabe', 
+          //TODO: Lawrence photo
+          avatar: '/images/team-photos/market/nathanazevedoheadshot.png', 
+          major: '',
           classYear: '2026',
-          funFact: 'Hosts a weekly podcast about tech trends',
-          linkedin: 'https://linkedin.com/in/tomwilson',
-          social: 'https://twitter.com/tomwilson'
-        },
-        { 
-          name: 'Rachel Green', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          major: 'Graphic Design',
-          classYear: '2025',
-          funFact: 'Creates digital art in her spare time',
-          linkedin: 'https://linkedin.com/in/rachelgreen',
-          social: 'https://dribbble.com/rachelgreen'
+          funFact: '',
+          linkedin: '',
+          social: ''
         }
       ]
     },
@@ -125,14 +95,14 @@ const Team = () => {
       members: [
         //TODO: Add sponsorship team members
         { 
-          name: 'Chris Taylor', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          role: 'Sponsorship Director',
-          major: 'Business Administration',
-          classYear: '2025',
-          funFact: 'Has secured over $50K in sponsorships',
-          linkedin: 'https://linkedin.com/in/christaylor',
-          social: 'https://twitter.com/christaylor'
+          name: 'Meghan Andrews', 
+          avatar: '/images/team-photos/sponsor/meghan.jpg', 
+          role: 'Lead',
+          major: 'Computer Science',
+          classYear: '2026',
+          funFact: 'I train and compete with my dogs in agility competitions',
+          linkedin: 'www.linkedin.com/in/meghan-andrews22',
+          social: 'https://github.com/mandrews12'
         },
         { 
           name: 'Maya Patel', 
@@ -159,32 +129,23 @@ const Team = () => {
       members: [
         //TODO: Add finance team members
         { 
-          name: 'Amanda White', 
+          name: 'Liam McKenzie', 
+          //TODO: Liam image
           avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          role: 'Treasurer',
-          major: 'Finance',
-          classYear: '2025',
-          funFact: 'Certified in financial modeling',
-          linkedin: 'https://linkedin.com/in/amandawhite',
-          social: 'https://twitter.com/amandawhite'
+          role: 'Lead',
+          major: 'Computer Science',
+          classYear: '2027',
+          funFact: 'This is my second time doing the whole college thing. I have a completion certificate in accounting',
+          social: 'https://github.com/lmckenzie99'
         },
         { 
-          name: 'Kevin Zhang', 
+          name: 'Marvens Sainterlien ', 
           avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
           major: 'Accounting',
           classYear: '2026',
           funFact: 'Plays competitive chess',
           linkedin: 'https://linkedin.com/in/kevinzhang',
           social: 'https://github.com/kevinzhang'
-        },
-        { 
-          name: 'Sophie Martin', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          major: 'Mathematics',
-          classYear: '2025',
-          funFact: 'Volunteers as a math tutor',
-          linkedin: 'https://linkedin.com/in/sophiemartin',
-          social: 'https://instagram.com/sophiemartin'
         }
       ]
     },
@@ -290,15 +251,17 @@ const Team = () => {
                       </p>
                     )}
                     <div className="social-buttons">
-                      <a 
-                        href={member.linkedin} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="social-btn linkedin-btn"
-                        title="LinkedIn Profile"
-                      >
-                        <FaLinkedin style={{ color: '#fff', background: 'none', border: 'none', boxShadow: 'none' }} />
-                      </a>
+                      {member.linkedin && (
+                        <a 
+                          href={member.linkedin} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="social-btn linkedin-btn"
+                          title="LinkedIn Profile"
+                        >
+                          <FaLinkedin style={{ color: '#fff', background: 'none', border: 'none', boxShadow: 'none' }} />
+                        </a>
+                      )}
                       {member.social && (
                         <a 
                           href={member.social} 

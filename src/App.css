@@ -42,7 +42,7 @@
   }
 }
 /* Team card arrow positioning */
-.flip-arrow, .flip-arrow.back {
+.flip-arrow {
   position: absolute;
   right: 16px;
   bottom: 12px;
@@ -200,32 +200,47 @@ nav a.active {
   margin-top: 30px;
 }
 
-.sponsor-tier {
-  margin-bottom: 40px;
+.sponsor-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
 }
 
-.sponsor-tier h3 {
+.sponsor-logo {
+  max-width: 180px;
+  max-height: 100px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: filter 0.3s ease;
+}
+
+
+.sponsor-fallback {
+  font-size: 1.5em;
+  font-weight: bold;
   color: #4c9aed;
-  margin-bottom: 20px;
-}
-
-.sponsor-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  text-align: center;
 }
 
 .sponsor-card {
   background: rgba(255, 255, 255, 0.1);
-  padding: 25px;
+  padding: 30px;
   border-radius: 15px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.sponsor-card h4 {
-  color: #4c9aed;
-  margin-bottom: 10px;
+.sponsor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-color: #4c9aed;
 }
 
 .become-sponsor {
@@ -609,11 +624,6 @@ nav a.active {
   padding: 12px;
 }
 
-.flip-arrow.back {
-  margin-top: auto;
-  margin-bottom: 10px;
-}
-
 .member-info {
   text-align: left;
   color: #fff;
@@ -905,7 +915,6 @@ p {
     font-size: 0.75em;
   }
 }
-
 /* Browser Window Styles */
 .browser-window {
   background: white;
