@@ -1,7 +1,8 @@
 // src/App.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
+import LandingPage from './components/LandingPage.jsx';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 import Sponsors from './pages/Sponsors.jsx';
@@ -12,6 +13,40 @@ import Tracks from './pages/Tracks.jsx';
 import './App.css';
 
 const App = () => {
+  // Set this to false when ready to reveal the main site
+  const SITE_HIDDEN = true;
+  
+  const [isSiteRevealed, setIsSiteRevealed] = useState(!SITE_HIDDEN);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Check if site should be revealed
+  useEffect(() => {
+    // Check localStorage for admin reveal (for testing purposes)
+    const adminRevealed = localStorage.getItem('hackaturi-site-revealed');
+    if (adminRevealed === 'true') {
+      setIsSiteRevealed(true);
+    } else {
+      setIsSiteRevealed(!SITE_HIDDEN);
+    }
+    
+    setIsLoading(false);
+  }, []);
+
+  const handleRevealSite = () => {
+    const code = prompt("Enter access code:");
+    if (code === "hackaturi-secret") {
+      setIsSiteRevealed(true);
+      localStorage.setItem('hackaturi-site-revealed', 'true');
+    } else {
+      alert("Incorrect code.");
+    }
+  };
+
+  const handleBackToLanding = () => {
+    setIsSiteRevealed(false);
+    localStorage.removeItem('hackaturi-site-revealed');
+  };
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -19,6 +54,27 @@ const App = () => {
     }
   };
 
+  // Show loading spinner while checking reveal status
+  if (isLoading) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '100vh',
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+      }}>
+        <div style={{ color: 'white', fontSize: '1.5rem' }}>Loading...</div>
+      </div>
+    );
+  }
+
+  // Show landing page if site is not revealed
+  if (!isSiteRevealed) {
+    return <LandingPage onRevealSite={handleRevealSite} onBackToLanding={handleBackToLanding} />;
+  }
+
+  // Show main site content
   return (
     <div className="app">
       {/* MLH Trust Badge */}
@@ -80,6 +136,13 @@ const App = () => {
       </main>
       
       <Footer />
+      
+      {/* Admin Controls */}
+      <div className="admin-controls">
+        <button className="admin-button" onClick={handleBackToLanding}>
+          Back to Landing Page
+        </button>
+      </div>
     </div>
   );
 };
