@@ -21,13 +21,13 @@ const Team = () => {
           linkedin: 'https://www.linkedin.com/in/lily-nguyen02/'
         },
         { 
-          name: 'Ayishat', 
+          name: 'Ayishat Oguntade', 
           avatar: '/images/team-photos/execs/ayishat.jpg', 
           role: 'Co-Director',
-          major: 'Computer Science',
-          classYear: '2026',
-          funFact: 'I am a twin!',
-          linkedin: 'https://www.linkedin.com/in/lily-nguyen02/'
+          major: 'Computer Science B.S',
+          classYear: '2027',
+          funFact: 'I have a cat named Bruno',
+          linkedin: 'https://www.linkedin.com/in/ayishat-oguntade-0a8454202/'
         }
       ]
     },
@@ -80,13 +80,12 @@ const Team = () => {
         },
         { 
           name: 'Lawrence Cabbabe', 
-          //TODO: Lawrence photo
-          avatar: '/images/team-photos/market/nathanazevedoheadshot.png', 
-          major: '',
-          classYear: '2026',
-          funFact: '',
-          linkedin: '',
-          social: ''
+          avatar: '/images/team-photos/rhody_filler_image.jpg', 
+          major: 'Computer Science',
+          classYear: '2025',
+          funFact: 'Cars 2 is a fantastic movie',
+          linkedin: 'https://www.linkedin.com/in/lawrence-says-hello/',
+          social: 'https://github.com/lmcprogram'
         }
       ]
     },
@@ -105,47 +104,89 @@ const Team = () => {
           social: 'https://github.com/mandrews12'
         },
         { 
-          name: 'Maya Patel', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          major: 'International Business',
+          name: 'Anjolaoluwa (Anjola) Fapohunda', 
+          avatar: '/images/team-photos/sponsor/anojola.jpg', 
+          role: '',
+          major: 'Computer Science',
           classYear: '2026',
-          funFact: 'Speaks Hindi, English, and Spanish',
-          linkedin: 'https://linkedin.com/in/mayapatel',
-          social: 'https://instagram.com/mayapatel'
+          funFact: 'I\'ve learnt to speak 5 languages',
+          linkedin: '',
+          social: ''
         },
         { 
-          name: 'Ryan Lee', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          major: 'Economics',
-          classYear: '2025',
-          funFact: 'Interned at Fortune 500 companies',
-          linkedin: 'https://linkedin.com/in/ryanlee',
-          social: 'https://github.com/ryanlee'
-        }
+          name: 'Bitanya', 
+          avatar: '/images/team-photos/sponsor/bitanya.jpg', 
+          role: '',
+          major: '',
+          classYear: '2026',
+          funFact: '',
+          linkedin: '',
+          social: ''
+        },
+        { 
+          name: 'Olivia Clark', 
+          avatar: '/images/team-photos/sponsor/liv.jpg', 
+          role: '',
+          major: 'Chemical Engineering',
+          classYear: '2028',
+          funFact: 'My hair used to be green!',
+          linkedin: '',
+          social: ''
+        },
+        { 
+          name: 'Terrell Osborne', 
+          avatar: '/images/team-photos/sponsor/terrell.jpg', 
+          role: '',
+          major: 'Computer Science',
+          classYear: '2028',
+          funFact: 'I broke my wrist playing duck duck goose',
+          linkedin: '',
+          social: 'https://github.com/Marooncoloredchair'
+        },
       ]
     },
     finance: {
       title: 'Finance',
       members: [
-        //TODO: Add finance team members
         { 
-          name: 'Liam McKenzie', 
-          //TODO: Liam image
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          role: 'Lead',
-          major: 'Computer Science',
-          classYear: '2027',
-          funFact: 'This is my second time doing the whole college thing. I have a completion certificate in accounting',
-          social: 'https://github.com/lmckenzie99'
+          name: 'Arybella Theul', 
+          avatar: '/images/team-photos/finance/arybella.jpg', 
+          role: '',
+          major: 'Data Science',
+          classYear: '2026',
+          funFact: 'I love to ski',
+          linkedin: 'https://www.linkedin.com/in/arybella-theul',
+          social: ''
         },
         { 
-          name: 'Marvens Sainterlien ', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          major: 'Accounting',
+          name: 'Damian', 
+          avatar: '/images/team-photos/finance/damian.jpg', 
+          role: '',
+          major: 'Computer Engineering',
+          classYear: '2027',
+          funFact: 'I\'m from Spain.',
+          linkedin: 'https://www.linkedin.com/in/damianlapevi/',
+          social: 'https://github.com/damianlapenavidal'
+        },
+        { 
+          name: 'Olamide', 
+          avatar: '/images/team-photos/finance/olamide.jpg', 
+          role: '',
+          major: 'Finance',
           classYear: '2026',
-          funFact: 'Plays competitive chess',
-          linkedin: 'https://linkedin.com/in/kevinzhang',
-          social: 'https://github.com/kevinzhang'
+          funFact: 'I\'m from Nigeria',
+          linkedin: 'http://www.linkedin.com/in/olamide-britto',
+          social: 'https://github.com/OlamideB'
+        },
+        { 
+          name: 'Roquibat Adetunji', 
+          avatar: '/images/team-photos/finance/roquibat.jpg', 
+          role: '',
+          major: '',
+          classYear: '2027',
+          funFact: 'I\'m double jointed',
+          linkedin: '',
+          social: ''
         }
       ]
     },
@@ -154,41 +195,44 @@ const Team = () => {
       members: [
         //TODO: Add logistics team members
         { 
-          name: 'Jake Anderson', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          role: 'Logistics Director',
-          major: 'Operations Management',
-          classYear: '2025',
-          funFact: 'Organized 20+ campus events',
-          linkedin: 'https://linkedin.com/in/jakeanderson',
-          social: 'https://twitter.com/jakeanderson'
+          name: 'Jack', 
+          avatar: '/images/team-photos/logistic/jack.png', 
+          role: '',
+          major: '',
+          classYear: '',
+          funFact: '',
+          linkedin: '',
+          social: ''
         },
         { 
-          name: 'Nina Rodriguez', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          major: 'Event Planning',
-          classYear: '2026',
-          funFact: 'Has perfect attendance record',
-          linkedin: 'https://linkedin.com/in/ninarodriguez',
-          social: 'https://instagram.com/ninarodriguez'
+          name: 'Lateefat', 
+          avatar: '/images/team-photos/logistic/lateefat.jpg', 
+          role: '',
+          major: '',
+          classYear: '',
+          funFact: '',
+          linkedin: '',
+          social: ''
         },
         { 
-          name: 'Ben Thompson', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          major: 'Supply Chain Management',
-          classYear: '2025',
-          funFact: 'Manages inventory for student organizations',
-          linkedin: 'https://linkedin.com/in/benthompson',
-          social: 'https://github.com/benthompson'
+          name: 'Olivia Clark', 
+          avatar: '/images/team-photos/logistic/liv.jpg', 
+          role: '',
+          major: 'Chemical Engineering',
+          classYear: '2028',
+          funFact: 'My hair used to be green!',
+          linkedin: '',
+          social: ''
         },
         { 
-          name: 'Zoe Clark', 
-          avatar: 'https://i0.wp.com/e-quester.com/wp-content/uploads/2021/11/placeholder-image-person-jpg.jpg?fit=820%2C678&ssl=1', 
-          major: 'Hospitality Management',
-          classYear: '2026',
-          funFact: 'Works part-time at event venues',
-          linkedin: 'https://linkedin.com/in/zoeclark',
-          social: 'https://instagram.com/zoeclark'
+          name: 'Zuni Perez', 
+          avatar: '/images/team-photos/logistic/zuni.jpg', 
+          role: '',
+          major: 'Chemistry & Chemical Engineering',
+          classYear: '2028',
+          funFact: '',
+          linkedin: 'https://www.linkedin.com/in/zuni-perez/',
+          social: ''
         }
       ]
     }
