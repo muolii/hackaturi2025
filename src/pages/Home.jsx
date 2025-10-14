@@ -1,31 +1,43 @@
-// src/pages/Home.jsx
 import React from 'react';
-import image from '../assets/logo.png'; // Adjust the path as necessary
-import CountdownTimer from '../components/Countdown.jsx';
+import pirateLogo from '../assets/pirate_ram.svg'; // large circular logo
+import starsSvg from '../assets/stars-bg.svg'; // stars for decorations
+import CountdownTimer from '../components/Countdown';
 import './Home.css';
 
 const Home = () => {
   return (
-    <div className="content">
-      <div className="container">
-        <div className="leftContent">
-          <div className="browser-window">
-            <div className="browser-header">
-              <div className="browser-controls">
-                <div className="control close"></div>
-                <div className="control minimize"></div>
-                <div className="control maximize"></div>
-              </div>
-            </div>
-            <div className="browser-content">
-              <img src={image} width="300" alt="Hack@URI Logo" />
-            </div>
+    <div className="pirate-hero">
+      {/* Main content centered */}
+      <div className="hero-container">
+        <div className="hero-left">
+          <div className="pirate-logo-wrap">
+            <img src={pirateLogo} alt="Hack@URI Pirate Logo" className="pirate-logo" />
           </div>
         </div>
-        <div className="rightContent">
-          <CountdownTimer />
+
+        <div className="hero-right">
+          <header className="hero-copy">
+            <h1 className="hero-title">Set Sail for Innovation: <span className="accent">Hack@URI 2026</span></h1>
+            <p className="hero-sub">Embark on a 48-hour coding adventure at the University of Rhode Island!</p>
+          </header>
+
+          <div className="hero-countdown">
+            <div className="countdown-date">February 21-22, 2026</div>
+            <CountdownTimer />
+          </div>
+
+          <div className="hero-cta">
+            <button className="btn register">Register Now</button>
+          </div>
         </div>
       </div>
+
+      {/* Random scattered stars */}
+      <img src={starsSvg} alt="" className="decor-star star-1" />
+      <img src={starsSvg} alt="" className="decor-star star-2" />
+      <img src={starsSvg} alt="" className="decor-star star-3" />
+      <img src={starsSvg} alt="" className="decor-star star-4" />
+      <img src={starsSvg} alt="" className="decor-star star-5" />
     </div>
   );
 };

@@ -1,129 +1,82 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import './Countdown.css';
 
-const CountdownTimer = () => {
-    // Set your hackathon date here - update this to your actual event date
-    const HACKATHON_DATE = "2026-02-21T09:00:00"; // Example: March 15, 2026 at 9:00 AM
-    const EVENT_NAME = "Hack@URI 2026";
-    
-    const [timeRemaining, setTimeRemaining] = useState(0);
-    const [isComplete, setIsComplete] = useState(false);
+const Countdown = () => {
+  // Update this to your real event time (use local timezone or append Z for UTC)
+  const EVENT_ISO = "2026-02-21T09:00:00"; 
 
-    useEffect(() => {
-        const updateCountdown = () => {
-            const currentTime = new Date().getTime();
-            const eventTime = new Date(HACKATHON_DATE).getTime();
-            let remainingTime = eventTime - currentTime;
+  const [remaining, setRemaining] = useState(msUntil(EVENT_ISO));
+  const [finished, setFinished] = useState(false);
 
-            if (remainingTime <= 0) {
-                remainingTime = 0;
-                setIsComplete(true);
-            }
-
-            setTimeRemaining(remainingTime);
-        };
-
-        // Update immediately
-        updateCountdown();
-        
-        // Then update every second
-        const countdownInterval = setInterval(updateCountdown, 1000);
-
-        return () => clearInterval(countdownInterval);
-    }, []);
-
-    const formatTime = (time) => {
-        if (isComplete) {
-            return (
-                <div className="countdown-complete">
-                    🎉 The hackathon has begun! 🎉
-                </div>
-            );
-        }
-
-        const seconds = Math.floor((time / 1000) % 60);
-        const minutes = Math.floor((time / (1000 * 60)) % 60);
-        const hours = Math.floor((time / (1000 * 60 * 60)) % 24);
-        const days = Math.floor(time / (1000 * 60 * 60 * 24));
-
-        return (
-            <div className="countdown-display">
-                <div className="countdown-unit">
-                    <div className="countdown-number-container">
-                        <span className="countdown-number">{days}</span>
-                        <div className="countdown-glow"></div>
-                    </div>
-                    <span className="countdown-label">days</span>
-                </div>
-                <div className="countdown-separator">:</div>
-                <div className="countdown-unit">
-                    <div className="countdown-number-container">
-                        <span className="countdown-number">{hours.toString().padStart(2, "0")}</span>
-                        <div className="countdown-glow"></div>
-                    </div>
-                    <span className="countdown-label">hours</span>
-                </div>
-                <div className="countdown-separator">:</div>
-                <div className="countdown-unit">
-                    <div className="countdown-number-container">
-                        <span className="countdown-number">{minutes.toString().padStart(2, "0")}</span>
-                        <div className="countdown-glow"></div>
-                    </div>
-                    <span className="countdown-label">minutes</span>
-                </div>
-                <div className="countdown-separator">:</div>
-                <div className="countdown-unit">
-                    <div className="countdown-number-container">
-                        <span className="countdown-number">{seconds.toString().padStart(2, "0")}</span>
-                        <div className="countdown-glow"></div>
-                    </div>
-                    <span className="countdown-label">seconds</span>
-                </div>
-            </div>
-        );
+  useEffect(() => {
+    const tick = () => {
+      const ms = msUntil(EVENT_ISO);
+      setRemaining(ms);
+      if (ms <= 0) setFinished(true);
     };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
 
-    const formatDate = () => {
-        const eventDate = new Date(HACKATHON_DATE);
-        
-        const options = { 
-            month: 'long', 
-            day: 'numeric'
-        };
-        
-        const firstDay = eventDate.toLocaleDateString("en-US", options);
-        const secondDay = eventDate.getDate() + 1;
-        const year = eventDate.getFullYear();
-        
-        return `${firstDay}-${secondDay}, ${year}`;
-    };
-
+  if (finished) {
     return (
-        <div className="hackathon-countdown">
-            <div className="countdown-content">
-                <div className="countdown-text">
-                    <div className="countdown-announcement">
-                        <span className="event-name">{EVENT_NAME}</span>
-                        <span className="event-date">{formatDate()}</span>
-                    </div>
-                </div>
-                <div className="countdown-timer">
-                    <div className="countdown-wrapper">
-                        {formatTime(timeRemaining)}
-                    </div>
-                </div>
-                <div className="countdown-action">
-                    <button className="register-button" onClick={() => {
-                        // Replace this with your actual registration logic
-                        alert('Registration coming soon!');
-                        // Example: window.location.href = '/register';
-                    }}>
-                        Register Now!
-                    </button>
-                </div>
-            </div>
+      <div className="countdown-wrap" aria-live="polite">
+        <div style={{padding: '18px 24px', color: '#F9E9C0', fontWeight: 800}}>
+          🏴‍☠️ The adventure has begun!
         </div>
+      </div>
     );
+  }
+
+  const { days, hours, minutes, seconds } = breakdown(remaining);
+
+  return (
+    <div className="countdown-wrap" role="timer" aria-live="polite">
+      <div className="cd-seg">
+        <div className="cd-num">{String(days)}</div>
+        <div className="cd-label">Days</div>
+      </div>
+
+      <div className="cd-sepcolon">:</div>
+
+      <div className="cd-seg">
+        <div className="cd-num">{String(hours).padStart(2, '0')}</div>
+        <div className="cd-label">Hours</div>
+      </div>
+
+      <div className="cd-sepcolon">:</div>
+
+      <div className="cd-seg">
+        <div className="cd-num">{String(minutes).padStart(2, '0')}</div>
+        <div className="cd-label">Minutes</div>
+      </div>
+
+      <div className="cd-sepcolon">:</div>
+
+      <div className="cd-seg">
+        <div className="cd-num">{String(seconds).padStart(2, '0')}</div>
+        <div className="cd-label">Sec</div>
+      </div>
+    </div>
+  );
 };
 
-export default CountdownTimer;
+function msUntil(iso) {
+  const now = new Date().getTime();
+  const then = new Date(iso).getTime();
+  return Math.max(0, then - now);
+}
+
+function breakdown(ms) {
+  const totalSeconds = Math.floor(ms / 1000);
+  const seconds = totalSeconds % 60;
+  const totalMinutes = Math.floor(totalSeconds / 60);
+  const minutes = totalMinutes % 60;
+  const totalHours = Math.floor(totalMinutes / 60);
+  const hours = totalHours % 24;
+  const days = Math.floor(totalHours / 24);
+  return { days, hours, minutes, seconds };
+}
+
+export default Countdown;

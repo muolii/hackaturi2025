@@ -1,6 +1,8 @@
 // src/pages/Team.jsx
 import React, { useState } from 'react';
 import { FaLinkedin, FaGithub, FaArrowRight } from 'react-icons/fa';
+import starsSvg from '../assets/stars-bg.svg';
+import portholeSvg from '../assets/porthole.svg';
 import './Team.css';
 
 const Team = () => {
@@ -256,8 +258,16 @@ const Team = () => {
   };
 
   return (
-    <div className="content">
-      <h1>Our Team</h1>
+    <div className="pirate-team">
+      {/* Animated stars */}
+      <img src={starsSvg} alt="" className="team-star star-1" />
+      <img src={starsSvg} alt="" className="team-star star-2" />
+      <img src={starsSvg} alt="" className="team-star star-3" />
+      <img src={starsSvg} alt="" className="team-star star-4" />
+      <img src={starsSvg} alt="" className="team-star star-5" />
+
+      <div className="team-content">
+        <h1 className="team-title">Meet the Crew!</h1>
       
       <div className="team-tabs">
         {tabs.map((tab) => (
@@ -287,6 +297,7 @@ const Team = () => {
                   {/* Front of card */}
                   <div className="card-front">
                     <div className="member-avatar-container">
+                      <img src={portholeSvg} alt="Porthole Frame" className="porthole-frame" />
                       <img src={member.avatar} alt={member.name} className="member-avatar" />
                     </div>
                     <h3>{member.name}</h3>
@@ -358,6 +369,7 @@ const Team = () => {
             );
           })}
         </div>
+      </div>
       </div>
     </div>
   );

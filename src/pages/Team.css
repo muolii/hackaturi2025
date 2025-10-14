@@ -1,4 +1,84 @@
-/* Team Page Styles */
+/* Pirate Team Page Styles */
+.pirate-team {
+  min-height: 100vh;
+  background: #F6E9C8;
+  position: relative;
+  overflow: hidden;
+  font-family: "Poppins", "Nunito", "Quicksand", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #2f2520;
+  padding: 40px 20px;
+}
+
+/* Animated stars */
+.team-star {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.6;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.star-1 {
+  top: 15%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.star-2 {
+  top: 25%;
+  right: 15%;
+  animation-delay: 0.6s;
+}
+
+.star-3 {
+  top: 60%;
+  left: 8%;
+  animation-delay: 1.2s;
+}
+
+.star-4 {
+  top: 70%;
+  right: 12%;
+  animation-delay: 1.8s;
+}
+
+.star-5 {
+  top: 40%;
+  left: 85%;
+  animation-delay: 2.4s;
+}
+
+@keyframes twinkle {
+  0%, 100% { 
+    opacity: 0.3; 
+    transform: scale(1) rotate(0deg); 
+  }
+  50% { 
+    opacity: 0.8; 
+    transform: scale(1.2) rotate(180deg); 
+  }
+}
+
+/* Main content */
+.team-content {
+  position: relative;
+  z-index: 3;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.team-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #2f2520;
+  margin: 0 0 40px 0;
+  text-shadow: 2px 2px 4px rgba(47, 37, 32, 0.1);
+}
+
+/* Team tabs */
 .team-tabs {
   display: flex;
   justify-content: center;
@@ -9,8 +89,8 @@
 
 .team-tab {
   background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
+  border: 2px solid rgba(47, 37, 32, 0.2);
+  color: #2f2520;
   padding: 15px 20px;
   border-radius: 25px;
   cursor: pointer;
@@ -26,15 +106,15 @@
 }
 
 .team-tab:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: #4c9aed;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #2f2520;
   transform: translateY(-2px);
 }
 
 .team-tab.active {
-  background: #4c9aed;
-  border-color: #4c9aed;
-  color: #fff;
+  background: #2f2520;
+  border-color: #2f2520;
+  color: #F6E9C8;
   transform: translateY(-2px);
 }
 
@@ -48,6 +128,7 @@
   font-size: 0.9em;
 }
 
+/* Team section */
 .team-section {
   margin-top: 30px;
 }
@@ -67,11 +148,12 @@
 }
 
 .team-header h2 {
-  color: #4c9aed;
+  color: #2f2520;
   font-size: 2.2em;
   margin: 0;
 }
 
+/* Team grid */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -83,7 +165,7 @@
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(47, 37, 32, 0.2);
   transition: all 0.3s ease;
   text-align: center;
   perspective: 1000px;
@@ -93,6 +175,7 @@
 .team-member-card:hover {
   transform: translateY(-5px);
   background: rgba(255, 255, 255, 0.15);
+  border-color: #2f2520;
 }
 
 .card-inner {
@@ -121,36 +204,50 @@
 
 .card-back {
   transform: rotateY(180deg);
-  background: rgba(76, 154, 237, 0.1);
+  background: rgba(47, 37, 32, 0.1);
   border-radius: 15px;
 }
 
+/* Porthole frame and avatar */
+.member-avatar-container {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.porthole-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50.5%, -48%);
+  width: 205px;
+  height: 205px;
+  z-index: 1;
+}
+
 .member-avatar {
-  width: 120px;            
+  position: relative;
+  width: 120px;
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
-  margin: 0 auto;         
+  margin: 0 auto;
+  z-index: 2;
 }
 
 .team-member-card h3 {
-  color: #4c9aed;
+  color: #2f2520;
   margin-bottom: 10px;
   font-size: 1.3em;
   font-weight: 600;
 }
 
 .member-role {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(47, 37, 32, 0.8);
   font-size: 0.9em;
   margin: 0 0 15px 0;
   font-weight: 500;
-}
-
-.member-avatar-container {
-  display: inline-block;  
-  position: relative;       
 }
 
 .social-buttons {
@@ -174,54 +271,82 @@
   font-size: 18px;
   box-shadow: none;
   padding: 12px;
+  color: #2f2520;
+}
+
+.social-btn svg {
+  color: #2f2520 !important;
+  fill: #2f2520 !important;
 }
 
 .social-btn:hover {
-  background: rgba(255,255,255,0.15);
+  background: rgba(47, 37, 32, 0.15);
   border: none;
   border-radius: 50%;
   box-shadow: none;
   padding: 12px;
+  color: #2f2520;
+}
+
+.social-btn:hover svg {
+  color: #2f2520 !important;
+  fill: #2f2520 !important;
 }
 
 .linkedin-btn:hover {
-  background: rgba(0, 119, 181, 0.3);
-  border-color: rgba(0, 119, 181, 0.6);
+  background: rgba(47, 37, 32, 0.15);
+  border-color: rgba(47, 37, 32, 0.2);
+  color: #2f2520;
+}
+
+.linkedin-btn:hover svg {
+  color: #2f2520 !important;
+  fill: #2f2520 !important;
 }
 
 .flip-arrow {
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
   background: none;
   border: none;
+  cursor: pointer;
+  padding: 12px;
+  font-size: 1.5em;
+  color: #2f2520;
+  z-index: 2;
   border-radius: 50%;
-  width: auto;
-  height: auto;
-  display: inline-flex;
+  width: 48px;
+  height: 48px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: background 0.2s;
-  font-size: 1.5em;
-  margin: 0;
-  color: #fff;
-  box-shadow: none;
-  padding: 12px;
+}
+
+.flip-arrow svg {
+  color: #2f2520 !important;
+  fill: #2f2520 !important;
 }
 
 .flip-arrow:hover {
-  background: rgba(255,255,255,0.15);
+  background: rgba(47, 37, 32, 0.15);
   border: none;
   border-radius: 50%;
   box-shadow: none;
-  padding: 12px;
+}
+
+.flip-arrow:hover svg {
+  color: #2f2520 !important;
+  fill: #2f2520 !important;
 }
 
 .member-info {
   text-align: left;
-  color: #fff;
+  color: #2f2520;
 }
 
 .member-info h3 {
-  color: #4c9aed;
+  color: #2f2520;
   text-align: center;
   margin-bottom: 20px;
   font-size: 1.3em;
@@ -237,14 +362,14 @@
 
 .info-label {
   font-weight: 600;
-  color: #4c9aed;
+  color: #2f2520;
   font-size: 0.9em;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .info-value {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(47, 37, 32, 0.9);
   font-size: 1em;
   line-height: 1.4;
 }
@@ -262,35 +387,60 @@
   border-radius: 15px;
   margin-top: 40px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(47, 37, 32, 0.2);
 }
 
 .join-team h3 {
-  color: #4c9aed;
+  color: #2f2520;
   margin-bottom: 15px;
 }
 
-/* Team card arrow positioning */
-.flip-arrow {
-  position: absolute;
-  right: 16px;
-  bottom: 12px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  font-size: 1.5em;
-  color: #fff;
-  z-index: 2;
-}
-
-.card-front, .card-back {
-  position: relative;
-}
-
-/* Responsive Design for Team */
+/* Responsive design */
 @media (max-width: 768px) {
+  .pirate-team {
+    padding: 30px 15px;
+  }
+  
+  .team-title {
+    font-size: 2.5rem;
+  }
+  
   .team-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .team-star {
+    display: none;
+  }
+  
+  .porthole-frame {
+    width: 205px;
+    height: 205px;
+  }
+  
+  .member-avatar {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-title {
+    font-size: 2rem;
+  }
+  
+  .team-tab {
+    padding: 12px 16px;
+    font-size: 0.9em;
+  }
+  
+  .porthole-frame {
+    width: 205px;
+    height: 205px;
+  }
+  
+  .member-avatar {
+    width: 80px;
+    height: 80px;
   }
 }

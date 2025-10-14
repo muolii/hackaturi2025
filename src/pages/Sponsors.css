@@ -1,67 +1,311 @@
-/* Sponsors Page Styles */
+/* Pirate Sponsors Page Styles */
+.pirate-sponsors {
+  min-height: 100vh;
+  background: #F6E9C8;
+  position: relative;
+  overflow: hidden;
+  font-family: "Poppins", "Nunito", "Quicksand", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #2f2520;
+  padding: 40px 20px;
+}
+
+/* Animated stars */
+.sponsor-star {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.6;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.star-1 {
+  top: 15%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.star-2 {
+  top: 25%;
+  right: 15%;
+  animation-delay: 0.6s;
+}
+
+.star-3 {
+  top: 60%;
+  left: 8%;
+  animation-delay: 1.2s;
+}
+
+.star-4 {
+  top: 70%;
+  right: 12%;
+  animation-delay: 1.8s;
+}
+
+.star-5 {
+  top: 40%;
+  left: 85%;
+  animation-delay: 2.4s;
+}
+
+@keyframes twinkle {
+  0%, 100% { 
+    opacity: 0.3; 
+    transform: scale(1) rotate(0deg); 
+  }
+  50% { 
+    opacity: 0.8; 
+    transform: scale(1.2) rotate(180deg); 
+  }
+}
+
+/* Main content */
+.sponsors-content {
+  position: relative;
+  z-index: 3;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sponsors-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #2f2520;
+  margin: 0 0 20px 0;
+  text-shadow: 2px 2px 4px rgba(47, 37, 32, 0.1);
+}
+
+/* Scroll container */
+.scroll-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: -120px 0;
+  width: 100%;
+}
+
+.sponsor-scroll {
+  width: 90%;
+  max-width: 1000px;
+  height: auto;
+  filter: drop-shadow(0 8px 20px rgba(47, 37, 32, 0.3));
+}
+
+/* Sponsors inside scroll */
+.sponsors-inside-scroll {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  max-width: 700px;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.sponsors-title-inside {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #2f2520;
+  margin: 0 0 20px 0;
+  text-shadow: 2px 2px 4px rgba(47, 37, 32, 0.1);
+}
+
 .sponsors-grid {
-  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  width: 100%;
+  align-items: center;
+  justify-items: center;
 }
 
 .sponsor-logo-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100px;
+  min-height: 80px;
+  background: transparent;
+  padding: 0;
+  border: none;
+  box-shadow: none;
 }
 
 .sponsor-logo {
-  max-width: 180px;
-  max-height: 100px;
+  max-width: 150px;
+  max-height: 120px;
   width: auto;
   height: auto;
   object-fit: contain;
-  transition: filter 0.3s ease;
 }
 
 .sponsor-fallback {
-  font-size: 1.5em;
+  font-size: 1rem;
   font-weight: bold;
-  color: #4c9aed;
+  color: #2f2520;
   text-align: center;
 }
 
-.sponsor-card {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 30px;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  text-decoration: none;
-  transition: all 0.3s ease;
+/* Donors section inside scroll */
+.donors-section-inside {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.donors-title-inside {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2f2520;
+  margin: 0 0 15px 0;
+  text-shadow: 1px 1px 2px rgba(47, 37, 32, 0.1);
+}
+
+.donors-list-inside {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  text-align: center;
 }
 
-.sponsor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border-color: #4c9aed;
+.donor-name-inside {
+  color: #2f2520;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+  margin: 0;
 }
 
+/* Donation link styling */
+.donate-link {
+  color: #2f2520;
+  text-decoration: underline;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.donate-link:hover {
+  color: #8B4513;
+  text-decoration: none;
+}
+
+/* Become sponsor section */
 .become-sponsor {
   background: rgba(255, 255, 255, 0.1);
   padding: 30px;
   border-radius: 15px;
   margin-top: 40px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(47, 37, 32, 0.2);
 }
 
 .become-sponsor h3 {
-  color: #4c9aed;
+  color: #2f2520;
   margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
-/* Responsive Design for Sponsors */
+.become-sponsor p {
+  color: #2f2520;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
-  .sponsor-cards {
+  .pirate-sponsors {
+    padding: 30px 15px;
+  }
+  
+  .sponsors-title {
+    font-size: 2.5rem;
+  }
+  
+  .sponsor-scroll {
+    width: 95%;
+  }
+  
+  .sponsors-inside-scroll {
+    width: 80%;
+    height: 85%;
+    top: 40%;
+  }
+  
+  .sponsors-title-inside {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  
+  .sponsors-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .sponsor-logo {
+    max-width: 120px;
+    max-height: 60px;
+  }
+  
+  .donors-list-inside {
+    gap: 4px;
+  }
+  
+  .donor-name-inside {
+    font-size: 0.8rem;
+  }
+  
+  .donors-title-inside {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .sponsor-star {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .sponsors-title {
+    font-size: 2rem;
+  }
+  
+  .sponsor-scroll {
+    width: 98%;
+  }
+  
+  .sponsors-inside-scroll {
+    width: 85%;
+    height: 80%;
+    top: 35%;
+  }
+  
+  .sponsors-title-inside {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+  
+  .sponsor-logo {
+    max-width: 100px;
+    max-height: 50px;
+  }
+  
+  .donors-title-inside {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  
+  .donor-name-inside {
+    font-size: 0.7rem;
   }
 }

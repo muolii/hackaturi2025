@@ -1,88 +1,58 @@
-// src/components/Header.jsx
 import React, { useState, useEffect } from 'react';
-import image from '../assets/logo.png'; // Adjust the path as necessary
 import './Header.css';
 
 const Header = ({ scrollToSection }) => {
   const [activeSection, setActiveSection] = useState('home');
-  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [isNavigating, setIsNavigating] = useState(false);
-
-  const navigationItems = [
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastY, setLastY] = useState(0);
+  const nav = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
-    { id: 'tracks', label: 'Tracks' },
     { id: 'schedule', label: 'Schedule' },
-    { id: 'faq', label: 'FAQ' },
     { id: 'sponsors', label: 'Sponsors' },
-    { id: 'team', label: 'Team' }
   ];
 
-  // Update active section and header visibility based on scroll position
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const sections = navigationItems.map(item => item.id);
-      const scrollPosition = currentScrollY + 100; // Offset for header
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (y > lastY && y > 120) setIsVisible(false);
+      else setIsVisible(true);
+      setLastY(y);
 
-      // Update active section
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i]);
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i]);
+      // update active section based on offsets (simple)
+      for (let i = nav.length - 1; i >= 0; i--) {
+        const s = document.getElementById(nav[i].id);
+        if (s && s.offsetTop <= (y + 120)) {
+          setActiveSection(nav[i].id);
           break;
         }
       }
-
-      // Handle header visibility (only hide/show based on scroll, not navigation)
-      if (!isNavigating) {
-        if (currentScrollY > lastScrollY && currentScrollY > 100) {
-          // Scrolling down and past 100px
-          setIsHeaderVisible(false);
-        } else {
-          // Scrolling up
-          setIsHeaderVisible(true);
-        }
-      }
-      
-      setLastScrollY(currentScrollY);
     };
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [lastY]);
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY, isNavigating]);
-
-  const handleNavigationClick = (sectionId) => {
-    setIsNavigating(true);
-    setIsHeaderVisible(true); // Ensure header stays visible
-    scrollToSection(sectionId);
-    
-    // Reset navigation state after a short delay
-    setTimeout(() => {
-      setIsNavigating(false);
-    }, 1000);
+  const handleClick = (id) => {
+    if (scrollToSection) scrollToSection(id);
+    setIsVisible(true);
   };
 
   return (
-    <div className={`header ${!isHeaderVisible ? 'hidden' : ''}`}>
-      <div className="container">
-        <a onClick={() => handleNavigationClick('home')} className="logo-link">
-          <img src={image} alt="Logo" width="100" />
-        </a>
-        <nav>
-          {navigationItems.map((item) => (
-            <a
+    <header className={`site-header ${isVisible ? '' : 'hidden'}`}>
+      <div className="header-inner">
+        <nav className="main-nav">
+          {nav.map(item => (
+            <button
               key={item.id}
-              onClick={() => handleNavigationClick(item.id)}
-              className={activeSection === item.id ? 'active' : ''}
+              className={`nav-btn ${activeSection === item.id ? 'active' : ''}`}
+              onClick={() => handleClick(item.id)}
             >
               <strong>{item.label}</strong>
-            </a>
+            </button>
           ))}
         </nav>
       </div>
-    </div>
+    </header>
   );
 };
 

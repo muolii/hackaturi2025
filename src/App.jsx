@@ -18,6 +18,7 @@ const App = () => {
   
   const [isSiteRevealed, setIsSiteRevealed] = useState(!SITE_HIDDEN);
   const [isLoading, setIsLoading] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // Check if site should be revealed
   useEffect(() => {
@@ -31,6 +32,25 @@ const App = () => {
     
     setIsLoading(false);
   }, []);
+
+  // Handle scroll detection for waves - hide immediately when scrolling down
+  useEffect(() => {
+    let lastY = 0;
+    const handleScroll = () => {
+      const y = window.scrollY;
+      // Hide waves immediately when scrolling down from the top
+      if (y > lastY && y > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+      lastY = y;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
 
   const handleRevealSite = () => {
     const code = prompt("Enter access code:");
@@ -76,7 +96,7 @@ const App = () => {
 
   // Show main site content
   return (
-    <div className="app">
+    <div className={`app ${isScrolled ? 'scrolled' : ''}`}>
       {/* MLH Trust Badge */}
       <a 
         id="mlh-trust-badge" 

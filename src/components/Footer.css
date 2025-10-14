@@ -8,8 +8,7 @@
 }
 
 .footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
   color: #fff;
 }
 
@@ -26,9 +25,7 @@
 .footer-section p {
   margin-bottom: 20px;
   line-height: 1.6;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
 }
 
 .social-links {

@@ -1,9 +1,9 @@
 /* Shared/Common Styles */
 .app {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', 'Nunito', 'Quicksand', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #0e437d;
+  background: #F6E9C8;
   min-height: 100vh;
   width: 100vw;
   max-width: 100%;
@@ -11,17 +11,40 @@
   position: relative;
 }
 
+/* Global waves background - synchronized with header */
+.app::before {
+  content: '';
+  position: fixed;
+  top: 40px;
+  left: 0;
+  right: 0;
+  height: 300px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 300' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,64 C120,40 200,80 360,72 C520,64 620,16 780,32 C940,48 1060,96 1220,88 C1380,80 1440,56 1440,56 L1440 0 0 0z' fill='%23083337'/%3E%3Cpath d='M0,88 C140,72 220,110 380,90 C540,70 640,40 800,60 C960,80 1080,120 1240,100 C1400,80 1440,72 1440,72 L1440 0 0 0z' fill='%230B4F4F' opacity='0.95'/%3E%3C/svg%3E");
+  background-size: 100% 300px;
+  background-repeat: no-repeat;
+  background-position: top center;
+  pointer-events: none;
+  z-index: 50;
+  transform: scale(1.2);
+  transform-origin: top center;
+  transition: transform 280ms ease;
+}
+
+/* Hide waves when scrolling - perfectly synchronized with header */
+.app.scrolled::before {
+  transform: scale(1.2) translateY(-100%);
+}
+
+
 .main-content {
-  margin-top: 60px; /* Account for fixed header */
+  margin-top: 200px; /* Account for fixed header and waves with proper separation */
 }
 
 .section {
   min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 20px;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .content {
@@ -31,7 +54,6 @@
   text-align: center;
   padding: 20px;
   width: 100%;
-  max-width: 1200px;
   box-sizing: border-box;
 }
 
@@ -54,8 +76,7 @@ h3 {
 p {
   font-size: 18px;
   line-height: 1.6;
-  max-width: 800px;
-  margin: 0 auto 20px;
+  margin: 0 0 20px 0;
 }
 
 /* Social Button Styles */
