@@ -28,6 +28,14 @@ const Home = () => {
 
           <div className="hero-cta">
             <button className="btn register">Register Now</button>
+            <a 
+              href="https://forms.gle/yhsRPP5YzMw9B1sg6" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn mentor"
+            >
+              Become a Mentor
+            </a>
           </div>
         </div>
       </div>

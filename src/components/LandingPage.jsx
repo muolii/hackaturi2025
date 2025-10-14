@@ -8,7 +8,7 @@ const LandingPage = ({ onRevealSite, onBackToLanding }) => {
   };
 
   return (
-    <div className="app">
+    <div className="landing-app">
       {/* MLH Trust Badge */}
       <a 
         id="mlh-trust-badge" 
@@ -59,7 +59,7 @@ const LandingPage = ({ onRevealSite, onBackToLanding }) => {
               
               <div className="landing-description">
                 <p>Get ready for the first ever hackathon at the University of Rhode Island!</p>
-                <p>March 15-16, 2026</p>
+                <p>February 21-22, 2026</p>
               </div>
 
               <div className="preregistration-section">

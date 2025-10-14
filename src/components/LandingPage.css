@@ -1,4 +1,16 @@
 /* Landing Page Styles - Matching existing site design */
+.landing-app {
+  font-family: 'Poppins', 'Nunito', 'Quicksand', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #0a2d5a;
+  min-height: 100vh;
+  width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
 .landing-page {
   min-height: 100vh;
   background-color: #0a2d5a; /* Darker background */
