@@ -1,6 +1,7 @@
 // src/components/Footer.jsx
 import React from 'react';
 import { FaLinkedin, FaInstagram, FaGithub, FaDiscord, FaHeart } from 'react-icons/fa';
+import './Footer.css';
 
 const Footer = () => {
   const socialLinks = [

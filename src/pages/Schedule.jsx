@@ -1,6 +1,7 @@
 // src/pages/Schedule.jsx
 import React from 'react';
 import { FaMapMarkerAlt } from 'react-icons/fa';
+import './Schedule.css';
 
 const Schedule = () => {
   const scheduleData = {

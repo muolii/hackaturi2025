@@ -1,6 +1,7 @@
 // src/pages/Team.jsx
 import React, { useState } from 'react';
 import { FaLinkedin, FaGithub, FaArrowRight } from 'react-icons/fa';
+import './Team.css';
 
 const Team = () => {
   const [activeTab, setActiveTab] = useState('leadership');

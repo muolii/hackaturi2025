@@ -10,7 +10,7 @@ import Schedule from './pages/Schedule.jsx';
 import Team from './pages/Team.jsx';
 import FAQ from './pages/FAQ.jsx';
 import Tracks from './pages/Tracks.jsx';
-import './App.css';
+import './styles/shared.css';
 
 const App = () => {
   // Set this to false when ready to reveal the main site

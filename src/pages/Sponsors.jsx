@@ -1,5 +1,6 @@
 // src/pages/Sponsors.jsx
 import React from 'react';
+import './Sponsors.css';
 
 const Sponsors = () => {
   const sponsors = [

@@ -1,0 +1,80 @@
+/* Home Page Styles */
+.container {
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 20px;
+}
+
+.leftContent {
+  width: 50%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rightContent {
+  width: 50%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Browser Window Styles */
+.browser-window {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  width: 450px;
+  height: 450px;
+  margin: 0 auto;
+}
+
+.browser-header {
+  background: #0e437d;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.browser-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: white;
+}
+
+.browser-content {
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 60px);
+}
+
+/* Responsive Design for Home */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .leftContent,
+  .rightContent {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}

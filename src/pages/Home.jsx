@@ -2,6 +2,7 @@
 import React from 'react';
 import image from '../assets/logo.png'; // Adjust the path as necessary
 import CountdownTimer from '../components/Countdown.jsx';
+import './Home.css';
 
 const Home = () => {
   return (

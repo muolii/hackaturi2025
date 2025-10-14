@@ -3,7 +3,7 @@ import './Countdown.css';
 
 const CountdownTimer = () => {
     // Set your hackathon date here - update this to your actual event date
-    const HACKATHON_DATE = "2026-03-15T09:00:00"; // Example: March 15, 2026 at 9:00 AM
+    const HACKATHON_DATE = "2026-02-21T09:00:00"; // Example: March 15, 2026 at 9:00 AM
     const EVENT_NAME = "Hack@URI 2026";
     
     const [timeRemaining, setTimeRemaining] = useState(0);

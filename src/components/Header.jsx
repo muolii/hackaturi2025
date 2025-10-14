@@ -1,6 +1,7 @@
 // src/components/Header.jsx
 import React, { useState, useEffect } from 'react';
 import image from '../assets/logo.png'; // Adjust the path as necessary
+import './Header.css';
 
 const Header = ({ scrollToSection }) => {
   const [activeSection, setActiveSection] = useState('home');

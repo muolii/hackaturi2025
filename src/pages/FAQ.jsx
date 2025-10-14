@@ -1,6 +1,7 @@
 // src/pages/FAQ.jsx
 import React, { useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
+import './FAQ.css';
 
 const FAQ = () => {
   const [activeTab, setActiveTab] = useState('general');

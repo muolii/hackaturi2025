@@ -1,6 +1,7 @@
 // src/pages/Tracks.jsx
 import React, { useState } from 'react';
 import { FaGlobe, FaMobileAlt, FaRobot, FaLink } from 'react-icons/fa';
+import './Tracks.css';
 
 const Tracks = () => {
   const [selectedTrack, setSelectedTrack] = useState(null);
