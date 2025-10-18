@@ -13,7 +13,6 @@ const Team = () => {
     leadership: {
       title: 'Leadership',
       members: [
-        //TODO: Add leadership team members
         { 
           name: 'Lily Nguyen', 
           avatar: '/images/team-photos/execs/lily.png', 
@@ -37,7 +36,6 @@ const Team = () => {
     techDev: {
       title: 'Tech Dev',
       members: [
-        //TODO: Add tech dev team members
         { 
           name: 'Jenny You', 
           avatar: '/images/team-photos/tech/jenny.jpg', 
@@ -51,32 +49,49 @@ const Team = () => {
         { 
           name: 'Ryan Butera', 
           avatar: '/images/team-photos/tech/ryan.jpg', 
+          role: 'Lead',
           major: 'Computer Science',
           classYear: '2026',
           funFact: 'I\'m in the process of watching every Disney Channel Original Movie with my friends',
-          linkedin: 'linkedin.com/in/ryan-butera', 
+          linkedin: 'https://linkedin.com/in/ryan-butera', 
           social: 'https://github.com/rbutera03' 
         },
         { 
           name: 'Kanz Giwa', 
           avatar: '/images/team-photos/tech/kanz.jpg', 
-          major: 'Computer & Data Science ',
+          major: 'Computer & Data Science',
           classYear: '2026',
           funFact: 'Born and raised in Nigeria for 8 years',
           social: 'https://github.com/KanzGiwa'
+        },
+        { 
+          name: 'Riley Maguire', 
+          avatar: '/images/team-photos/tech/riley.jpg', 
+          major: 'Computer Science B.S.',
+          classYear: '2025',
+          funFact: '',
+          linkedin: '',
+          social: ''
+        },
+        { 
+          name: 'Terrell Osborne', 
+          avatar: '/images/team-photos/sponsor/terrell.jpg', 
+          major: 'Computer Science B.A.',
+          classYear: '2028',
+          funFact: 'I broke my wrist playing duck duck goose',
+          linkedin: '',
+          social: 'https://github.com/Marooncoloredchair'
         }
       ]
     },
     marketingOutreach: {
       title: 'Marketing & Outreach',
       members: [
-        //TODO: Add marketing outreach team members
         { 
           name: 'Nathan Azevedo', 
           avatar: '/images/team-photos/market/nathanazevedoheadshot.png', 
           role: 'Lead',
-          //TODO: Nathan major
-          major: '',
+          major: 'Computer Science B.S.',
           classYear: '2028',
           funFact: 'I make balloon animals',
           linkedin: 'https://www.linkedin.com/in/nathan-azevedo'
@@ -84,18 +99,36 @@ const Team = () => {
         { 
           name: 'Lawrence Cabbabe', 
           avatar: '/images/team-photos/rhody_filler_image.jpg', 
-          major: 'Computer Science',
+          role: 'Lead',
+          major: 'Computer Science B.S.',
           classYear: '2025',
           funFact: 'Cars 2 is a fantastic movie',
           linkedin: 'https://www.linkedin.com/in/lawrence-says-hello/',
           social: 'https://github.com/lmcprogram'
+        },
+        { 
+          name: 'Chris Batista', 
+          avatar: '/images/team-photos/market/chris.png', 
+          major: 'Computer Science B.S.',
+          classYear: '2028',
+          funFact: 'I race gokarts competitively and I\'m also a photographer :)',
+          linkedin: 'www.linkedin.com/in/chris-batista',
+          social: 'https://github.com/25px'
+        },
+        { 
+          name: 'Babajide Fakolujo', 
+          avatar: '/images/team-photos/market/jide-lead.jpeg', 
+          major: 'Computer Science B.S.',
+          classYear: '2028',
+          funFact: '',
+          linkedin: '',
+          social: ''
         }
       ]
     },
     sponsorship: {
       title: 'Sponsorship',
       members: [
-        //TODO: Add sponsorship team members
         { 
           name: 'Meghan Andrews', 
           avatar: '/images/team-photos/sponsor/meghan.jpg', 
@@ -107,29 +140,18 @@ const Team = () => {
           social: 'https://github.com/mandrews12'
         },
         { 
-          name: 'Anjolaoluwa (Anjola) Fapohunda', 
-          avatar: '/images/team-photos/sponsor/anojola.jpg', 
-          role: '',
-          major: 'Computer Science',
+          name: 'Ethan Moreta', 
+          avatar: '/images/team-photos/sponsor/ethan2.JPEG', 
+          role: 'Lead',
+          major: 'Computer Science B.S.',
           classYear: '2026',
-          funFact: 'I\'ve learnt to speak 5 languages',
-          linkedin: '',
-          social: ''
-        },
-        { 
-          name: 'Bitanya', 
-          avatar: '/images/team-photos/sponsor/bitanya.jpg', 
-          role: '',
-          major: '',
-          classYear: '2026',
-          funFact: '',
-          linkedin: '',
-          social: ''
+          funFact: 'I can solve the rubik\'s cube',
+          linkedin: 'www.linkedin.com/in/ethanmoreta',
+          social: 'https://github.com/EthanMoreta'
         },
         { 
           name: 'Olivia Clark', 
           avatar: '/images/team-photos/sponsor/liv.jpg', 
-          role: '',
           major: 'Chemical Engineering',
           classYear: '2028',
           funFact: 'My hair used to be green!',
@@ -137,80 +159,120 @@ const Team = () => {
           social: ''
         },
         { 
+          name: 'Riley Maguire', 
+          avatar: '/images/team-photos/tech/riley.jpg', 
+          major: 'Computer Science B.S.',
+          classYear: '2025',
+          funFact: '',
+          linkedin: '',
+          social: ''
+        },
+        { 
           name: 'Terrell Osborne', 
           avatar: '/images/team-photos/sponsor/terrell.jpg', 
-          role: '',
-          major: 'Computer Science',
+          major: 'Computer Science B.A.',
           classYear: '2028',
           funFact: 'I broke my wrist playing duck duck goose',
           linkedin: '',
           social: 'https://github.com/Marooncoloredchair'
-        },
+        }
       ]
     },
     finance: {
       title: 'Finance',
       members: [
         { 
+          name: 'Liam McKenzie', 
+          avatar: '/images/team-photos/rhody_filler_image.jpg', 
+          role: 'Lead',
+          major: 'Computer Science',
+          classYear: '2027',
+          funFact: 'This is my second time doing the whole college thing. I have a completion certificate in accounting',
+          linkedin: '',
+          social: 'https://github.com/lmckenzie99'
+        },
+        { 
+          name: 'Roquibat Adetunji', 
+          avatar: '/images/team-photos/finance/roquibat.jpg', 
+          major: '',
+          classYear: '2027',
+          funFact: 'I\'m double jointed',
+          linkedin: '',
+          social: ''
+        },
+        { 
+          name: 'Damian Lapena Vidal', 
+          avatar: '/images/team-photos/finance/damian.jpg', 
+          major: 'Computer Engineering',
+          classYear: '2027',
+          funFact: 'I\'m from Spain',
+          linkedin: 'https://www.linkedin.com/in/damianlapevi/',
+          social: 'https://github.com/damianlapenavidal'
+        },
+        { 
+          name: 'Marvens Sainterlien', 
+          avatar: '/images/team-photos/rhody_filler_image.jpg', 
+          major: 'Computer Science',
+          classYear: '2026',
+          funFact: 'My favorite football club is Arsenal',
+          linkedin: 'https://www.linkedin.com/in/marvens-sainterlien/',
+          social: 'https://github.com/marvensC'
+        },
+        { 
           name: 'Arybella Theul', 
           avatar: '/images/team-photos/finance/arybella.jpg', 
-          role: '',
-          major: 'Data Science',
+          major: 'Data Science B.S.',
           classYear: '2026',
           funFact: 'I love to ski',
           linkedin: 'https://www.linkedin.com/in/arybella-theul',
           social: ''
         },
         { 
-          name: 'Damian', 
-          avatar: '/images/team-photos/finance/damian.jpg', 
-          role: '',
-          major: 'Computer Engineering',
-          classYear: '2027',
-          funFact: 'I\'m from Spain.',
-          linkedin: 'https://www.linkedin.com/in/damianlapevi/',
-          social: 'https://github.com/damianlapenavidal'
-        },
-        { 
-          name: 'Olamide', 
+          name: 'Olamide Britto', 
           avatar: '/images/team-photos/finance/olamide.jpg', 
-          role: '',
-          major: 'Finance',
+          major: 'Computer Science B.S.',
           classYear: '2026',
-          funFact: 'I\'m from Nigeria',
-          linkedin: 'http://www.linkedin.com/in/olamide-britto',
+          funFact: '',
+          linkedin: 'www.linkedin.com/in/olamide-britto',
           social: 'https://github.com/OlamideB'
-        },
-        { 
-          name: 'Roquibat Adetunji', 
-          avatar: '/images/team-photos/finance/roquibat.jpg', 
-          role: '',
-          major: '',
-          classYear: '2027',
-          funFact: 'I\'m double jointed',
-          linkedin: '',
-          social: ''
         }
       ]
     },
     logistics: {
       title: 'Logistics',
       members: [
-        //TODO: Add logistics team members
         { 
-          name: 'Jack', 
-          avatar: '/images/team-photos/logistic/jack.png', 
-          role: '',
-          major: '',
-          classYear: '',
-          funFact: '',
-          linkedin: '',
+          name: 'Kat Toolan', 
+          avatar: '/images/team-photos/rhody_filler_image.jpg', 
+          role: 'Lead',
+          major: 'Computer Science B.S., Data Science B.A., Chinese',
+          classYear: '2027',
+          funFact: 'I am trained in archery',
+          linkedin: 'https://www.linkedin.com/in/kat-toolan/',
+          social: 'https://github.com/hellosmallkat'
+        },
+        { 
+          name: 'Ilanna Langton', 
+          avatar: '/images/team-photos/rhody_filler_image.jpg', 
+          role: 'Lead',
+          major: 'Computer Science B.S.',
+          classYear: '2026',
+          funFact: 'I met the Duolingo Bird!',
+          linkedin: 'https://www.linkedin.com/in/ilanna-langton/',
+          social: ''
+        },
+        { 
+          name: 'Zuni Perez', 
+          avatar: '/images/team-photos/logistic/zuni.jpg', 
+          major: 'Chemistry B.S. & Chemical Engineering',
+          classYear: '2028',
+          funFact: 'I\'m in the Marching Band!!',
+          linkedin: 'https://www.linkedin.com/in/zuni-perez/',
           social: ''
         },
         { 
           name: 'Lateefat', 
           avatar: '/images/team-photos/logistic/lateefat.jpg', 
-          role: '',
           major: '',
           classYear: '',
           funFact: '',
@@ -220,21 +282,10 @@ const Team = () => {
         { 
           name: 'Olivia Clark', 
           avatar: '/images/team-photos/logistic/liv.jpg', 
-          role: '',
           major: 'Chemical Engineering',
           classYear: '2028',
           funFact: 'My hair used to be green!',
           linkedin: '',
-          social: ''
-        },
-        { 
-          name: 'Zuni Perez', 
-          avatar: '/images/team-photos/logistic/zuni.jpg', 
-          role: '',
-          major: 'Chemistry & Chemical Engineering',
-          classYear: '2028',
-          funFact: '',
-          linkedin: 'https://www.linkedin.com/in/zuni-perez/',
           social: ''
         }
       ]
