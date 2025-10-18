@@ -289,6 +289,31 @@ const Team = () => {
           social: ''
         }
       ]
+    },
+    participants: {
+      title: 'Participant Experience',
+      members: [
+        { 
+          name: 'Ilanna Langton', 
+          avatar: '/images/team-photos/rhody_filler_image.jpg', 
+          role: 'Lead',
+          major: 'Computer Science B.S.',
+          classYear: '2026',
+          funFact: 'I met the Duolingo Bird!',
+          linkedin: 'https://www.linkedin.com/in/ilanna-langton/',
+          social: ''
+        },
+        { 
+          name: 'Ethan Moreta', 
+          avatar: '/images/team-photos/sponsor/ethan2.JPEG', 
+          role: 'Lead',
+          major: 'Computer Science B.S.',
+          classYear: '2026',
+          funFact: 'I can solve the rubik\'s cube',
+          linkedin: 'www.linkedin.com/in/ethanmoreta',
+          social: 'https://github.com/EthanMoreta'
+        }
+      ]
     }
   };
 
@@ -298,7 +323,8 @@ const Team = () => {
     { id: 'marketingOutreach', label: 'Marketing & Outreach' },
     { id: 'sponsorship', label: 'Sponsorship' },
     { id: 'finance', label: 'Finance' },
-    { id: 'logistics', label: 'Logistics' }
+    { id: 'logistics', label: 'Logistics' },
+    { id: 'participants', label: 'Participant Experience' }
   ];
 
   const toggleCardFlip = (memberId) => {

@@ -137,9 +137,9 @@ const App = () => {
           <Tracks />
         </section>
         
-        <section id="schedule" className="section">
+        {/*<section id="schedule" className="section">
           <Schedule />
-        </section>
+        </section>*/}
         
         <section id="faq" className="section">
           <FAQ />

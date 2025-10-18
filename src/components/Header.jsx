@@ -8,8 +8,10 @@ const Header = ({ scrollToSection }) => {
   const nav = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
-    { id: 'schedule', label: 'Schedule' },
+    { id: 'tracks', label: 'Tracks' },
+    { id: 'faq', label: 'FAQ' },
     { id: 'sponsors', label: 'Sponsors' },
+    { id: 'team', label: 'Team' },
   ];
 
   useEffect(() => {

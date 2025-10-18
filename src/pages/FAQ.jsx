@@ -26,9 +26,8 @@ const FAQ = () => {
         answer: "Yes! Food will be provided for the duration of the event. We will also have swag and prizes!"
       },
       { 
-        //TODO: Add link or decide if we allow under 18
         question: "Who can attend? What if I don't have any experience? Do I have to be 18?",
-        answer: "This event is open to any students. It is beginner friendly, with workshops to help you learn during the event, and mentors available to help you as you work on your project. Attendees must be at least 13 years old due to child privacy laws. If under 18, you will need to fill out this liability form from the university to participate - LINK"
+        answer: "This event is open to any students. It is beginner friendly, with workshops to help you learn during the event, and mentors available to help you as you work on your project. Attendees must be at least 18 years old."
       },
       {
         question: "What is the team size limit?",
@@ -36,7 +35,7 @@ const FAQ = () => {
       },
       {
         question: "I have a different question!",
-        answer: "Email us at hackaturi@gmail.com!"
+        answer: "Email us at hackaturi25@gmail.com!"
       }
     ],
     eventDetails: [
@@ -57,20 +56,24 @@ const FAQ = () => {
         answer: "We do not have hardware available, but you are welcome to bring your own. Due to building fire codes, soldering kits are not allowed in the venue."
       },
       {
-        //TODO: Determine if we allow people to leave and come back during the night
         question: "Do I have to stay overnight?",
-        answer: "No, you can leave and come back if you would prefer."
+        answer: "No, you can leave and come back if you would prefer. We'll have lanyards to help you get back in!"
       }
     ],
     logistics: [
       {
-        //TODO: Get location and parking information
+        //TODO: Update with specific location info closer to date, and/or give more specific parking instructions
         question: "Where is the event? Is it in person or virtual? Where can I park?",
-        answer: "The event is located in the LOCATION at ADDRESS. You can park in Lot X,Y, Z which you can see on this campus parking site - https://web.uri.edu/transportation/parking/"
+        answer: (
+          <>
+            The event is located in the Fascitelli Center for Advance Engineering. You can park in lots 6 and 7, which you can see on this{' '}
+            <a href="https://web.uri.edu/transportation/parking/" target="_blank" rel="noopener noreferrer">campus parking site</a>.
+          </>
+        )
       },
       {
         question: "What should I bring?",
-        answer: "Your laptop, charger, headphones, deodorant, and a pillow/blanket."
+        answer: "Your laptop, chargers, headphones, deodorant, and a pillow/blanket."
       },
       {
         question: "Are there travel reimbursements?",
@@ -78,18 +81,30 @@ const FAQ = () => {
       },
       {
         question: "Are you sending out acceptances? Is there a deadline to apply? Is there a waitlist?",
-        answer: "We will send out acceptances 7 days before the event. If you need earlier confirmation to book travel, please reach out to our team at hackaturi@gmail.com. Applications will close once we reach the maximum amount of hackers we can support, but we will open a waitlist on the day of the event for any local hackers who want to fill the spots of any accepted hackers who do not end up attending."
+        answer: "We will send out acceptances 7 days before the event. If you need earlier confirmation to book travel, please reach out to our team at hackaturi25@gmail.com. Applications will close once we reach the maximum amount of hackers we can support, but we will open a waitlist on the day of the event for any local hackers who want to fill the spots of any accepted hackers who do not end up attending."
       }
     ],
     sponsorsVolunteer: [
       {
-        //TODO: Add link or decide if we allow people to sign up to be a mentor/judge/volunteer
-        question: "How do I sign up to be a mentor/judge/volunteer?",
-        answer: "You can sign up here - LINK"
-      },
+  //TODO: Add link or decide if we allow people to sign up to be a mentor/judge/volunteer
+  question: "How do I sign up to be a mentor/judge/volunteer?",
+  answer: (
+    <>
+      You can sign up {" "}
+      <a 
+        href="https://forms.gle/yhsRPP5YzMw9B1sg6"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-600 hover:underline"
+      >
+        here!
+      </a>
+    </>
+  )
+},
       {
         question: "How can my company become a sponsor?",
-        answer: "We'd love to have you as a sponsor! Please reach out to us at hackaturi@gmail.com to discuss sponsorship opportunities and benefits."
+        answer: "We'd love to have you as a sponsor! Please reach out to us at hackaturi25@gmail.com to discuss sponsorship opportunities and benefits."
       },
       {
         question: "What benefits do sponsors receive?",
@@ -97,7 +112,7 @@ const FAQ = () => {
       },
       {
         question: "Can I volunteer without being a mentor or judge?",
-        answer: "Absolutely! We need volunteers for setup, registration, food service, and general event support. Contact us at hackaturi@gmail.com to learn more about volunteer opportunities."
+        answer: "Absolutely! We need volunteers for setup, registration, food service, and general event support. Contact us at hackaturi25@gmail.com to learn more about volunteer opportunities."
       }
     ]
   };
