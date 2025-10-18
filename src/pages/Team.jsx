@@ -94,7 +94,7 @@ const Team = () => {
           major: 'Computer Science B.S.',
           classYear: '2028',
           funFact: 'I make balloon animals',
-          linkedin: 'https://www.linkedin.com/in/nathan-azevedo'
+          linkedin: 'https://www.linkedin.com/in/nathan-azevedo-152196372/'
         },
         { 
           name: 'Lawrence Cabbabe', 
