@@ -7,27 +7,15 @@ const Footer = () => {
   const socialLinks = [
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com/company/hackaturi',
+      url: 'https://www.linkedin.com/company/hack-uri/',
       icon: <FaLinkedin />,
       color: '#0077B5'
     },
     {
       name: 'Instagram',
-      url: 'https://instagram.com/hackaturi',
+      url: 'https://www.instagram.com/hack.at.uri/',
       icon: <FaInstagram />,
       color: '#E4405F'
-    },
-    {
-      name: 'GitHub',
-      url: 'https://github.com/hackaturi',
-      icon: <FaGithub />,
-      color: '#333'
-    },
-    {
-      name: 'Discord',
-      url: 'https://discord.gg/hackaturi',
-      icon: <FaDiscord />,
-      color: '#5865F2'
     }
   ];
 

@@ -73,7 +73,7 @@ const Sponsors = () => {
         
         <div className="become-sponsor">
           <h3>Interested in Becoming a Sponsor?</h3>
-          <p>Join us in supporting the next generation of innovators! Contact us at sponsors@hackaturi.com or <a href="https://donate.hackaturi.com" target="_blank" rel="noopener noreferrer" className="donate-link">donate here</a>.</p>
+          <p>Join us in supporting the next generation of innovators! Contact us at hackaturi25@gmail.com or <a href="https://hcb.hackclub.com/donations/start/hack-uri" target="_blank" rel="noopener noreferrer" className="donate-link">donate here</a>.</p>
         </div>
       </div>
     </div>
