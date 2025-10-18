@@ -50,7 +50,7 @@ const Team = () => {
           name: 'Ryan Butera', 
           avatar: '/images/team-photos/tech/ryan.jpg', 
           role: 'Lead',
-          major: 'Computer Science',
+          major: 'Computer Science & Data Science',
           classYear: '2026',
           funFact: 'I\'m in the process of watching every Disney Channel Original Movie with my friends',
           linkedin: 'https://linkedin.com/in/ryan-butera', 
@@ -112,7 +112,7 @@ const Team = () => {
           major: 'Computer Science B.S.',
           classYear: '2028',
           funFact: 'I race gokarts competitively and I\'m also a photographer :)',
-          linkedin: 'www.linkedin.com/in/chris-batista',
+          linkedin: 'https://www.linkedin.com/in/chris-batista',
           social: 'https://github.com/25px'
         },
         { 
@@ -136,7 +136,7 @@ const Team = () => {
           major: 'Computer Science',
           classYear: '2026',
           funFact: 'I train and compete with my dogs in agility competitions',
-          linkedin: 'www.linkedin.com/in/meghan-andrews22',
+          linkedin: 'https://www.linkedin.com/in/meghan-andrews22',
           social: 'https://github.com/mandrews12'
         },
         { 
@@ -146,7 +146,7 @@ const Team = () => {
           major: 'Computer Science B.S.',
           classYear: '2026',
           funFact: 'I can solve the rubik\'s cube',
-          linkedin: 'www.linkedin.com/in/ethanmoreta',
+          linkedin: 'https://www.linkedin.com/in/ethanmoreta',
           social: 'https://github.com/EthanMoreta'
         },
         { 
@@ -194,7 +194,7 @@ const Team = () => {
         { 
           name: 'Roquibat Adetunji', 
           avatar: '/images/team-photos/finance/roquibat.jpg', 
-          major: '',
+          major: 'Computer Science',
           classYear: '2027',
           funFact: 'I\'m double jointed',
           linkedin: '',
@@ -211,7 +211,7 @@ const Team = () => {
         },
         { 
           name: 'Marvens Sainterlien', 
-          avatar: '/images/team-photos/rhody_filler_image.jpg', 
+          avatar: '/images/team-photos/finance/marvens.jpg', 
           major: 'Computer Science',
           classYear: '2026',
           funFact: 'My favorite football club is Arsenal',
@@ -233,7 +233,7 @@ const Team = () => {
           major: 'Computer Science B.S.',
           classYear: '2026',
           funFact: '',
-          linkedin: 'www.linkedin.com/in/olamide-britto',
+          linkedin: 'https://www.linkedin.com/in/olamide-britto',
           social: 'https://github.com/OlamideB'
         }
       ]
@@ -243,7 +243,7 @@ const Team = () => {
       members: [
         { 
           name: 'Kat Toolan', 
-          avatar: '/images/team-photos/rhody_filler_image.jpg', 
+          avatar: '/images/team-photos/logistic/kat.jpg', 
           role: 'Lead',
           major: 'Computer Science B.S., Data Science B.A., Chinese',
           classYear: '2027',
@@ -253,7 +253,7 @@ const Team = () => {
         },
         { 
           name: 'Ilanna Langton', 
-          avatar: '/images/team-photos/rhody_filler_image.jpg', 
+          avatar: '/images/team-photos/logistic/ilanna.jpg', 
           role: 'Lead',
           major: 'Computer Science B.S.',
           classYear: '2026',
@@ -273,9 +273,9 @@ const Team = () => {
         { 
           name: 'Lateefat', 
           avatar: '/images/team-photos/logistic/lateefat.jpg', 
-          major: '',
-          classYear: '',
-          funFact: '',
+          major: 'Supply Chain and TMD',
+          classYear: '2025',
+          funFact: 'I play ultimate frisbee',
           linkedin: '',
           social: ''
         },
@@ -295,7 +295,7 @@ const Team = () => {
       members: [
         { 
           name: 'Ilanna Langton', 
-          avatar: '/images/team-photos/rhody_filler_image.jpg', 
+          avatar: '/images/team-photos/logistic/ilanna.jpg', 
           role: 'Lead',
           major: 'Computer Science B.S.',
           classYear: '2026',
@@ -310,7 +310,7 @@ const Team = () => {
           major: 'Computer Science B.S.',
           classYear: '2026',
           funFact: 'I can solve the rubik\'s cube',
-          linkedin: 'www.linkedin.com/in/ethanmoreta',
+          linkedin: 'https://www.linkedin.com/in/ethanmoreta',
           social: 'https://github.com/EthanMoreta'
         }
       ]
