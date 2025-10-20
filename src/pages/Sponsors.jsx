@@ -25,6 +25,14 @@ const Sponsors = () => {
     {
       name: 'URI Research Foundation',
       logo: '/images/sponsors/urirf-transparent.png',
+    },
+    {
+      name: 'yconic',
+      logo: '/images/sponsors/yconic-transparent.png',
+    },
+    {
+      name: 'MergeFund',
+      logo: '/images/sponsors/mergefund-transparent.png',
     }
   ];
 
