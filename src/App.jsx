@@ -13,6 +13,7 @@ import Tracks from './pages/Tracks.jsx';
 import './styles/shared.css';
 
 const App = () => {
+  
   // Set this to false when ready to reveal the main site
   const SITE_HIDDEN = false;
   
@@ -32,6 +33,7 @@ const App = () => {
     
     setIsLoading(false);
   }, []);
+  
 
   // Handle scroll detection for waves - hide immediately when scrolling down
   useEffect(() => {
@@ -74,6 +76,7 @@ const App = () => {
     }
   };
 
+  /*
   // Show loading spinner while checking reveal status
   if (isLoading) {
     return (
@@ -93,6 +96,7 @@ const App = () => {
   if (!isSiteRevealed) {
     return <LandingPage onRevealSite={handleRevealSite} onBackToLanding={handleBackToLanding} />;
   }
+  */
 
   // Show main site content
   return (
