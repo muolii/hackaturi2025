@@ -12,13 +12,13 @@
 * { box-sizing: border-box; }
 
 .pirate-hero {
-  min-height: 70vh;
+  min-height: 60vh;
   background: var(--cream);
   position: relative;
   overflow: hidden;
   font-family: "Poppins", "Nunito", "Quicksand", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   color: var(--text-dark);
-  padding-top: 70px; /* space for top waves */
+  padding: 70px 0 20px; /* space for top waves, minimal bottom padding */
 }
 
 
@@ -28,7 +28,7 @@
 .hero-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 32px 15px;
+  padding: 20px 32px 5px;
   display: flex;
   gap: 48px;
   align-items: center;
@@ -228,7 +228,7 @@
   .countdown-wrap { min-width: 460px; padding: 16px 20px; }
 }
 @media (max-width: 768px) {
-  .pirate-hero { min-height: 60vh; }
+  .pirate-hero { min-height: 50vh; }
   .hero-container { flex-direction: column-reverse; gap: 20px; align-items: center; text-align: center; padding: 15px 20px 10px; }
   .hero-left, .hero-right { flex-basis: auto; width: 100%; }
   .pirate-logo-wrap { width: 320px; height: 320px; margin-top: 8px; }
@@ -240,7 +240,7 @@
   .btn { padding: 16px 32px; font-size: 1.1rem; }
 }
 @media (max-width: 420px) {
-  .pirate-hero { min-height: 50vh; }
+  .pirate-hero { min-height: 40vh; }
   .pirate-logo-wrap { width: 260px; height: 260px; }
   .hero-title { font-size: 1.9rem; }
   .btn { padding: 14px 28px; font-size: 1rem; }

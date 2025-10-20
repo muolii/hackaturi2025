@@ -1,6 +1,7 @@
 // src/pages/FAQ.jsx
 import React, { useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
+import starsSvg from '../assets/stars-bg.svg';
 import './FAQ.css';
 
 const FAQ = () => {
@@ -125,41 +126,50 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="content">
-      <h1>Frequently Asked Questions</h1>
+    <div className="pirate-faq">
+      {/* Random scattered stars */}
+      <img src={starsSvg} alt="" className="faq-star star-1" />
+      <img src={starsSvg} alt="" className="faq-star star-2" />
+      <img src={starsSvg} alt="" className="faq-star star-3" />
+      <img src={starsSvg} alt="" className="faq-star star-4" />
+      <img src={starsSvg} alt="" className="faq-star star-5" />
       
-      <div className="faq-tabs">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            className={`faq-tab ${activeTab === tab.id ? 'active' : ''}`}
-            onClick={() => setActiveTab(tab.id)}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
+      <div className="faq-content">
+        <h1 className="faq-title">Frequently Asked Questions</h1>
+        
+        <div className="faq-tabs">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              className={`faq-tab ${activeTab === tab.id ? 'active' : ''}`}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
 
-      <div className="faq-container">
-        {faqData[activeTab].map((item, index) => {
-          const key = `${activeTab}-${index}`;
-          return (
-            <div key={index} className="faq-item">
-              <div 
-                className="faq-question" 
-                onClick={() => toggleItem(activeTab, index)}
-              >
-                <h3>{item.question}</h3>
-                <span className={`faq-arrow ${openItems[key] ? 'open' : ''}`}><FaChevronDown /></span>
-              </div>
-              {openItems[key] && (
-                <div className="faq-answer">
-                  <p>{item.answer}</p>
+        <div className="faq-container">
+          {faqData[activeTab].map((item, index) => {
+            const key = `${activeTab}-${index}`;
+            return (
+              <div key={index} className="faq-item">
+                <div 
+                  className="faq-question" 
+                  onClick={() => toggleItem(activeTab, index)}
+                >
+                  <h3>{item.question}</h3>
+                  <span className={`faq-arrow ${openItems[key] ? 'open' : ''}`}><FaChevronDown /></span>
                 </div>
-              )}
-            </div>
-          );
-        })}
+                {openItems[key] && (
+                  <div className="faq-answer">
+                    <p>{item.answer}</p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
