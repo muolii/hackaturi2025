@@ -27,7 +27,15 @@ const Home = () => {
           </div>
 
           <div className="hero-cta">
-            <button className="btn register">Register Now</button>
+            <a 
+              href="https://forms.gle/7q3LSHYr7gqQ2CaZ9" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn register"
+            >
+            Register Now
+            </a>
+            
             <a 
               href="https://forms.gle/yhsRPP5YzMw9B1sg6" 
               target="_blank" 
