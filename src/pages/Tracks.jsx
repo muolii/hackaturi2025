@@ -1,5 +1,5 @@
 // src/pages/Tracks.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaHeartbeat, FaBrain, FaAnchor, FaPalette, FaUsers } from 'react-icons/fa';
 import { GiWaterSplash } from "react-icons/gi";
 import starsSvg from '../assets/stars-bg.svg';
@@ -7,6 +7,34 @@ import './Tracks.css';
 
 const Tracks = () => {
   const [selectedTrack, setSelectedTrack] = useState(null);
+
+  // Prevent body scroll and dim all elements when modal is open
+  useEffect(() => {
+    if (selectedTrack) {
+      document.body.style.overflow = 'hidden';
+      // Disable header interactions
+      const header = document.querySelector('.site-header');
+      if (header) {
+        header.style.pointerEvents = 'none';
+      }
+    } else {
+      document.body.style.overflow = 'unset';
+      // Re-enable header interactions
+      const header = document.querySelector('.site-header');
+      if (header) {
+        header.style.pointerEvents = 'auto';
+      }
+    }
+
+    // Cleanup function to restore scroll and header when component unmounts
+    return () => {
+      document.body.style.overflow = 'unset';
+      const header = document.querySelector('.site-header');
+      if (header) {
+        header.style.pointerEvents = 'auto';
+      }
+    };
+  }, [selectedTrack]);
 
   const tracks = [
     {
