@@ -116,6 +116,15 @@ const Team = () => {
           linkedin: '',
           social: ''
         },
+        {
+          name: 'Cadije Louis', 
+          avatar: '/images/team-photos/market/cadije.jpg', 
+          major: 'Computer Science BS + Africana Studies BA',
+          classYear: '2027',
+          funFact: 'I have a dog named Sharkboy',
+          linkedin: 'https://www.linkedin.com/in/cadije-louis',
+          social: 'https://github.com/Elmo333'
+        },
         { 
           name: 'Chris Batista', 
           avatar: '/images/team-photos/market/chris.png', 
@@ -124,7 +133,7 @@ const Team = () => {
           funFact: 'I race gokarts competitively and I\'m also a photographer :)',
           linkedin: 'https://www.linkedin.com/in/chris-batista',
           social: 'https://github.com/25px'
-        }
+        },
       ]
     },
     sponsorship: {
