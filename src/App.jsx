@@ -14,7 +14,7 @@ import './styles/shared.css';
 
 const App = () => {
   // Set this to false when ready to reveal the main site
-  const SITE_HIDDEN = true;
+  const SITE_HIDDEN = false;
   
   const [isSiteRevealed, setIsSiteRevealed] = useState(!SITE_HIDDEN);
   const [isLoading, setIsLoading] = useState(true);
@@ -157,11 +157,11 @@ const App = () => {
       <Footer />
       
       {/* Admin Controls */}
-      <div className="admin-controls">
+      {/* <div className="admin-controls">
         <button className="admin-button" onClick={handleBackToLanding}>
           Back to Landing Page
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

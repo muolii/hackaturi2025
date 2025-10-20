@@ -2,8 +2,8 @@
 .footer {
   background: #2f2520;
   border-top: 2px solid #8B4513;
-  padding: 40px 20px 20px;
-  margin-top: 40px;
+  padding: 20px 20px 20px;
+  margin-top: 20px;
 }
 
 .footer-content {
@@ -78,9 +78,9 @@
 
 .footer-bottom {
   text-align: center;
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(203, 185, 121, 0.3);
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
   color: rgba(246, 233, 200, 0.8);
 }
 
@@ -93,8 +93,8 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .footer {
-    padding: 40px 15px 20px;
-    margin-top: 40px;
+    padding: 20px 15px 20px;
+    margin-top: 20px;
   }
   
   .footer-section h3 {
@@ -139,8 +139,8 @@
 
 @media (max-width: 480px) {
   .footer {
-    padding: 30px 10px 15px;
-    margin-top: 30px;
+    padding: 15px 10px 15px;
+    margin-top: 15px;
   }
   
   .footer-section h3 {
