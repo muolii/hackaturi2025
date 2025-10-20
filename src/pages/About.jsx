@@ -13,6 +13,7 @@ const About = () => {
       <img src={starsSvg} alt="" className="about-star star-4" />
       <img src={starsSvg} alt="" className="about-star star-5" />
 
+      <div className="about-content">
       <h1>About Hack@URI</h1>
       <p>
         Hack@URI is the University of Rhode Island’s first-ever hackathon — a
@@ -37,6 +38,7 @@ const About = () => {
         <h3>Interested in Becoming a Sponsor?</h3>
         <p>Join us in supporting the next generation of innovators! Contact us at hackaturi25@gmail.com or <a href="https://hcb.hackclub.com/donations/start/hack-uri" target="_blank" rel="noopener noreferrer" className="donate-link">donate here</a>.</p>
       </div>
+    </div>
     </div>
   );
 };
