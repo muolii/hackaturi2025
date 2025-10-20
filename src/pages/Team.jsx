@@ -107,6 +107,16 @@ const Team = () => {
           social: 'https://github.com/lmcprogram'
         },
         { 
+          name: 'Babajide Fakolujo', 
+          avatar: '/images/team-photos/market/jide-lead.jpeg', 
+          role: 'Lead',
+          major: 'Computer Science B.S.',
+          classYear: '2028',
+          funFact: '',
+          linkedin: '',
+          social: ''
+        },
+        { 
           name: 'Chris Batista', 
           avatar: '/images/team-photos/market/chris.png', 
           major: 'Computer Science B.S.',
@@ -114,15 +124,6 @@ const Team = () => {
           funFact: 'I race gokarts competitively and I\'m also a photographer :)',
           linkedin: 'https://www.linkedin.com/in/chris-batista',
           social: 'https://github.com/25px'
-        },
-        { 
-          name: 'Babajide Fakolujo', 
-          avatar: '/images/team-photos/market/jide-lead.jpeg', 
-          major: 'Computer Science B.S.',
-          classYear: '2028',
-          funFact: '',
-          linkedin: '',
-          social: ''
         }
       ]
     },
@@ -142,7 +143,6 @@ const Team = () => {
         { 
           name: 'Ethan Moreta', 
           avatar: '/images/team-photos/sponsor/ethan2.JPEG', 
-          role: 'Lead',
           major: 'Computer Science B.S.',
           classYear: '2026',
           funFact: 'I can solve the rubik\'s cube',
@@ -251,10 +251,19 @@ const Team = () => {
           linkedin: 'https://www.linkedin.com/in/kat-toolan/',
           social: 'https://github.com/hellosmallkat'
         },
+                { 
+          name: 'Lateefat', 
+          avatar: '/images/team-photos/logistic/lateefat.jpg',
+          role: 'Lead', 
+          major: 'Supply Chain and TMD',
+          classYear: '2025',
+          funFact: 'I play ultimate frisbee',
+          linkedin: '',
+          social: ''
+        },
         { 
           name: 'Ilanna Langton', 
-          avatar: '/images/team-photos/logistic/ilanna.jpg', 
-          role: 'Lead',
+          avatar: '/images/team-photos/logistic/ilanna.jpg',
           major: 'Computer Science B.S.',
           classYear: '2026',
           funFact: 'I met the Duolingo Bird!',
@@ -268,15 +277,6 @@ const Team = () => {
           classYear: '2028',
           funFact: 'I\'m in the Marching Band!!',
           linkedin: 'https://www.linkedin.com/in/zuni-perez/',
-          social: ''
-        },
-        { 
-          name: 'Lateefat', 
-          avatar: '/images/team-photos/logistic/lateefat.jpg', 
-          major: 'Supply Chain and TMD',
-          classYear: '2025',
-          funFact: 'I play ultimate frisbee',
-          linkedin: '',
           social: ''
         },
         { 
