@@ -33,6 +33,10 @@ const Sponsors = () => {
     {
       name: 'MergeFund',
       logo: '/images/sponsors/mergefund-transparent.png',
+    },
+    {
+      name: 'FACTSET',
+      logo: '/images/sponsors/factset.png',
     }
   ];
 
