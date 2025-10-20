@@ -126,6 +126,15 @@ const Team = () => {
           social: 'https://github.com/Elmo333'
         },
         { 
+          name: 'Roquibat Adetunji', 
+          avatar: '/images/team-photos/finance/roquibat.jpg', 
+          major: 'Computer Science',
+          classYear: '2027',
+          funFact: 'I\'m double jointed',
+          linkedin: '',
+          social: ''
+        },
+        { 
           name: 'Chris Batista', 
           avatar: '/images/team-photos/market/chris.png', 
           major: 'Computer Science B.S.',
@@ -321,7 +330,16 @@ const Team = () => {
           funFact: 'I can solve the rubik\'s cube',
           linkedin: 'https://www.linkedin.com/in/ethanmoreta',
           social: 'https://github.com/EthanMoreta'
-        }
+        },
+        { 
+          name: 'Roquibat Adetunji', 
+          avatar: '/images/team-photos/finance/roquibat.jpg', 
+          major: 'Computer Science',
+          classYear: '2027',
+          funFact: 'I\'m double jointed',
+          linkedin: '',
+          social: ''
+        },
       ]
     }
   };
