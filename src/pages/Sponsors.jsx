@@ -1,10 +1,22 @@
 // src/pages/Sponsors.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import starsSvg from '../assets/stars-bg.svg';
 import sponsorScrollSvg from '../assets/sponsor-scroll.svg';
 import './Sponsors.css';
 
 const Sponsors = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
   const sponsors = [
     {
       name: 'RiseUp',
@@ -35,41 +47,75 @@ const Sponsors = () => {
         <h1 className="sponsors-title">Our Sponsors</h1>
         <p>We're grateful to our amazing sponsors who make Hack@URI 2026 possible!</p>
         
-        <div className="scroll-container">
-          <img src={sponsorScrollSvg} alt="Sponsor Scroll" className="sponsor-scroll" />
-          
-          <div className="sponsors-inside-scroll">
-            <div className="sponsors-grid">
+        {!isMobile ? (
+          <div className="scroll-container">
+            <img src={sponsorScrollSvg} alt="Sponsor Scroll" className="sponsor-scroll" />
+            
+            <div className="sponsors-inside-scroll">
+              <div className="sponsors-grid">
+                {sponsors.map((sponsor, index) => (
+                  <div key={index} className="sponsor-logo-container">
+                    <img 
+                      src={sponsor.logo} 
+                      alt={`${sponsor.name} logo`}
+                      className="sponsor-logo"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'block';
+                      }}
+                    />
+                    <div className="sponsor-fallback" style={{ display: 'none' }}>
+                      {sponsor.name}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="donors-section-inside">
+                <h3 className="donors-title-inside">Our Generous Donors</h3>
+                <div className="donors-list-inside">
+                  {donors.map((donor, index) => (
+                    <div key={index} className="donor-name-inside">
+                      {donor}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="mobile-sponsors-container">
+            <div className="mobile-sponsors-grid">
               {sponsors.map((sponsor, index) => (
-                <div key={index} className="sponsor-logo-container">
+                <div key={index} className="mobile-sponsor-logo-container">
                   <img 
                     src={sponsor.logo} 
                     alt={`${sponsor.name} logo`}
-                    className="sponsor-logo"
+                    className="mobile-sponsor-logo"
                     onError={(e) => {
                       e.target.style.display = 'none';
                       e.target.nextSibling.style.display = 'block';
                     }}
                   />
-                  <div className="sponsor-fallback" style={{ display: 'none' }}>
+                  <div className="mobile-sponsor-fallback" style={{ display: 'none' }}>
                     {sponsor.name}
                   </div>
                 </div>
               ))}
             </div>
             
-            <div className="donors-section-inside">
-              <h3 className="donors-title-inside">Our Generous Donors</h3>
-              <div className="donors-list-inside">
+            <div className="mobile-donors-section">
+              <h3 className="mobile-donors-title">Our Generous Donors</h3>
+              <div className="mobile-donors-list">
                 {donors.map((donor, index) => (
-                  <div key={index} className="donor-name-inside">
+                  <div key={index} className="mobile-donor-name">
                     {donor}
                   </div>
                 ))}
               </div>
             </div>
           </div>
-        </div>
+        )}
         
         <div className="become-sponsor">
           <h3>Interested in Becoming a Sponsor?</h3>

@@ -5,6 +5,8 @@ const Header = ({ scrollToSection }) => {
   const [activeSection, setActiveSection] = useState('home');
   const [isVisible, setIsVisible] = useState(true);
   const [lastY, setLastY] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const nav = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
@@ -13,6 +15,16 @@ const Header = ({ scrollToSection }) => {
     { id: 'sponsors', label: 'Sponsors' },
     { id: 'team', label: 'Team' },
   ];
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -37,22 +49,50 @@ const Header = ({ scrollToSection }) => {
   const handleClick = (id) => {
     if (scrollToSection) scrollToSection(id);
     setIsVisible(true);
+    setIsMobileMenuOpen(false);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
     <header className={`site-header ${isVisible ? '' : 'hidden'}`}>
       <div className="header-inner">
-        <nav className="main-nav">
-          {nav.map(item => (
-            <button
-              key={item.id}
-              className={`nav-btn ${activeSection === item.id ? 'active' : ''}`}
-              onClick={() => handleClick(item.id)}
-            >
-              <strong>{item.label}</strong>
+        {!isMobile ? (
+          <nav className="main-nav">
+            {nav.map(item => (
+              <button
+                key={item.id}
+                className={`nav-btn ${activeSection === item.id ? 'active' : ''}`}
+                onClick={() => handleClick(item.id)}
+              >
+                <strong>{item.label}</strong>
+              </button>
+            ))}
+          </nav>
+        ) : (
+          <>
+            <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
+              <div className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
             </button>
-          ))}
-        </nav>
+            <nav className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}>
+              {nav.map(item => (
+                <button
+                  key={item.id}
+                  className={`mobile-nav-btn ${activeSection === item.id ? 'active' : ''}`}
+                  onClick={() => handleClick(item.id)}
+                >
+                  <strong>{item.label}</strong>
+                </button>
+              ))}
+            </nav>
+          </>
+        )}
       </div>
     </header>
   );

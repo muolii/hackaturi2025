@@ -7,6 +7,7 @@ const Countdown = () => {
 
   const [remaining, setRemaining] = useState(msUntil(EVENT_ISO));
   const [finished, setFinished] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
     const tick = () => {
@@ -17,6 +18,16 @@ const Countdown = () => {
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsSmallScreen(window.innerWidth <= 480);
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
   if (finished) {
@@ -52,12 +63,16 @@ const Countdown = () => {
         <div className="cd-label">Minutes</div>
       </div>
 
-      <div className="cd-sepcolon">:</div>
+      {!isSmallScreen && (
+        <>
+          <div className="cd-sepcolon">:</div>
 
-      <div className="cd-seg">
-        <div className="cd-num">{String(seconds).padStart(2, '0')}</div>
-        <div className="cd-label">Sec</div>
-      </div>
+          <div className="cd-seg">
+            <div className="cd-num">{String(seconds).padStart(2, '0')}</div>
+            <div className="cd-label">Sec</div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

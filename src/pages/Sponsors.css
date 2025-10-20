@@ -138,6 +138,7 @@
   padding: 0;
   border: none;
   box-shadow: none;
+  transition: none;
 }
 
 .sponsor-logo {
@@ -183,6 +184,9 @@
   font-size: 0.9rem;
   text-align: center;
   margin: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 /* Donation link styling */
@@ -307,5 +311,83 @@
   
   .donor-name-inside {
     font-size: 0.7rem;
+  }
+}
+
+/* Mobile Styles - Hide scroll and show direct sponsor grid */
+@media (max-width: 768px) {
+  .scroll-container {
+    display: none;
+  }
+  
+  .mobile-sponsors-container {
+    margin: 40px 0;
+  }
+  
+  .mobile-sponsors-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    justify-items: center;
+    margin-bottom: 40px;
+  }
+  
+  .mobile-sponsor-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    transition: none;
+  }
+  
+  .mobile-sponsor-logo {
+    max-width: 250px;
+    max-height: 120px;
+    object-fit: contain;
+  }
+  
+  .mobile-sponsor-fallback {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2f2520;
+    text-align: center;
+  }
+  
+  .mobile-donors-section {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .mobile-donors-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2f2520;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mobile-donors-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .mobile-donor-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0C3A40;
+    padding: 0;
+    background: transparent;
+    border: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-sponsors-container {
+    display: none;
   }
 }

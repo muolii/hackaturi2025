@@ -1,27 +1,101 @@
-/* compact countdown styles (used by the component) - small overrides not duplicated elsewhere */
-
+/* Pirate Countdown Styles */
 .countdown-wrap {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    background: #372a25; /* deep brown */
-    border-radius: 20px;
-    padding: 18px 26px;
-    box-shadow: 0 10px 30px rgba(12,58,64,0.12);
-    border: 1px solid rgba(255,255,255,0.02);
+  background: #8B4513;
+  border-radius: 15px;
+  padding: 20px 30px;
+  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+  border: 3px solid #654321;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  font-family: 'Poppins', 'Nunito', 'Quicksand', sans-serif;
+  min-width: 500px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.cd-seg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.cd-num {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #CBB979;
+  text-shadow: 0 0 10px rgba(203, 185, 121, 0.5);
+  font-family: 'Courier New', monospace;
+  min-width: 50px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.cd-label {
+  font-size: 1rem;
+  color: #F9E9C0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.cd-sepcolon {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #CBB979;
+  text-shadow: 0 0 10px rgba(203, 185, 121, 0.5);
+  margin: 0 5px;
+  flex-shrink: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .countdown-wrap {
+    padding: 15px 20px;
+    gap: 12px;
+    min-width: 350px;
+    max-width: 90vw;
   }
   
-  .cd-seg { display:flex; flex-direction:column; align-items:center; min-width: 72px; }
-  .cd-num { font-family: "Inter", ui-monospace, "SFMono-Regular", "Roboto Mono", "Courier New", monospace; color: #CBB979; font-weight: 800; font-size: 2.2rem; line-height: 1; }
-  .cd-label { color: #F5E9C6; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-  
-  .cd-sepcolon { color: #CBB979; font-size: 2.2rem; font-weight: 800; padding: 0 6px; }
-  
-  /* responsive tweaks */
-  @media (max-width: 768px) {
-    .countdown-wrap { width: 100%; justify-content: center; padding: 14px; gap: 10px; }
-    .cd-num { font-size: 1.6rem; min-width: 48px; }
-    .cd-label { font-size: 0.75rem; }
-    .cd-sepcolon { font-size: 1.6rem; }
+  .cd-num {
+    font-size: 2rem;
+    min-width: 40px;
   }
   
+  .cd-label {
+    font-size: 0.8rem;
+  }
+  
+  .cd-sepcolon {
+    font-size: 1.6rem;
+    margin: 0 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-wrap {
+    padding: 12px 15px;
+    gap: 10px;
+    min-width: 280px;
+    max-width: 95vw;
+  }
+  
+  .cd-num {
+    font-size: 1.8rem;
+    min-width: 35px;
+  }
+  
+  .cd-label {
+    font-size: 0.7rem;
+  }
+  
+  .cd-sepcolon {
+    font-size: 1.4rem;
+    margin: 0 2px;
+  }
+}
