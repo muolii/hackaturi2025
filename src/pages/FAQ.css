@@ -173,8 +173,17 @@
 }
 
 .faq-answer {
+  max-height: 0;
+  opacity: 0;
+  padding: 0 30px;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out;
+  overflow: hidden;
+}
+
+.faq-answer.open {
+  max-height: 500px;
+  opacity: 1;
   padding: 20px 30px 30px 30px;
-  animation: slideDown 0.3s ease-out;
 }
 
 .faq-answer p {
@@ -198,16 +207,6 @@
   text-decoration: underline;
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    max-height: 0;
-  }
-  to {
-    opacity: 1;
-    max-height: 300px;
-  }
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {

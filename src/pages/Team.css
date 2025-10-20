@@ -186,10 +186,14 @@
   height: 100%;
   text-align: center;
   transition: transform 0.6s;
+  transform-style: preserve-3d;
 }
 
-.team-member-card.flipped .card-inner {
-  transform: rotateY(180deg);
+/* Chrome/Chromium-based browsers - use 3D transform */
+@supports (backface-visibility: hidden) {
+  .team-member-card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
 }
 
 .card-front, .card-back {
@@ -201,32 +205,65 @@
   flex-direction: column;
   justify-content: space-between;
   border-radius: 15px;
-  backface-visibility: hidden;
-  transition: opacity 0.3s ease;
-}
-  
-.card-front {
-  opacity: 1;
-  z-index: 2;
-}
-  
-.card-back {
-  opacity: 0;
-  z-index: 1;
-  background: rgba(47, 37, 32, 0.1);
-  transform: rotateY(180deg);
-}
-  
-.team-member-card.flipped .card-front {
-  opacity: 0;
-  z-index: 1;
-}
-  
-.team-member-card.flipped .card-back {
-  opacity: 1;
-  z-index: 2;
 }
 
+/* Chrome/Chromium-based browsers - use 3D transform with backface-visibility */
+@supports (backface-visibility: hidden) {
+  .card-front, .card-back {
+    backface-visibility: hidden;
+    transition: opacity 0.3s ease;
+  }
+  
+  .card-front {
+    opacity: 1;
+    z-index: 2;
+  }
+  
+  .card-back {
+    opacity: 0;
+    z-index: 1;
+    background: rgba(47, 37, 32, 0.1);
+    transform: rotateY(180deg);
+  }
+  
+  .team-member-card.flipped .card-front {
+    opacity: 0;
+    z-index: 1;
+  }
+  
+  .team-member-card.flipped .card-back {
+    opacity: 1;
+    z-index: 2;
+  }
+}
+
+/* WebKit/Firefox - use opacity-based flip */
+@supports not (backface-visibility: hidden) {
+  .card-front, .card-back {
+    transition: opacity 0.3s ease;
+  }
+  
+  .card-front {
+    opacity: 1;
+    z-index: 2;
+  }
+  
+  .card-back {
+    opacity: 0;
+    z-index: 1;
+    background: rgba(47, 37, 32, 0.1);
+  }
+  
+  .team-member-card.flipped .card-front {
+    opacity: 0;
+    z-index: 1;
+  }
+  
+  .team-member-card.flipped .card-back {
+    opacity: 1;
+    z-index: 2;
+  }
+}
 
 /* Porthole frame and avatar */
 .member-avatar-container {
