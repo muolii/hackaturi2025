@@ -98,7 +98,7 @@ const Team = () => {
         },
         { 
           name: 'Lawrence Cabbabe', 
-          avatar: '/images/team-photos/rhody_filler_image.jpg', 
+          avatar: '/images/team-photos/market/lawrence.jpg', 
           role: 'Lead',
           major: 'Computer Science B.S.',
           classYear: '2025',
