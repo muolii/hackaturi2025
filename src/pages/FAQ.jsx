@@ -161,11 +161,9 @@ const FAQ = () => {
                   <h3>{item.question}</h3>
                   <span className={`faq-arrow ${openItems[key] ? 'open' : ''}`}><FaChevronDown /></span>
                 </div>
-                {openItems[key] && (
-                  <div className="faq-answer">
-                    <p>{item.answer}</p>
-                  </div>
-                )}
+                <div className={`faq-answer ${openItems[key] ? 'open' : ''}`}>
+                  <p>{item.answer}</p>
+                </div>
               </div>
             );
           })}
