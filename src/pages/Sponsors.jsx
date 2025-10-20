@@ -37,6 +37,10 @@ const Sponsors = () => {
     {
       name: 'FACTSET',
       logo: '/images/sponsors/factset.png',
+    },
+    {
+      name: 'Rhode Island Life Science Hub',
+      logo: '/images/sponsors/RILSH-transparent.png',
     }
   ];
 
