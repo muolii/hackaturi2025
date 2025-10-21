@@ -10,22 +10,48 @@ const Tracks = () => {
 
   // Prevent body scroll and dim all elements when modal is open
   useEffect(() => {
-  if (selectedTrack) {
-    document.body.classList.add('modal-open');
-    const header = document.querySelector('.site-header');
-    if (header) header.style.pointerEvents = 'none';
-  } else {
-    document.body.classList.remove('modal-open');
-    const header = document.querySelector('.site-header');
-    if (header) header.style.pointerEvents = 'auto';
-  }
+    if (selectedTrack) {
+      // Store current scroll position before adding modal-open class
+      const currentScrollY = window.scrollY;
+      
+      document.body.classList.add('modal-open');
+      // Restore scroll position after modal-open class is applied
+      document.body.style.top = `-${currentScrollY}px`;
+      
+      // Hide wave element when modal is open
+      const appElement = document.querySelector('.app');
+      if (appElement) {
+        appElement.classList.add('scrolled');
+      }
+    } else {
+      // Restore scroll position when closing modal
+      const scrollY = document.body.style.top;
+      document.body.classList.remove('modal-open');
+      document.body.style.top = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
+      
+      const appElement = document.querySelector('.app');
+      if (appElement) {
+        // Don't remove scrolled class - let scroll behavior handle it
+        // The scroll handler will determine if it should be hidden or shown
+      }
+    }
 
-  return () => {
-    document.body.classList.remove('modal-open');
-    const header = document.querySelector('.site-header');
-    if (header) header.style.pointerEvents = 'auto';
-  };
-}, [selectedTrack]);
+    return () => {
+      const scrollY = document.body.style.top;
+      document.body.classList.remove('modal-open');
+      document.body.style.top = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
+      const appElement = document.querySelector('.app');
+      if (appElement) {
+        // Don't remove scrolled class - let scroll behavior handle it
+      }
+    };
+  }, [selectedTrack]);
 
 
   const tracks = [
@@ -79,7 +105,12 @@ const Tracks = () => {
     }
   ];
 
-  const openTrackModal = (track) => {
+  const openTrackModal = (track, event) => {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    
     setSelectedTrack(track);
   };
 
@@ -104,23 +135,31 @@ const Tracks = () => {
         
         <div className="tracks-grid">
           {tracks.map((track) => (
-            <button
+            <div
               key={track.id}
               className="track-button"
-              onClick={() => openTrackModal(track)}
+              onClick={(e) => openTrackModal(track, e)}
               style={{ '--track-color': track.color }}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  openTrackModal(track, e);
+                }
+              }}
             >
               <div className="track-icon">{track.icon}</div>
               <h3>{track.title}</h3>
               <p>{track.description}</p>
-            </button>
+            </div>
           ))}
         </div>
 
         {selectedTrack && (
           <div className="track-modal-overlay" onClick={closeTrackModal}>
             <div className="track-modal" onClick={(e) => e.stopPropagation()}>
-              <button className="modal-close" onClick={closeTrackModal}>×</button>
+              <button type="button" className="modal-close" onClick={closeTrackModal}>×</button>
               
               <div className="modal-header">
                 <div className="modal-icon">{selectedTrack.icon}</div>
