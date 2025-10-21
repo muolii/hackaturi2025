@@ -48,6 +48,7 @@ const Sponsors = () => {
     'Joel Totoro',
     'Anne Totoro',
     'Stacey Azevedo',
+    'Tara Rugg'
   ];
 
   return (

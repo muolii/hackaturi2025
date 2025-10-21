@@ -19,17 +19,62 @@ const FAQ = () => {
 
   // Dynamic height calculation for smoother animations
   useEffect(() => {
+    const calculateHeight = (element) => {
+      if (!element) return 0;
+      
+      // Create a temporary clone to measure the full height
+      const clone = element.cloneNode(true);
+      clone.style.position = 'absolute';
+      clone.style.visibility = 'hidden';
+      clone.style.height = 'auto';
+      clone.style.maxHeight = 'none';
+      clone.style.padding = '20px 30px 30px 30px';
+      clone.style.opacity = '1';
+      clone.style.overflow = 'visible';
+      clone.style.width = element.offsetWidth + 'px';
+      clone.style.boxSizing = 'border-box';
+      clone.style.margin = '0';
+      
+      document.body.appendChild(clone);
+      const height = clone.scrollHeight;
+      document.body.removeChild(clone);
+      
+      return height;
+    };
+
+    const updateHeights = () => {
+      Object.keys(answerRefs.current).forEach(key => {
+        const element = answerRefs.current[key];
+        if (element && openItems[key]) {
+          const height = calculateHeight(element);
+          element.style.maxHeight = height + 'px';
+        }
+      });
+    };
+
+    // Initial height calculation
     Object.keys(answerRefs.current).forEach(key => {
       const element = answerRefs.current[key];
       if (element) {
         const isOpen = openItems[key];
         if (isOpen) {
-          element.style.maxHeight = element.scrollHeight + 'px';
+          const height = calculateHeight(element);
+          // Use requestAnimationFrame to ensure smooth transition
+          requestAnimationFrame(() => {
+            element.style.maxHeight = height + 'px';
+          });
         } else {
           element.style.maxHeight = '0px';
         }
       }
     });
+
+    // Listen for window resize to recalculate heights
+    window.addEventListener('resize', updateHeights);
+    
+    return () => {
+      window.removeEventListener('resize', updateHeights);
+    };
   }, [openItems]);
 
   const faqData = {

@@ -178,11 +178,15 @@
   padding: 0 30px;
   transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-out, padding 0.3s ease-out;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .faq-answer.open {
   opacity: 1;
-  padding: 20px 30px 30px 30px;
+  padding: 20px 30px 30px 30px !important;
+  overflow: visible;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-out, padding 0.3s ease-out, overflow 0s 0.4s;
+  box-sizing: border-box;
 }
 
 .faq-answer p {
@@ -192,6 +196,8 @@
   font-size: 1.1rem;
   font-weight: 500;
   font-family: 'Poppins', sans-serif;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .faq-answer a {
