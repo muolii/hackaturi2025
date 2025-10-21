@@ -10,31 +10,23 @@ const Tracks = () => {
 
   // Prevent body scroll and dim all elements when modal is open
   useEffect(() => {
-    if (selectedTrack) {
-      document.body.style.overflow = 'hidden';
-      // Disable header interactions
-      const header = document.querySelector('.site-header');
-      if (header) {
-        header.style.pointerEvents = 'none';
-      }
-    } else {
-      document.body.style.overflow = 'unset';
-      // Re-enable header interactions
-      const header = document.querySelector('.site-header');
-      if (header) {
-        header.style.pointerEvents = 'auto';
-      }
-    }
+  if (selectedTrack) {
+    document.body.classList.add('modal-open');
+    const header = document.querySelector('.site-header');
+    if (header) header.style.pointerEvents = 'none';
+  } else {
+    document.body.classList.remove('modal-open');
+    const header = document.querySelector('.site-header');
+    if (header) header.style.pointerEvents = 'auto';
+  }
 
-    // Cleanup function to restore scroll and header when component unmounts
-    return () => {
-      document.body.style.overflow = 'unset';
-      const header = document.querySelector('.site-header');
-      if (header) {
-        header.style.pointerEvents = 'auto';
-      }
-    };
-  }, [selectedTrack]);
+  return () => {
+    document.body.classList.remove('modal-open');
+    const header = document.querySelector('.site-header');
+    if (header) header.style.pointerEvents = 'auto';
+  };
+}, [selectedTrack]);
+
 
   const tracks = [
     {
