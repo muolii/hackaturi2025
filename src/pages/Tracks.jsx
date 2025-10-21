@@ -141,7 +141,18 @@ const Tracks = () => {
       event.preventDefault();
       event.stopPropagation();
     }
-    
+
+    // Hide header immediately when opening modal
+    const headerElement = document.querySelector('.site-header');
+    if (headerElement) {
+      headerElement.classList.add('hidden');
+    }
+
+    const appElement = document.querySelector('.app');
+    if (appElement) {
+      appElement.classList.add('scrolled');
+    }
+
     setSelectedTrack(track);
   };
 
