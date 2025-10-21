@@ -1,3 +1,12 @@
+/* Prevent unwanted scrolling on button clicks */
+button {
+  scroll-behavior: auto !important;
+}
+
+button:focus {
+  outline: none;
+}
+
 /* Shared/Common Styles */
 .app {
   font-family: 'Poppins', 'Nunito', 'Quicksand', sans-serif;
@@ -35,9 +44,9 @@
 
 /* Hide waves when scrolling - perfectly synchronized with header */
 .app.scrolled::before {
-  transform: scale(1.2) translateY(-100%);
-  opacity: 0;
-  visibility: hidden;
+  transform: scale(1.2) translateY(-100%) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 
 

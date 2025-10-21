@@ -114,6 +114,7 @@ body.modal-open {
   position: relative;
   overflow: hidden;
   box-shadow: 0 8px 25px rgba(47, 37, 32, 0.1);
+  scroll-behavior: auto; /* Prevent smooth scrolling on button click */
 }
 
 .track-button:hover {
