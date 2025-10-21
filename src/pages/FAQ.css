@@ -1,8 +1,7 @@
 /* FAQ Page - Pirate Theme */
 .pirate-faq {
   position: relative;
-  min-height: 100vh;
-  padding: 40px 20px;
+  padding: 40px 20px 60px 20px;
   background: #F6E9C8;
   overflow: hidden;
 }
@@ -110,12 +109,13 @@
 /* FAQ Container */
 .faq-container {
   margin-top: 30px;
+  margin-bottom: 40px;
 }
 
 .faq-item {
   background: rgba(246, 233, 200, 0.8);
   border-radius: 20px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   backdrop-filter: blur(10px);
   border: 3px solid #0C3A40;
   box-shadow: 0 8px 25px rgba(47, 37, 32, 0.1);
@@ -176,12 +176,11 @@
   max-height: 0;
   opacity: 0;
   padding: 0 30px;
-  transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-out, padding 0.3s ease-out;
   overflow: hidden;
 }
 
 .faq-answer.open {
-  max-height: 500px;
   opacity: 1;
   padding: 20px 30px 30px 30px;
 }
@@ -211,7 +210,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .pirate-faq {
-    padding: 30px 15px;
+    padding: 30px 15px 50px 15px;
   }
   
   .faq-title {
@@ -253,7 +252,7 @@
 
 @media (max-width: 480px) {
   .pirate-faq {
-    padding: 20px 10px;
+    padding: 20px 10px 40px 10px;
   }
   
   .faq-title {

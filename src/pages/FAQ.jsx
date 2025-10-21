@@ -1,5 +1,5 @@
 // src/pages/FAQ.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import starsSvg from '../assets/stars-bg.svg';
 import './FAQ.css';
@@ -7,6 +7,7 @@ import './FAQ.css';
 const FAQ = () => {
   const [activeTab, setActiveTab] = useState('general');
   const [openItems, setOpenItems] = useState({});
+  const answerRefs = useRef({});
 
   const toggleItem = (category, index) => {
     const key = `${category}-${index}`;
@@ -15,6 +16,21 @@ const FAQ = () => {
       [key]: !prev[key]
     }));
   };
+
+  // Dynamic height calculation for smoother animations
+  useEffect(() => {
+    Object.keys(answerRefs.current).forEach(key => {
+      const element = answerRefs.current[key];
+      if (element) {
+        const isOpen = openItems[key];
+        if (isOpen) {
+          element.style.maxHeight = element.scrollHeight + 'px';
+        } else {
+          element.style.maxHeight = '0px';
+        }
+      }
+    });
+  }, [openItems]);
 
   const faqData = {
     general: [
@@ -161,7 +177,10 @@ const FAQ = () => {
                   <h3>{item.question}</h3>
                   <span className={`faq-arrow ${openItems[key] ? 'open' : ''}`}><FaChevronDown /></span>
                 </div>
-                <div className={`faq-answer ${openItems[key] ? 'open' : ''}`}>
+                <div 
+                  ref={el => answerRefs.current[key] = el}
+                  className={`faq-answer ${openItems[key] ? 'open' : ''}`}
+                >
                   <p>{item.answer}</p>
                 </div>
               </div>
