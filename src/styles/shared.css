@@ -27,12 +27,14 @@
   z-index: 50;
   transform: scale(1.2);
   transform-origin: top center;
-  transition: transform 280ms ease;
+  transition: transform 200ms ease, opacity 200ms ease, visibility 200ms ease;
 }
 
 /* Hide waves when scrolling - perfectly synchronized with header */
 .app.scrolled::before {
   transform: scale(1.2) translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
 }
 
 

@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
-import LandingPage from './components/LandingPage.jsx';
+// import LandingPage from './components/LandingPage.jsx';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 import Sponsors from './pages/Sponsors.jsx';
-import Schedule from './pages/Schedule.jsx';
+// import Schedule from './pages/Schedule.jsx';
 import Team from './pages/Team.jsx';
 import FAQ from './pages/FAQ.jsx';
 import Tracks from './pages/Tracks.jsx';
@@ -34,25 +34,6 @@ const App = () => {
     setIsLoading(false);
   }, []);
   
-
-  // Handle scroll detection for waves - hide immediately when scrolling down
-  useEffect(() => {
-    let lastY = 0;
-    const handleScroll = () => {
-      const y = window.scrollY;
-      // Hide waves immediately when scrolling down from the top
-      if (y > lastY && y > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-      lastY = y;
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
 
   const handleRevealSite = () => {
     const code = prompt("Enter access code:");

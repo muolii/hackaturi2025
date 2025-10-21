@@ -1,6 +1,6 @@
 /* Tracks Page */
 html, body {
-  height: 100%;
+  min-height: 100%;
   overflow-x: hidden;
 }
 body.modal-open {

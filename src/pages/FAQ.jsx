@@ -70,10 +70,19 @@ const FAQ = () => {
     });
 
     // Listen for window resize to recalculate heights
-    window.addEventListener('resize', updateHeights);
+    let resizeTimeout;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        updateHeights();
+      }, 100);
+    };
+    
+    window.addEventListener('resize', handleResize);
     
     return () => {
-      window.removeEventListener('resize', updateHeights);
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(resizeTimeout);
     };
   }, [openItems]);
 

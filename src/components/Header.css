@@ -8,10 +8,14 @@
   z-index: 60;
   padding: 10px 22px;
   background: rgba(10, 78, 78);
-  transition: transform 280ms ease;
+  transition: transform 280ms ease, opacity 280ms ease, visibility 280ms ease;
   border-top: 10px solid #0a4e4e;
 } 
-.site-header.hidden { transform: translateY(-120%); }
+.site-header.hidden { 
+  visibility: hidden; 
+  opacity: 0;
+  transform: translateY(-100%);
+}
 
 .header-inner {
   width: 100%;
