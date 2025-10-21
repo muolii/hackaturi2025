@@ -15,7 +15,7 @@ const Team = () => {
       members: [
         { 
           name: 'Lily Nguyen', 
-          avatar: '/images/team-photos/execs/lily.png', 
+          avatar: '/images/team-photos/execs/lily.jpg', 
           role: 'Co-Director',
           major: 'Computer Science',
           classYear: '2026',
@@ -108,7 +108,7 @@ const Team = () => {
         },
         { 
           name: 'Babajide Fakolujo', 
-          avatar: '/images/team-photos/market/jide-lead.jpeg', 
+          avatar: '/images/team-photos/market/jide-lead.jpg', 
           role: 'Lead',
           major: 'Computer Science B.S.',
           classYear: '2028',
@@ -136,7 +136,7 @@ const Team = () => {
         },
         { 
           name: 'Chris Batista', 
-          avatar: '/images/team-photos/market/chris.png', 
+          avatar: '/images/team-photos/market/chris.jpg', 
           major: 'Computer Science B.S.',
           classYear: '2028',
           funFact: 'I race gokarts competitively and I\'m also a photographer :)',
@@ -160,7 +160,7 @@ const Team = () => {
         },
         { 
           name: 'Ethan Moreta', 
-          avatar: '/images/team-photos/sponsor/ethan2.JPEG', 
+          avatar: '/images/team-photos/sponsor/ethan2.jpg', 
           major: 'Computer Science B.S.',
           classYear: '2026',
           funFact: 'I can solve the rubik\'s cube',
@@ -323,7 +323,7 @@ const Team = () => {
         },
         { 
           name: 'Ethan Moreta', 
-          avatar: '/images/team-photos/sponsor/ethan2.JPEG', 
+          avatar: '/images/team-photos/sponsor/ethan2.jpg', 
           role: 'Lead',
           major: 'Computer Science B.S.',
           classYear: '2026',
