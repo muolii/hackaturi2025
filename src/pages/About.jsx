@@ -38,6 +38,21 @@ const About = () => {
         <h3>Interested in Becoming a Sponsor?</h3>
         <p>Join us in supporting the next generation of innovators! Contact us at hackaturi25@gmail.com or <a href="https://hcb.hackclub.com/donations/start/hack-uri" target="_blank" rel="noopener noreferrer" className="donate-link">donate here</a>.</p>
       </div>
+
+      <div className="guest-speaker-section">
+        <h3>Interested in being a Guest Speaker?</h3>
+        <p>We're seeking passionate industry leaders, innovative entrepreneurs, and experienced developers to share their knowledge and inspire our hackers. Whether you have insights on emerging technologies, startup experiences, or technical expertise to share, we'd love to hear from you.</p>
+        <p>
+          <a 
+            href="https://forms.gle/vKetcjUPVGvTFqxa6"
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="speaker-form-link"
+          >
+            Apply to be a Guest Speaker →
+          </a>
+        </p>
+      </div>
     </div>
     </div>
   );
