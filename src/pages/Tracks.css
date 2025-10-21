@@ -3,12 +3,6 @@ html, body {
   min-height: 100%;
   overflow-x: hidden;
 }
-body.modal-open {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
 
 .pirate-tracks {
   position: relative;
@@ -101,30 +95,22 @@ body.modal-open {
   margin-top: 40px;
 }
 
-.track-button {
+.track-card {
   background: rgba(246, 233, 200, 0.9);
   border: 3px solid #0C3A40;
   border-radius: 25px;
   padding: 35px;
-  cursor: pointer;
-  transition: all 0.3s ease;
   backdrop-filter: blur(10px);
-  text-align: center;
   color: #2f2520;
   position: relative;
   overflow: hidden;
   box-shadow: 0 8px 25px rgba(47, 37, 32, 0.1);
-  scroll-behavior: auto; /* Prevent smooth scrolling on button click */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.track-button:hover {
-  transform: translateY(-8px);
-  border-color: var(--track-color);
-  background: rgba(246, 233, 200, 1);
-  box-shadow: 0 15px 40px rgba(47, 37, 32, 0.2);
-}
-
-.track-button::before {
+.track-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -132,12 +118,10 @@ body.modal-open {
   right: 0;
   height: 5px;
   background: var(--track-color);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
 }
 
-.track-button:hover::before {
-  transform: scaleX(1);
+.track-header {
+  text-align: center;
 }
 
 .track-icon {
@@ -147,7 +131,7 @@ body.modal-open {
   color: var(--track-color);
 }
 
-.track-button h3 {
+.track-title {
   color: #2f2520;
   margin: 0 0 15px 0;
   font-size: 1.6rem;
@@ -155,8 +139,8 @@ body.modal-open {
   font-family: 'Poppins', sans-serif;
 }
 
-.track-button p {
-  margin: 0;
+.track-subtitle {
+  margin: 0 0 15px 0;
   line-height: 1.6;
   color: #2f2520;
   font-size: 1.1rem;
@@ -164,103 +148,18 @@ body.modal-open {
   font-family: 'Poppins', sans-serif;
 }
 
-/* Track Modal Styles */
-.track-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(47, 37, 32, 0.9);
-  z-index: 999999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
-}
-
-
-.track-modal {
-  background: rgba(246, 233, 200, 0.95);
-  border-radius: 25px;
-  padding: 40px;
-  max-width: 700px;
-  width: 100%;
-  max-height: 85vh;
-  overflow-y: auto;
-  backdrop-filter: blur(20px);
-  border: 3px solid #0C3A40;
-  position: relative;
-  box-shadow: 0 20px 60px rgba(47, 37, 32, 0.3);
-  margin: auto;
-}
-
-.modal-close {
-  position: absolute;
-  top: 20px;
-  right: 25px;
-  background: #2f2520;
-  border: none;
-  color: #F6E9C8;
-  font-size: 2rem;
-  cursor: pointer;
-  padding: 0;
-  width: 45px;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  font-weight: bold;
-}
-
-.modal-close:hover {
-  background: #0C3A40;
-  transform: scale(1.1);
-}
-
-.modal-header {
-  text-align: center;
-  margin-bottom: 35px;
-  padding-bottom: 25px;
-  border-bottom: 3px solid rgba(47, 37, 32, 0.1);
-}
-
-.modal-icon {
-  font-size: 4rem;
-  margin-bottom: 20px;
-  color: var(--track-color);
-}
-
-.modal-header h2 {
-  color: #2f2520;
-  margin: 0 0 15px 0;
-  font-size: 2.2rem;
-  font-weight: 700;
-  font-family: 'Poppins', sans-serif;
-}
-
-.modal-description {
-  color: #2f2520;
-  font-size: 1.2rem;
-  margin: 0;
-  font-weight: 500;
-  font-family: 'Poppins', sans-serif;
-}
-
-.modal-content {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+.track-content {
+  flex: 1;
 }
 
 .track-description {
-  color: #2f2520;
-  font-size: 1.1rem;
-  line-height: 1.8;
   margin: 0;
-  text-align: left;
-  font-weight: 500;
+  line-height: 1.6;
+  color: #2f2520;
+  font-size: 0.95rem;
+  font-weight: 400;
   font-family: 'Poppins', sans-serif;
+  text-align: left;
 }
 
 /* Responsive Design */
@@ -285,7 +184,7 @@ body.modal-open {
     margin-top: 30px;
   }
   
-  .track-button {
+  .track-card {
     padding: 25px;
   }
   
@@ -294,33 +193,16 @@ body.modal-open {
     margin-bottom: 15px;
   }
   
-  .track-button h3 {
+  .track-title {
     font-size: 1.4rem;
   }
   
-  .track-button p {
+  .track-subtitle {
     font-size: 1rem;
-  }
-  
-  .track-modal {
-    padding: 30px;
-    margin: 10px;
-  }
-  
-  .modal-icon {
-    font-size: 3.5rem;
-  }
-  
-  .modal-header h2 {
-    font-size: 1.8rem;
-  }
-  
-  .modal-description {
-    font-size: 1.1rem;
   }
   
   .track-description {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   
   .tracks-star {
@@ -348,7 +230,7 @@ body.modal-open {
     gap: 15px;
   }
   
-  .track-button {
+  .track-card {
     padding: 20px;
   }
   
@@ -357,32 +239,16 @@ body.modal-open {
     margin-bottom: 12px;
   }
   
-  .track-button h3 {
+  .track-title {
     font-size: 1.2rem;
   }
   
-  .track-button p {
+  .track-subtitle {
     font-size: 0.9rem;
-  }
-  
-  .track-modal {
-    padding: 25px;
-  }
-  
-  .modal-icon {
-    font-size: 3rem;
-  }
-  
-  .modal-header h2 {
-    font-size: 1.6rem;
-  }
-  
-  .modal-description {
-    font-size: 1rem;
   }
   
   .track-description {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
   
   .tracks-star {
