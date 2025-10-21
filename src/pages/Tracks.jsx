@@ -37,14 +37,23 @@ const Tracks = () => {
         window.scrollTo(0, parseInt(scrollY || '0') * -1);
       }
 
+      // Only show header and wave if scroll position is at top (<=100px)
+      // Otherwise keep them hidden to match the global scroll handler behavior
+      const currentScrollY = window.scrollY;
+      const shouldShowHeader = currentScrollY <= 100;
+
       const appElement = document.querySelector('.app');
       if (appElement) {
-        appElement.classList.remove('scrolled');
+        if (shouldShowHeader) {
+          appElement.classList.remove('scrolled');
+        }
       }
 
       const headerElement = document.querySelector('.site-header');
       if (headerElement) {
-        headerElement.classList.remove('hidden');
+        if (shouldShowHeader) {
+          headerElement.classList.remove('hidden');
+        }
       }
     }
 
@@ -55,13 +64,22 @@ const Tracks = () => {
       if (scrollY) {
         window.scrollTo(0, parseInt(scrollY || '0') * -1);
       }
+
+      // Only show header and wave if scroll position is at top (<=100px)
+      const currentScrollY = window.scrollY;
+      const shouldShowHeader = currentScrollY <= 100;
+
       const appElement = document.querySelector('.app');
       if (appElement) {
-        appElement.classList.remove('scrolled');
+        if (shouldShowHeader) {
+          appElement.classList.remove('scrolled');
+        }
       }
       const headerElement = document.querySelector('.site-header');
       if (headerElement) {
-        headerElement.classList.remove('hidden');
+        if (shouldShowHeader) {
+          headerElement.classList.remove('hidden');
+        }
       }
     };
   }, [selectedTrack]);
