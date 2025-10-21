@@ -13,15 +13,20 @@ const Tracks = () => {
     if (selectedTrack) {
       // Store current scroll position before adding modal-open class
       const currentScrollY = window.scrollY;
-      
+
       document.body.classList.add('modal-open');
       // Restore scroll position after modal-open class is applied
       document.body.style.top = `-${currentScrollY}px`;
-      
-      // Hide wave element when modal is open
+
+      // Hide wave element and header when modal is open
       const appElement = document.querySelector('.app');
       if (appElement) {
         appElement.classList.add('scrolled');
+      }
+
+      const headerElement = document.querySelector('.site-header');
+      if (headerElement) {
+        headerElement.classList.add('hidden');
       }
     } else {
       // Restore scroll position when closing modal
@@ -31,11 +36,15 @@ const Tracks = () => {
       if (scrollY) {
         window.scrollTo(0, parseInt(scrollY || '0') * -1);
       }
-      
+
       const appElement = document.querySelector('.app');
       if (appElement) {
-        // Don't remove scrolled class - let scroll behavior handle it
-        // The scroll handler will determine if it should be hidden or shown
+        appElement.classList.remove('scrolled');
+      }
+
+      const headerElement = document.querySelector('.site-header');
+      if (headerElement) {
+        headerElement.classList.remove('hidden');
       }
     }
 
@@ -48,7 +57,11 @@ const Tracks = () => {
       }
       const appElement = document.querySelector('.app');
       if (appElement) {
-        // Don't remove scrolled class - let scroll behavior handle it
+        appElement.classList.remove('scrolled');
+      }
+      const headerElement = document.querySelector('.site-header');
+      if (headerElement) {
+        headerElement.classList.remove('hidden');
       }
     };
   }, [selectedTrack]);
