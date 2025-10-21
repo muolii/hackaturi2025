@@ -24,15 +24,16 @@ const createGlobalScrollHandler = () => {
     const y = window.scrollY;
     const lastY = window.hackaturiScrollData.lastY;
     const isScrollingDown = y > lastY;
+    const isScrollingUp = y < lastY;
     const thresholdMet = y > 100;
-    
+
     if (!window.hackaturiScrollData.headerElement) {
       window.hackaturiScrollData.headerElement = document.querySelector('.site-header');
       if (!window.hackaturiScrollData.headerElement) {
         return;
       }
     }
-    
+
     // Hide header when scrolling down past 100px
     if (isScrollingDown && thresholdMet) {
       window.hackaturiScrollData.headerElement.classList.add('hidden');
@@ -41,7 +42,9 @@ const createGlobalScrollHandler = () => {
       if (appElement) {
         appElement.classList.add('scrolled');
       }
-    } else {
+    }
+    // Show header only when actively scrolling up or at top of page
+    else if (isScrollingUp || y <= 100) {
       window.hackaturiScrollData.headerElement.classList.remove('hidden');
       // Also show the wave element
       const appElement = document.querySelector('.app');

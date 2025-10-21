@@ -17,16 +17,11 @@ const FAQ = () => {
     }));
   };
 
-  // Close all open items when switching tabs
-  useEffect(() => {
-    setOpenItems({});
-  }, [activeTab]);
-
   // Dynamic height calculation for smoother animations
   useEffect(() => {
     const calculateHeight = (element) => {
       if (!element) return 0;
-      
+
       // Create a temporary clone to measure the full height
       const clone = element.cloneNode(true);
       clone.style.position = 'absolute';
@@ -39,11 +34,11 @@ const FAQ = () => {
       clone.style.width = element.offsetWidth + 'px';
       clone.style.boxSizing = 'border-box';
       clone.style.margin = '0';
-      
+
       document.body.appendChild(clone);
       const height = clone.scrollHeight;
       document.body.removeChild(clone);
-      
+
       return height;
     };
 
@@ -57,21 +52,24 @@ const FAQ = () => {
       });
     };
 
-    // Initial height calculation
+    // Reset all heights first to prevent stale values
     Object.keys(answerRefs.current).forEach(key => {
       const element = answerRefs.current[key];
       if (element) {
-        const isOpen = openItems[key];
-        if (isOpen) {
-          const height = calculateHeight(element);
-          // Use requestAnimationFrame to ensure smooth transition
-          requestAnimationFrame(() => {
-            element.style.maxHeight = height + 'px';
-          });
-        } else {
-          element.style.maxHeight = '0px';
-        }
+        element.style.maxHeight = '0px';
       }
+    });
+
+    // Then calculate and set heights for open items
+    // Use requestAnimationFrame to ensure the reset happens before expansion
+    requestAnimationFrame(() => {
+      Object.keys(answerRefs.current).forEach(key => {
+        const element = answerRefs.current[key];
+        if (element && openItems[key]) {
+          const height = calculateHeight(element);
+          element.style.maxHeight = height + 'px';
+        }
+      });
     });
 
     // Listen for window resize to recalculate heights
@@ -82,14 +80,14 @@ const FAQ = () => {
         updateHeights();
       }, 100);
     };
-    
+
     window.addEventListener('resize', handleResize);
-    
+
     return () => {
       window.removeEventListener('resize', handleResize);
       clearTimeout(resizeTimeout);
     };
-  }, [openItems]);
+  }, [openItems, activeTab]);
 
   const faqData = {
     general: [
