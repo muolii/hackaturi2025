@@ -17,11 +17,6 @@ const FAQ = () => {
     }));
   };
 
-  // Close all open items when switching tabs
-  useEffect(() => {
-    setOpenItems({});
-  }, [activeTab]);
-
   // Dynamic height calculation for smoother animations
   useEffect(() => {
     const calculateHeight = (element) => {
