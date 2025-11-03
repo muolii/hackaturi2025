@@ -203,7 +203,51 @@
   text-decoration: none;
 }
 
-/* Responsive design */
+/* Responsive design - Medium screens */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sponsors-title {
+    font-size: 3rem;
+  }
+  
+  .sponsor-scroll {
+    width: 92%;
+    max-width: 900px;
+  }
+  
+  .sponsors-inside-scroll {
+    width: 75%;
+    max-width: 650px;
+    padding-top: 90px;
+  }
+  
+  .sponsors-title-inside {
+    font-size: 2.2rem;
+  }
+  
+  .sponsors-grid {
+    gap: 20px;
+  }
+  
+  .sponsor-logo-container {
+    width: 180px;
+    min-height: 70px;
+  }
+  
+  .sponsor-logo {
+    max-width: 130px;
+    max-height: 100px;
+  }
+  
+  .donors-title-inside {
+    font-size: 1.4rem;
+  }
+  
+  .donor-name-inside {
+    font-size: 0.85rem;
+  }
+}
+
+/* Responsive design - Small screens */
 @media (max-width: 768px) {
   .pirate-sponsors {
     padding: 30px 15px;

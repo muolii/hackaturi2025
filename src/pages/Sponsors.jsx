@@ -41,6 +41,15 @@ const Sponsors = () => {
     {
       name: 'Rhode Island Life Science Hub',
       logo: '/images/sponsors/RILSH-transparent.png',
+    },
+    {
+      name: 'Pure Buttons',
+      logo: '/images/sponsors/Pure-Buttons-Logo.png',
+      url: 'https://mlh.link/MLH-PureButtons-hackathons',
+    },
+    {
+      name: 'Major League Hacking',
+      logo: '/images/sponsors/mlh-logo-color.svg',
     }
   ];
 
@@ -72,18 +81,37 @@ const Sponsors = () => {
               <div className="sponsors-grid">
                 {sponsors.map((sponsor, index) => (
                   <div key={index} className="sponsor-logo-container">
-                    <img 
-                      src={sponsor.logo} 
-                      alt={`${sponsor.name} logo`}
-                      className="sponsor-logo"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'block';
-                      }}
-                    />
-                    <div className="sponsor-fallback" style={{ display: 'none' }}>
-                      {sponsor.name}
-                    </div>
+                    {sponsor.url ? (
+                      <a href={sponsor.url} target="_blank" rel="noopener noreferrer">
+                        <img 
+                          src={sponsor.logo} 
+                          alt={`${sponsor.name} logo`}
+                          className="sponsor-logo"
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                            e.target.nextSibling.style.display = 'block';
+                          }}
+                        />
+                        <div className="sponsor-fallback" style={{ display: 'none' }}>
+                          {sponsor.name}
+                        </div>
+                      </a>
+                    ) : (
+                      <>
+                        <img 
+                          src={sponsor.logo} 
+                          alt={`${sponsor.name} logo`}
+                          className="sponsor-logo"
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                            e.target.nextSibling.style.display = 'block';
+                          }}
+                        />
+                        <div className="sponsor-fallback" style={{ display: 'none' }}>
+                          {sponsor.name}
+                        </div>
+                      </>
+                    )}
                   </div>
                 ))}
               </div>
@@ -105,18 +133,37 @@ const Sponsors = () => {
             <div className="mobile-sponsors-grid">
               {sponsors.map((sponsor, index) => (
                 <div key={index} className="mobile-sponsor-logo-container">
-                  <img 
-                    src={sponsor.logo} 
-                    alt={`${sponsor.name} logo`}
-                    className="mobile-sponsor-logo"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'block';
-                    }}
-                  />
-                  <div className="mobile-sponsor-fallback" style={{ display: 'none' }}>
-                    {sponsor.name}
-                  </div>
+                  {sponsor.url ? (
+                    <a href={sponsor.url} target="_blank" rel="noopener noreferrer">
+                      <img 
+                        src={sponsor.logo} 
+                        alt={`${sponsor.name} logo`}
+                        className="mobile-sponsor-logo"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.nextSibling.style.display = 'block';
+                        }}
+                      />
+                      <div className="mobile-sponsor-fallback" style={{ display: 'none' }}>
+                        {sponsor.name}
+                      </div>
+                    </a>
+                  ) : (
+                    <>
+                      <img 
+                        src={sponsor.logo} 
+                        alt={`${sponsor.name} logo`}
+                        className="mobile-sponsor-logo"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.nextSibling.style.display = 'block';
+                        }}
+                      />
+                      <div className="mobile-sponsor-fallback" style={{ display: 'none' }}>
+                        {sponsor.name}
+                      </div>
+                    </>
+                  )}
                 </div>
               ))}
             </div>
