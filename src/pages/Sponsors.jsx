@@ -50,13 +50,30 @@ const Sponsors = () => {
     {
       name: 'Major League Hacking',
       logo: '/images/sponsors/mlh-logo-color.svg',
-    }
+    },
+    {
+      name: 'Brightstar',
+      logo: '/images/sponsors/brightstar.png',
+    },
+    /*{
+      name: 'CCRI',
+      logo: '/images/sponsors/ccri.png',
+    },
+    {
+      name: 'RISD',
+      logo: '/images/sponsors/risd.png',
+    }, */
+    {
+      name: 'URI College of Engineering',
+      logo: '/images/sponsors/uri_CoE.png',
+    },
   ];
 
   const donors = [
     'Joel Totoro',
     'Anne Totoro',
     'Stacey Azevedo',
+    'Erin Butera',
     'Tara Rugg'
   ];
 
