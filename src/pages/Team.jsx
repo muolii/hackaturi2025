@@ -73,15 +73,6 @@ const Team = () => {
           linkedin: '',
           social: ''
         },
-        { 
-          name: 'Terrell Osborne', 
-          avatar: '/images/team-photos/sponsor/terrell.jpg', 
-          major: 'Computer Science B.A.',
-          classYear: '2028',
-          funFact: 'I broke my wrist playing duck duck goose',
-          linkedin: '',
-          social: 'https://github.com/Marooncoloredchair'
-        }
       ]
     },
     marketingOutreach: {
@@ -185,15 +176,6 @@ const Team = () => {
           linkedin: '',
           social: ''
         },
-        { 
-          name: 'Terrell Osborne', 
-          avatar: '/images/team-photos/sponsor/terrell.jpg', 
-          major: 'Computer Science B.A.',
-          classYear: '2028',
-          funFact: 'I broke my wrist playing duck duck goose',
-          linkedin: '',
-          social: 'https://github.com/Marooncoloredchair'
-        }
       ]
     },
     finance: {

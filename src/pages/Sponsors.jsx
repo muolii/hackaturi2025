@@ -26,10 +26,11 @@ const Sponsors = () => {
       name: 'URI Research Foundation',
       logo: '/images/sponsors/urirf-transparent.png',
     },
+    /* Haven't responded, not confirmed yet
     {
       name: 'yconic',
       logo: '/images/sponsors/yconic-transparent.png',
-    },
+    },*/
     {
       name: 'MergeFund',
       logo: '/images/sponsors/mergefund-transparent.png',
@@ -55,7 +56,8 @@ const Sponsors = () => {
       name: 'Brightstar',
       logo: '/images/sponsors/brightstar.png',
     },
-    /*{
+    /* Waiting for final confirmation
+    {
       name: 'CCRI',
       logo: '/images/sponsors/ccri.png',
     },
@@ -66,6 +68,14 @@ const Sponsors = () => {
     {
       name: 'URI College of Engineering',
       logo: '/images/sponsors/uri_CoE.png',
+    },
+    {
+      name: 'URI Digital Forensics and Cyber Security Center',
+      logo: '/images/sponsors/uri_CSF.png',
+    },
+    {
+      name: 'URI Cyber Club',
+      logo: '/images/sponsors/cyberclub.png',
     },
   ];
 
