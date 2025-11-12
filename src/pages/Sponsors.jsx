@@ -26,11 +26,10 @@ const Sponsors = () => {
       name: 'URI Research Foundation',
       logo: '/images/sponsors/urirf-transparent.png',
     },
-    /* Haven't responded, not confirmed yet
     {
-      name: 'yconic',
-      logo: '/images/sponsors/yconic-transparent.png',
-    },*/
+      name: 'Brightstar',
+      logo: '/images/sponsors/brightstar.png',
+    },
     {
       name: 'MergeFund',
       logo: '/images/sponsors/mergefund-transparent.png',
@@ -44,23 +43,10 @@ const Sponsors = () => {
       logo: '/images/sponsors/RILSH-transparent.png',
     },
     {
-      name: 'Pure Buttons',
-      logo: '/images/sponsors/Pure-Buttons-Logo.png',
-      url: 'https://mlh.link/MLH-PureButtons-hackathons',
-    },
-    {
-      name: 'Major League Hacking',
-      logo: '/images/sponsors/mlh-logo-color.svg',
-    },
-    {
-      name: 'Brightstar',
-      logo: '/images/sponsors/brightstar.png',
-    },
-    /* Waiting for final confirmation
-    {
       name: 'CCRI',
       logo: '/images/sponsors/ccri.png',
     },
+    /* Waiting for final confirmation
     {
       name: 'RISD',
       logo: '/images/sponsors/risd.png',
@@ -77,6 +63,20 @@ const Sponsors = () => {
       name: 'URI Cyber Club',
       logo: '/images/sponsors/cyberclub.png',
     },
+    {
+      name: 'Major League Hacking',
+      logo: '/images/sponsors/mlh-logo-color.svg',
+    },
+    {
+      name: 'Pure Buttons',
+      logo: '/images/sponsors/Pure-Buttons-Logo.png',
+      url: 'https://mlh.link/MLH-PureButtons-hackathons',
+    },
+    /* Haven't responded, not confirmed yet
+    {
+      name: 'yconic',
+      logo: '/images/sponsors/yconic-transparent.png',
+    },*/
   ];
 
   const donors = [
