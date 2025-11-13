@@ -27,12 +27,12 @@ const Sponsors = () => {
       logo: '/images/sponsors/urirf-transparent.png',
     },
     {
-      name: 'Brightstar',
-      logo: '/images/sponsors/brightstar.png',
+      name: 'RI Hub',
+      logo: '/images/sponsors/RIHub.png',
     },
     {
-      name: 'MergeFund',
-      logo: '/images/sponsors/mergefund-transparent.png',
+      name: 'Brightstar',
+      logo: '/images/sponsors/brightstar.png',
     },
     {
       name: 'FACTSET',
@@ -41,6 +41,10 @@ const Sponsors = () => {
     {
       name: 'Rhode Island Life Science Hub',
       logo: '/images/sponsors/RILSH-transparent.png',
+    },
+    {
+      name: 'MergeFund',
+      logo: '/images/sponsors/mergefund-transparent.png',
     },
     {
       name: 'CCRI',
