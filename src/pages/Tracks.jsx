@@ -35,7 +35,7 @@ const Tracks = () => {
     },
     {
       id: 'creative-currents',
-      title: 'Creative Currents / Lumina',
+      title: 'Creative Currents',
       icon: <FaPalette />, 
       color: '#8B4513', 
       description: 'Shining light on creative, expressive, interactive tech',
@@ -43,7 +43,7 @@ const Tracks = () => {
     },
     {
       id: 'tide-turners',
-      title: 'TideTurners / RISE UP',
+      title: 'TideTurners',
       icon: <FaUsers />, 
       color: '#0a4e4e',
       description: 'Hack for civic innovation and community impact',
