@@ -34,16 +34,16 @@ const Home = () => {
               rel="noopener noreferrer" 
               className="btn register"
             >
-            Register Now
+            Register Now!
             </a>
             
             <a 
-              href="https://forms.gle/yhsRPP5YzMw9B1sg6" 
+              href="https://forms.gle/EBsaQn6kX8ws2mb57" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="btn mentor"
             >
-              Become a Mentor
+              Become a Judge!
             </a>
           </div>
 

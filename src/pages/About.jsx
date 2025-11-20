@@ -53,6 +53,21 @@ const About = () => {
           </a>
         </p>
       </div>
+
+      <div className="become-mentor">
+        <h3> Interested in Being a Mentor?</h3> 
+        <p>Share your expertise and guide aspiring hackers at Hack@URI! As a mentor, you'll have the opportunity to support participants, help troubleshoot challenges, and inspire creativity throughout the event. Whether you're a seasoned developer, designer, or industry professional, your insights can make a significant impact on our hackers' experience.
+        </p>
+        <a
+          href="https://forms.gle/yhsRPP5YzMw9B1sg6"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="become-mentor-link"
+        >
+          Apply to be a Mentor →
+        </a>
+
+      </div>
     </div>
     </div>
   );
