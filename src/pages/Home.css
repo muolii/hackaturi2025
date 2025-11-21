@@ -12,13 +12,13 @@
 * { box-sizing: border-box; }
 
 .pirate-hero {
-  min-height: 60vh;
+  min-height: auto;
   background: var(--cream);
   position: relative;
   overflow: hidden;
   font-family: "Poppins", "Nunito", "Quicksand", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   color: var(--text-dark);
-  padding: 70px 0 20px; /* space for top waves, minimal bottom padding */
+  padding: clamp(40px, 7vh, 70px) 0 clamp(15px, 2vh, 20px); /* space for top waves, minimal bottom padding */
 }
 
 
@@ -28,9 +28,9 @@
 .hero-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px 32px 5px;
+  padding: clamp(15px, 2vh, 20px) clamp(20px, 3vw, 32px) clamp(5px, 0.5vh, 5px);
   display: flex;
-  gap: 48px;
+  gap: clamp(28px, 4vw, 48px);
   align-items: center;
   justify-content: space-between;
   position: relative;
@@ -40,8 +40,8 @@
 /* Left column: large circular logo */
 .hero-left { flex: 0 0 44%; display: flex; align-items: center; justify-content: center; }
 .pirate-logo-wrap {
-  width: 420px;
-  height: 420px;
+  width: clamp(280px, 30vw, 420px);
+  height: clamp(280px, 30vw, 420px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,7 +49,7 @@
   background: #F9E9C0; /* pale parchment fill inside ring */
   box-shadow: 0 22px 40px rgba(12,58,64,0.18);
   border: 6px solid var(--teal-dark);
-  padding: 18px;
+  padding: clamp(12px, 1.5vw, 18px);
 }
 .pirate-logo { width: 100%; height: 100%; object-fit: contain; display: block; }
 
@@ -219,10 +219,10 @@
   .countdown-wrap { padding: 16px 20px; }
 }
 @media (max-width: 768px) {
-  .pirate-hero { min-height: 50vh; }
+  .pirate-hero { min-height: auto; }
   .hero-container { flex-direction: column-reverse; gap: 20px; align-items: center; text-align: center; padding: 15px 20px 10px; }
   .hero-left, .hero-right { flex-basis: auto; width: 100%; }
-  .pirate-logo-wrap { width: 320px; height: 320px; margin-top: 8px; }
+  .pirate-logo-wrap { width: clamp(260px, 40vw, 320px); height: clamp(260px, 40vw, 320px); margin-top: 8px; }
   .hero-title { font-size: 2.4rem; }
   .countdown-wrap { width: 100%; justify-content: center; padding: 14px; }
   .decor-star { display: none; }
@@ -231,8 +231,8 @@
   .btn { padding: 16px 32px; font-size: 1.1rem; }
 }
 @media (max-width: 420px) {
-  .pirate-hero { min-height: 40vh; }
-  .pirate-logo-wrap { width: 260px; height: 260px; }
+  .pirate-hero { min-height: auto; }
+  .pirate-logo-wrap { width: clamp(220px, 50vw, 260px); height: clamp(220px, 50vw, 260px); }
   .hero-title { font-size: 1.9rem; }
   .btn { padding: 14px 28px; font-size: 1rem; }
   .countdown-date { font-size: 1rem; text-align: center; }

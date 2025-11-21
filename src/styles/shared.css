@@ -51,12 +51,14 @@ button:focus {
 
 
 .main-content {
-  margin-top: 180px; 
+  margin-top: clamp(120px, 12vh, 180px); 
 }
 
 .section {
   box-sizing: border-box;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .content {
