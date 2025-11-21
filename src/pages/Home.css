@@ -73,7 +73,7 @@
   font-weight: 500;
 }
 
-/* Countdown box – dark rounded pill like the screenshot */
+/* Countdown box â€" dark rounded pill like the screenshot */
 .hero-countdown { margin-top: 8px; }
 
 .countdown-date {
@@ -211,73 +211,6 @@
   }
 }
 
-/* Connect with us section */
-.connect-section {
-  margin-top: 40px;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(12, 58, 64, 0.2);
-  border-radius: 20px;
-  padding: 30px 20px;
-  backdrop-filter: blur(10px);
-}
-
-.connect-section h3 {
-  color: var(--text-dark);
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.connect-section p {
-  color: rgba(12, 58, 64, 0.8);
-  font-size: 0.95rem;
-  margin-bottom: 24px;
-  line-height: 1.5;
-}
-
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.social-link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 24px;
-  background: rgba(255, 255, 255, 0.15);
-  border: 2px solid rgba(12, 58, 64, 0.3);
-  border-radius: 25px;
-  color: var(--text-dark);
-  text-decoration: none;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  font-weight: 500;
-  min-width: 140px;
-  justify-content: center;
-}
-
-.social-link:hover {
-  background: rgba(255, 255, 255, 0.25);
-  border-color: var(--text-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(12, 58, 64, 0.2);
-}
-
-.social-icon {
-  font-size: 1.3rem;
-  color: var(--text-dark);
-}
-
-.social-name {
-  font-weight: 500;
-  color: var(--text-dark);
-  font-size: 1rem;
-}
-
 /* Responsive */
 @media (max-width: 1024px) {
   .hero-container { padding: 30px 20px 15px; gap: 28px; }
@@ -296,11 +229,6 @@
   .countdown-date { font-size: 1.1rem; text-align: center; }
   .hero-cta { justify-content: center; flex-wrap: wrap; gap: 15px; }
   .btn { padding: 16px 32px; font-size: 1.1rem; }
-  .connect-section { padding: 25px 15px; }
-  .connect-section h3 { font-size: 1.3rem; }
-  .connect-section p { font-size: 0.9rem; }
-  .social-links { gap: 15px; }
-  .social-link { padding: 12px 20px; min-width: 120px; }
 }
 @media (max-width: 420px) {
   .pirate-hero { min-height: 40vh; }
@@ -310,10 +238,4 @@
   .countdown-date { font-size: 1rem; text-align: center; }
   .decor-star { display: none; }
   .hero-cta { justify-content: center; flex-wrap: wrap; gap: 12px; }
-  .connect-section { padding: 20px 12px; }
-  .connect-section h3 { font-size: 1.2rem; }
-  .connect-section p { font-size: 0.85rem; }
-  .social-links { gap: 12px; }
-  .social-link { padding: 10px 16px; min-width: 110px; }
-  .social-name { font-size: 0.9rem; }
 }

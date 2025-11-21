@@ -4,10 +4,21 @@ import './Header.css';
 const nav = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
+  { 
+    id: 'interest', 
+    label: 'Get Involved',
+    dropdown: [
+      { id: 'sponsor', label: 'Sponsor' },
+      { id: 'speaker', label: 'Guest Speaker' },
+      { id: 'mentor', label: 'Mentor' },
+      { id: 'judge', label: 'Judge' }
+    ]
+  },
   { id: 'tracks', label: 'Tracks' },
   { id: 'faq', label: 'FAQ' },
   { id: 'sponsors', label: 'Sponsors' },
   { id: 'team', label: 'Team' },
+  { id: 'connect', label: 'Connect' }
 ];
 
 // Persistent global scroll handler using window object
@@ -79,6 +90,8 @@ const Header = ({ scrollToSection }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [openMobileDropdown, setOpenMobileDropdown] = useState(null);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -114,10 +127,24 @@ const Header = ({ scrollToSection }) => {
     if (scrollToSection) scrollToSection(id);
     setIsVisible(true);
     setIsMobileMenuOpen(false);
+    setOpenDropdown(null);
+    setOpenMobileDropdown(null);
   };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleMouseEnter = (id) => {
+    setOpenDropdown(id);
+  };
+
+  const handleMouseLeave = () => {
+    setOpenDropdown(null);
+  };
+
+  const toggleMobileDropdown = (id) => {
+    setOpenMobileDropdown(openMobileDropdown === id ? null : id);
   };
 
   return (
@@ -126,14 +153,42 @@ const Header = ({ scrollToSection }) => {
         {!isMobile ? (
           <nav className="main-nav">
             {nav.map(item => (
-              <button
-                key={item.id}
-                className={`nav-btn ${activeSection === item.id ? 'active' : ''}`}
-                onClick={() => handleClick(item.id)}
-                data-section={item.id}
-              >
-                <strong>{item.label}</strong>
-              </button>
+              item.dropdown ? (
+                <div 
+                  key={item.id} 
+                  className={`nav-item dropdown ${openDropdown === item.id ? 'open' : ''}`}
+                  onMouseEnter={() => handleMouseEnter(item.id)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <button
+                    className={`nav-btn ${activeSection === item.id ? 'active' : ''}`}
+                    onClick={() => handleClick(item.id)}
+                    data-section={item.id}
+                  >
+                    <strong>{item.label}</strong>
+                  </button>
+                  <div className="dropdown-menu">
+                    {item.dropdown.map(dropdownItem => (
+                      <button
+                        key={dropdownItem.id}
+                        className="dropdown-item"
+                        onClick={() => handleClick(dropdownItem.id)}
+                      >
+                        {dropdownItem.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <button
+                  key={item.id}
+                  className={`nav-btn ${activeSection === item.id ? 'active' : ''}`}
+                  onClick={() => handleClick(item.id)}
+                  data-section={item.id}
+                >
+                  <strong>{item.label}</strong>
+                </button>
+              )
             ))}
           </nav>
         ) : (
@@ -147,14 +202,42 @@ const Header = ({ scrollToSection }) => {
             </button>
             <nav className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}>
               {nav.map(item => (
-                <button
-                  key={item.id}
-                  className={`mobile-nav-btn ${activeSection === item.id ? 'active' : ''}`}
-                  onClick={() => handleClick(item.id)}
-                  data-section={item.id}
-                >
-                  <strong>{item.label}</strong>
-                </button>
+                item.dropdown ? (
+                  <div 
+                    key={item.id} 
+                    className={`mobile-dropdown ${openMobileDropdown === item.id ? 'open' : ''}`}
+                  >
+                    <button
+                      className={`mobile-nav-btn ${activeSection === item.id ? 'active' : ''}`}
+                      onClick={() => toggleMobileDropdown(item.id)}
+                      data-section={item.id}
+                    >
+                      <strong>{item.label}</strong>
+                    </button>
+                    {openMobileDropdown === item.id && (
+                      <div className="mobile-dropdown-menu">
+                        {item.dropdown.map(dropdownItem => (
+                          <button
+                            key={dropdownItem.id}
+                            className="mobile-dropdown-item"
+                            onClick={() => handleClick(dropdownItem.id)}
+                          >
+                            {dropdownItem.label}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <button
+                    key={item.id}
+                    className={`mobile-nav-btn ${activeSection === item.id ? 'active' : ''}`}
+                    onClick={() => handleClick(item.id)}
+                    data-section={item.id}
+                  >
+                    <strong>{item.label}</strong>
+                  </button>
+                )
               ))}
             </nav>
           </>

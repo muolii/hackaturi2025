@@ -5,11 +5,13 @@ import Footer from './components/Footer.jsx';
 // import LandingPage from './components/LandingPage.jsx';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
+import Interest from './pages/Interest.jsx';
 import Sponsors from './pages/Sponsors.jsx';
 // import Schedule from './pages/Schedule.jsx';
 import Team from './pages/Team.jsx';
 import FAQ from './pages/FAQ.jsx';
 import Tracks from './pages/Tracks.jsx';
+import Connect from './pages/Connect.jsx';
 import './styles/shared.css';
 
 const App = () => {
@@ -117,6 +119,10 @@ const App = () => {
         <section id="about" className="section">
           <About />
         </section>
+
+        <section id="interest" className="section">
+          <Interest />
+        </section>
         
         <section id="tracks" className="section">
           <Tracks />
@@ -136,6 +142,10 @@ const App = () => {
 
         <section id="team" className="section">
           <Team />
+        </section>
+
+        <section id="connect" className="section">
+          <Connect />
         </section>
       </main>
       

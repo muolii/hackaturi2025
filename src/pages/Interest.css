@@ -1,0 +1,184 @@
+/* Interest Page Styles */
+.interest-page {
+  min-height: auto;
+  background: #F6E9C8;
+  position: relative;
+  overflow: hidden;
+  font-family: "Poppins", "Nunito", "Quicksand", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #2f2520;
+  padding: 30px 60px 40px;
+  margin: 0 auto;
+}
+
+/* Main content */
+.interest-content {
+  position: relative;
+  z-index: 3;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.interest-content h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #2f2520;
+  margin: 0 0 30px 0;
+  text-shadow: 2px 2px 4px rgba(47, 37, 32, 0.1);
+}
+
+/* Become sponsor section */
+.become-sponsor {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(47, 37, 32, 0.2);
+  margin-bottom: 30px;
+}
+
+.become-sponsor h3 {
+  color: #2f2520;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.become-sponsor p {
+  color: #2f2520;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.donate-link {
+  color: #0C3A40;
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.donate-link:hover {
+  color: #0B4F4F;
+}
+
+/* Container for interest forms */
+.interest-forms-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Interest form section */
+.interest-form {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(47, 37, 32, 0.2);
+  width: 100%;
+}
+
+.interest-form h3 {
+  color: #2f2520;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.interest-form p {
+  color: #2f2520;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.interest-form-link {
+  display: inline-block;
+  background: linear-gradient(135deg, #0C3A40 0%, #0B4F4F 100%);
+  color: white;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.interest-form-link:hover {
+  background: linear-gradient(135deg, #0B4F4F 0%, #0C3A40 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(12, 58, 64, 0.3);
+  color: white;
+  text-decoration: none;
+}
+
+.interest-form-link:active {
+  transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .interest-page {
+    padding: 20px 30px 25px;
+    max-width: 100%;
+  }
+  
+  .interest-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .become-sponsor {
+    padding: 20px;
+  }
+  
+  .interest-form {
+    padding: 20px;
+  }
+  
+  .interest-form-link {
+    width: 100%;
+    text-align: center;
+    padding: 18px 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .interest-page {
+    padding: 15px 20px 20px;
+  }
+  
+  .interest-content h2 {
+    font-size: 1.8rem;
+  }
+  
+  .become-sponsor {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .interest-forms-container {
+    gap: 20px;
+  }
+  
+  .interest-form {
+    padding: 15px;
+  }
+  
+  .become-sponsor h3,
+  .interest-form h3 {
+    font-size: 1.3rem;
+  }
+  
+  .become-sponsor p,
+  .interest-form p {
+    font-size: 1rem;
+  }
+  
+  .interest-form-link {
+    padding: 15px 25px;
+    font-size: 1rem;
+  }
+}

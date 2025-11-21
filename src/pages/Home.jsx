@@ -2,7 +2,6 @@ import React from 'react';
 import pirateLogo from '../assets/pirate_ram.svg'; // large circular logo
 import starsSvg from '../assets/stars-bg.svg'; // stars for decorations
 import CountdownTimer from '../components/Countdown';
-import { FaLinkedin, FaInstagram } from 'react-icons/fa';
 import './Home.css';
 
 const Home = () => {
@@ -36,34 +35,6 @@ const Home = () => {
             >
             Register Now!
             </a>
-          </div>
-
-          {/* Connect with us section */}
-          <div className="connect-section">
-            <h3>Connect With Us</h3>
-            <p>Follow us on social media for updates, announcements, and to connect with the Hack@URI community!</p>
-            <div className="social-links">
-              <a
-                href="https://www.linkedin.com/company/hack-uri/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link"
-                title="LinkedIn"
-              >
-                <span className="social-icon"><FaLinkedin /></span>
-                <span className="social-name">LinkedIn</span>
-              </a>
-              <a
-                href="https://www.instagram.com/hack.at.uri/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link"
-                title="Instagram"
-              >
-                <span className="social-icon"><FaInstagram /></span>
-                <span className="social-name">Instagram</span>
-              </a>
-            </div>
           </div>
         </div>
       </div>
