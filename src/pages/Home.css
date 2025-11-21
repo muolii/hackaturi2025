@@ -73,7 +73,7 @@
   font-weight: 500;
 }
 
-/* Countdown box — dark rounded pill like the screenshot */
+/* Countdown box – dark rounded pill like the screenshot */
 .hero-countdown { margin-top: 8px; }
 
 .countdown-date {
@@ -95,7 +95,8 @@
   padding: 18px 26px;
   box-shadow: 0 6px 20px rgba(12,58,64,0.15);
   border: 1px solid rgba(255,255,255,0.04);
-  min-width: 520px;
+  width: 100%;
+  max-width: 620px;
 }
 
 /* Each segment (Days / Hours / Minutes / Sec) */
@@ -143,6 +144,8 @@
   text-decoration: none;
   display: inline-block;
   text-align: center;
+  width: 100%;
+  max-width: 620px;
 }
 .btn.register {
   background: var(--brown-dark);
@@ -152,18 +155,6 @@
 }
 .btn.register:hover {
   background: #1a1a1a;
-  transform: translateY(-2px);
-  box-shadow: 0 15px 35px rgba(12,58,64,0.2);
-}
-.btn.mentor {
-  background: transparent;
-  color: var(--teal-dark);
-  border: 3px solid var(--teal-dark);
-  padding: 17px 37px;
-}
-.btn.mentor:hover {
-  background: var(--teal-dark);
-  color: var(--gold);
   transform: translateY(-2px);
   box-shadow: 0 15px 35px rgba(12,58,64,0.2);
 }
@@ -292,7 +283,7 @@
   .hero-container { padding: 30px 20px 15px; gap: 28px; }
   .pirate-logo-wrap { width: 360px; height: 360px; padding: 16px; }
   .hero-title { font-size: 3rem; }
-  .countdown-wrap { min-width: 460px; padding: 16px 20px; }
+  .countdown-wrap { padding: 16px 20px; }
 }
 @media (max-width: 768px) {
   .pirate-hero { min-height: 50vh; }
@@ -300,7 +291,7 @@
   .hero-left, .hero-right { flex-basis: auto; width: 100%; }
   .pirate-logo-wrap { width: 320px; height: 320px; margin-top: 8px; }
   .hero-title { font-size: 2.4rem; }
-  .countdown-wrap { min-width: unset; width: 100%; justify-content: center; padding: 14px; }
+  .countdown-wrap { width: 100%; justify-content: center; padding: 14px; }
   .decor-star { display: none; }
   .countdown-date { font-size: 1.1rem; text-align: center; }
   .hero-cta { justify-content: center; flex-wrap: wrap; gap: 15px; }

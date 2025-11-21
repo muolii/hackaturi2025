@@ -36,15 +36,6 @@ const Home = () => {
             >
             Register Now!
             </a>
-            
-            <a 
-              href="https://forms.gle/EBsaQn6kX8ws2mb57" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="btn mentor"
-            >
-              Become a Judge!
-            </a>
           </div>
 
           {/* Connect with us section */}
