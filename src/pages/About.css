@@ -66,13 +66,12 @@
 .about-content {
   position: relative;
   z-index: 3;
-  max-width: 1200px;
-  margin: 0 auto;
   max-width: 1000px;
+  margin: 0 auto;
   text-align: left;
 }
 
-.about-title {
+.about-content h1 {
   font-size: 2.5rem;
   font-weight: 800;
   color: #2f2520;
@@ -80,120 +79,27 @@
   text-shadow: 2px 2px 4px rgba(47, 37, 32, 0.1);
 }
 
-/* Become sponsor section */
-.become-sponsor {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 30px;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(47, 37, 32, 0.2);
-}
-
-.become-sponsor h3 {
-  color: #2f2520;
-  margin-bottom: 15px;
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-
-.become-sponsor p {
-  color: #2f2520;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* Container for side-by-side sections */
-.side-by-side-container {
-  display: flex;
-  gap: 20px;
-  margin-top: 30px;
-}
-
-/* Interest form section */
-.interest-form {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 30px;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(47, 37, 32, 0.2);
-  flex: 1;
-}
-
-.interest-form h3 {
-  color: #2f2520;
-  margin-bottom: 15px;
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-
-.interest-form p {
+.about-content p {
   color: #2f2520;
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 15px;
 }
 
-.interest-form-link {
-  display: inline-block;
-  background: linear-gradient(135deg, #0C3A40 0%, #0B4F4F 100%);
-  color: white;
-  text-decoration: none;
-  padding: 15px 30px;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  margin-top: 10px;
-}
-
-.interest-form-link:hover {
-  background: linear-gradient(135deg, #0B4F4F 0%, #0C3A40 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(12, 58, 64, 0.3);
-  color: white;
-  text-decoration: none;
-}
-
-.interest-form-link:active {
-  transform: translateY(0);
-}
-
-/* Responsive design - Stack sections on smaller screens */
-@media (max-width: 1200px) {
-  .side-by-side-container {
-    flex-direction: column;
-    gap: 25px;
-  }
-}
-
+/* Responsive design */
 @media (max-width: 768px) {
   .pirate-about {
     padding: 20px 30px 25px;
     max-width: 100%;
   }
   
-  .about-title {
+  .about-content h1 {
     font-size: 2rem;
     margin-bottom: 15px;
   }
   
   .about-star {
     display: none;
-  }
-  
-  .become-sponsor {
-    padding: 20px;
-  }
-  
-  .interest-form {
-    padding: 20px;
-  }
-  
-  .interest-form-link {
-    width: 100%;
-    text-align: center;
-    padding: 18px 30px;
   }
 }
 
@@ -202,35 +108,11 @@
     padding: 15px 20px 20px;
   }
   
-  .about-title {
+  .about-content h1 {
     font-size: 1.8rem;
   }
   
-  .become-sponsor {
-    padding: 15px;
-  }
-  
-  .side-by-side-container {
-    gap: 20px;
-  }
-  
-  .interest-form {
-    padding: 15px;
-  }
-  
-  .become-sponsor h3,
-  .interest-form h3 {
-    font-size: 1.3rem;
-  }
-  
-  .become-sponsor p,
-  .interest-form p 
-  {
-    font-size: 1rem;
-  }
-  
-  .interest-form-link {
-    padding: 15px 25px;
+  .about-content p {
     font-size: 1rem;
   }
 }
