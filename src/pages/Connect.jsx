@@ -5,9 +5,10 @@ import './Connect.css';
 const Connect = () => {
   return (
     <div className="connect-page">
-      <div className="connect-content">        
+      <div className="connect-content">
+        <h1 className="connect-title">Connect With Us!</h1>
+
         <div className="connect-section">
-          <h1 className="connect-title">Connect With Us!</h1>
           <p>Follow us on social media for updates, announcements, and to connect with the Hack@URI community!</p>
           <div className="social-links">
             <a
