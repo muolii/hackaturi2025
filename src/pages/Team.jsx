@@ -192,15 +192,6 @@ const Team = () => {
           social: 'https://github.com/lmckenzie99'
         },
         { 
-          name: 'Roquibat Adetunji', 
-          avatar: '/images/team-photos/finance/roquibat.jpg', 
-          major: 'Computer Science',
-          classYear: '2027',
-          funFact: 'I\'m double jointed',
-          linkedin: '',
-          social: ''
-        },
-        { 
           name: 'Damian Lapena Vidal', 
           avatar: '/images/team-photos/finance/damian.jpg', 
           major: 'Computer Engineering',
@@ -268,15 +259,6 @@ const Team = () => {
           classYear: '2026',
           funFact: 'I met the Duolingo Bird!',
           linkedin: 'https://www.linkedin.com/in/ilanna-langton/',
-          social: ''
-        },
-        { 
-          name: 'Zuni Perez', 
-          avatar: '/images/team-photos/logistic/zuni.jpg', 
-          major: 'Chemistry B.S. & Chemical Engineering',
-          classYear: '2028',
-          funFact: 'I\'m in the Marching Band!!',
-          linkedin: 'https://www.linkedin.com/in/zuni-perez/',
           social: ''
         },
         { 
