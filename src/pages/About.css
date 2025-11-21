@@ -85,7 +85,6 @@
   background: rgba(255, 255, 255, 0.1);
   padding: 30px;
   border-radius: 15px;
-  margin-top: 40px;
   backdrop-filter: blur(10px);
   border: 2px solid rgba(47, 37, 32, 0.2);
 }
@@ -111,8 +110,8 @@
   margin-top: 30px;
 }
 
-/* Guest speaker section */
-.guest-speaker-section {
+/* Interest form section */
+.interest-form {
   background: rgba(255, 255, 255, 0.1);
   padding: 30px;
   border-radius: 15px;
@@ -121,21 +120,21 @@
   flex: 1;
 }
 
-.guest-speaker-section h3 {
+.interest-form h3 {
   color: #2f2520;
   margin-bottom: 15px;
   font-size: 1.5rem;
   font-weight: 700;
 }
 
-.guest-speaker-section p {
+.interest-form p {
   color: #2f2520;
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 15px;
 }
 
-.speaker-form-link {
+.interest-form-link {
   display: inline-block;
   background: linear-gradient(135deg, #0C3A40 0%, #0B4F4F 100%);
   color: white;
@@ -148,7 +147,7 @@
   margin-top: 10px;
 }
 
-.speaker-form-link:hover {
+.interest-form-link:hover {
   background: linear-gradient(135deg, #0B4F4F 0%, #0C3A40 100%);
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(12, 58, 64, 0.3);
@@ -156,56 +155,7 @@
   text-decoration: none;
 }
 
-.speaker-form-link:active {
-  transform: translateY(0);
-}
-
-/* Become mentor section */
-.become-mentor {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 30px;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(47, 37, 32, 0.2);
-  flex: 1;
-}
-
-.become-mentor h3 {
-  color: #2f2520;
-  margin-bottom: 15px;
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-
-.become-mentor p {
-  color: #2f2520;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
-
-.become-mentor-link {
-  display: inline-block;
-  background: linear-gradient(135deg, #0C3A40 0%, #0B4F4F 100%);
-  color: white;
-  text-decoration: none;
-  padding: 15px 30px;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  margin-top: 10px;
-}
-
-.become-mentor-link:hover {
-  background: linear-gradient(135deg, #0B4F4F 0%, #0C3A40 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(12, 58, 64, 0.3);
-  color: white;
-  text-decoration: none;
-}
-
-.become-mentor-link:active {
+.interest-form-link:active {
   transform: translateY(0);
 }
 
@@ -236,13 +186,11 @@
     padding: 20px;
   }
   
-  .guest-speaker-section,
-  .become-mentor {
+  .interest-form {
     padding: 20px;
   }
   
-  .speaker-form-link,
-  .become-mentor-link {
+  .interest-form-link {
     width: 100%;
     text-align: center;
     padding: 18px 30px;
@@ -266,25 +214,22 @@
     gap: 20px;
   }
   
-  .guest-speaker-section,
-  .become-mentor {
+  .interest-form {
     padding: 15px;
   }
   
   .become-sponsor h3,
-  .guest-speaker-section h3,
-  .become-mentor h3 {
+  .interest-form h3 {
     font-size: 1.3rem;
   }
   
   .become-sponsor p,
-  .guest-speaker-section p,
-  .become-mentor p {
+  .interest-form p 
+  {
     font-size: 1rem;
   }
   
-  .speaker-form-link,
-  .become-mentor-link {
+  .interest-form-link {
     padding: 15px 25px;
     font-size: 1rem;
   }
