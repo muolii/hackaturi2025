@@ -1,6 +1,6 @@
 // src/pages/Tracks.jsx
 import React from 'react';
-import { FaHeartbeat, FaBrain, FaAnchor, FaPalette, FaUsers } from 'react-icons/fa';
+import { FaHeartbeat, FaBrain, FaAnchor, FaPalette, FaUsers, FaShieldAlt } from 'react-icons/fa';
 import { GiWaterSplash } from "react-icons/gi";
 import starsSvg from '../assets/stars-bg.svg';
 import './Tracks.css';
@@ -42,13 +42,21 @@ const Tracks = () => {
       detailedDescription: 'Fuse art, design, and technology to push creative boundaries. Build interactive art installations, generative music platforms, AR/VR experiences, or accessibility tools for creative expression. Welcomes all majors beyond "just code."'
     },
     {
+      id: 'safe-harbor',
+      title: 'Safe Harbor',
+      icon: <FaShieldAlt />, 
+      color: '#0a4e4e',
+      description: 'Explore, test, and secure—within trusted waters',
+      detailedDescription: 'Chart a course through the world of ethical hacking. Safe Harbor invites participants to probe systems responsibly, discover vulnerabilities, and strengthen defenses—all within a protected, fully authorized environment. Tackle web exploits, break misconfigurations, analyze binaries, test authentication flows, or uncover hidden weaknesses in networks.'
+    },
+    /*{
       id: 'tide-turners',
       title: 'TideTurners',
       icon: <FaUsers />, 
       color: '#0a4e4e',
       description: 'Hack for civic innovation and community impact',
       detailedDescription: 'Build for community impact and civic innovation. Create apps for public transportation, sustainability tools, civic engagement platforms, or IoT solutions for energy efficiency.'
-    },
+    },*/
     {
       id: 'splashzone',
       title: 'SplashZone',
