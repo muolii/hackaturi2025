@@ -35,9 +35,13 @@ const Sponsors = () => {
       logo: '/images/sponsors/brightstar.png',
     },
     {
+      name: 'URI Library Innovation Lab',
+      logo: '/images/sponsors/library_innovation_lab.png',
+    },
+    /*{
       name: 'FACTSET',
       logo: '/images/sponsors/factset.png',
-    },
+    },*/
     {
       name: 'Rhode Island Life Science Hub',
       logo: '/images/sponsors/RILSH-transparent.png',
