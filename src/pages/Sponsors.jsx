@@ -68,6 +68,10 @@ const Sponsors = () => {
       logo: '/images/sponsors/uri_CSF.png',
     },
     {
+      name: 'URI College of Business',
+      logo: '/images/sponsors/uri_CoB.png',
+    },
+    {
       name: 'URI Cyber Club',
       logo: '/images/sponsors/cyberclub.png',
     },
