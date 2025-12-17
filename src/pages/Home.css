@@ -159,6 +159,23 @@
   box-shadow: 0 15px 35px rgba(12,58,64,0.2);
 }
 
+/* Powered by Yconic */
+.powered-by {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+  font-weight: 600;
+  color: var(--teal-dark);
+}
+
+.yconic-logo {
+  height: 2rem;
+  width: auto;
+  vertical-align: middle;
+}
+
 /* Random scattered stars */
 .decor-star {
   position: absolute;

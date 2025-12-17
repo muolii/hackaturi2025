@@ -1,6 +1,7 @@
 import React from 'react';
 import pirateLogo from '../assets/pirate_ram.svg'; // large circular logo
 import starsSvg from '../assets/stars-bg.svg'; // stars for decorations
+import yconicLogo from '/images/sponsors/yconic-transparent.png'; // Yconic sponsor logo
 import CountdownTimer from '../components/Countdown';
 import './Home.css';
 
@@ -18,6 +19,10 @@ const Home = () => {
         <div className="hero-right">
           <header className="hero-copy">
             <h1 className="hero-title">Set Sail for Innovation: <span className="accent">Hack@URI 2026</span></h1>
+            <div className="powered-by">
+              <h4>Powered by</h4>
+              <img src={yconicLogo} alt="Yconic" className="yconic-logo" />
+            </div>
             <p className="hero-sub">Embark on a 48-hour coding adventure at the University of Rhode Island!</p>
           </header>
 
