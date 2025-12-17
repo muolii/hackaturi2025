@@ -11,211 +11,196 @@ const Sponsors = () => {
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-    
+
     checkScreenSize();
     window.addEventListener('resize', checkScreenSize);
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  const sponsors = [
-    {
-      name: 'RiseUp',
-      logo: '/images/sponsors/riseup.png',
-    },
-    {
-      name: 'URI Research Foundation',
-      logo: '/images/sponsors/urirf-transparent.png',
-    },
-    {
-      name: 'RI Hub',
-      logo: '/images/sponsors/RIHub.png',
-    },
-    {
-      name: 'Brightstar',
-      logo: '/images/sponsors/brightstar.png',
-    },
-    {
-      name: 'URI Library Innovation Lab',
-      logo: '/images/sponsors/library_innovation_lab.png',
-    },
-    /*{
-      name: 'FACTSET',
-      logo: '/images/sponsors/factset.png',
-    },*/
-    {
-      name: 'Rhode Island Life Science Hub',
-      logo: '/images/sponsors/RILSH-transparent.png',
-    },
-    {
-      name: 'MergeFund',
-      logo: '/images/sponsors/mergefund-transparent.png',
-    },
-    {
-      name: 'CCRI',
-      logo: '/images/sponsors/ccri.png',
-    },
-    /* Waiting for final confirmation
-    {
-      name: 'RISD',
-      logo: '/images/sponsors/risd.png',
-    }, */
-    {
-      name: 'URI College of Engineering',
-      logo: '/images/sponsors/uri_CoE.png',
-    },
-    {
-      name: 'URI Digital Forensics and Cyber Security Center',
-      logo: '/images/sponsors/uri_CSF.png',
-    },
-    {
-      name: 'URI College of Business',
-      logo: '/images/sponsors/uri_CoB.png',
-    },
-    {
-      name: 'URI Cyber Club',
-      logo: '/images/sponsors/cyberclub.png',
-    },
-    {
-      name: 'Major League Hacking',
-      logo: '/images/sponsors/mlh-logo-color.svg',
-    },
-    {
-      name: 'Pure Buttons',
-      logo: '/images/sponsors/Pure-Buttons-Logo.png',
-      url: 'https://mlh.link/MLH-PureButtons-hackathons',
-    },
-    /* Haven't responded, not confirmed yet
-    {
-      name: 'yconic',
-      logo: '/images/sponsors/yconic-transparent.png',
-    },*/
-  ];
+  // Organized data structure with separate tiers
+  const tieredSponsors = {
+    lead: [
+      { name: 'yconic', logo: '/images/sponsors/yconic-transparent.png'},
+    ],
+    gold: [
+      { name: 'Brightstar', logo: '/images/sponsors/brightstar.png' },
+      { name: 'RiseUp', logo: '/images/sponsors/riseup.png' },
+      { name: 'RI Hub', logo: '/images/sponsors/RIHub.png' },
+      { name: 'URI Library Innovation Lab', logo: '/images/sponsors/library_innovation_lab.png' },
+    ],
+    silver: [
+      { name: 'URI Research Foundation', logo: '/images/sponsors/urirf-transparent.png' },
+    ],
+    bronze: [
+      { name: 'MergeFund', logo: '/images/sponsors/mergefund-transparent.png' },
+      { name: 'Rhode Island Life Science Hub', logo: '/images/sponsors/RILSH-transparent.png' },
+      { name: 'CCRI', logo: '/images/sponsors/ccri.png' },
+      { name: 'URI College of Engineering', logo: '/images/sponsors/uri_CoE.png' },
+      { name: 'URI Digital Forensics and Cyber Security Center', logo: '/images/sponsors/uri_CSF.png' },
+      { name: 'URI College of Business', logo: '/images/sponsors/uri_CoB.png' },
+      { name: 'URI Cyber Club', logo: '/images/sponsors/cyberclub.png' },
+      { name: 'Major League Hacking', logo: '/images/sponsors/mlh-logo-color.svg' },
+    ],
+    partners: [
+      { name: 'Pure Buttons', logo: '/images/sponsors/Pure-Buttons-Logo.png', url: 'https://mlh.link/MLH-PureButtons-hackathons' },
+    ]
+  };
 
   const donors = [
-    'Joel Totoro',
-    'Anne Totoro',
-    'Stacey Azevedo',
-    'Erin Butera',
-    'Tara Rugg'
+    'Joel Totoro', 'Anne Totoro', 'Stacey Azevedo', 'Erin Butera', 'Tara Rugg'
   ];
+
+  // Helper to render a logo
+  const renderLogo = (sponsor, sizeClass) => (
+    <div key={sponsor.name} className="sponsor-logo-wrapper">
+      {sponsor.url ? (
+        <a href={sponsor.url} target="_blank" rel="noopener noreferrer">
+          <img
+            src={sponsor.logo}
+            alt={`${sponsor.name} logo`}
+            className={`sponsor-img ${sizeClass}`}
+            onError={(e) => {
+              e.target.style.display = 'none';
+              e.target.nextSibling.style.display = 'block';
+            }}
+          />
+          <div className="sponsor-fallback" style={{ display: 'none' }}>{sponsor.name}</div>
+        </a>
+      ) : (
+        <>
+          <img
+            src={sponsor.logo}
+            alt={`${sponsor.name} logo`}
+            className={`sponsor-img ${sizeClass}`}
+            onError={(e) => {
+              e.target.style.display = 'none';
+              e.target.nextSibling.style.display = 'block';
+            }}
+          />
+          <div className="sponsor-fallback" style={{ display: 'none' }}>{sponsor.name}</div>
+        </>
+      )}
+    </div>
+  );
 
   return (
     <div className="pirate-sponsors">
       {/* Animated stars */}
-      <img src={starsSvg} alt="" className="sponsor-star star-1" />
-      <img src={starsSvg} alt="" className="sponsor-star star-2" />
-      <img src={starsSvg} alt="" className="sponsor-star star-3" />
-      <img src={starsSvg} alt="" className="sponsor-star star-4" />
-      <img src={starsSvg} alt="" className="sponsor-star star-5" />
+      {[1, 2, 3, 4, 5].map(n => (
+        <img key={n} src={starsSvg} alt="" className={`sponsor-star star-${n}`} />
+      ))}
 
       <div className="sponsors-content">
         <h1 className="sponsors-title">Our Sponsors</h1>
         <p>We're grateful to our amazing sponsors who make Hack@URI 2026 possible!</p>
-        
+
         {!isMobile ? (
           <div className="scroll-container">
-            <img src={sponsorScrollSvg} alt="Sponsor Scroll" className="sponsor-scroll" />
-            
+            <img src={sponsorScrollSvg} alt="Sponsor Scroll" className="sponsor-scroll-bg" />
+
             <div className="sponsors-inside-scroll">
-              <div className="sponsors-grid">
-                {sponsors.map((sponsor, index) => (
-                  <div key={index} className="sponsor-logo-container">
-                    {sponsor.url ? (
-                      <a href={sponsor.url} target="_blank" rel="noopener noreferrer">
-                        <img 
-                          src={sponsor.logo} 
-                          alt={`${sponsor.name} logo`}
-                          className="sponsor-logo"
-                          onError={(e) => {
-                            e.target.style.display = 'none';
-                            e.target.nextSibling.style.display = 'block';
-                          }}
-                        />
-                        <div className="sponsor-fallback" style={{ display: 'none' }}>
-                          {sponsor.name}
-                        </div>
-                      </a>
-                    ) : (
-                      <>
-                        <img 
-                          src={sponsor.logo} 
-                          alt={`${sponsor.name} logo`}
-                          className="sponsor-logo"
-                          onError={(e) => {
-                            e.target.style.display = 'none';
-                            e.target.nextSibling.style.display = 'block';
-                          }}
-                        />
-                        <div className="sponsor-fallback" style={{ display: 'none' }}>
-                          {sponsor.name}
-                        </div>
-                      </>
-                    )}
+
+              {/* LEAD SPONSOR (Single Large Item) */}
+              {tieredSponsors.lead.length > 0 && (
+                <div className="tier-section">
+                  <h2 className="tier-title lead-title">Lead Sponsor</h2>
+                  <div className="lead-sponsor-container">
+                    {tieredSponsors.lead.map(s => renderLogo(s, 'img-lead'))}
                   </div>
-                ))}
-              </div>
-              
+                </div>
+              )}
+
+              {/* GOLD SPONSORS */}
+              {tieredSponsors.gold.length > 0 && (
+                <div className="tier-section">
+                  <h3 className="tier-title">Gold Sponsors</h3>
+                  <div className="grid-3-col">
+                    {tieredSponsors.gold.map(s => renderLogo(s, 'img-standard'))}
+                  </div>
+                </div>
+              )}
+
+              {/* SILVER SPONSORS */}
+              {tieredSponsors.silver.length > 0 && (
+                <div className="tier-section">
+                  <h3 className="tier-title">Silver Sponsors</h3>
+                  <div className="grid-3-col">
+                    {tieredSponsors.silver.map(s => renderLogo(s, 'img-standard'))}
+                  </div>
+                </div>
+              )}
+
+              {/* BRONZE SPONSORS */}
+              {tieredSponsors.bronze.length > 0 && (
+                <div className="tier-section">
+                  <h3 className="tier-title">Bronze Sponsors</h3>
+                  <div className="grid-3-col">
+                    {tieredSponsors.bronze.map(s => renderLogo(s, 'img-standard'))}
+                  </div>
+                </div>
+              )}
+
+              {/* PARTNERS (Grid of 3) */}
+              {tieredSponsors.partners.length > 0 && (
+                <div className="tier-section">
+                  <h3 className="tier-title">Partners</h3>
+                  <div className="grid-3-col">
+                    {tieredSponsors.partners.map(s => renderLogo(s, 'img-partner'))}
+                  </div>
+                </div>
+              )}
+
+              {/* DONORS */}
               <div className="donors-section-inside">
                 <h3 className="donors-title-inside">Our Generous Donors</h3>
                 <div className="donors-list-inside">
                   {donors.map((donor, index) => (
-                    <div key={index} className="donor-name-inside">
-                      {donor}
-                    </div>
+                    <span key={index} className="donor-name-inside">{donor}</span>
                   ))}
                 </div>
               </div>
+
             </div>
           </div>
         ) : (
           <div className="mobile-sponsors-container">
-            <div className="mobile-sponsors-grid">
-              {sponsors.map((sponsor, index) => (
-                <div key={index} className="mobile-sponsor-logo-container">
-                  {sponsor.url ? (
-                    <a href={sponsor.url} target="_blank" rel="noopener noreferrer">
-                      <img 
-                        src={sponsor.logo} 
-                        alt={`${sponsor.name} logo`}
-                        className="mobile-sponsor-logo"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.nextSibling.style.display = 'block';
-                        }}
-                      />
-                      <div className="mobile-sponsor-fallback" style={{ display: 'none' }}>
-                        {sponsor.name}
-                      </div>
-                    </a>
-                  ) : (
-                    <>
-                      <img 
-                        src={sponsor.logo} 
-                        alt={`${sponsor.name} logo`}
-                        className="mobile-sponsor-logo"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.nextSibling.style.display = 'block';
-                        }}
-                      />
-                      <div className="mobile-sponsor-fallback" style={{ display: 'none' }}>
-                        {sponsor.name}
-                      </div>
-                    </>
-                  )}
-                </div>
-              ))}
-            </div>
-            
-            <div className="mobile-donors-section">
-              <h3 className="mobile-donors-title">Our Generous Donors</h3>
-              <div className="mobile-donors-list">
-                {donors.map((donor, index) => (
-                  <div key={index} className="mobile-donor-name">
-                    {donor}
-                  </div>
-                ))}
+            {/* Mobile Render is a simple stack */}
+            {tieredSponsors.lead.map(s => (
+              <div key={s.name} className="mobile-tier-block">
+                <h2>Lead Sponsor</h2>
+                {renderLogo(s, 'mobile-img-lead')}
               </div>
+            ))}
+
+            {tieredSponsors.gold.length > 0 && (
+              <div className="mobile-tier-block">
+                <h3>Gold Sponsors</h3>
+                {tieredSponsors.gold.map(s => renderLogo(s, 'mobile-img-std'))}
+              </div>
+            )}
+
+            {tieredSponsors.silver.length > 0 && (
+              <div className="mobile-tier-block">
+                <h3>Silver Sponsors</h3>
+                {tieredSponsors.silver.map(s => renderLogo(s, 'mobile-img-std'))}
+              </div>
+            )}
+
+            {tieredSponsors.bronze.length > 0 && (
+              <div className="mobile-tier-block">
+                <h3>Bronze Sponsors</h3>
+                {tieredSponsors.bronze.map(s => renderLogo(s, 'mobile-img-std'))}
+              </div>
+            )}
+
+            <div className="mobile-tier-block">
+              <h3>Partners</h3>
+              {tieredSponsors.partners.map(s => renderLogo(s, 'mobile-img-std'))}
+            </div>
+
+            <div className="mobile-donors">
+              <h3>Donors</h3>
+              {donors.map(d => <div key={d}>{d}</div>)}
             </div>
           </div>
         )}
