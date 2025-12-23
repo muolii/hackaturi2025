@@ -20,19 +20,20 @@ const Sponsors = () => {
   // Organized data structure with separate tiers
   const tieredSponsors = {
     lead: [
-      { name: 'yconic', logo: '/images/sponsors/yconic-transparent.png'},
+      { name: 'yconic', logo: '/images/sponsors/yconic-transparent.png', large: true },
     ],
     gold: [
-      { name: 'Brightstar', logo: '/images/sponsors/brightstar.png' },
+      { name: 'Brightstar', logo: '/images/sponsors/brightstar.png', large: true },
       { name: 'RiseUp', logo: '/images/sponsors/riseup.png' },
       { name: 'RI Hub', logo: '/images/sponsors/RIHub.png' },
       { name: 'URI Library Innovation Lab', logo: '/images/sponsors/library_innovation_lab.png' },
     ],
     silver: [
-      { name: 'URI Research Foundation', logo: '/images/sponsors/urirf-transparent.png' },
+      { name: 'URI Research Foundation', logo: '/images/sponsors/urirf-transparent.png', large: true },
     ],
     bronze: [
       { name: 'MergeFund', logo: '/images/sponsors/mergefund-transparent.png' },
+      { name: 'Factset', logo: '/images/sponsors/factset.png', large: true },
       { name: 'Rhode Island Life Science Hub', logo: '/images/sponsors/RILSH-transparent.png' },
       { name: 'CCRI', logo: '/images/sponsors/ccri.png' },
       { name: 'URI College of Engineering', logo: '/images/sponsors/uri_CoE.png' },
@@ -42,6 +43,7 @@ const Sponsors = () => {
       { name: 'Major League Hacking', logo: '/images/sponsors/mlh-logo-color.svg' },
     ],
     partners: [
+      { name: 'Monster', logo: '/images/sponsors/monster.png', large: true },
       { name: 'Pure Buttons', logo: '/images/sponsors/Pure-Buttons-Logo.png', url: 'https://mlh.link/MLH-PureButtons-hackathons' },
     ]
   };
@@ -51,37 +53,42 @@ const Sponsors = () => {
   ];
 
   // Helper to render a logo
-  const renderLogo = (sponsor, sizeClass) => (
-    <div key={sponsor.name} className="sponsor-logo-wrapper">
-      {sponsor.url ? (
-        <a href={sponsor.url} target="_blank" rel="noopener noreferrer">
-          <img
-            src={sponsor.logo}
-            alt={`${sponsor.name} logo`}
-            className={`sponsor-img ${sizeClass}`}
-            onError={(e) => {
-              e.target.style.display = 'none';
-              e.target.nextSibling.style.display = 'block';
-            }}
-          />
-          <div className="sponsor-fallback" style={{ display: 'none' }}>{sponsor.name}</div>
-        </a>
-      ) : (
-        <>
-          <img
-            src={sponsor.logo}
-            alt={`${sponsor.name} logo`}
-            className={`sponsor-img ${sizeClass}`}
-            onError={(e) => {
-              e.target.style.display = 'none';
-              e.target.nextSibling.style.display = 'block';
-            }}
-          />
-          <div className="sponsor-fallback" style={{ display: 'none' }}>{sponsor.name}</div>
-        </>
-      )}
-    </div>
-  );
+  const renderLogo = (sponsor, sizeClass) => {
+    // Add '-large' suffix if sponsor has large property
+    const finalClass = sponsor.large ? `${sizeClass}-large` : sizeClass;
+    
+    return (
+      <div key={sponsor.name} className="sponsor-logo-wrapper">
+        {sponsor.url ? (
+          <a href={sponsor.url} target="_blank" rel="noopener noreferrer">
+            <img
+              src={sponsor.logo}
+              alt={`${sponsor.name} logo`}
+              className={`sponsor-img ${finalClass}`}
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'block';
+              }}
+            />
+            <div className="sponsor-fallback" style={{ display: 'none' }}>{sponsor.name}</div>
+          </a>
+        ) : (
+          <>
+            <img
+              src={sponsor.logo}
+              alt={`${sponsor.name} logo`}
+              className={`sponsor-img ${finalClass}`}
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'block';
+              }}
+            />
+            <div className="sponsor-fallback" style={{ display: 'none' }}>{sponsor.name}</div>
+          </>
+        )}
+      </div>
+    );
+  };
 
   return (
     <div className="pirate-sponsors">
@@ -140,7 +147,7 @@ const Sponsors = () => {
                 </div>
               )}
 
-              {/* PARTNERS (Grid of 3) */}
+              {/* PARTNERS */}
               {tieredSponsors.partners.length > 0 && (
                 <div className="tier-section">
                   <h3 className="tier-title">Partners</h3>
