@@ -168,33 +168,45 @@
 .img-lead {
   max-width: 280px;
   max-height: 120px;
+  width: 100%;
+  height: auto;
 }
 
 .img-lead-large {
   max-width: 350px;
   max-height: 150px;
+  width: 100%;
+  height: auto;
 }
 
 .img-standard {
   max-width: 130px;
   max-height: 75px;
+  width: 100%;
+  height: auto;
 }
 
 .img-standard-large {
   max-width: 180px;
   max-height: 100px;
+  width: 100%;
+  height: auto;
 }
 
 .img-partner {
   max-width: 110px;
   max-height: 65px;
   opacity: 0.9;
+  width: 100%;
+  height: auto;
 }
 
 .img-partner-large {
   max-width: 180px;
   max-height: 100px;
   opacity: 1;
+  width: 100%;
+  height: auto;
 }
 
 .sponsor-fallback {
@@ -228,7 +240,7 @@
   font-size: 0.9rem;
 }
 
-/* --- Mobile Styles (Unchanged mostly) --- */
+/* --- Mobile Styles --- */
 @media (max-width: 768px) {
   .scroll-container { display: none; }
   
@@ -247,8 +259,56 @@
     text-align: center;
   }
   
-  .mobile-img-lead { max-width: 250px; max-height: 120px; }
-  .mobile-img-std { max-width: 160px; max-height: 90px; margin-bottom: 15px; }
+  /* Lead Sponsor Mobile Sizes */
+  .mobile-img-lead { 
+    max-width: 250px; 
+    max-height: 120px; 
+    width: 100%;
+    height: auto;
+  }
+  
+  .mobile-img-lead-large {
+    max-width: 280px;
+    max-height: 140px;
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Standard (Gold/Silver/Bronze) Mobile Sizes */
+  .mobile-img-std { 
+    max-width: 160px; 
+    max-height: 90px; 
+    margin-bottom: 15px;
+    width: 100%;
+    height: auto;
+  }
+  
+  .mobile-img-std-large {
+    max-width: 200px;
+    max-height: 110px;
+    margin-bottom: 15px;
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Partner Mobile Sizes */
+  .mobile-img-partner {
+    max-width: 140px;
+    max-height: 80px;
+    margin-bottom: 15px;
+    width: 100%;
+    height: auto;
+    opacity: 0.9;
+  }
+  
+  .mobile-img-partner-large {
+    max-width: 180px;
+    max-height: 100px;
+    margin-bottom: 15px;
+    width: 100%;
+    height: auto;
+    opacity: 1;
+  }
   
   .mobile-donors {
     text-align: center;

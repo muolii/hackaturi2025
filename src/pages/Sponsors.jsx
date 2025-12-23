@@ -56,7 +56,7 @@ const Sponsors = () => {
   const renderLogo = (sponsor, sizeClass) => {
     // Add '-large' suffix if sponsor has large property
     const finalClass = sponsor.large ? `${sizeClass}-large` : sizeClass;
-    
+
     return (
       <div key={sponsor.name} className="sponsor-logo-wrapper">
         {sponsor.url ? (
@@ -202,7 +202,7 @@ const Sponsors = () => {
 
             <div className="mobile-tier-block">
               <h3>Partners</h3>
-              {tieredSponsors.partners.map(s => renderLogo(s, 'mobile-img-std'))}
+              {tieredSponsors.partners.map(s => renderLogo(s, 'mobile-img-partner'))}
             </div>
 
             <div className="mobile-donors">
