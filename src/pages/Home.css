@@ -176,6 +176,12 @@
   vertical-align: middle;
 }
 
+.monster-logo {
+  height: 3.5rem;
+  width: auto;
+  vertical-align: middle;
+}
+
 /* Random scattered stars */
 .decor-star {
   position: absolute;
