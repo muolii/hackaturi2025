@@ -23,7 +23,9 @@ const Home = () => {
             <div className="powered-by">
               <h4>Powered by</h4>
               <img src={yconicLogo} alt="Yconic" className="yconic-logo" />
-              <h4>and Fueled by</h4>
+            </div>
+            <div className="powered-by">
+              <h4>Fueled by</h4>
               <img src={monsterLogo} alt="Monster Energy" className="monster-logo" />
             </div>
             <p className="hero-sub">Embark on a 48-hour coding adventure at the University of Rhode Island!</p>
