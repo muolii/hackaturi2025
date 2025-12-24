@@ -25,8 +25,8 @@ const Sponsors = () => {
     gold: [
       { name: 'Brightstar', logo: '/images/sponsors/brightstar.png', large: true },
       { name: 'RiseUp', logo: '/images/sponsors/riseup.png' },
-      { name: 'RI Hub', logo: '/images/sponsors/RIHub.png' },
-      { name: 'URI Library Innovation Lab', logo: '/images/sponsors/library_innovation_lab.png' },
+      { name: 'RI Hub', logo: '/images/sponsors/RIHub.png', large: true },
+      { name: 'URI Library Innovation Lab', logo: '/images/sponsors/library_innovation_lab.png', large: true },
     ],
     silver: [
       { name: 'URI Research Foundation', logo: '/images/sponsors/urirf-transparent.png', large: true },
@@ -35,15 +35,15 @@ const Sponsors = () => {
       { name: 'MergeFund', logo: '/images/sponsors/mergefund-transparent.png' },
       { name: 'Factset', logo: '/images/sponsors/factset.png', large: true },
       { name: 'Rhode Island Life Science Hub', logo: '/images/sponsors/RILSH-transparent.png' },
-      { name: 'CCRI', logo: '/images/sponsors/ccri.png' },
-      { name: 'URI College of Engineering', logo: '/images/sponsors/uri_CoE.png' },
-      { name: 'URI Digital Forensics and Cyber Security Center', logo: '/images/sponsors/uri_CSF.png' },
-      { name: 'URI College of Business', logo: '/images/sponsors/uri_CoB.png' },
-      { name: 'URI Cyber Club', logo: '/images/sponsors/cyberclub.png' },
+      { name: 'URI College of Engineering', logo: '/images/sponsors/uri_CoE.png', large: true },
+      { name: 'URI Digital Forensics and Cyber Security Center', logo: '/images/sponsors/uri_CSF.png', large: true },
+      { name: 'URI Cyber Club', logo: '/images/sponsors/cyberclub.png', large: true },
       { name: 'Major League Hacking', logo: '/images/sponsors/mlh-logo-color.svg' },
     ],
     partners: [
       { name: 'Monster', logo: '/images/sponsors/monster.png', large: true },
+      { name: 'CCRI', logo: '/images/sponsors/ccri.png' },
+      { name: 'URI College of Business', logo: '/images/sponsors/uri_CoB.png', large: true },
       { name: 'Pure Buttons', logo: '/images/sponsors/Pure-Buttons-Logo.png', url: 'https://mlh.link/MLH-PureButtons-hackathons' },
     ]
   };
