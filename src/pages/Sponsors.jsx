@@ -49,7 +49,7 @@ const Sponsors = () => {
   };
 
   const donors = [
-    'Joel Totoro', 'Anne Totoro', 'Stacey Azevedo', 'Erin Butera', 'Tara Rugg'
+    'Stacey Azevedo', 'Erin Butera', 'Joseph Graf', 'Tara Rugg', 'Anne Totoro', 'Joel Totoro'
   ];
 
   // Helper to render a logo
