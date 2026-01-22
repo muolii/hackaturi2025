@@ -1,183 +1,331 @@
-/* Schedule Page Styles */
+/* Schedule.css */
+
+/* --- Page Layout & Background --- */
+.content {
+  position: relative;
+  min-height: auto;
+  z-index: 10;
+  padding: 40px 20px 60px;
+  background: #F6E9C8; 
+  overflow: hidden;
+  font-family: "Poppins", "Nunito", sans-serif;
+  color: #2f2520;
+}
+
+.content h1 {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #2f2520;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* --- Toggle Button Section (New) --- */
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.schedule-toggle-btn {
+  background: #0C3A40;
+  color: #F6E9C8;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 5px 15px rgba(12, 58, 64, 0.3);
+  transition: all 0.3s ease;
+  font-family: "Poppins", "Nunito", sans-serif;
+}
+
+.schedule-toggle-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(12, 58, 64, 0.4);
+  background: #0f4c54;
+}
+
+.schedule-toggle-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(12, 58, 64, 0.3);
+}
+
+/* --- Schedule Columns Layout --- */
 .schedule-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
-  margin-top: 30px;
-  max-width: 1600px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .calendar-column {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 15px;
+  background: rgba(246, 233, 200, 0.9);
+  border: 3px solid #0C3A40; /* Pirate Teal Border */
+  border-radius: 25px;
   padding: 25px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 25px rgba(47, 37, 32, 0.1);
+  transition: all 0.3s ease;
 }
 
+/* Specific state styles for the column wrapper */
+.calendar-column.is-collapsed {
+  min-height: auto;
+  padding-bottom: 25px; 
+}
+
+.calendar-column.is-expanded {
+  height: auto;
+}
+
+/* --- Header Styles --- */
 .calendar-header {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 15px; /* Reduced slightly to look good collapsed */
   padding-bottom: 15px;
-  border-bottom: 2px solid rgba(76, 154, 237, 0.3);
+  border-bottom: 2px solid rgba(12, 58, 64, 0.2);
+}
+
+.calendar-header.clickable {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  transition: background-color 0.2s ease;
+  padding: 10px;
+  border-radius: 15px;
+  user-select: none;
+}
+
+.calendar-header.clickable:hover {
+  background: rgba(12, 58, 64, 0.05);
 }
 
 .calendar-header h2 {
-  color: #4c9aed;
+  color: #0C3A40;
   font-size: 1.6em;
   margin: 0;
-  font-weight: 600;
+  font-weight: 700;
 }
 
+.expand-icon-mobile {
+  color: #0C3A40;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+}
+
+/* --- Calendar Grid & Slots --- */
 .calendar-grid {
   display: grid;
-  gap: 2px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  overflow: hidden;
+  gap: 8px;
+  background: transparent;
+  /* Animation when expanded */
+  animation: slideDown 0.4s ease-out;
 }
 
 .calendar-slot {
   display: grid;
-  grid-template-columns: 80px 1fr;
-  min-height: 60px;
-  background: rgba(255, 255, 255, 0.03);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.calendar-slot:last-child {
-  border-bottom: none;
+  grid-template-columns: 90px 1fr;
+  min-height: 70px;
+  background: rgba(12, 58, 64, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(12, 58, 64, 0.1);
+  overflow: hidden;
 }
 
 .time-label {
-  background: rgba(76, 154, 237, 0.1);
-  color: #4c9aed;
+  background: #0C3A40;
+  color: #F6E9C8;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-size: 0.9em;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85em;
 }
 
 .events-container {
-  padding: 8px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
+/* --- Events Styling --- */
 .calendar-event {
   padding: 12px 15px;
-  border-radius: 8px;
+  border-radius: 10px;
   color: white;
   font-size: 0.85em;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .calendar-event:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transform: scale(1.02);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .event-title {
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 4px;
   line-height: 1.3;
 }
 
 .event-location {
   font-size: 0.8em;
-  opacity: 0.9;
+  opacity: 0.95;
   margin-bottom: 6px;
+  font-weight: 500;
 }
 
 .event-type-badge {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.15);
   padding: 2px 8px;
-  border-radius: 10px;
+  border-radius: 6px;
   font-size: 0.7em;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
+/* --- Standalone Hacking Milestone (Hero Events) --- */
+.hacking-milestone-container {
+  grid-column: 1 / -1; 
+  margin: 15px 0;
+  width: 100%;
+}
+
+.hacking-hero {
+  width: 100%;
+  padding: 10px !important;
+  text-align: center;
+  font-size: 1.1rem !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 3px solid #0C3A40 !important;
+  box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3) !important;
+}
+
+.hacking-hero .event-title {
+  font-size: 1.4rem;
+  margin-bottom: 3px;
+}
+
+/* --- Legend Section --- */
 .schedule-legend {
-  margin-top: 50px;
-  background: rgba(255, 255, 255, 0.1);
+  margin: 50px auto 0;
+  max-width: 800px;
+  background: rgba(246, 233, 200, 0.9);
   padding: 30px;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  border: 3px solid #0C3A40;
+  box-shadow: 0 8px 25px rgba(47, 37, 32, 0.1);
 }
 
 .schedule-legend h3 {
-  color: #4c9aed;
-  margin-bottom: 20px;
+  color: #0C3A40;
+  margin-bottom: 25px;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1.6rem;
+  font-weight: 700;
 }
 
 .legend-items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 15px;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .legend-color {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
   flex-shrink: 0;
+  border: 1px solid rgba(0,0,0,0.1);
 }
 
 .legend-label {
-  color: #fff;
-  font-size: 0.9em;
+  color: #2f2520;
+  font-size: 0.95em;
+  font-weight: 500;
 }
 
-/* Responsive Design for Schedule */
+/* --- Animated Stars --- */
+.about-star {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  z-index: 1; /* Sits behind the content */
+  pointer-events: none;
+  opacity: 0.6;
+  animation: twinkle 3s ease-in-out infinite;
+  font-size: 1.5rem;
+}
+
+.star-1 { top: 5%; left: 5%; animation-delay: 0s; }
+.star-2 { top: 15%; right: 7%; animation-delay: 0.6s; }
+.star-3 { top: 80%; left: 3%; animation-delay: 1.2s; }
+.star-4 { top: 85%; right: 8%; animation-delay: 1.8s; }
+.star-5 { top: 45%; left: 92%; animation-delay: 2.4s; }
+
+/* --- Animations --- */
+@keyframes twinkle {
+  0%, 100% { 
+    opacity: 0.3; 
+    transform: scale(1) rotate(0deg); 
+  }
+  50% { 
+    opacity: 0.8; 
+    transform: scale(1.2) rotate(180deg); 
+  }
+}
+
+@keyframes slideDown {
+  from { 
+    opacity: 0; 
+    transform: translateY(-15px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
+  .about-star {
+    display: none;
+  }
+
+  .content h1 { font-size: 2.2rem; }
+  
   .schedule-columns {
     grid-template-columns: 1fr;
     gap: 25px;
   }
   
-  .calendar-column {
-    padding: 20px;
-  }
-  
   .calendar-slot {
-    grid-template-columns: 60px 1fr;
-    min-height: 50px;
-  }
-  
-  .time-label {
-    font-size: 0.8em;
-  }
-  
-  .calendar-event {
-    padding: 8px 12px;
-    font-size: 0.8em;
-  }
-  
-  .event-title {
-    font-size: 0.9em;
-  }
-  
-  .event-location {
-    font-size: 0.75em;
+    grid-template-columns: 70px 1fr;
   }
 }

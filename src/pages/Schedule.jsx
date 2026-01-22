@@ -1,123 +1,191 @@
 // src/pages/Schedule.jsx
-import React from 'react';
-import { FaMapMarkerAlt } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaMapMarkerAlt, FaClock, FaChevronDown, FaChevronUp, FaCalendarAlt } from 'react-icons/fa';
+import starsSvg from '../assets/stars-bg.svg';
 import './Schedule.css';
 
 const Schedule = () => {
+  // Single state to control visibility for BOTH days
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleSchedule = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   const scheduleData = {
     day1: {
-      date: 'Saturday, March 15, 2025',
+      date: 'Friday, February 21, 2026',
       events: [
-        //TODO: Add events for day 1
-        { time: '8:00 AM', event: 'Registration & Check-in', location: 'Main Lobby', type: 'registration' },
-        { time: '9:00 AM', event: 'Opening Ceremony', location: 'Main Auditorium', type: 'ceremony' },
-        { time: '9:30 AM', event: 'Team Formation & Ice Breakers', location: 'Main Hall', type: 'activity' },
-        { time: '10:00 AM', event: 'Hacking Begins!', location: 'All Areas', type: 'activity' },
-        { time: '12:00 PM', event: 'Lunch', location: 'Cafeteria', type: 'food' },
-        { time: '2:00 PM', event: 'Workshop: Intro to Web Development', location: 'Room 101', type: 'workshop' },
-        { time: '4:00 PM', event: 'Workshop: Mobile App Development', location: 'Room 102', type: 'workshop' },
-        { time: '6:00 PM', event: 'Dinner', location: 'Cafeteria', type: 'food' },
-        { time: '8:00 PM', event: 'Tech Talk: Industry Trends', location: 'Main Auditorium', type: 'talk' },
-        { time: '10:00 PM', event: 'Midnight Snacks', location: 'Cafeteria', type: 'food' }
+        { time: '8:00 AM', event: 'Check-In & Breakfast', location: 'Fascitelli Commons', type: 'hacking' },
+        { time: '9:00 AM', event: 'Opening Ceremony & Mission Welcome', location: 'Common/Stage', type: 'ceremony' },
+        { time: '10:00 AM', event: 'HACKING BEGINS!', location: 'All Hacking Areas', type: 'hacking', hero: true },
+        { time: '10:15 AM', event: 'Team Forming Activity', location: 'Main Area', type: 'activity' },
+        { time: '10:15 AM', event: 'Workshop Block A', location: 'Breakout Room 1', type: 'workshop' },
+        { time: '10:15 AM', event: 'Workshop Block B', location: 'Breakout Room 2', type: 'workshop' },
+        { time: '11:15 AM', event: 'Mentor Office Hours (Round 1)', location: 'Mentor Lounge', type: 'mentoring' },
+        { time: '12:30 PM', event: 'LUNCH', location: 'Common', type: 'food' },
+        { time: '1:30 PM', event: 'Workshop Block C', location: 'Common', type: 'workshop' },
+        { time: '1:30 PM', event: 'Workshop Block D', location: 'Common', type: 'workshop' },
+        { time: '2:00 PM', event: 'Cyber Activity #1', location: 'Cyber Room', type: 'activity' },
+        { time: '2:30 PM', event: 'Mentor Office Hours (Round 2)', location: 'Mentor Lounge', type: 'mentoring' },
+        { time: '6:00 PM', event: 'DINNER', location: 'Common', type: 'food' },
+        { time: '7:00 PM', event: 'Social Activity', location: 'Main Hall', type: 'activity' },
+        { time: '8:00 PM', event: 'Snacks', location: 'Common', type: 'food' },
+        { time: '9:00 PM', event: 'Late Night Activity', location: 'Main Hall', type: 'activity' },
+        { time: '12:00 AM', event: 'Midnight Snack', location: 'Common', type: 'food' }
       ]
     },
     day2: {
-      date: 'Sunday, March 16, 2025',
+      date: 'Saturday, February 22, 2026',
       events: [
-        //TODO: Add events for day 2
-        { time: '8:00 AM', event: 'Breakfast', location: 'Cafeteria', type: 'food' },
-        { time: '10:00 AM', event: 'Workshop: AI & Machine Learning', location: 'Room 103', type: 'workshop' },
-        { time: '12:00 PM', event: 'Lunch', location: 'Cafeteria', type: 'food' },
-        { time: '1:00 PM', event: 'Project Submission Deadline', location: 'Devpost', type: 'deadline' },
-        { time: '2:00 PM', event: 'Judging Begins', location: 'All Areas', type: 'judging' },
-        { time: '4:30 PM', event: 'Awards Ceremony', location: 'Main Auditorium', type: 'ceremony' },
-        { time: '5:00 PM', event: 'Closing Remarks', location: 'Main Hall', type: 'ceremony' },
+        { time: '8:00 AM', event: 'BREAKFAST', location: 'Atrium', type: 'food' },
+        { time: '10:00 AM', event: 'FINAL SUBMISSIONS DUE', location: 'Online Portal', type: 'hacking', hero: true },
+        { time: '10:15 AM', event: 'Pitching Workshop', location: 'Common Area', type: 'workshop' },
+        { time: '11:15 AM', event: 'Pitch Practice & Feedback', location: 'Mentor Lounge', type: 'mentoring' },
+        { time: '12:15 PM', event: 'LUNCH', location: 'Common/Stage', type: 'food' },
+        { time: '1:30 PM', event: 'Project Expo & Judging Begins', location: 'Expo Area', type: 'hacking' },
+        { time: '2:45 PM', event: 'Judging (Finalist Round)', location: 'Common/Stage', type: 'hacking' },
+        { time: '4:00 PM', event: 'Closing Ceremony & Awards', location: 'Common/Stage', type: 'ceremony' }
       ]
     }
   };
 
   const getEventTypeColor = (type) => {
     const colors = {
-      registration: '#4c9aed',
-      ceremony: '#ff6b6b',
-      activity: '#4ecdc4',
-      food: '#96ceb4',
-      workshop: '#feca57',
-      talk: '#ff9ff3',
-      deadline: '#ff3838',
-      judging: '#ff9f43',
-      networking: '#00d2d3',
+      hacking: '#27AE60',
+      ceremony: '#B8860B',
+      food: '#A04000',
+      workshop: '#1B4F72',
+      activity: '#5B2C6F',
+      mentoring: '#145A32',
     };
-    return colors[type] || '#4c9aed';
+    return colors[type] || '#0C3A40'; 
   };
 
   const renderCalendar = (dayData, dayKey) => {
-    // Create time slots from 8 AM to 11 PM
-    const timeSlots = [];
-    for (let hour = 8; hour <= 23; hour++) {
-      const timeString = hour === 12 ? '12:00 PM' : 
-                       hour > 12 ? `${hour - 12}:00 PM` : 
-                       `${hour}:00 AM`;
-      timeSlots.push(timeString);
-    }
+    // Both columns check the same `isExpanded` variable
+    const heroEvents = dayData.events.filter(e => e.hero === true);
+    const displayRows = [];
+    const startHour = 8;
+    const endHour = dayKey === 'day1' ? 24 : 17;
 
-    // Add midnight slot for Day 2
-    if (dayKey === 'day2') {
-      timeSlots.unshift('12:00 AM');
+    for (let hour = startHour; hour <= endHour; hour++) {
+      const displayHour = hour > 23 ? hour - 24 : hour;
+      const timeString = displayHour === 0 ? '12:00 AM' :
+        displayHour === 12 ? '12:00 PM' :
+          displayHour > 12 ? `${displayHour - 12}:00 PM` :
+            `${displayHour}:00 AM`;
+      displayRows.push({ time: timeString, rawHour: hour });
     }
 
     return (
-      <div className="calendar-column">
-        <div className="calendar-header">
+      <div className={`calendar-column ${isExpanded ? 'is-expanded' : 'is-collapsed'}`}>
+        <div 
+          className="calendar-header clickable" 
+          onClick={toggleSchedule}
+        >
           <h2>{dayData.date}</h2>
+          {/* Visual indicator that this is clickable */}
+          <div className="expand-icon-mobile">
+            {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
+          </div>
         </div>
-        
-        <div className="calendar-grid">
-          {timeSlots.map((timeSlot, index) => {
-            // Find events that match this time slot
-            const matchingEvents = dayData.events.filter(event => {
-              const eventTime = event.time;
-              const slotHour = timeSlot.includes('AM') ? 
-                parseInt(timeSlot.split(':')[0]) : 
-                parseInt(timeSlot.split(':')[0]) + 12;
-              
-              const eventHour = eventTime.includes('AM') ? 
-                parseInt(eventTime.split(':')[0]) : 
-                parseInt(eventTime.split(':')[0]) + 12;
-              
-              return eventHour === slotHour;
-            });
 
-            return (
-              <div key={index} className="calendar-slot">
-                <div className="time-label">{timeSlot}</div>
-                <div className="events-container">
-                  {matchingEvents.map((event, eventIndex) => (
-                    <div 
-                      key={eventIndex} 
-                      className="calendar-event"
-                      style={{ backgroundColor: getEventTypeColor(event.type) }}
-                    >
-                      <div className="event-title">{event.event}</div>
-                      <div className="event-location"><FaMapMarkerAlt style={{ marginRight: '6px', verticalAlign: 'middle' }} />{event.location}</div>
-                      <div className="event-type-badge">
-                        {event.type.charAt(0).toUpperCase() + event.type.slice(1)}
+        {isExpanded && (
+          <div className="calendar-grid">
+            {displayRows.map((row, index) => {
+              const slotHeroEvents = heroEvents.filter(e => {
+                const [hourPart, modifier] = e.time.split(' ');
+                let eventHour = parseInt(hourPart.split(':')[0]);
+                if (modifier === 'PM' && eventHour !== 12) eventHour += 12;
+                if (modifier === 'AM' && eventHour === 12) eventHour = dayKey === 'day1' ? 24 : 0;
+                return eventHour === row.rawHour;
+              });
+
+              const matchingEvents = dayData.events.filter(event => {
+                if (event.hero === true) return false;
+                const [hourPart, modifier] = event.time.split(' ');
+                let eventHour = parseInt(hourPart.split(':')[0]);
+                if (modifier === 'PM' && eventHour !== 12) eventHour += 12;
+                if (modifier === 'AM' && eventHour === 12) eventHour = dayKey === 'day1' ? 24 : 0;
+                return eventHour === row.rawHour;
+              });
+
+              return (
+                <React.Fragment key={index}>
+                  {slotHeroEvents.map((heroEvent, heroIdx) => (
+                    <div key={`hero-${heroIdx}`} className="hacking-milestone-container">
+                      <div
+                        className="calendar-event hacking-hero"
+                        style={{
+                          backgroundColor: getEventTypeColor(heroEvent.type),
+                          boxShadow: `0 10px 20px ${getEventTypeColor(heroEvent.type)}4D`
+                        }}
+                      >
+                        <div className="event-title">{heroEvent.event}</div>
+                        <div className="event-location">
+                          <FaClock style={{ marginRight: '6px' }} />{heroEvent.time}
+                          <span style={{ margin: '0 8px' }}>|</span>
+                          <FaMapMarkerAlt style={{ marginRight: '6px' }} />{heroEvent.location}
+                        </div>
                       </div>
                     </div>
                   ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+
+                  <div className="calendar-slot">
+                    <div className="time-label">{row.time}</div>
+                    <div className="events-container">
+                      {matchingEvents.length > 0 ? (
+                        matchingEvents.map((event, eventIndex) => (
+                          <div key={eventIndex} className="calendar-event" style={{ backgroundColor: getEventTypeColor(event.type) }}>
+                            <div className="event-title">{event.event}</div>
+                            <div className="event-location">
+                              <FaClock style={{ marginRight: '6px' }} />{event.time}
+                              <span style={{ margin: '0 8px' }}>|</span>
+                              <FaMapMarkerAlt style={{ marginRight: '6px' }} />{event.location}
+                            </div>
+                            <div className="event-type-badge">{event.type}</div>
+                          </div>
+                        ))
+                      ) : (
+                        <div className="empty-slot-text"></div>
+                      )}
+                    </div>
+                  </div>
+                </React.Fragment>
+              );
+            })}
+          </div>
+        )}
       </div>
     );
   };
 
   return (
     <div className="content">
+      <img src={starsSvg} alt="" className="about-star star-1" />
+      <img src={starsSvg} alt="" className="about-star star-2" />
+      <img src={starsSvg} alt="" className="about-star star-3" />
+      <img src={starsSvg} alt="" className="about-star star-4" />
+      <img src={starsSvg} alt="" className="about-star star-5" />
+
       <h1>Event Schedule</h1>
       
+      {/* Central Toggle Button */}
+      <div className="toggle-container">
+        <button className="schedule-toggle-btn" onClick={toggleSchedule}>
+          {isExpanded ? (
+            <>
+              <FaChevronUp /> Hide Full Schedule
+            </>
+          ) : (
+            <>
+              <FaCalendarAlt /> View Full Schedule
+            </>
+          )}
+        </button>
+      </div>
+
       <div className="schedule-columns">
         {renderCalendar(scheduleData.day1, 'day1')}
         {renderCalendar(scheduleData.day2, 'day2')}
@@ -127,20 +195,15 @@ const Schedule = () => {
         <h3>Event Types</h3>
         <div className="legend-items">
           {Object.entries({
-            registration: 'Registration',
+            hacking: 'Hacking',
             ceremony: 'Ceremony',
             activity: 'Activity',
-            food: 'Food',
             workshop: 'Workshop',
-            talk: 'Tech Talk',
-            deadline: 'Deadline',
-            judging: 'Judging',
+            mentoring: 'Mentoring',
+            food: 'Food',
           }).map(([type, label]) => (
             <div key={type} className="legend-item">
-              <span 
-                className="legend-color" 
-                style={{ backgroundColor: getEventTypeColor(type) }}
-              ></span>
+              <span className="legend-color" style={{ backgroundColor: getEventTypeColor(type) }}></span>
               <span className="legend-label">{label}</span>
             </div>
           ))}
