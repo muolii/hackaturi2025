@@ -14,7 +14,7 @@ const Schedule = () => {
 
   const scheduleData = {
     day1: {
-      date: 'Friday, February 21, 2026',
+      date: 'Saturday, February 21, 2026',
       events: [
         { time: '8:00 AM', event: 'Check-In & Breakfast', location: 'Fascitelli Commons', type: 'hacking' },
         { time: '9:00 AM', event: 'Opening Ceremony & Mission Welcome', location: 'Common/Stage', type: 'ceremony' },
@@ -36,7 +36,7 @@ const Schedule = () => {
       ]
     },
     day2: {
-      date: 'Saturday, February 22, 2026',
+      date: 'Sunday, February 22, 2026',
       events: [
         { time: '8:00 AM', event: 'BREAKFAST', location: 'Atrium', type: 'food' },
         { time: '10:00 AM', event: 'FINAL SUBMISSIONS DUE', location: 'Online Portal', type: 'hacking', hero: true },

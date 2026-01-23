@@ -3,6 +3,7 @@ import React from 'react';
 import { FaHeartbeat, FaBrain, FaAnchor, FaPalette, FaUsers, FaShieldAlt } from 'react-icons/fa';
 import { GiWaterSplash } from "react-icons/gi";
 import starsSvg from '../assets/stars-bg.svg';
+import yconicLogo from '/images/sponsors/yconic-transparent.png'; // Imported Yconic logo
 import './Tracks.css';
 
 const Tracks = () => {
@@ -22,8 +23,9 @@ const Tracks = () => {
       title: 'Neural Tide',
       icon: <FaBrain />, 
       color: '#2f2520', 
-      description: 'Ride the next wave of artificial intelligence',
-      detailedDescription: 'Apply AI and machine learning to solve real-world problems. Build AI tools for small businesses, generative art and music platforms, computer vision for environmental monitoring, or chatbots for student support.'
+      description: 'AI-powered startups, technical projects, and compute-intensive experiments.',
+      sponsorLogo: yconicLogo, // Added the sponsor logo
+      detailedDescription: 'Participants can choose between launching an AI-native startup with an emphasis on validation and scalability, developing a focused AI project that demonstrates strong engineering or creative application, or leveraging high-performance hardware for advanced AI workloads. The track is designed for teams interested in applying AI to real problems through strong execution, technical depth, and experimentation.'
     },
     {
       id: 'oceans-edge',
@@ -93,6 +95,12 @@ const Tracks = () => {
               <div className="track-header">
                 <div className="track-icon">{track.icon}</div>
                 <h3 className="track-title">{track.title}</h3>
+                
+                {/* Conditionally render the sponsor logo if it exists */}
+                {track.sponsorLogo && (
+                  <img src={track.sponsorLogo} alt="Yconic Sponsor" className="track-sponsor-logo" />
+                )}
+
                 <p className="track-subtitle">{track.description}</p>
               </div>
               <div className="track-content">

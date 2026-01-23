@@ -255,3 +255,12 @@ html, body {
     display: none;
   }
 }
+
+/* Track Card Sponsor Logo */
+.track-sponsor-logo {
+  height: 2.5rem; /* Sized slightly smaller than the 3rem used on the Home page */
+  width: auto;
+  margin-bottom: 15px;
+  object-fit: contain;
+  display: inline-block;
+}
