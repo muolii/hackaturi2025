@@ -1,0 +1,144 @@
+/* src/components/FloatingRegistration.css */
+
+.floating-reg-card {
+  position: fixed;
+  bottom: 40px; /* Moved up slightly */
+  right: 40px;  /* Moved left slightly */
+  background: #2f2520; /* var(--brown-dark) */
+  color: #C3A873; /* var(--gold) */
+  
+  /* Increased size */
+  padding: 24px 32px; 
+  min-width: 260px;
+  
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(12, 58, 64, 0.5);
+  border: 3px solid #C3A873;
+  z-index: 9900;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column; /* Stack content vertically now */
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.27), box-shadow 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  animation: floatUp 1s ease-out;
+}
+
+/* Hover Effect */
+.floating-reg-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 18px 40px rgba(12, 58, 64, 0.7);
+  background: #1a1a1a;
+  border-color: #F6E9C8; /* Border brightens on hover */
+}
+
+.floating-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+/* "Registration Closes in" */
+.floating-sub {
+  font-size: 0.95rem;
+  color: #F6E9C8; /* Cream */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* "X Days" - BIG EMPHASIS */
+.floating-days {
+  font-size: 2.8rem; /* Much bigger */
+  line-height: 1;
+  font-weight: 800;
+  color: #ff4d4d; /* Urgent Red */
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.5); /* Pop out effect */
+  margin: 4px 0 8px 0;
+}
+
+/* "Register Now ->" */
+.floating-cta {
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: #C3A873; /* Gold background */
+  color: #2f2520;      /* Dark text */
+  padding: 8px 16px;
+  border-radius: 20px;
+  margin-top: 4px;
+  display: inline-block;
+}
+
+/* Close "X" Button - made slightly larger/easier to hit */
+.floating-close {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  background: #073d3c;
+  color: #fff;
+  border: 2px solid #C3A873;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  opacity: 1; /* Always visible now since the card is bigger */
+  transition: transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.floating-close:hover {
+  transform: scale(1.1);
+  background: #b81e1e; /* turns red on hover */
+  border-color: #fff;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .floating-reg-card {
+    bottom: 20px;
+    right: 50%;
+    transform: translateX(50%); /* Center it on mobile */
+    min-width: 90%; /* Take up most width */
+    padding: 15px 20px;
+    flex-direction: row; /* Go back to side-by-side on mobile to save height */
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+
+  /* Reset hover transform for mobile so it doesn't fight the centering */
+  .floating-reg-card:hover {
+    transform: translateX(50%) translateY(-5px); 
+  }
+
+  .floating-days {
+    font-size: 1.8rem;
+    margin: 0;
+  }
+
+  .floating-sub {
+    font-size: 0.8rem;
+  }
+  
+  .floating-cta {
+    display: none; /* Hide button text on mobile if too cramped, or keep it */
+  }
+  
+  .floating-close {
+     left: auto;
+     right: -8px; /* Move X to right side on mobile */
+  }
+}

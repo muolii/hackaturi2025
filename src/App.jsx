@@ -12,6 +12,8 @@ import Team from './pages/Team.jsx';
 import FAQ from './pages/FAQ.jsx';
 import Tracks from './pages/Tracks.jsx';
 import Connect from './pages/Connect.jsx';
+import RegistrationPopup from './components/RegistrationPopup.jsx';
+import FloatingRegistration from './components/FloatingRegistration.jsx';
 import './styles/shared.css';
 
 const App = () => {
@@ -84,6 +86,10 @@ const App = () => {
   // Show main site content
   return (
     <div className={`app ${isScrolled ? 'scrolled' : ''}`}>
+      {/* Registration Popups */}
+      <RegistrationPopup />
+      <FloatingRegistration />
+      
       {/* MLH Trust Badge */}
       <a 
         id="mlh-trust-badge" 
