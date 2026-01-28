@@ -20,15 +20,15 @@ const Sponsors = () => {
   // Organized data structure with separate tiers
   const tieredSponsors = {
     lead: [
-      { name: 'yconic', logo: '/images/sponsors/yconic-transparent.png', large: true },
+      { name: 'yconic', logo: '/images/sponsors/yconic-transparent.png', large: true, url: 'https://yconic.ai/' },
     ],
     gold: [
-      { name: 'Brightstar', logo: '/images/sponsors/brightstar.png', large: true },
       { name: 'RiseUp', logo: '/images/sponsors/riseup.png' },
       { name: 'RI Hub', logo: '/images/sponsors/RIHub.png', large: true },
       { name: 'URI Library Innovation Lab', logo: '/images/sponsors/library_innovation_lab.png', large: true },
     ],
     silver: [
+      { name: 'Brightstar', logo: '/images/sponsors/brightstar.png', large: true },
       { name: 'URI Research Foundation', logo: '/images/sponsors/urirf-transparent.png', large: true },
     ],
     bronze: [
@@ -42,6 +42,7 @@ const Sponsors = () => {
     ],
     partners: [
       { name: 'Monster', logo: '/images/sponsors/monster.png', large: true },
+      { name: 'The Move App', logo: '/images/sponsors/themoveapp.png', url: 'https://www.themoveapp.io/' },
       { name: 'CCRI', logo: '/images/sponsors/ccri.png' },
       { name: 'URI College of Business', logo: '/images/sponsors/uri_CoB.png', large: true },
       { name: 'Pure Buttons', logo: '/images/sponsors/Pure-Buttons-Logo.png', url: 'https://mlh.link/MLH-PureButtons-hackathons' },

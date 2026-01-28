@@ -3,6 +3,7 @@ import pirateLogo from '../assets/pirate_ram.svg'; // large circular logo
 import starsSvg from '../assets/stars-bg.svg'; // stars for decorations
 import yconicLogo from '/images/sponsors/yconic-transparent.png'; // Yconic sponsor logo
 import monsterLogo from '/images/sponsors/monster.png'; // Monster Energy sponsor logo
+import themoveappLogo from '/images/sponsors/themoveapp.png'; // The Move App sponsor logo
 import CountdownTimer from '../components/Countdown';
 import './Home.css';
 
@@ -22,11 +23,19 @@ const Home = () => {
             <h1 className="hero-title">Set Sail for Innovation: <span className="accent">Hack@URI 2026</span></h1>
             <div className="powered-by">
               <h4>Powered by</h4>
-              <img src={yconicLogo} alt="Yconic" className="yconic-logo" />
+              <a href="https://yconic.ai/" target="_blank" rel="noopener noreferrer">
+                <img src={yconicLogo} alt="Yconic" className="yconic-logo" />
+              </a>
             </div>
             <div className="powered-by">
               <h4>Fueled by</h4>
               <img src={monsterLogo} alt="Monster Energy" className="monster-logo" />
+            </div>
+            <div className="powered-by">
+              <h4>Catered by</h4>
+              <a href="https://www.themoveapp.io/" target="_blank" rel="noopener noreferrer">
+                <img src={themoveappLogo} alt="The Move App" className="themoveapp-logo" />
+              </a>
             </div>
             <p className="hero-sub">Embark on a 48-hour coding adventure at the University of Rhode Island!</p>
           </header>
