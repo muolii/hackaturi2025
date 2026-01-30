@@ -119,7 +119,7 @@ const FAQ = () => {
       },
       {
         question: "How many challenges can I apply for?",
-        answer: "As many as you want!"
+        answer: "You can only submit your project to one challenge."
       },
       {
         question: "What kind of activities will there be?",
@@ -131,7 +131,7 @@ const FAQ = () => {
       },
       {
         question: "Do I have to stay overnight?",
-        answer: "No, you can leave and come back if you would prefer. We'll have lanyards to help you get back in!"
+        answer: "Since you only have a short amount of time to build, most stay on campus to complete their project. We’ll provide a packing list. But you are able to leave and come back if you live nearby."
       }
     ],
     logistics: [

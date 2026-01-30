@@ -34,7 +34,6 @@ const Sponsors = () => {
     bronze: [
       { name: 'MergeFund', logo: '/images/sponsors/mergefund-transparent.png' },
       { name: 'Factset', logo: '/images/sponsors/factset.png', large: true },
-      { name: 'Rhode Island Life Science Hub', logo: '/images/sponsors/RILSH-transparent.png' },
       { name: 'URI College of Engineering', logo: '/images/sponsors/uri_CoE.png', large: true },
       { name: 'URI Digital Forensics and Cyber Security Center', logo: '/images/sponsors/uri_CSF.png', large: true },
       { name: 'URI Cyber Club', logo: '/images/sponsors/cyberclub.png', large: true },
@@ -43,6 +42,7 @@ const Sponsors = () => {
     partners: [
       { name: 'Monster', logo: '/images/sponsors/monster.png', large: true },
       { name: 'The Move App', logo: '/images/sponsors/themoveapp.png', url: 'https://www.themoveapp.io/' },
+      { name: 'URI AI Lab', logo: '/images/sponsors/uri_ailab.png', large: true },
       { name: 'CCRI', logo: '/images/sponsors/ccri.png' },
       { name: 'URI College of Business', logo: '/images/sponsors/uri_CoB.png', large: true },
       { name: 'Pure Buttons', logo: '/images/sponsors/Pure-Buttons-Logo.png', url: 'https://mlh.link/MLH-PureButtons-hackathons' },
