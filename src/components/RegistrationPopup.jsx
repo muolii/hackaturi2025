@@ -6,15 +6,14 @@ const RegistrationPopup = () => {
   const [daysLeft, setDaysLeft] = useState(0);
 
   useEffect(() => {
-    // 1. Calculate days remaining until Registration Deadline
-    const targetDate = new Date('2026-01-30T23:59:59');
+    // 1. UPDATED: Calculate days remaining until Extended Deadline (Feb 7, 2026)
+    const targetDate = new Date('2026-02-07T23:59:59');
     const today = new Date();
     const diffTime = targetDate - today;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     setDaysLeft(diffDays);
 
     // 2. CHECK SESSION STORAGE
-    // This resets every time the user closes the tab/browser
     const hasSeenPopup = sessionStorage.getItem('hackaturi-reg-popup-seen');
 
     if (!hasSeenPopup && diffDays >= 0) {
@@ -27,7 +26,6 @@ const RegistrationPopup = () => {
 
   const handleClose = () => {
     setShowPopup(false);
-    // 3. SAVE TO SESSION STORAGE 
     sessionStorage.setItem('hackaturi-reg-popup-seen', 'true');
   };
 
@@ -38,14 +36,15 @@ const RegistrationPopup = () => {
       <div className="reg-popup-content">
         <button className="reg-popup-close" onClick={handleClose}>&times;</button>
         
-        <h2 className="reg-popup-title">Ahoy, Hacker!</h2>
+        {/* Updated Title */}
+        <h2 className="reg-popup-title">Registration Extended!</h2>
         
         <div className="reg-popup-body">
           <p className="reg-urgent-text">
-            There are only <span className="reg-highlight">{daysLeft} days</span> left to join the crew!
+            You're in luck! There are <span className="reg-highlight">{daysLeft} more days</span> to join the crew!
           </p>
           <p className="reg-sub-text">
-            Registration ends <strong>January 30, 2026!</strong>
+            New Deadline: <strong>February 7, 2026!</strong>
           </p>
         </div>
 
@@ -56,7 +55,7 @@ const RegistrationPopup = () => {
           className="reg-btn"
           onClick={handleClose}
         >
-          Register Now!
+          Claim Your Spot!
         </a>
       </div>
     </div>

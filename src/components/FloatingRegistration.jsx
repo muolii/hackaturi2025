@@ -6,8 +6,8 @@ const FloatingRegistration = () => {
   const [daysLeft, setDaysLeft] = useState(0);
 
   useEffect(() => {
-    // Target: Registration Deadline (Jan 30, 2026)
-    const targetDate = new Date('2026-01-30T23:59:59');
+    // UPDATED: Target Registration Deadline (Extended to Feb 7, 2026)
+    const targetDate = new Date('2026-02-07T23:59:59');
     const today = new Date();
     const diffTime = targetDate - today;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -33,9 +33,10 @@ const FloatingRegistration = () => {
       <button className="floating-close" onClick={handleClose}>&times;</button>
       
       <div className="floating-content">
-        <span className="floating-sub">Registration Closes in</span>
-        <span className="floating-days">{daysLeft} Days</span>
-        <span className="floating-cta">Register Now &rarr;</span>
+        {/* Updated Text */}
+        <span className="floating-sub">Registration EXTENDED!</span>
+        <span className="floating-days">{daysLeft} Days Left</span>
+        <span className="floating-cta">Join the Crew &rarr;</span>
       </div>
     </a>
   );
