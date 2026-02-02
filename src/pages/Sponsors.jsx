@@ -44,7 +44,6 @@ const Sponsors = () => {
       { name: 'The Move App', logo: '/images/sponsors/themoveapp.png', url: 'https://www.themoveapp.io/' },
       { name: 'URI AI Lab', logo: '/images/sponsors/uri_ailab.png', large: true },
       { name: 'CCRI', logo: '/images/sponsors/ccri.png' },
-      { name: 'URI College of Business', logo: '/images/sponsors/uri_CoB.png', large: true },
       { name: 'Pure Buttons', logo: '/images/sponsors/Pure-Buttons-Logo.png', url: 'https://mlh.link/MLH-PureButtons-hackathons' },
     ]
   };
