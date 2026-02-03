@@ -37,7 +37,7 @@ const Home = () => {
                 <img src={themoveappLogo} alt="The Move App" className="themoveapp-logo" />
               </a>
             </div>
-            <p className="hero-sub">Embark on a 48-hour coding adventure at the University of Rhode Island!</p>
+            <p className="hero-sub">Embark on a 48-hour innovation adventure at the University of Rhode Island!</p>
           </header>
 
           <div className="hero-countdown">
