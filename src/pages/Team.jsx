@@ -57,14 +57,6 @@ const Team = () => {
           social: 'https://github.com/rbutera03' 
         },
         { 
-          name: 'Kanz Giwa', 
-          avatar: '/images/team-photos/tech/kanz.jpg', 
-          major: 'Computer & Data Science',
-          classYear: '2026',
-          funFact: 'Born and raised in Nigeria for 8 years',
-          social: 'https://github.com/KanzGiwa'
-        },
-        { 
           name: 'Riley Maguire', 
           avatar: '/images/team-photos/tech/riley.jpg', 
           major: 'Computer Science B.S.',

@@ -45,6 +45,7 @@ const Sponsors = () => {
       { name: 'URI AI Lab', logo: '/images/sponsors/uri_ailab.png', large: true },
       { name: 'CCRI', logo: '/images/sponsors/ccri.png' },
       { name: 'Pure Buttons', logo: '/images/sponsors/Pure-Buttons-Logo.png', url: 'https://mlh.link/MLH-PureButtons-hackathons' },
+      { name: 'URI Institute for AI and Computational Research'}
     ]
   };
 
@@ -63,7 +64,7 @@ const Sponsors = () => {
           <a href={sponsor.url} target="_blank" rel="noopener noreferrer">
             <img
               src={sponsor.logo}
-              alt={`${sponsor.name} logo`}
+              alt={`${sponsor.name}`}
               className={`sponsor-img ${finalClass}`}
               onError={(e) => {
                 e.target.style.display = 'none';
@@ -76,7 +77,7 @@ const Sponsors = () => {
           <>
             <img
               src={sponsor.logo}
-              alt={`${sponsor.name} logo`}
+              alt={`${sponsor.name}`}
               className={`sponsor-img ${finalClass}`}
               onError={(e) => {
                 e.target.style.display = 'none';
