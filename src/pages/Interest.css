@@ -1,3 +1,5 @@
+/* Interest.css */
+
 /* Interest Page Styles */
 .interest-page {
   min-height: auto;
@@ -19,7 +21,7 @@
   text-align: left;
 }
 
-.interest-content h2 {
+.interest-content h1 {
   font-size: 2.5rem;
   font-weight: 800;
   color: #2f2520;
@@ -27,7 +29,7 @@
   text-shadow: 2px 2px 4px rgba(47, 37, 32, 0.1);
 }
 
-/* Become sponsor section */
+/* Become sponsor section - Full Width */
 .become-sponsor {
   background: rgba(255, 255, 255, 0.1);
   padding: 30px;
@@ -62,10 +64,10 @@
   color: #0B4F4F;
 }
 
-/* Container for interest forms */
+/* Grid Container for Interest Forms */
 .interest-forms-container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2x2 Grid */
   gap: 20px;
 }
 
@@ -76,7 +78,10 @@
   border-radius: 15px;
   backdrop-filter: blur(10px);
   border: 2px solid rgba(47, 37, 32, 0.2);
-  width: 100%;
+  
+  /* Flexbox helps keep buttons aligned at the bottom */
+  display: flex;
+  flex-direction: column;
 }
 
 .interest-form h3 {
@@ -91,6 +96,7 @@
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 15px;
+  flex-grow: 1; /* Pushes the button wrapper down */
 }
 
 .interest-form-link {
@@ -103,7 +109,8 @@
   font-size: 1.1rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  margin-top: 10px;
+  margin-top: auto; /* Ensures button sticks to the bottom */
+  text-align: center;
 }
 
 .interest-form-link:hover {
@@ -114,34 +121,38 @@
   text-decoration: none;
 }
 
-.interest-form-link:active {
-  transform: translateY(0);
+/* Animation for section highlighting */
+.highlight-section {
+  animation: sectionPulse 2s ease-out;
+}
+
+@keyframes sectionPulse {
+  0% {
+    background: rgba(255, 255, 255, 0.5); /* Brighter highlight */
+    border-color: #0C3A40; /* Brand teal border */
+    box-shadow: 0 0 20px rgba(12, 58, 64, 0.2);
+    transform: scale(1.02); /* Slight pop out */
+  }
+  30% {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.02);
+  }
+  100% {
+    background: rgba(255, 255, 255, 0.1); /* Back to original */
+    border-color: rgba(47, 37, 32, 0.2);
+    box-shadow: none;
+    transform: scale(1);
+  }
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  .interest-forms-container {
+    grid-template-columns: 1fr; /* Stack on smaller screens */
+  }
+
   .interest-page {
     padding: 20px 30px 25px;
-    max-width: 100%;
-  }
-  
-  .interest-content h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  .become-sponsor {
-    padding: 20px;
-  }
-  
-  .interest-form {
-    padding: 20px;
-  }
-  
-  .interest-form-link {
-    width: 100%;
-    text-align: center;
-    padding: 18px 30px;
   }
 }
 
@@ -150,35 +161,12 @@
     padding: 15px 20px 20px;
   }
   
-  .interest-content h2 {
+  .interest-content h1 {
     font-size: 1.8rem;
-  }
-  
-  .become-sponsor {
-    padding: 15px;
-    margin-bottom: 20px;
-  }
-  
-  .interest-forms-container {
-    gap: 20px;
-  }
-  
-  .interest-form {
-    padding: 15px;
   }
   
   .become-sponsor h3,
   .interest-form h3 {
     font-size: 1.3rem;
-  }
-  
-  .become-sponsor p,
-  .interest-form p {
-    font-size: 1rem;
-  }
-  
-  .interest-form-link {
-    padding: 15px 25px;
-    font-size: 1rem;
   }
 }
