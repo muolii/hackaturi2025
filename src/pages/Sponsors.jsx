@@ -26,6 +26,7 @@ const Sponsors = () => {
       { name: 'RiseUp', logo: '/images/sponsors/riseup.png' },
       { name: 'RI Hub', logo: '/images/sponsors/RIHub.png', large: true },
       { name: 'URI Library Innovation Lab', logo: '/images/sponsors/library_innovation_lab.png', large: true },
+      { name: 'URI College of Business', logo: '/images/sponsors/uri_CoB.png', large: true },
     ],
     silver: [
       { name: 'Brightstar', logo: '/images/sponsors/brightstar.png', large: true },
