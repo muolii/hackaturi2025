@@ -19,20 +19,20 @@ const Schedule = () => {
         { time: '8:00 AM', event: 'Check-In & Breakfast', location: 'Fascitelli Commons', type: 'hacking' },
         { time: '9:00 AM', event: 'Opening Ceremony & Mission Welcome', location: 'Common/Stage', type: 'ceremony' },
         { time: '10:00 AM', event: 'HACKING BEGINS!', location: 'All Hacking Areas', type: 'hacking', hero: true },
-        { time: '10:15 AM', event: 'Team Forming Activity', location: 'Main Area', type: 'activity' },
+        { time: '10:15 AM', event: 'Team Forming Activity', location: 'Fascitelli Commons', type: 'activity' },
         { time: '10:15 AM', event: 'Workshop Block A', location: 'Breakout Room 1', type: 'workshop' },
         { time: '10:15 AM', event: 'Workshop Block B', location: 'Breakout Room 2', type: 'workshop' },
         { time: '11:15 AM', event: 'Mentor Office Hours (Round 1)', location: 'Mentor Lounge', type: 'mentoring' },
-        { time: '12:30 PM', event: 'LUNCH', location: 'Common', type: 'food' },
-        { time: '1:30 PM', event: 'Workshop Block C', location: 'Common', type: 'workshop' },
-        { time: '1:30 PM', event: 'Workshop Block D', location: 'Common', type: 'workshop' },
+        { time: '12:30 PM', event: 'LUNCH', location: 'Fascitelli Commons', type: 'food' },
+        { time: '1:30 PM', event: 'Workshop Block C', location: 'Fascitelli Commons', type: 'workshop' },
+        { time: '1:30 PM', event: 'Workshop Block D', location: 'Fascitelli Commons', type: 'workshop' },
         { time: '2:00 PM', event: 'Cyber Activity #1', location: 'Cyber Room', type: 'activity' },
         { time: '2:30 PM', event: 'Mentor Office Hours (Round 2)', location: 'Mentor Lounge', type: 'mentoring' },
-        { time: '6:00 PM', event: 'DINNER', location: 'Common', type: 'food' },
+        { time: '6:00 PM', event: 'DINNER', location: 'Fascitelli Commons', type: 'food' },
         { time: '7:00 PM', event: 'Social Activity', location: 'Main Hall', type: 'activity' },
-        { time: '8:00 PM', event: 'Snacks', location: 'Common', type: 'food' },
+        { time: '8:00 PM', event: 'Snacks', location: 'Fascitelli Commons', type: 'food' },
         { time: '9:00 PM', event: 'Late Night Activity', location: 'Main Hall', type: 'activity' },
-        { time: '12:00 AM', event: 'Midnight Snack', location: 'Common', type: 'food' }
+        { time: '12:00 AM', event: 'Midnight Snack', location: 'Fascitelli Commons', type: 'food' }
       ]
     },
     day2: {
@@ -40,7 +40,7 @@ const Schedule = () => {
       events: [
         { time: '8:00 AM', event: 'BREAKFAST', location: 'Atrium', type: 'food' },
         { time: '10:00 AM', event: 'FINAL SUBMISSIONS DUE', location: 'Online Portal', type: 'hacking', hero: true },
-        { time: '10:15 AM', event: 'Pitching Workshop', location: 'Common Area', type: 'workshop' },
+        { time: '10:15 AM', event: 'Pitching Workshop', location: 'Fascitelli Commons', type: 'workshop' },
         { time: '11:15 AM', event: 'Pitch Practice & Feedback', location: 'Mentor Lounge', type: 'mentoring' },
         { time: '12:15 PM', event: 'LUNCH', location: 'Common/Stage', type: 'food' },
         { time: '1:30 PM', event: 'Project Expo & Judging Begins', location: 'Expo Area', type: 'hacking' },
@@ -170,26 +170,6 @@ const Schedule = () => {
       <img src={starsSvg} alt="" className="about-star star-5" />
 
       <h1>Event Schedule</h1>
-      
-      {/* Central Toggle Button */}
-      <div className="toggle-container">
-        <button className="schedule-toggle-btn" onClick={toggleSchedule}>
-          {isExpanded ? (
-            <>
-              <FaChevronUp /> Hide Full Schedule
-            </>
-          ) : (
-            <>
-              <FaCalendarAlt /> View Full Schedule
-            </>
-          )}
-        </button>
-      </div>
-
-      <div className="schedule-columns">
-        {renderCalendar(scheduleData.day1, 'day1')}
-        {renderCalendar(scheduleData.day2, 'day2')}
-      </div>
 
       <div className="schedule-legend">
         <h3>Event Types</h3>
@@ -208,6 +188,26 @@ const Schedule = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Central Toggle Button */}
+      <div className="toggle-container">
+        <button className="schedule-toggle-btn" onClick={toggleSchedule}>
+          {isExpanded ? (
+            <>
+              <FaChevronUp /> Hide Full Schedule
+            </>
+          ) : (
+            <>
+              <FaCalendarAlt /> View Full Schedule
+            </>
+          )}
+        </button>
+      </div>
+
+      <div className="schedule-columns">
+        {renderCalendar(scheduleData.day1, 'day1')}
+        {renderCalendar(scheduleData.day2, 'day2')}
       </div>
     </div>
   );

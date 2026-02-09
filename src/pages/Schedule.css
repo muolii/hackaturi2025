@@ -228,14 +228,16 @@
 
 /* --- Legend Section --- */
 .schedule-legend {
-  margin: 50px auto 0;
+  margin: 0 auto 40px; 
   max-width: 800px;
   background: rgba(246, 233, 200, 0.9);
   padding: 30px;
   border-radius: 25px;
   border: 3px solid #0C3A40;
   box-shadow: 0 8px 25px rgba(47, 37, 32, 0.1);
+  animation: slideDown 0.4s ease-out;
 }
+
 
 .schedule-legend h3 {
   color: #0C3A40;

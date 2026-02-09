@@ -16,6 +16,7 @@ const nav = [
     ]
   },
   { id: 'tracks', label: 'Tracks' },
+  { id: 'schedule', label: 'Schedule' },
   { id: 'faq', label: 'FAQ' },
   { id: 'sponsors', label: 'Sponsors' },
   { id: 'team', label: 'Team' },
