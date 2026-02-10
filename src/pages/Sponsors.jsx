@@ -43,11 +43,11 @@ const Sponsors = () => {
     ],
     partners: [
       { name: 'Monster', logo: '/images/sponsors/monster.png', large: true },
-      { name: 'The Move App', logo: '/images/sponsors/themoveapp.png', url: 'https://www.themoveapp.io/' },
+      { name: 'The Move App', logo: '/images/sponsors/themoveapp.png', url: 'https://www.themoveapp.io/', large: true },
       { name: 'URI AI Lab', logo: '/images/sponsors/uri_ailab.png', large: true },
       { name: 'CCRI', logo: '/images/sponsors/ccri.png' },
-      { name: 'Pure Buttons', logo: '/images/sponsors/Pure-Buttons-Logo.png', url: 'https://mlh.link/MLH-PureButtons-hackathons' },
-      { name: 'URI Institute for AI and Computational Research'}
+      { name: 'Pure Buttons', logo: '/images/sponsors/Pure-Buttons-Logo.png', url: 'https://mlh.link/MLH-PureButtons-hackathons', large: true },
+      { name: 'URI Institute for AI and Computational Research', logo: '/images/sponsors/uri_IACR.png', large: true },
     ]
   };
 

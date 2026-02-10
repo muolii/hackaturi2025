@@ -4,6 +4,9 @@ import './Header.css';
 const nav = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
+  { id: 'schedule', label: 'Schedule' },
+  { id: 'tracks', label: 'Tracks' },
+  { id: 'faq', label: 'FAQ' },
   { 
     id: 'interest', 
     label: 'Get Involved',
@@ -15,9 +18,6 @@ const nav = [
       { id: 'judge', label: 'Judge' }
     ]
   },
-  { id: 'tracks', label: 'Tracks' },
-  { id: 'schedule', label: 'Schedule' },
-  { id: 'faq', label: 'FAQ' },
   { id: 'sponsors', label: 'Sponsors' },
   { id: 'team', label: 'Team' },
   { id: 'connect', label: 'Connect' }

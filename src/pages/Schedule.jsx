@@ -6,7 +6,7 @@ import './Schedule.css';
 
 const Schedule = () => {
   // Single state to control visibility for BOTH days
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   const toggleSchedule = () => {
     setIsExpanded(!isExpanded);

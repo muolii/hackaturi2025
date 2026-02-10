@@ -45,16 +45,16 @@ const Home = () => {
             <CountdownTimer />
           </div>
 
-          <div className="hero-cta">
+          {/*<div className="hero-cta">
             <a 
               href="https://forms.gle/7q3LSHYr7gqQ2CaZ9" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="btn register"
             >
-            Register Now!
+            Registration closed! Stay tuned for updates on the next hackathon.
             </a>
-          </div>
+          </div>*/}
         </div>
       </div>
 

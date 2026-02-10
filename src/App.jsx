@@ -125,21 +125,21 @@ const App = () => {
         <section id="about" className="section">
           <About />
         </section>
-
-        <section id="interest" className="section">
-          <Interest />
+                
+        <section id="schedule" className="section">
+          <Schedule />
         </section>
         
         <section id="tracks" className="section">
           <Tracks />
         </section>
         
-        <section id="schedule" className="section">
-          <Schedule />
-        </section>
-        
         <section id="faq" className="section">
           <FAQ />
+        </section>
+
+        <section id="interest" className="section">
+          <Interest />
         </section>
 
         <section id="sponsors" className="section">
