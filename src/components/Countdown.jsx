@@ -3,7 +3,7 @@ import './Countdown.css';
 
 const Countdown = () => {
   // Update this to your real event time (use local timezone or append Z for UTC)
-  const EVENT_ISO = "2026-02-21T09:00:00"; 
+  const EVENT_ISO = "2026-02-21T08:00:00"; 
 
   const [remaining, setRemaining] = useState(msUntil(EVENT_ISO));
   const [finished, setFinished] = useState(false);

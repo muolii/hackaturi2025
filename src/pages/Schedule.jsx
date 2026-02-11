@@ -1,16 +1,27 @@
 // src/pages/Schedule.jsx
-import React, { useState } from 'react';
-import { FaMapMarkerAlt, FaClock, FaChevronDown, FaChevronUp, FaCalendarAlt } from 'react-icons/fa';
+import React, { useState, useMemo, useEffect } from 'react';
+import { 
+  FaMapMarkerAlt, 
+  FaClock, 
+  FaChevronDown, 
+  FaChevronUp, 
+  FaCalendarAlt, 
+  FaHourglassHalf 
+} from 'react-icons/fa';
 import starsSvg from '../assets/stars-bg.svg';
 import './Schedule.css';
 
 const Schedule = () => {
-  // Single state to control visibility for BOTH days
   const [isExpanded, setIsExpanded] = useState(true);
+  const [currentTime, setCurrentTime] = useState(new Date());
 
-  const toggleSchedule = () => {
-    setIsExpanded(!isExpanded);
-  };
+  // Update the internal clock every second
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   const scheduleData = {
     day1: {
@@ -50,6 +61,37 @@ const Schedule = () => {
     }
   };
 
+  const allEvents = useMemo(() => {
+    const events = [];
+    Object.keys(scheduleData).forEach(dayKey => {
+      const dayDate = scheduleData[dayKey].date;
+      scheduleData[dayKey].events.forEach(e => {
+        const eventDateTime = new Date(`${dayDate} ${e.time}`);
+        events.push({ ...e, dateTime: eventDateTime });
+      });
+    });
+    return events;
+  }, []);
+
+  const nextEvent = useMemo(() => {
+    return allEvents.find(e => e.dateTime > currentTime) || null;
+  }, [allEvents, currentTime]);
+
+  const getCountdown = (targetDate) => {
+    const diff = targetDate - currentTime;
+    if (diff <= 0) return "00:00:00";
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+    const parts = [];
+    if (days > 0) parts.push(`${days}d`);
+    parts.push(`${hours.toString().padStart(2, '0')}h`);
+    parts.push(`${mins.toString().padStart(2, '0')}m`);
+    parts.push(`${secs.toString().padStart(2, '0')}s`);
+    return parts.join(" ");
+  };
+
   const getEventTypeColor = (type) => {
     const colors = {
       hacking: '#27AE60',
@@ -62,8 +104,9 @@ const Schedule = () => {
     return colors[type] || '#0C3A40'; 
   };
 
+  const toggleSchedule = () => setIsExpanded(!isExpanded);
+
   const renderCalendar = (dayData, dayKey) => {
-    // Both columns check the same `isExpanded` variable
     const heroEvents = dayData.events.filter(e => e.hero === true);
     const displayRows = [];
     const startHour = 8;
@@ -80,21 +123,16 @@ const Schedule = () => {
 
     return (
       <div className={`calendar-column ${isExpanded ? 'is-expanded' : 'is-collapsed'}`}>
-        <div 
-          className="calendar-header clickable" 
-          onClick={toggleSchedule}
-        >
+        <div className="calendar-header clickable" onClick={toggleSchedule}>
           <h2>{dayData.date}</h2>
-          {/* Visual indicator that this is clickable */}
           <div className="expand-icon-mobile">
             {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
           </div>
         </div>
-
         {isExpanded && (
           <div className="calendar-grid">
             {displayRows.map((row, index) => {
-              const slotHeroEvents = heroEvents.filter(e => {
+               const slotHeroEvents = heroEvents.filter(e => {
                 const [hourPart, modifier] = e.time.split(' ');
                 let eventHour = parseInt(hourPart.split(':')[0]);
                 if (modifier === 'PM' && eventHour !== 12) eventHour += 12;
@@ -171,6 +209,38 @@ const Schedule = () => {
 
       <h1>Event Schedule</h1>
 
+      {nextEvent && (
+        <div className="next-event-section">
+          <div className="next-event-card">
+            <div className="next-event-label">
+              <span className="pulse-icon"></span> HAPPENING NEXT
+            </div>
+            <div className="next-event-content">
+              <div className="next-event-info">
+                <h4>{nextEvent.event}</h4>
+                <div className="next-event-details">
+                  <span><FaClock /> {nextEvent.time}</span>
+                  <span><FaMapMarkerAlt /> {nextEvent.location}</span>
+                </div>
+              </div>
+              {/* New Right Column Container */}
+              <div className="next-event-right-col">
+                <div 
+                  className="next-event-type" 
+                  style={{ backgroundColor: getEventTypeColor(nextEvent.type) }}
+                >
+                  {nextEvent.type}
+                </div>
+                <div className="countdown-display">
+                   <FaHourglassHalf className="hourglass" />
+                   <span>Starts in: <strong>{getCountdown(nextEvent.dateTime)}</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="schedule-legend">
         <h3>Event Types</h3>
         <div className="legend-items">
@@ -188,21 +258,6 @@ const Schedule = () => {
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Central Toggle Button */}
-      <div className="toggle-container">
-        <button className="schedule-toggle-btn" onClick={toggleSchedule}>
-          {isExpanded ? (
-            <>
-              <FaChevronUp /> Hide Full Schedule
-            </>
-          ) : (
-            <>
-              <FaCalendarAlt /> View Full Schedule
-            </>
-          )}
-        </button>
       </div>
 
       <div className="schedule-columns">
