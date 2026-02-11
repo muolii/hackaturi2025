@@ -36,6 +36,7 @@ const Sponsors = () => {
     bronze: [
       { name: 'MergeFund', logo: '/images/sponsors/mergefund-transparent.png' },
       { name: 'Factset', logo: '/images/sponsors/factset.png', large: true },
+      { name: 'Microway', logo: '/images/sponsors/microway.png', large: true, url: 'https://www.microway.com/' },
       { name: 'URI College of Engineering', logo: '/images/sponsors/uri_CoE.png', large: true },
       { name: 'URI Digital Forensics and Cyber Security Center', logo: '/images/sponsors/uri_CSF.png', large: true },
       { name: 'URI Cyber Club', logo: '/images/sponsors/cyberclub.png', large: true },
