@@ -4,6 +4,7 @@ import { FaHeartbeat, FaBrain, FaAnchor, FaPalette, FaUsers, FaShieldAlt } from 
 import { GiWaterSplash } from "react-icons/gi";
 import starsSvg from '../assets/stars-bg.svg';
 import yconicLogo from '/images/sponsors/yconic-transparent.png'; // Imported Yconic logo
+import '../styles/shared.css';
 import './Tracks.css';
 
 const Tracks = () => {

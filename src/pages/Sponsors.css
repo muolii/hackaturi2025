@@ -1,34 +1,44 @@
-/* Pirate Sponsors Page Styles */
+/* ==========================================================================
+   Sponsors.css — Sponsors Page
+   Depends on: shared.css (twinkle animation, .star-1..5 delays, font vars)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. PAGE WRAPPER
+   ========================================================================== */
+
 .pirate-sponsors {
   background: #F6E9C8;
   position: relative;
   overflow: hidden;
-  font-family: "Poppins", "Nunito", "Quicksand", sans-serif;
+  font-family: var(--font-main);
   color: #2f2520;
-  padding: 40px 20px 60px 20px;
+  padding: 40px 20px 60px;
 }
 
-/* --- Animated Stars (Unchanged) --- */
+
+/* ==========================================================================
+   2. DECORATIVE STARS
+   Positions unique to the Sponsors page; animation + delays live in shared.css
+   ========================================================================== */
+
 .sponsor-star {
-  position: absolute;
   width: 35px;
   height: 35px;
-  z-index: 2;
-  pointer-events: none;
-  opacity: 0.6;
-  animation: twinkle 3s ease-in-out infinite;
-}
-.star-1 { top: 15%; left: 10%; }
-.star-2 { top: 25%; right: 15%; animation-delay: 0.6s; }
-.star-3 { top: 60%; left: 8%; animation-delay: 1.2s; }
-.star-4 { top: 70%; right: 12%; animation-delay: 1.8s; }
-.star-5 { top: 40%; left: 85%; animation-delay: 2.4s; }
-@keyframes twinkle {
-  0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
-  50% { opacity: 0.8; transform: scale(1.2) rotate(180deg); }
 }
 
-/* --- Header --- */
+.sponsor-star.star-1 { top: 15%; left:  10%; }
+.sponsor-star.star-2 { top: 25%; right: 15%; }
+.sponsor-star.star-3 { top: 60%; left:   8%; }
+.sponsor-star.star-4 { top: 70%; right: 12%; }
+.sponsor-star.star-5 { top: 40%; left:  85%; }
+
+
+/* ==========================================================================
+   3. LAYOUT & TITLE
+   ========================================================================== */
+
 .sponsors-content {
   position: relative;
   z-index: 3;
@@ -41,22 +51,22 @@
   font-size: 3.5rem;
   font-weight: 800;
   margin-bottom: 20px;
-  /* Add a little drop shadow for contrast */
-  text-shadow: 2px 2px 0px rgba(255,255,255,0.4);
+  text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.4);
 }
 
-/* --- The Scroll Container (Desktop) --- */
+
+/* ==========================================================================
+   4. SCROLL CONTAINER (desktop parchment scroll)
+   ========================================================================== */
+
 .scroll-container {
   position: relative;
   width: 100%;
   max-width: 900px;
-  margin: 0 auto;
-  /* This negative margin pulls the scroll up closer to the "Our Sponsors" text */
-  margin-top: -100px; 
-  margin-bottom: -150px;
+  margin: -100px auto -150px; /* pulls scroll up closer to title */
 }
 
-/* The SVG Background */
+/* SVG scroll background */
 .sponsor-scroll-bg {
   width: 100%;
   height: auto;
@@ -64,45 +74,38 @@
   filter: drop-shadow(0 10px 25px rgba(47, 37, 32, 0.4));
 }
 
-/* The Content INSIDE the Scroll */
+/* Scrollable area overlaid on the SVG scroll */
 .sponsors-inside-scroll {
   position: absolute;
-  
-  /* Centering Logic */
-  top: 50%; /* Centered vertically */
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
-  /* CRITICAL: Reduced height to prevent hitting the top/bottom rolls */
-  height: 55%; 
-  width: 65%; 
-  
-  /* Clean up padding so it doesn't push content weirdly */
-  padding: 0 20px 20px 20px; 
-  
-  overflow-y: auto; 
+  height: 55%; /* constrained to avoid hitting the scroll's top/bottom rolls */
+  width: 65%;
+  padding: 0 20px 20px;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  /* Custom Scrollbar */
   scrollbar-width: thin;
   scrollbar-color: #8B4513 transparent;
 }
 
-.sponsors-inside-scroll::-webkit-scrollbar {
-  width: 6px;
-}
+.sponsors-inside-scroll::-webkit-scrollbar       { width: 6px; }
 .sponsors-inside-scroll::-webkit-scrollbar-thumb {
   background-color: #8B4513;
   border-radius: 10px;
 }
 
-/* --- Sections & Tiers --- */
+
+/* ==========================================================================
+   5. TIER SECTIONS
+   ========================================================================== */
+
 .tier-section {
   width: 100%;
-  /* Reduced margin to bring sections closer together */
-  margin-bottom: 25px; 
+  margin-bottom: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -112,22 +115,25 @@
   font-size: 1.5rem;
   font-weight: 700;
   text-transform: uppercase;
-  border-bottom: 2px solid rgba(47, 37, 32, 0.2);
-  /* Tightened spacing around titles */
-  margin-bottom: 15px; 
-  padding-bottom: 5px;
   color: #2f2520;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid rgba(47, 37, 32, 0.2);
 }
 
+/* Lead/top tier gets a slightly larger, bolder divider */
 .lead-title {
   font-size: 1.8rem;
-  border-bottom: 3px solid #2f2520;
   margin-bottom: 20px;
+  border-bottom: 3px solid #2f2520;
 }
 
-/* --- Layouts --- */
 
-/* Lead Sponsor */
+/* ==========================================================================
+   6. SPONSOR LOGO LAYOUTS
+   ========================================================================== */
+
+/* Lead sponsor — centered, no column constraint */
 .lead-sponsor-container {
   display: flex;
   justify-content: center;
@@ -141,11 +147,11 @@
   max-width: none;
 }
 
-/* Grid: Strictly 3 columns */
+/* Gold / Silver / Bronze — strict 3-column grid */
 .grid-3-col {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px; 
+  gap: 15px;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -164,64 +170,31 @@
   object-fit: contain;
 }
 
-/* Adjusted logo sizes to fit better */
-.img-lead {
-  max-width: 280px;
-  max-height: 120px;
-  width: 100%;
-  height: auto;
-}
-
-.img-lead-large {
-  max-width: 350px;
-  max-height: 150px;
-  width: 100%;
-  height: auto;
-}
-
-.img-standard {
-  max-width: 130px;
-  max-height: 75px;
-  width: 100%;
-  height: auto;
-}
-
-.img-standard-large {
-  max-width: 180px;
-  max-height: 100px;
-  width: 100%;
-  height: auto;
-}
-
-.img-partner {
-  max-width: 110px;
-  max-height: 65px;
-  opacity: 0.9;
-  width: 100%;
-  height: auto;
-}
-
-.img-partner-large {
-  max-width: 180px;
-  max-height: 100px;
-  opacity: 1;
-  width: 100%;
-  height: auto;
-}
+/* Size variants for logos inside the scroll */
+.img-lead        { max-width: 280px;  max-height: 120px; width: 100%; height: auto; }
+.img-lead-large  { max-width: 350px;  max-height: 150px; width: 100%; height: auto; }
+.img-standard    { max-width: 130px;  max-height:  75px; width: 100%; height: auto; }
+.img-standard-large { max-width: 180px; max-height: 100px; width: 100%; height: auto; }
+.img-partner     { max-width: 110px;  max-height:  65px; opacity: 0.9; width: 100%; height: auto; }
+.img-partner-large  { max-width: 180px; max-height: 100px; opacity: 1;   width: 100%; height: auto; }
 
 .sponsor-fallback {
   font-weight: bold;
   font-size: 0.9rem;
 }
 
-/* --- Donors --- */
+
+/* ==========================================================================
+   7. DONORS SECTION (inside scroll)
+   ========================================================================== */
+
 .donors-section-inside {
   margin-top: 15px;
-  text-align: center;
-  border-top: 1px dashed rgba(47, 37, 32, 0.3);
-  padding-top: 15px;
-  width: 100%;
   margin-bottom: 10px;
+  padding-top: 15px;
+  border-top: 1px dashed rgba(47, 37, 32, 0.3);
+  text-align: center;
+  width: 100%;
 }
 
 .donors-title-inside {
@@ -240,17 +213,23 @@
   font-size: 0.9rem;
 }
 
-/* --- Mobile Styles --- */
+
+/* ==========================================================================
+   8. RESPONSIVE — MOBILE LAYOUT
+   (Replaces the scroll with a simple stacked list)
+   ========================================================================== */
+
 @media (max-width: 768px) {
+  /* Hide desktop scroll on mobile */
   .scroll-container { display: none; }
-  
+
   .mobile-sponsors-container {
     margin-top: 30px;
     display: flex;
     flex-direction: column;
     gap: 40px;
   }
-  
+
   .mobile-tier-block {
     display: flex;
     flex-direction: column;
@@ -258,58 +237,19 @@
     gap: 15px;
     text-align: center;
   }
-  
-  /* Lead Sponsor Mobile Sizes */
-  .mobile-img-lead { 
-    max-width: 250px; 
-    max-height: 120px; 
-    width: 100%;
-    height: auto;
-  }
-  
-  .mobile-img-lead-large {
-    max-width: 280px;
-    max-height: 140px;
-    width: 100%;
-    height: auto;
-  }
-  
-  /* Standard (Gold/Silver/Bronze) Mobile Sizes */
-  .mobile-img-std { 
-    max-width: 160px; 
-    max-height: 90px; 
-    margin-bottom: 15px;
-    width: 100%;
-    height: auto;
-  }
-  
-  .mobile-img-std-large {
-    max-width: 200px;
-    max-height: 110px;
-    margin-bottom: 15px;
-    width: 100%;
-    height: auto;
-  }
-  
-  /* Partner Mobile Sizes */
-  .mobile-img-partner {
-    max-width: 140px;
-    max-height: 80px;
-    margin-bottom: 15px;
-    width: 100%;
-    height: auto;
-    opacity: 0.9;
-  }
-  
-  .mobile-img-partner-large {
-    max-width: 180px;
-    max-height: 100px;
-    margin-bottom: 15px;
-    width: 100%;
-    height: auto;
-    opacity: 1;
-  }
-  
+
+  /* Lead sponsor mobile sizes */
+  .mobile-img-lead       { max-width: 250px; max-height: 120px; width: 100%; height: auto; }
+  .mobile-img-lead-large { max-width: 280px; max-height: 140px; width: 100%; height: auto; }
+
+  /* Standard tier (Gold/Silver/Bronze) mobile sizes */
+  .mobile-img-std        { max-width: 160px; max-height:  90px; margin-bottom: 15px; width: 100%; height: auto; }
+  .mobile-img-std-large  { max-width: 200px; max-height: 110px; margin-bottom: 15px; width: 100%; height: auto; }
+
+  /* Partner tier mobile sizes */
+  .mobile-img-partner        { max-width: 140px; max-height:  80px; margin-bottom: 15px; width: 100%; height: auto; opacity: 0.9; }
+  .mobile-img-partner-large  { max-width: 180px; max-height: 100px; margin-bottom: 15px; width: 100%; height: auto; opacity: 1;   }
+
   .mobile-donors {
     text-align: center;
     font-weight: 600;

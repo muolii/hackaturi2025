@@ -1,4 +1,13 @@
-/* Connect Page Styles */
+/* ==========================================================================
+   Connect.css — Connect / Social Links Page
+   Depends on: shared.css (.btn-primary, .panel-card, font vars)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. PAGE WRAPPER
+   ========================================================================== */
+
 .connect-page {
   position: relative;
   min-height: auto;
@@ -6,10 +15,14 @@
   padding: 20px 20px 60px;
   background: #F6E9C8;
   overflow: hidden;
-  font-family: "Poppins", "Nunito", "Quicksand", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-family: var(--font-main);
 }
 
-/* Main content */
+
+/* ==========================================================================
+   2. LAYOUT
+   ========================================================================== */
+
 .connect-content {
   position: relative;
   z-index: 2;
@@ -17,29 +30,36 @@
   margin: 0 auto;
 }
 
+
+/* ==========================================================================
+   3. HEADER
+   ========================================================================== */
+
 .connect-title {
   text-align: center;
   font-size: 3rem;
   font-weight: 800;
   color: #2f2520;
   margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-  font-family: 'Poppins', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: var(--font-main);
 }
 
 .connect-intro {
   text-align: center;
   font-size: 1.3rem;
-  margin-bottom: 50px;
   color: #2f2520;
   font-weight: 500;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-main);
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 50px;
 }
 
-/* Connect section */
+
+/* ==========================================================================
+   4. CONNECT PANEL
+   ========================================================================== */
+
 .connect-section {
   background: rgba(246, 233, 200, 0.9);
   border: 3px solid #0C3A40;
@@ -57,7 +77,7 @@
   font-size: 1.6rem;
   font-weight: 700;
   margin-bottom: 15px;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-main);
 }
 
 .connect-section p {
@@ -66,8 +86,13 @@
   line-height: 1.6;
   margin-bottom: 24px;
   font-weight: 500;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-main);
 }
+
+
+/* ==========================================================================
+   5. SOCIAL LINK BUTTONS
+   ========================================================================== */
 
 .social-links {
   display: flex;
@@ -79,6 +104,7 @@
 .social-link {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   padding: 14px 24px;
   background: linear-gradient(135deg, #0C3A40 0%, #0B4F4F 100%);
@@ -86,11 +112,10 @@
   border-radius: 8px;
   color: white;
   text-decoration: none;
-  transition: all 0.3s ease;
   font-weight: 600;
   font-size: 1.1rem;
   min-width: 140px;
-  justify-content: center;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .social-link:hover {
@@ -116,17 +141,21 @@
   font-size: 1.1rem;
 }
 
-/* Responsive */
+
+/* ==========================================================================
+   6. RESPONSIVE
+   ========================================================================== */
+
 @media (max-width: 768px) {
   .connect-page {
     padding: 30px 15px 20px;
   }
-  
+
   .connect-title {
     font-size: 2.2rem;
     margin-bottom: 15px;
   }
-  
+
   .connect-intro {
     font-size: 1.1rem;
     margin-bottom: 35px;
@@ -137,17 +166,10 @@
     margin-top: 30px;
   }
 
-  .connect-section h3 {
-    font-size: 1.4rem;
-  }
+  .connect-section h3 { font-size: 1.4rem; }
+  .connect-section p  { font-size: 1rem;   }
 
-  .connect-section p {
-    font-size: 1rem;
-  }
-
-  .social-links {
-    gap: 15px;
-  }
+  .social-links { gap: 15px; }
 
   .social-link {
     padding: 12px 20px;
@@ -159,12 +181,12 @@
   .connect-page {
     padding: 20px 10px 15px;
   }
-  
+
   .connect-title {
     font-size: 1.8rem;
     margin-bottom: 10px;
   }
-  
+
   .connect-intro {
     font-size: 1rem;
     margin-bottom: 25px;
@@ -174,13 +196,8 @@
     padding: 20px;
   }
 
-  .connect-section h3 {
-    font-size: 1.2rem;
-  }
-
-  .connect-section p {
-    font-size: 0.9rem;
-  }
+  .connect-section h3 { font-size: 1.2rem; }
+  .connect-section p  { font-size: 0.9rem; }
 
   .social-links {
     gap: 12px;
@@ -195,7 +212,5 @@
     font-size: 1rem;
   }
 
-  .social-name {
-    font-size: 1rem;
-  }
+  .social-name { font-size: 1rem; }
 }

@@ -1,6 +1,7 @@
 // src/pages/About.jsx
 import React from 'react';
 import starsSvg from '../assets/stars-bg.svg';
+import '../styles/shared.css';
 import './About.css';
 
 const About = () => {

@@ -9,6 +9,7 @@ import {
   FaHourglassHalf 
 } from 'react-icons/fa';
 import starsSvg from '../assets/stars-bg.svg';
+import '../styles/shared.css';
 import './Schedule.css';
 
 const Schedule = () => {

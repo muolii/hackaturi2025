@@ -1,4 +1,13 @@
-/* Header styling matching screenshot: teal translucent bar with rounded nav pills */
+/* ==========================================================================
+   Header.css — Fixed Navigation Header
+   Depends on: shared.css (--teal-nav, --teal-dark, --parchment, --gold-light,
+               --font-main)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. HEADER SHELL
+   ========================================================================== */
 
 .site-header {
   position: fixed;
@@ -7,12 +16,13 @@
   right: 0;
   z-index: 60;
   padding: 10px 22px;
-  background: rgba(10, 78, 78);
+  background: rgba(10, 78, 78); /* var(--teal-nav) */
+  border-top: 10px solid var(--teal-nav);
   transition: transform 280ms ease, opacity 180ms ease, visibility 280ms ease;
-  border-top: 10px solid #0a4e4e;
-} 
-.site-header.hidden { 
-  visibility: hidden; 
+}
+
+.site-header.hidden {
+  visibility: hidden;
   opacity: 0;
   transform: translateY(-100%);
 }
@@ -25,24 +35,46 @@
   gap: 18px;
 }
 
-.main-nav { display:flex; gap: 8px; align-items:center; }
+
+/* ==========================================================================
+   2. DESKTOP NAV BUTTONS
+   ========================================================================== */
+
+.main-nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
 
 .nav-btn {
   background: transparent;
   border: none;
-  color: #F9E9C0;
+  color: var(--parchment);
   padding: 12px 20px;
   border-radius: 25px;
   cursor: pointer;
   font-family: inherit;
   font-weight: 700;
   font-size: 1.4rem;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
-.nav-btn:hover { transform: translateY(-3px); background: rgba(249,233,192,0.08); }
-.nav-btn.active { background: #CBB979; color: #0a4e4e; box-shadow: 0 6px 18px rgba(203,185,121,0.18); }
 
-/* Dropdown Menu Styles */
+.nav-btn:hover {
+  transform: translateY(-3px);
+  background: rgba(249, 233, 192, 0.08);
+}
+
+.nav-btn.active {
+  background: var(--gold-light);
+  color: var(--teal-nav);
+  box-shadow: 0 6px 18px rgba(203, 185, 121, 0.18);
+}
+
+
+/* ==========================================================================
+   3. DESKTOP DROPDOWN MENU
+   ========================================================================== */
+
 .nav-item.dropdown {
   position: relative;
 }
@@ -66,56 +98,25 @@
 
 .dropdown-item {
   padding: 10px 20px;
-  color: #F9E9C0;
+  color: var(--parchment);
   background: transparent;
   border: none;
   text-align: left;
   font-family: inherit;
   font-size: 1.2rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .dropdown-item:hover {
   background: rgba(249, 233, 192, 0.1);
 }
 
-/* Mobile Dropdown Menu Styles */
-.mobile-dropdown {
-  display: flex;
-  flex-direction: column;
-}
 
-.mobile-dropdown-menu {
-  display: none;
-  flex-direction: column;
-  padding: 8px 0;
-  background: rgba(10, 78, 78, 0.98);
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+/* ==========================================================================
+   4. MOBILE HAMBURGER TOGGLE
+   ========================================================================== */
 
-.mobile-dropdown .mobile-dropdown-menu {
-  display: flex;
-}
-
-.mobile-dropdown-item {
-  padding: 10px 20px;
-  color: #F9E9C0;
-  background: transparent;
-  border: none;
-  text-align: left;
-  font-family: inherit;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.mobile-dropdown-item:hover {
-  background: rgba(249, 233, 192, 0.1);
-}
-
-/* Mobile Menu Styles */
 .mobile-menu-toggle {
   background: transparent;
   border: none;
@@ -138,23 +139,21 @@
 .hamburger span {
   width: 100%;
   height: 3px;
-  background: #F9E9C0;
+  background: var(--parchment);
   border-radius: 2px;
   transition: all 0.3s ease;
   transform-origin: center;
 }
 
-.hamburger.open span:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
-}
+/* Hamburger → ✕ animation */
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
 
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-}
 
-.hamburger.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
-}
+/* ==========================================================================
+   5. MOBILE NAV PANEL
+   ========================================================================== */
 
 .mobile-nav {
   position: absolute;
@@ -163,12 +162,13 @@
   right: 0;
   background: rgba(10, 78, 78, 0.98);
   backdrop-filter: blur(10px);
-  border-top: 2px solid #0a4e4e;
+  border-top: 2px solid var(--teal-nav);
+  z-index: 50;
+  /* Hidden state */
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 50;
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .mobile-nav.open {
@@ -181,52 +181,73 @@
   width: 100%;
   background: transparent;
   border: none;
-  color: #F9E9C0;
+  border-bottom: 1px solid rgba(249, 233, 192, 0.1);
+  color: var(--parchment);
   padding: 15px 20px;
   cursor: pointer;
   font-family: inherit;
   font-weight: 700;
   font-size: 1.1rem;
-  transition: all 0.3s ease;
   text-align: left;
-  border-bottom: 1px solid rgba(249, 233, 192, 0.1);
+  transition: background 0.3s ease;
 }
 
-.mobile-nav-btn:hover {
+.mobile-nav-btn:hover  { background: rgba(249, 233, 192, 0.1); }
+.mobile-nav-btn.active { background: var(--gold-light); color: var(--teal-nav); }
+.mobile-nav-btn:last-child { border-bottom: none; }
+
+
+/* ==========================================================================
+   6. MOBILE DROPDOWN MENU
+   ========================================================================== */
+
+.mobile-dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  background: rgba(10, 78, 78, 0.98);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-dropdown-item {
+  padding: 10px 20px;
+  color: var(--parchment);
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-family: inherit;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.mobile-dropdown-item:hover {
   background: rgba(249, 233, 192, 0.1);
 }
 
-.mobile-nav-btn.active {
-  background: #CBB979;
-  color: #0a4e4e;
-}
 
-.mobile-nav-btn:last-child {
-  border-bottom: none;
-}
+/* ==========================================================================
+   7. RESPONSIVE — SHOW/HIDE DESKTOP VS MOBILE
+   ========================================================================== */
 
 @media (max-width: 768px) {
-  .header-inner { 
-    padding: 0 8px; 
-    gap: 10px; 
+  .header-inner {
+    padding: 0 8px;
+    gap: 10px;
     justify-content: space-between;
   }
-  
-  .main-nav {
-    display: none;
-  }
-  
-  .mobile-menu-toggle {
-    display: flex;
-  }
+
+  .main-nav           { display: none; }
+  .mobile-menu-toggle { display: flex; }
 }
 
 @media (min-width: 769px) {
-  .mobile-menu-toggle {
-    display: none;
-  }
-  
-  .mobile-nav {
-    display: none;
-  }
+  .mobile-menu-toggle { display: none; }
+  .mobile-nav         { display: none; }
 }

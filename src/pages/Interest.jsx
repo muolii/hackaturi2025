@@ -1,5 +1,6 @@
 // src/pages/Interest.jsx
 import React from 'react';
+import '../styles/shared.css';
 import './Interest.css';
 
 const Interest = () => {

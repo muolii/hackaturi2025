@@ -1,66 +1,44 @@
-/* Pirate Team Page Styles */
+/* ==========================================================================
+   Team.css — Team Members Page
+   Depends on: shared.css (twinkle animation, .star-1..5 delays, font vars)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. PAGE WRAPPER
+   ========================================================================== */
+
 .pirate-team {
   background: #F6E9C8;
   position: relative;
   overflow: hidden;
-  font-family: "Poppins", "Nunito", "Quicksand", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-family: var(--font-main);
   color: #2f2520;
-  padding: 40px 20px 60px 20px;
+  padding: 40px 20px 60px;
 }
 
-/* Animated stars */
+
+/* ==========================================================================
+   2. DECORATIVE STARS
+   Positions unique to the Team page; animation + delays live in shared.css
+   ========================================================================== */
+
 .team-star {
-  position: absolute;
   width: 35px;
   height: 35px;
-  z-index: 2;
-  pointer-events: none;
-  opacity: 0.6;
-  animation: twinkle 3s ease-in-out infinite;
 }
 
-.star-1 {
-  top: 15%;
-  left: 10%;
-  animation-delay: 0s;
-}
+.team-star.star-1 { top: 15%; left:  10%; }
+.team-star.star-2 { top: 25%; right: 15%; }
+.team-star.star-3 { top: 60%; left:   8%; }
+.team-star.star-4 { top: 70%; right: 12%; }
+.team-star.star-5 { top: 40%; left:  85%; }
 
-.star-2 {
-  top: 25%;
-  right: 15%;
-  animation-delay: 0.6s;
-}
 
-.star-3 {
-  top: 60%;
-  left: 8%;
-  animation-delay: 1.2s;
-}
+/* ==========================================================================
+   3. LAYOUT & TITLE
+   ========================================================================== */
 
-.star-4 {
-  top: 70%;
-  right: 12%;
-  animation-delay: 1.8s;
-}
-
-.star-5 {
-  top: 40%;
-  left: 85%;
-  animation-delay: 2.4s;
-}
-
-@keyframes twinkle {
-  0%, 100% { 
-    opacity: 0.3; 
-    transform: scale(1) rotate(0deg); 
-  }
-  50% { 
-    opacity: 0.8; 
-    transform: scale(1.2) rotate(180deg); 
-  }
-}
-
-/* Main content */
 .team-content {
   position: relative;
   z-index: 3;
@@ -77,13 +55,17 @@
   text-shadow: 2px 2px 4px rgba(47, 37, 32, 0.1);
 }
 
-/* Team tabs */
+
+/* ==========================================================================
+   4. TEAM TABS (department filter)
+   ========================================================================== */
+
 .team-tabs {
   display: flex;
   justify-content: center;
-  margin: 30px 0;
-  gap: 15px;
   flex-wrap: wrap;
+  gap: 15px;
+  margin: 30px 0;
 }
 
 .team-tab {
@@ -95,13 +77,13 @@
   cursor: pointer;
   font-size: 1em;
   font-weight: 500;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  min-width: 140px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  min-width: 140px;
   justify-content: center;
+  gap: 8px;
+  backdrop-filter: blur(10px);
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
 .team-tab:hover {
@@ -117,17 +99,14 @@
   transform: translateY(-2px);
 }
 
-.tab-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
-}
+.tab-icon  { width: 24px; height: 24px; border-radius: 4px; }
+.tab-label { font-size: 0.9em; }
 
-.tab-label {
-  font-size: 0.9em;
-}
 
-/* Team section */
+/* ==========================================================================
+   5. TEAM SECTION & HEADER
+   ========================================================================== */
+
 .team-section {
   margin-top: 30px;
   margin-bottom: 40px;
@@ -141,11 +120,7 @@
   margin-bottom: 40px;
 }
 
-.team-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 8px;
-}
+.team-icon { width: 60px; height: 60px; border-radius: 8px; }
 
 .team-header h2 {
   color: #2f2520;
@@ -153,7 +128,11 @@
   margin: 0;
 }
 
-/* Team grid */
+
+/* ==========================================================================
+   6. MEMBER CARD GRID
+   ========================================================================== */
+
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -166,12 +145,11 @@
   border-radius: 15px;
   backdrop-filter: blur(10px);
   border: 2px solid rgba(47, 37, 32, 0.2);
-  transition: all 0.3s ease;
-  text-align: center;
-  perspective: 1000px;
   height: 400px;
+  perspective: 1000px;
   isolation: isolate;
   will-change: transform;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
 }
 
 .team-member-card:hover {
@@ -179,6 +157,11 @@
   background: rgba(255, 255, 255, 0.15);
   border-color: #2f2520;
 }
+
+
+/* ==========================================================================
+   7. FLIP CARD MECHANICS
+   ========================================================================== */
 
 .card-inner {
   position: relative;
@@ -189,14 +172,15 @@
   transform-style: preserve-3d;
 }
 
-/* Chrome/Chromium-based browsers - use 3D transform */
+/* Chrome/Chromium: 3D flip */
 @supports (backface-visibility: hidden) {
   .team-member-card.flipped .card-inner {
     transform: rotateY(180deg);
   }
 }
 
-.card-front, .card-back {
+.card-front,
+.card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -207,65 +191,40 @@
   border-radius: 15px;
 }
 
-/* Chrome/Chromium-based browsers - use 3D transform with backface-visibility */
+/* Chrome/Chromium: backface-visibility flip */
 @supports (backface-visibility: hidden) {
-  .card-front, .card-back {
+  .card-front,
+  .card-back {
     backface-visibility: hidden;
     transition: opacity 0.3s ease;
   }
-  
-  .card-front {
-    opacity: 1;
-    z-index: 2;
-  }
-  
-  .card-back {
-    opacity: 0;
-    z-index: 1;
-    background: rgba(47, 37, 32, 0.1);
-    transform: rotateY(180deg);
-  }
-  
-  .team-member-card.flipped .card-front {
-    opacity: 0;
-    z-index: 1;
-  }
-  
-  .team-member-card.flipped .card-back {
-    opacity: 1;
-    z-index: 2;
-  }
+
+  .card-front { opacity: 1; z-index: 2; }
+  .card-back  { opacity: 0; z-index: 1; background: rgba(47, 37, 32, 0.1); transform: rotateY(180deg); }
+
+  .team-member-card.flipped .card-front { opacity: 0; z-index: 1; }
+  .team-member-card.flipped .card-back  { opacity: 1; z-index: 2; }
 }
 
-/* WebKit/Firefox - use opacity-based flip */
+/* WebKit / Firefox fallback: opacity only */
 @supports not (backface-visibility: hidden) {
-  .card-front, .card-back {
+  .card-front,
+  .card-back {
     transition: opacity 0.3s ease;
   }
-  
-  .card-front {
-    opacity: 1;
-    z-index: 2;
-  }
-  
-  .card-back {
-    opacity: 0;
-    z-index: 1;
-    background: rgba(47, 37, 32, 0.1);
-  }
-  
-  .team-member-card.flipped .card-front {
-    opacity: 0;
-    z-index: 1;
-  }
-  
-  .team-member-card.flipped .card-back {
-    opacity: 1;
-    z-index: 2;
-  }
+
+  .card-front { opacity: 1; z-index: 2; }
+  .card-back  { opacity: 0; z-index: 1; background: rgba(47, 37, 32, 0.1); }
+
+  .team-member-card.flipped .card-front { opacity: 0; z-index: 1; }
+  .team-member-card.flipped .card-back  { opacity: 1; z-index: 2; }
 }
 
-/* Porthole frame and avatar */
+
+/* ==========================================================================
+   8. CARD FRONT — AVATAR & INFO
+   ========================================================================== */
+
 .member-avatar-container {
   position: relative;
   display: inline-block;
@@ -308,6 +267,7 @@
   font-weight: 500;
 }
 
+/* Social buttons row */
 .social-buttons {
   display: flex;
   justify-content: center;
@@ -325,43 +285,28 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.2s;
   font-size: 18px;
   box-shadow: none;
   padding: 12px;
   color: #2f2520;
+  transition: background 0.2s ease;
 }
 
-.social-btn svg {
-  color: #2f2520 !important;
-  fill: #2f2520 !important;
-}
-
-.social-btn:hover {
-  background: rgba(47, 37, 32, 0.15);
-  border: none;
-  border-radius: 50%;
-  box-shadow: none;
-  padding: 12px;
-  color: #2f2520;
-}
-
-.social-btn:hover svg {
-  color: #2f2520 !important;
-  fill: #2f2520 !important;
-}
-
-.linkedin-btn:hover {
-  background: rgba(47, 37, 32, 0.15);
-  border-color: rgba(47, 37, 32, 0.2);
-  color: #2f2520;
-}
-
+.social-btn svg,
+.social-btn:hover svg,
 .linkedin-btn:hover svg {
   color: #2f2520 !important;
-  fill: #2f2520 !important;
+  fill:  #2f2520 !important;
 }
 
+.social-btn:hover,
+.linkedin-btn:hover {
+  background: rgba(47, 37, 32, 0.15);
+  border-radius: 50%;
+  color: #2f2520;
+}
+
+/* Flip arrow (bottom-right of card) */
 .flip-arrow {
   position: absolute;
   right: 16px;
@@ -379,24 +324,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.2s ease;
 }
 
 .flip-arrow svg {
   color: #2f2520 !important;
-  fill: #2f2520 !important;
+  fill:  #2f2520 !important;
 }
 
 .flip-arrow:hover {
   background: rgba(47, 37, 32, 0.15);
-  border: none;
-  border-radius: 50%;
-  box-shadow: none;
 }
 
 .flip-arrow:hover svg {
   color: #2f2520 !important;
-  fill: #2f2520 !important;
+  fill:  #2f2520 !important;
 }
+
+
+/* ==========================================================================
+   9. CARD BACK — DETAIL INFO
+   ========================================================================== */
 
 .member-info {
   text-align: left;
@@ -439,6 +387,11 @@
   margin-top: 10px;
 }
 
+
+/* ==========================================================================
+   10. JOIN THE TEAM PANEL (bottom of page)
+   ========================================================================== */
+
 .join-team {
   background: rgba(255, 255, 255, 0.1);
   padding: 30px;
@@ -453,56 +406,40 @@
   margin-bottom: 15px;
 }
 
-/* Responsive design */
+
+/* ==========================================================================
+   11. RESPONSIVE
+   ========================================================================== */
+
 @media (max-width: 768px) {
   .pirate-team {
-    padding: 30px 15px 50px 15px;
+    padding: 30px 15px 50px;
   }
-  
-  .team-title {
-    font-size: 2.5rem;
-  }
-  
+
+  .team-title { font-size: 2.5rem; }
+
   .team-grid {
     grid-template-columns: 1fr;
   }
-  
-  .team-star {
-    display: none;
-  }
-  
-  .porthole-frame {
-    width: 205px;
-    height: 205px;
-  }
-  
-  .member-avatar {
-    width: 120px;
-    height: 120px;
-  }
+
+  /* Stars hidden on mobile via shared.css */
+
+  .porthole-frame  { width: 205px; height: 205px; }
+  .member-avatar   { width: 120px; height: 120px; }
 }
 
 @media (max-width: 480px) {
   .pirate-team {
-    padding: 20px 10px 40px 10px;
+    padding: 20px 10px 40px;
   }
-  
-  .team-title {
-    font-size: 2rem;
-  }
-  
+
+  .team-title { font-size: 2rem; }
+
   .team-tab {
     padding: 12px 16px;
     font-size: 0.9em;
   }
-  
-  .porthole-frame {
-    width: 205px;
-    height: 205px;
-  }
-  
-  .member-avatar {
-    width: 120px;
-    height: 120px;
-  }
+
+  .porthole-frame { width: 205px; height: 205px; }
+  .member-avatar  { width: 120px; height: 120px; }
 }

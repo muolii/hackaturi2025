@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../styles/shared.css';
 import './Header.css';
 
 const nav = [

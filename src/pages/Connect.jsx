@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaLinkedin, FaInstagram } from 'react-icons/fa';
+import '../styles/shared.css';
 import './Connect.css';
 
 const Connect = () => {

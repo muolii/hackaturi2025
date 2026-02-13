@@ -1,8 +1,22 @@
-/* Tracks Page */
+/* ==========================================================================
+   Tracks.css — Hackathon Tracks Page
+   Depends on: shared.css (twinkle animation, .star-1..5 delays, font vars)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. BASE RESET (page-level)
+   ========================================================================== */
+
 html, body {
   min-height: 100%;
   overflow-x: hidden;
 }
+
+
+/* ==========================================================================
+   2. PAGE WRAPPER
+   ========================================================================== */
 
 .pirate-tracks {
   position: relative;
@@ -13,52 +27,28 @@ html, body {
   overflow: hidden;
 }
 
-/* Random scattered stars */
+
+/* ==========================================================================
+   3. DECORATIVE STARS
+   Positions unique to the Tracks page; animation + delays live in shared.css
+   ========================================================================== */
+
 .tracks-star {
-  position: absolute;
   width: 40px;
   height: 40px;
-  opacity: 0.7;
-  animation: twinkle 3s ease-in-out infinite;
-  z-index: 1;
 }
 
-.tracks-star.star-1 {
-  top: 10%;
-  left: 5%;
-  animation-delay: 0s;
-}
+.tracks-star.star-1 { top: 10%; left:  5%; }
+.tracks-star.star-2 { top: 20%; right:  8%; }
+.tracks-star.star-3 { top: 40%; left:  3%; }
+.tracks-star.star-4 { top: 60%; right:  5%; }
+.tracks-star.star-5 { top: 80%; left:  12%; }
 
-.tracks-star.star-2 {
-  top: 20%;
-  right: 8%;
-  animation-delay: 0.6s;
-}
 
-.tracks-star.star-3 {
-  top: 40%;
-  left: 3%;
-  animation-delay: 1.2s;
-}
+/* ==========================================================================
+   4. LAYOUT & HEADER
+   ========================================================================== */
 
-.tracks-star.star-4 {
-  top: 60%;
-  right: 5%;
-  animation-delay: 1.8s;
-}
-
-.tracks-star.star-5 {
-  top: 80%;
-  left: 12%;
-  animation-delay: 2.4s;
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.3; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
-
-/* Tracks Content */
 .tracks-content {
   position: relative;
   z-index: 2;
@@ -72,21 +62,24 @@ html, body {
   font-weight: 800;
   color: #2f2520;
   margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-  font-family: 'Poppins', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: var(--font-main);
 }
 
 .tracks-intro {
   text-align: center;
   font-size: 1.3rem;
-  margin-bottom: 50px;
   color: #2f2520;
   font-weight: 500;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-main);
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 50px;
 }
+
+
+/* ==========================================================================
+   5. TRACKS GRID
+   ========================================================================== */
 
 .tracks-grid {
   display: grid;
@@ -94,6 +87,11 @@ html, body {
   gap: 30px;
   margin-top: 40px;
 }
+
+
+/* ==========================================================================
+   6. TRACK CARD
+   ========================================================================== */
 
 .track-card {
   background: rgba(246, 233, 200, 0.9);
@@ -110,6 +108,7 @@ html, body {
   gap: 20px;
 }
 
+/* Colored top accent bar (color set via --track-color on the element) */
 .track-card::before {
   content: '';
   position: absolute;
@@ -120,6 +119,7 @@ html, body {
   background: var(--track-color);
 }
 
+/* Card header: icon + title + subtitle */
 .track-header {
   text-align: center;
 }
@@ -136,7 +136,7 @@ html, body {
   margin: 0 0 15px 0;
   font-size: 1.6rem;
   font-weight: 700;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-main);
 }
 
 .track-subtitle {
@@ -145,12 +145,11 @@ html, body {
   color: #2f2520;
   font-size: 1.1rem;
   font-weight: 500;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-main);
 }
 
-.track-content {
-  flex: 1;
-}
+/* Card body: description */
+.track-content { flex: 1; }
 
 .track-description {
   margin: 0;
@@ -158,109 +157,57 @@ html, body {
   color: #2f2520;
   font-size: 0.95rem;
   font-weight: 400;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-main);
   text-align: left;
 }
 
-/* Responsive Design */
+/* Optional sponsor logo displayed inside a track card */
+.track-sponsor-logo {
+  height: 2.5rem;
+  width: auto;
+  margin-bottom: 15px;
+  object-fit: contain;
+  display: inline-block;
+}
+
+
+/* ==========================================================================
+   7. RESPONSIVE
+   ========================================================================== */
+
 @media (max-width: 768px) {
-  .pirate-tracks {
-    padding: 30px 15px 20px;
-  }
-  
-  .tracks-title {
-    font-size: 2.2rem;
-    margin-bottom: 15px;
-  }
-  
-  .tracks-intro {
-    font-size: 1.1rem;
-    margin-bottom: 35px;
-  }
-  
+  .pirate-tracks { padding: 30px 15px 20px; }
+
+  .tracks-title  { font-size: 2.2rem; margin-bottom: 15px; }
+  .tracks-intro  { font-size: 1.1rem; margin-bottom: 35px; }
+
   .tracks-grid {
     grid-template-columns: 1fr;
     gap: 20px;
     margin-top: 30px;
   }
-  
-  .track-card {
-    padding: 25px;
-  }
-  
-  .track-icon {
-    font-size: 3rem;
-    margin-bottom: 15px;
-  }
-  
-  .track-title {
-    font-size: 1.4rem;
-  }
-  
-  .track-subtitle {
-    font-size: 1rem;
-  }
-  
-  .track-description {
-    font-size: 0.9rem;
-  }
-  
-  .tracks-star {
-    width: 30px;
-    height: 30px;
-  }
+
+  .track-card    { padding: 25px; }
+  .track-icon    { font-size: 3rem;  margin-bottom: 15px; }
+  .track-title   { font-size: 1.4rem; }
+  .track-subtitle { font-size: 1rem; }
+  .track-description { font-size: 0.9rem; }
+
+  /* Stars hidden on mobile via shared.css */
+  .tracks-star   { width: 30px; height: 30px; }
 }
 
 @media (max-width: 480px) {
-  .pirate-tracks {
-    padding: 20px 10px 15px;
-  }
-  
-  .tracks-title {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-  }
-  
-  .tracks-intro {
-    font-size: 1rem;
-    margin-bottom: 25px;
-  }
-  
-  .tracks-grid {
-    gap: 15px;
-  }
-  
-  .track-card {
-    padding: 20px;
-  }
-  
-  .track-icon {
-    font-size: 2.5rem;
-    margin-bottom: 12px;
-  }
-  
-  .track-title {
-    font-size: 1.2rem;
-  }
-  
-  .track-subtitle {
-    font-size: 0.9rem;
-  }
-  
-  .track-description {
-    font-size: 0.85rem;
-  }
-  
-  .tracks-star {
-    display: none;
-  }
-}
+  .pirate-tracks { padding: 20px 10px 15px; }
 
-/* Track Card Sponsor Logo */
-.track-sponsor-logo {
-  height: 2.5rem; /* Sized slightly smaller than the 3rem used on the Home page */
-  width: auto;
-  margin-bottom: 15px;
-  object-fit: contain;
-  display: inline-block;
+  .tracks-title  { font-size: 1.8rem; margin-bottom: 10px; }
+  .tracks-intro  { font-size: 1rem;   margin-bottom: 25px; }
+
+  .tracks-grid   { gap: 15px; }
+
+  .track-card    { padding: 20px; }
+  .track-icon    { font-size: 2.5rem; margin-bottom: 12px; }
+  .track-title   { font-size: 1.2rem; }
+  .track-subtitle { font-size: 0.9rem; }
+  .track-description { font-size: 0.85rem; }
 }

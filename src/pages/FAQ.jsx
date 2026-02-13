@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import starsSvg from '../assets/stars-bg.svg';
+import '../styles/shared.css';
 import './FAQ.css';
 
 const FAQ = () => {

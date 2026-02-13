@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { FaLinkedin, FaGithub, FaArrowRight } from 'react-icons/fa';
 import starsSvg from '../assets/stars-bg.svg';
 import portholeSvg from '../assets/porthole.svg';
+import '../styles/shared.css';
 import './Team.css';
 
 const Team = () => {

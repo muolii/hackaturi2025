@@ -1,18 +1,29 @@
-/* Interest.css */
+/* ==========================================================================
+   Interest.css — Interest / Sponsorship Page
+   Depends on: shared.css (.btn-primary, font vars)
+   ========================================================================== */
 
-/* Interest Page Styles */
+
+/* ==========================================================================
+   1. PAGE WRAPPER
+   ========================================================================== */
+
 .interest-page {
   min-height: auto;
   background: #F6E9C8;
   position: relative;
   overflow: hidden;
-  font-family: "Poppins", "Nunito", "Quicksand", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-family: var(--font-main);
   color: #2f2520;
   padding: 30px 60px 40px;
   margin: 0 auto;
 }
 
-/* Main content */
+
+/* ==========================================================================
+   2. LAYOUT
+   ========================================================================== */
+
 .interest-content {
   position: relative;
   z-index: 3;
@@ -29,28 +40,44 @@
   text-shadow: 2px 2px 4px rgba(47, 37, 32, 0.1);
 }
 
-/* Become sponsor section - Full Width */
-.become-sponsor {
+
+/* ==========================================================================
+   3. SHARED PANEL BASE
+   (Used by both .become-sponsor and .interest-form)
+   ========================================================================== */
+
+.become-sponsor,
+.interest-form {
   background: rgba(255, 255, 255, 0.1);
   padding: 30px;
   border-radius: 15px;
   backdrop-filter: blur(10px);
   border: 2px solid rgba(47, 37, 32, 0.2);
-  margin-bottom: 30px;
 }
 
-.become-sponsor h3 {
+.become-sponsor h3,
+.interest-form h3 {
   color: #2f2520;
   margin-bottom: 15px;
   font-size: 1.5rem;
   font-weight: 700;
 }
 
-.become-sponsor p {
+.become-sponsor p,
+.interest-form p {
   color: #2f2520;
   font-size: 1.1rem;
   line-height: 1.6;
   margin: 0;
+}
+
+
+/* ==========================================================================
+   4. BECOME A SPONSOR BANNER (full-width, above the grid)
+   ========================================================================== */
+
+.become-sponsor {
+  margin-bottom: 30px;
 }
 
 .donate-link {
@@ -64,39 +91,26 @@
   color: #0B4F4F;
 }
 
-/* Grid Container for Interest Forms */
+
+/* ==========================================================================
+   5. INTEREST FORMS GRID (2×2)
+   ========================================================================== */
+
 .interest-forms-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2x2 Grid */
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
-/* Interest form section */
+/* Each form card stretches to align its CTA button at the bottom */
 .interest-form {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 30px;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(47, 37, 32, 0.2);
-  
-  /* Flexbox helps keep buttons aligned at the bottom */
   display: flex;
   flex-direction: column;
 }
 
-.interest-form h3 {
-  color: #2f2520;
-  margin-bottom: 15px;
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-
 .interest-form p {
-  color: #2f2520;
-  font-size: 1.1rem;
-  line-height: 1.6;
   margin-bottom: 15px;
-  flex-grow: 1; /* Pushes the button wrapper down */
+  flex-grow: 1; /* pushes CTA button down */
 }
 
 .interest-form-link {
@@ -108,9 +122,9 @@
   border-radius: 8px;
   font-size: 1.1rem;
   font-weight: 600;
-  transition: all 0.3s ease;
-  margin-top: auto; /* Ensures button sticks to the bottom */
   text-align: center;
+  margin-top: auto;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .interest-form-link:hover {
@@ -121,34 +135,42 @@
   text-decoration: none;
 }
 
-/* Animation for section highlighting */
+
+/* ==========================================================================
+   6. SECTION HIGHLIGHT ANIMATION (e.g. anchor-link flash)
+   ========================================================================== */
+
 .highlight-section {
   animation: sectionPulse 2s ease-out;
 }
 
 @keyframes sectionPulse {
   0% {
-    background: rgba(255, 255, 255, 0.5); /* Brighter highlight */
-    border-color: #0C3A40; /* Brand teal border */
+    background: rgba(255, 255, 255, 0.5);
+    border-color: #0C3A40;
     box-shadow: 0 0 20px rgba(12, 58, 64, 0.2);
-    transform: scale(1.02); /* Slight pop out */
+    transform: scale(1.02);
   }
   30% {
     background: rgba(255, 255, 255, 0.4);
     transform: scale(1.02);
   }
   100% {
-    background: rgba(255, 255, 255, 0.1); /* Back to original */
+    background: rgba(255, 255, 255, 0.1);
     border-color: rgba(47, 37, 32, 0.2);
     box-shadow: none;
     transform: scale(1);
   }
 }
 
-/* Responsive design */
+
+/* ==========================================================================
+   7. RESPONSIVE
+   ========================================================================== */
+
 @media (max-width: 900px) {
   .interest-forms-container {
-    grid-template-columns: 1fr; /* Stack on smaller screens */
+    grid-template-columns: 1fr; /* stack on smaller screens */
   }
 
   .interest-page {
@@ -160,11 +182,11 @@
   .interest-page {
     padding: 15px 20px 20px;
   }
-  
+
   .interest-content h1 {
     font-size: 1.8rem;
   }
-  
+
   .become-sponsor h3,
   .interest-form h3 {
     font-size: 1.3rem;

@@ -5,6 +5,7 @@ import yconicLogo from '/images/sponsors/yconic-transparent.png'; // Yconic spon
 import monsterLogo from '/images/sponsors/monster.png'; // Monster Energy sponsor logo
 import themoveappLogo from '/images/sponsors/themoveapp.png'; // The Move App sponsor logo
 import CountdownTimer from '../components/Countdown';
+import '../styles/shared.css';
 import './Home.css';
 
 const Home = () => {

@@ -1,14 +1,22 @@
-/* Schedule.css */
+/* ==========================================================================
+   Schedule.css — Event Schedule Page
+   Depends on: shared.css (twinkle animation, .star-1..5 delays,
+               slideDown + pulse keyframes, font vars)
+   ========================================================================== */
 
-/* --- Page Layout & Background --- */
+
+/* ==========================================================================
+   1. PAGE WRAPPER
+   ========================================================================== */
+
 .content {
   position: relative;
   min-height: auto;
   z-index: 10;
   padding: 40px 20px 60px;
-  background: #F6E9C8; 
+  background: #F6E9C8;
   overflow: hidden;
-  font-family: "Poppins", "Nunito", sans-serif;
+  font-family: var(--font-main);
   color: #2f2520;
 }
 
@@ -18,10 +26,33 @@
   font-weight: 800;
   color: #2f2520;
   margin-bottom: 30px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Toggle Button Section (New) --- */
+
+/* ==========================================================================
+   2. DECORATIVE STARS
+   Positions unique to the Schedule page; animation + delays live in shared.css
+   ========================================================================== */
+
+.about-star {
+  width: 35px;
+  height: 35px;
+  font-size: 1.5rem;
+  z-index: 1; /* sits behind calendar content */
+}
+
+.about-star.star-1 { top:  5%; left:  5%; }
+.about-star.star-2 { top: 15%; right:  7%; }
+.about-star.star-3 { top: 80%; left:  3%; }
+.about-star.star-4 { top: 85%; right:  8%; }
+.about-star.star-5 { top: 45%; left: 92%; }
+
+
+/* ==========================================================================
+   3. DAY-VIEW TOGGLE BUTTON
+   ========================================================================== */
+
 .toggle-container {
   display: flex;
   justify-content: center;
@@ -43,14 +74,14 @@
   align-items: center;
   gap: 10px;
   box-shadow: 0 5px 15px rgba(12, 58, 64, 0.3);
-  transition: all 0.3s ease;
-  font-family: "Poppins", "Nunito", sans-serif;
+  font-family: var(--font-main);
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .schedule-toggle-btn:hover {
+  background: #0f4c54;
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(12, 58, 64, 0.4);
-  background: #0f4c54;
 }
 
 .schedule-toggle-btn:active {
@@ -58,7 +89,129 @@
   box-shadow: 0 2px 10px rgba(12, 58, 64, 0.3);
 }
 
-/* --- Schedule Columns Layout --- */
+
+/* ==========================================================================
+   4. NEXT-UP EVENT CARD
+   ========================================================================== */
+
+.next-event-section {
+  max-width: 800px;
+  margin: 0 auto 30px;
+  animation: slideDown 0.5s ease-out;
+}
+
+.next-event-card {
+  background: #0C3A40;
+  color: #F6E9C8;
+  padding: 20px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(12, 58, 64, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 2px solid #F6E9C8;
+}
+
+.next-event-label {
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 1;
+  margin-bottom: 5px;
+}
+
+/* Pulsing "live" dot */
+.pulse-icon {
+  width: 12px;
+  height: 12px;
+  background: #27AE60;
+  border-radius: 50%;
+  box-shadow: 0 0 0 rgba(39, 174, 96, 0.4);
+  animation: pulse 2s infinite; /* pulse keyframe lives in shared.css */
+}
+
+.next-event-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.next-event-info h4 {
+  font-size: 1.8rem;
+  margin: 0 0 8px 0;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.next-event-details {
+  display: flex;
+  gap: 20px;
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.next-event-details span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.next-event-type {
+  padding: 6px 15px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+}
+
+/* Right column: countdown timer + event type badge */
+.next-event-right-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  text-align: right;
+}
+
+.countdown-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 8px 15px;
+  border-radius: 10px;
+  width: fit-content;
+  font-size: 0.85rem;
+  border: 1px solid rgba(246, 233, 200, 0.2);
+}
+
+.countdown-display strong {
+  font-family: 'Courier New', Courier, monospace;
+  color: #27AE60;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.hourglass {
+  color: #F6E9C8;
+  animation: rotateHourglass 2s infinite ease-in-out;
+}
+
+@keyframes rotateHourglass {
+  0%   { transform: rotate(0deg);   }
+  50%  { transform: rotate(180deg); }
+  100% { transform: rotate(180deg); }
+}
+
+
+/* ==========================================================================
+   5. SCHEDULE COLUMNS (two-day split)
+   ========================================================================== */
+
 .schedule-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -71,7 +224,7 @@
 
 .calendar-column {
   background: rgba(246, 233, 200, 0.9);
-  border: 3px solid #0C3A40; /* Pirate Teal Border */
+  border: 3px solid #0C3A40;
   border-radius: 25px;
   padding: 25px;
   backdrop-filter: blur(10px);
@@ -79,20 +232,13 @@
   transition: all 0.3s ease;
 }
 
-/* Specific state styles for the column wrapper */
-.calendar-column.is-collapsed {
-  min-height: auto;
-  padding-bottom: 25px; 
-}
+.calendar-column.is-collapsed { min-height: auto; padding-bottom: 25px; }
+.calendar-column.is-expanded  { height: auto; }
 
-.calendar-column.is-expanded {
-  height: auto;
-}
-
-/* --- Header Styles --- */
+/* Day header */
 .calendar-header {
   text-align: center;
-  margin-bottom: 15px; /* Reduced slightly to look good collapsed */
+  margin-bottom: 15px;
   padding-bottom: 15px;
   border-bottom: 2px solid rgba(12, 58, 64, 0.2);
 }
@@ -103,10 +249,10 @@
   justify-content: center;
   align-items: center;
   gap: 15px;
-  transition: background-color 0.2s ease;
   padding: 10px;
   border-radius: 15px;
   user-select: none;
+  transition: background-color 0.2s ease;
 }
 
 .calendar-header.clickable:hover {
@@ -128,13 +274,16 @@
   opacity: 0.7;
 }
 
-/* --- Calendar Grid & Slots --- */
+
+/* ==========================================================================
+   6. CALENDAR GRID & TIME SLOTS
+   ========================================================================== */
+
 .calendar-grid {
   display: grid;
   gap: 8px;
   background: transparent;
-  /* Animation when expanded */
-  animation: slideDown 0.4s ease-out;
+  animation: slideDown 0.4s ease-out; /* slideDown keyframe lives in shared.css */
 }
 
 .calendar-slot {
@@ -164,15 +313,19 @@
   gap: 8px;
 }
 
-/* --- Events Styling --- */
+
+/* ==========================================================================
+   7. EVENT TILES
+   ========================================================================== */
+
 .calendar-event {
   padding: 12px 15px;
   border-radius: 10px;
   color: white;
   font-size: 0.85em;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .calendar-event:hover {
@@ -203,9 +356,9 @@
   text-transform: uppercase;
 }
 
-/* --- Standalone Hacking Milestone (Hero Events) --- */
+/* Full-width "hacking begins / ends" milestone row */
 .hacking-milestone-container {
-  grid-column: 1 / -1; 
+  grid-column: 1 / -1;
   margin: 15px 0;
   width: 100%;
 }
@@ -226,13 +379,17 @@
   margin-bottom: 3px;
 }
 
-/* --- Compact Legend Section --- */
+
+/* ==========================================================================
+   8. LEGEND
+   ========================================================================== */
+
 .schedule-legend {
-  margin: 0 auto 25px; 
-  max-width: 700px; /* Reduced width */
+  margin: 0 auto 25px;
+  max-width: 700px;
   background: rgba(246, 233, 200, 0.9);
-  padding: 15px 20px; /* Thinner padding */
-  border-radius: 15px; /* Softer corners */
+  padding: 15px 20px;
+  border-radius: 15px;
   border: 2px solid #0C3A40;
   box-shadow: 0 4px 15px rgba(47, 37, 32, 0.08);
 }
@@ -241,14 +398,14 @@
   color: #0C3A40;
   margin-bottom: 12px;
   text-align: center;
-  font-size: 1.1rem; /* Smaller header */
+  font-size: 1.1rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .legend-items {
-  display: flex; /* Switched to flex for better horizontal flow */
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
@@ -261,7 +418,7 @@
 }
 
 .legend-color {
-  width: 14px; /* Slightly smaller icons */
+  width: 14px;
   height: 14px;
   border-radius: 3px;
   flex-shrink: 0;
@@ -269,212 +426,46 @@
 
 .legend-label {
   color: #2f2520;
-  font-size: 0.85rem; /* Smaller text */
+  font-size: 0.85rem;
   font-weight: 600;
 }
 
-/* --- Responsive adjustment for legend --- */
-@media (max-width: 600px) {
-  .legend-items {
-    gap: 10px 15px;
-  }
-}
 
-/* --- Animated Stars --- */
-.about-star {
-  position: absolute;
-  width: 35px;
-  height: 35px;
-  z-index: 1; /* Sits behind the content */
-  pointer-events: none;
-  opacity: 0.6;
-  animation: twinkle 3s ease-in-out infinite;
-  font-size: 1.5rem;
-}
+/* ==========================================================================
+   9. RESPONSIVE
+   ========================================================================== */
 
-.star-1 { top: 5%; left: 5%; animation-delay: 0s; }
-.star-2 { top: 15%; right: 7%; animation-delay: 0.6s; }
-.star-3 { top: 80%; left: 3%; animation-delay: 1.2s; }
-.star-4 { top: 85%; right: 8%; animation-delay: 1.8s; }
-.star-5 { top: 45%; left: 92%; animation-delay: 2.4s; }
-
-/* --- Animations --- */
-@keyframes twinkle {
-  0%, 100% { 
-    opacity: 0.3; 
-    transform: scale(1) rotate(0deg); 
-  }
-  50% { 
-    opacity: 0.8; 
-    transform: scale(1.2) rotate(180deg); 
-  }
-}
-
-@keyframes slideDown {
-  from { 
-    opacity: 0; 
-    transform: translateY(-15px); 
-  }
-  to { 
-    opacity: 1; 
-    transform: translateY(0); 
-  }
-}
-
-/* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
-  .about-star {
-    display: none;
-  }
+  .content h1   { font-size: 2.2rem; }
 
-  .content h1 { font-size: 2.2rem; }
-  
   .schedule-columns {
     grid-template-columns: 1fr;
     gap: 25px;
   }
-  
+
   .calendar-slot {
     grid-template-columns: 70px 1fr;
   }
-}
 
-/* --- Next Event Section --- */
-.next-event-section {
-  max-width: 800px;
-  margin: 0 auto 30px;
-  animation: slideDown 0.5s ease-out;
-}
-
-.next-event-card {
-  background: #0C3A40;
-  color: #F6E9C8;
-  padding: 20px 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(12, 58, 64, 0.3);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  border: 2px solid #F6E9C8;
-}
-
-.next-event-label {
-  font-size: 1.1rem; /* Increased from 0.8rem */
-  font-weight: 900;   /* Extra bold for impact */
-  letter-spacing: 2px; /* Spread out the letters for a "header" feel */
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  opacity: 1; /* Made fully opaque for better visibility */
-  margin-bottom: 5px;
-}
-
-.pulse-icon {
-  width: 12px;
-  height: 12px;
-  background: #27AE60;
-  border-radius: 50%;
-  box-shadow: 0 0 0 rgba(39, 174, 96, 0.4);
-  animation: pulse 2s infinite;
-}
-
-.next-event-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.next-event-info h4 {
-  font-size: 1.8rem; /* Increased from 1.5rem to keep the title larger than the label */
-  margin: 0 0 8px 0;
-  font-weight: 800;
-  line-height: 1.2;
-}
-
-.next-event-details {
-  display: flex;
-  gap: 20px;
-  font-size: 0.95rem;
-  opacity: 0.8;
-}
-
-.next-event-details span {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.next-event-type {
-  padding: 6px 15px;
-  border-radius: 8px;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: white;
-}
-
-@keyframes pulse {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(39, 174, 96, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(39, 174, 96, 0); }
+  /* Stars hidden on mobile via shared.css */
 }
 
 @media (max-width: 600px) {
+  .legend-items { gap: 10px 15px; }
+
   .next-event-content {
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
   }
-  .next-event-type {
-    align-self: flex-start;
-  }
-}
 
-/* --- Positioning the Countdown on the Right --- */
-.next-event-right-col {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end; /* Keeps type and timer aligned to the right edge */
-  gap: 12px;
-  text-align: right;
-}
+  .next-event-type { align-self: flex-start; }
 
-.countdown-display {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(0, 0, 0, 0.2);
-  padding: 8px 15px;
-  border-radius: 10px;
-  width: fit-content;
-  font-size: 0.85rem;
-  border: 1px solid rgba(246, 233, 200, 0.2);
-}
-
-.countdown-display strong {
-  font-family: 'Courier New', Courier, monospace;
-  color: #27AE60;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-}
-
-.hourglass {
-  color: #F6E9C8;
-  animation: rotateHourglass 2s infinite ease-in-out;
-}
-
-@keyframes rotateHourglass {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(180deg); }
-  100% { transform: rotate(180deg); }
-}
-
-/* Update responsive behavior for mobile */
-@media (max-width: 600px) {
   .next-event-right-col {
     align-items: center;
     width: 100%;
   }
+
   .countdown-display {
     width: 100%;
     justify-content: center;

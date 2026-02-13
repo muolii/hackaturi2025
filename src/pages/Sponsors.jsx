@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import starsSvg from '../assets/stars-bg.svg';
 import sponsorScrollSvg from '../assets/sponsor-scroll.svg';
+import '../styles/shared.css';
 import './Sponsors.css';
 
 const Sponsors = () => {

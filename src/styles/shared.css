@@ -1,4 +1,49 @@
-/* Prevent unwanted scrolling on button clicks */
+/* ==========================================================================
+   shared.css — Global styles shared across all pages
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. CSS VARIABLES (Design Tokens)
+   ========================================================================== */
+
+:root {
+  /* Colors */
+  --cream:        #F6E9C8;
+  --parchment:    #F9E9C0;  /* slightly warmer cream, used in header/countdown text */
+  --teal-dark:    #073d3c;
+  --teal-nav:     #0a4e4e;  /* header/nav background */
+  --teal-mid:     #0b4f4f;
+  --teal-border:  #0C3A40;
+  --brown-dark:   #2f2520;
+  --brown-wood:   #8B4513;  /* countdown box, footer border accent */
+  --gold:         #C3A873;
+  --gold-light:   #CBB979;  /* header active pill, countdown numbers */
+  --text-dark:    #0C3A40;
+
+  /* Typography */
+  --font-main: "Poppins", "Nunito", "Quicksand", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+
+  /* Spacing */
+  --radius-sm:  15px;
+  --radius-md:  20px;
+  --radius-lg:  25px;
+
+  /* Shadows */
+  --shadow-card: 0 8px 25px rgba(47, 37, 32, 0.1);
+  --shadow-card-hover: 0 12px 30px rgba(47, 37, 32, 0.15);
+}
+
+
+/* ==========================================================================
+   2. RESET & BASE
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Prevent unwanted scroll-jumps on button clicks */
 button {
   scroll-behavior: auto !important;
 }
@@ -7,12 +52,16 @@ button:focus {
   outline: none;
 }
 
-/* Shared/Common Styles */
+
+/* ==========================================================================
+   3. APP SHELL
+   ========================================================================== */
+
 .app {
-  font-family: 'Poppins', 'Nunito', 'Quicksand', sans-serif;
+  font-family: var(--font-main);
   margin: 0;
   padding: 0;
-  background: #F6E9C8;
+  background: var(--cream);
   min-height: 100vh;
   width: 100vw;
   max-width: 100%;
@@ -20,21 +69,24 @@ button:focus {
   position: relative;
 }
 
+/* Animated wave decoration behind header */
 .app::before {
   content: '';
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 300px; 
-  background: linear-gradient(to bottom, 
-    #0a4e4e 0%, 
-    #0a4e4e 50px, /* Solid header color for first 50px */
-    transparent 50px
-  ), url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 300' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,64 C120,40 200,80 360,72 C520,64 620,16 780,32 C940,48 1060,96 1220,88 C1380,80 1440,56 1440,56 L1440 0 0 0z' fill='%23083337'/%3E%3Cpath d='M0,88 C140,72 220,110 380,90 C540,70 640,40 800,60 C960,80 1080,120 1240,100 C1400,80 1440,72 1440,72 L1440 0 0 0z' fill='%230B4F4F' opacity='0.95'/%3E%3C/svg%3E");
+  height: 300px;
+  background:
+    linear-gradient(to bottom,
+      #0a4e4e 0%,
+      #0a4e4e 50px,
+      transparent 50px
+    ),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 300' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,64 C120,40 200,80 360,72 C520,64 620,16 780,32 C940,48 1060,96 1220,88 C1380,80 1440,56 1440,56 L1440 0 0 0z' fill='%23083337'/%3E%3Cpath d='M0,88 C140,72 220,110 380,90 C540,70 640,40 800,60 C960,80 1080,120 1240,100 C1400,80 1440,72 1440,72 L1440 0 0 0z' fill='%230B4F4F' opacity='0.95'/%3E%3C/svg%3E");
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  background-position: 0 50px; 
+  background-position: 0 50px;
   pointer-events: none;
   z-index: 50;
   transform: scaleX(1.1);
@@ -42,17 +94,47 @@ button:focus {
   transition: transform 200ms ease, opacity 200ms ease, visibility 200ms ease;
 }
 
-/* Hide waves when scrolling - perfectly synchronized with header */
+/* Hide waves when header is scrolled (perfectly synced with header) */
 .app.scrolled::before {
   transform: scaleX(1.1) translateY(-100%) !important;
   opacity: 0 !important;
   visibility: hidden !important;
 }
 
-
 .main-content {
-  margin-top: clamp(120px, 12vh, 180px); 
+  margin-top: clamp(120px, 12vh, 180px);
 }
+
+
+/* ==========================================================================
+   4. TYPOGRAPHY
+   ========================================================================== */
+
+h1 { font-size: 2.5em;  margin-bottom: 20px; }
+h2 { font-size: 2em;    margin-bottom: 15px; }
+h3 { font-size: 1.5em;  margin-bottom: 10px; }
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0 0 15px 0;
+}
+
+/* Shared page title style (used on Connect, FAQ, Schedule, Sponsors, Team, Tracks) */
+.page-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--brown-dark);
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: var(--font-main);
+}
+
+
+/* ==========================================================================
+   5. LAYOUT HELPERS
+   ========================================================================== */
 
 .section {
   box-sizing: border-box;
@@ -63,7 +145,7 @@ button:focus {
 
 .content {
   margin-top: 10px;
-  border-radius: 15px;
+  border-radius: var(--radius-sm);
   color: #fff;
   text-align: center;
   padding: 15px;
@@ -71,34 +153,59 @@ button:focus {
   box-sizing: border-box;
 }
 
-/* Typography */
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
+
+/* ==========================================================================
+   6. SHARED CARD / PANEL STYLE
+   Used on: Connect, FAQ, Schedule, Tracks (and similar panels)
+   ========================================================================== */
+
+.panel-card {
+  background: rgba(246, 233, 200, 0.9);
+  border: 3px solid var(--teal-border);
+  border-radius: var(--radius-lg);
+  padding: 35px;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-card);
 }
 
-h2 {
-  font-size: 2em;
-  margin-bottom: 15px;
+.panel-card:hover {
+  box-shadow: var(--shadow-card-hover);
 }
 
-h3 {
-  font-size: 1.5em;
-  margin-bottom: 10px;
+
+/* ==========================================================================
+   7. SHARED BUTTON STYLES
+   ========================================================================== */
+
+/* Primary CTA button (dark bg, gold text) */
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--teal-border) 0%, var(--teal-mid) 100%);
+  color: #fff;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
 }
 
-p {
-  font-size: 18px;
-  line-height: 1.6;
-  margin: 0 0 15px 0;
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--teal-mid) 0%, var(--teal-border) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(12, 58, 64, 0.3);
+  color: #fff;
+  text-decoration: none;
 }
 
-/* Social Button Styles */
-.social-btn svg {
-  font-size: 2em;
+.btn-primary:active {
+  transform: translateY(0);
 }
 
-/* Admin Controls */
+/* Admin floating button */
 .admin-controls {
   position: fixed;
   bottom: 20px;
@@ -126,28 +233,100 @@ p {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive Design */
+
+/* ==========================================================================
+   8. SOCIAL BUTTONS (shared between Team and Connect pages)
+   ========================================================================== */
+
+.social-btn svg {
+  font-size: 2em;
+}
+
+
+/* ==========================================================================
+   9. DECORATIVE STARS
+   Shared animation + base star style used on About, FAQ, Home,
+   Schedule, Sponsors, Team, and Tracks pages.
+   Each page supplies its own star wrapper class + .star-1..5 positions.
+   ========================================================================== */
+
+/* Base star element — apply alongside each page's specific star class */
+[class*="-star"],
+.decor-star {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.6;
+  animation: twinkle 3s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2) rotate(180deg);
+  }
+}
+
+/* Staggered delays shared across all star sets */
+.star-1 { animation-delay: 0s;   }
+.star-2 { animation-delay: 0.6s; }
+.star-3 { animation-delay: 1.2s; }
+.star-4 { animation-delay: 1.8s; }
+.star-5 { animation-delay: 2.4s; }
+
+
+/* ==========================================================================
+   10. ANIMATIONS
+   ========================================================================== */
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%   { transform: scale(0.95); box-shadow: 0 0 0 0   rgba(39, 174, 96, 0.7); }
+  70%  { transform: scale(1);    box-shadow: 0 0 0 10px rgba(39, 174, 96, 0);   }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0   rgba(39, 174, 96, 0);   }
+}
+
+
+/* ==========================================================================
+   11. RESPONSIVE — GLOBAL BREAKPOINTS
+   ========================================================================== */
+
 @media (max-width: 768px) {
   .section {
     padding: 15px 10px;
   }
-  
+
+  /* Legacy timeline helper (kept for compatibility) */
   .timeline-item {
     flex-direction: column;
   }
-  
+
   .time {
     margin-right: 0;
     margin-bottom: 10px;
   }
-  
+
   .admin-controls {
     bottom: 10px;
     right: 10px;
   }
-  
+
   .admin-button {
     padding: 10px 20px;
     font-size: 0.8rem;
+  }
+
+  /* Hide decorative stars on small screens */
+  [class*="-star"],
+  .decor-star {
+    display: none;
   }
 }

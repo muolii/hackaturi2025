@@ -1,6 +1,7 @@
 // src/components/Footer.jsx
 import React from 'react';
 import { FaHeart } from 'react-icons/fa';
+import '../styles/shared.css';
 import './Footer.css';
 
 const Footer = () => {

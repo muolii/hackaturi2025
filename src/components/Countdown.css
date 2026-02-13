@@ -1,7 +1,21 @@
-/* Pirate Countdown Styles */
+/* ==========================================================================
+   Countdown.css — Countdown Timer Component
+   Depends on: shared.css (font vars, --brown-wood, --gold-light, --parchment)
+
+   NOTE: .countdown-wrap, .cd-seg, .cd-num, .cd-label, .cd-sepcolon are also
+   defined in Home.css for the hero layout. This file intentionally overrides
+   those with the standalone component's darker wood style. Load order ensures
+   Countdown.css wins when the component is rendered.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. COUNTDOWN CONTAINER
+   ========================================================================== */
+
 .countdown-wrap {
-  background: #8B4513;
-  border-radius: 15px;
+  background: var(--brown-wood);
+  border-radius: var(--radius-sm);
   padding: 20px 30px;
   box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
   border: 3px solid #654321;
@@ -9,11 +23,16 @@
   align-items: center;
   justify-content: center;
   gap: 15px;
-  font-family: 'Poppins', 'Nunito', 'Quicksand', sans-serif;
+  font-family: var(--font-main);
   min-width: 500px;
   max-width: 100%;
   overflow: hidden;
 }
+
+
+/* ==========================================================================
+   2. TIME SEGMENTS
+   ========================================================================== */
 
 .cd-seg {
   display: flex;
@@ -25,7 +44,7 @@
 .cd-num {
   font-size: 2.5rem;
   font-weight: 800;
-  color: #CBB979;
+  color: var(--gold-light);
   text-shadow: 0 0 10px rgba(203, 185, 121, 0.5);
   font-family: 'Courier New', monospace;
   min-width: 50px;
@@ -36,7 +55,7 @@
 
 .cd-label {
   font-size: 1rem;
-  color: #F9E9C0;
+  color: var(--parchment);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -47,13 +66,17 @@
 .cd-sepcolon {
   font-size: 2rem;
   font-weight: 800;
-  color: #CBB979;
+  color: var(--gold-light);
   text-shadow: 0 0 10px rgba(203, 185, 121, 0.5);
   margin: 0 5px;
   flex-shrink: 0;
 }
 
-/* Responsive Design */
+
+/* ==========================================================================
+   3. RESPONSIVE
+   ========================================================================== */
+
 @media (max-width: 768px) {
   .countdown-wrap {
     padding: 15px 20px;
@@ -61,20 +84,10 @@
     min-width: 350px;
     max-width: 90vw;
   }
-  
-  .cd-num {
-    font-size: 2rem;
-    min-width: 40px;
-  }
-  
-  .cd-label {
-    font-size: 0.8rem;
-  }
-  
-  .cd-sepcolon {
-    font-size: 1.6rem;
-    margin: 0 3px;
-  }
+
+  .cd-num      { font-size: 2rem;   min-width: 40px; }
+  .cd-label    { font-size: 0.8rem; }
+  .cd-sepcolon { font-size: 1.6rem; margin: 0 3px; }
 }
 
 @media (max-width: 480px) {
@@ -84,18 +97,8 @@
     min-width: 280px;
     max-width: 95vw;
   }
-  
-  .cd-num {
-    font-size: 1.8rem;
-    min-width: 35px;
-  }
-  
-  .cd-label {
-    font-size: 0.7rem;
-  }
-  
-  .cd-sepcolon {
-    font-size: 1.4rem;
-    margin: 0 2px;
-  }
+
+  .cd-num      { font-size: 1.8rem; min-width: 35px; }
+  .cd-label    { font-size: 0.7rem; }
+  .cd-sepcolon { font-size: 1.4rem; margin: 0 2px; }
 }
