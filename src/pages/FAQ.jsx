@@ -106,7 +106,7 @@ const FAQ = () => {
       },
       {
         question: "What is the team size limit?",
-        answer: "Teams should be between 1 and 4 people. We will have a team building activity right after opening ceremony if you'd like to find team members!"
+        answer: "Teams should be between 1 and 4 people. We will have a team building activity shortly after opening ceremony if you'd like to find team members!"
       },
       {
         question: "I have a different question!",
@@ -124,7 +124,7 @@ const FAQ = () => {
       },
       {
         question: "What kind of activities will there be?",
-        answer: "We will post the schedule closer to the event. There will be workshops and activities to take a break and meet other hackers and our wonderful sponsors."
+        answer: "There will be workshops and activities to take a break and meet other hackers and our wonderful sponsors."
       },
       {
         question: "Will hardware be available?",
@@ -152,7 +152,7 @@ const FAQ = () => {
       },
       {
         question: "Are there travel reimbursements?",
-        answer: "We are not able to provide travel reimbursements at this time."
+        answer: "If we have funding available, we will reach out to those that have requested. We cannot guarantee reimbursement at this time."
       },
       {
         question: "Are you sending out acceptances? Is there a deadline to apply? Is there a waitlist?",

@@ -28,7 +28,8 @@ const Schedule = () => {
     day1: {
       date: 'Saturday, February 21, 2026',
       events: [
-        { time: '8:00 AM', event: 'Check-In & Breakfast', location: 'Fascitelli Commons', type: 'hacking' },
+        { time: '8:00 AM', event: 'Check-In', location: 'Fascitelli Commons', type: 'hacking' },
+        { time: '8:00 AM', event: 'BREAKFAST', location: 'Fascitelli Commons', type: 'food' },
         { time: '9:00 AM', event: 'Opening Ceremony & Mission Welcome', location: 'Common/Stage | Overflow to ENG 010C', type: 'ceremony' },
         { time: '10:00 AM', event: 'HACKING BEGINS!', location: 'All Hacking Areas', type: 'hacking', hero: true },
         { time: '10:00 AM', event: 'Cyber Capture the Flag (CTF) Kickoff', location: 'ENGR 045C', type: 'cyber' },
@@ -74,10 +75,10 @@ const Schedule = () => {
       date: 'Sunday, February 22, 2026',
       events: [
         { time: '8:00 AM', event: 'BREAKFAST', location: 'Atrium', type: 'food' },
-        { time: '10:00 AM', event: 'FINAL SUBMISSIONS DUE', location: 'Online Portal', type: 'hacking', hero: true },
-        { time: '10:15 AM', event: 'Pitching Workshop', location: 'Fascitelli Commons', type: 'workshop' },
-        { time: '11:15 AM', event: 'Pitch Practice & Feedback', location: 'Mentor Lounge', type: 'mentoring' },
-        { time: '12:15 PM', event: 'LUNCH', location: 'Common/Stage', type: 'food' },
+        { time: '11:00 AM', event: 'FINAL SUBMISSIONS DUE', location: 'DevPost (Online)', type: 'hacking', hero: true },
+        { time: '11:15 AM', event: 'Pitching Workshop: How to Tell Your Story & Demo Effectively', location: 'ENGR 025C', type: 'beginner' },
+        { time: '12:00 PM', event: 'LUNCH', location: 'Fascitelli Commons', type: 'food' },
+        { time: '12:15 AM', event: 'Pitch Practice & Feedback', location: 'Mentor Lounge', type: 'mentoring' },
         { time: '1:30 PM', event: 'Project Expo & Judging Begins', location: 'Expo Area', type: 'hacking' },
         { time: '2:45 PM', event: 'Judging (Finalist Round)', location: 'Common/Stage', type: 'hacking' },
         { time: '4:00 PM', event: 'Closing Ceremony & Awards', location: 'Common/Stage', type: 'ceremony' }
