@@ -1,0 +1,47 @@
+/* ==========================================================================
+   SchedulePage.css — Full-page schedule overlay
+   ========================================================================== */
+
+/* Full-screen overlay that slides in over the main site */
+.schedule-page-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: #F6E9C8;
+  overflow-y: auto;
+  animation: slideInFromRight 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInFromRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+.schedule-page-inner {
+  min-height: 100vh;
+}
+
+/* Back button */
+.schedule-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #0C3A40;
+  color: #F6E9C8;
+  border: none;
+  padding: 10px 22px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-bottom: 30px;
+  font-family: var(--font-main);
+  transition: background 0.2s ease, transform 0.2s ease;
+  position: relative;
+  z-index: 20;
+}
+
+.schedule-back-btn:hover {
+  background: #0f4c54;
+  transform: translateX(-3px);
+}

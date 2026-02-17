@@ -1,6 +1,11 @@
 // src/App.jsx
 // Root component: assembles all page sections and global UI elements.
 // The site is a single-page scroll layout — each "page" is a <section> stacked vertically.
+//
+// SCHEDULE PAGE:
+//   The full schedule calendar lives in SchedulePage.jsx. It renders as a
+//   full-screen overlay when window.location.hash === '#full-schedule'.
+//   The main Schedule section shows only the "Up Next" widget + a button to open it.
 
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header.jsx';
@@ -10,6 +15,7 @@ import About from './pages/About.jsx';
 import Interest from './pages/Interest.jsx';
 import Sponsors from './pages/Sponsors.jsx';
 import Schedule from './pages/Schedule.jsx';
+import SchedulePage from './pages/SchedulePage.jsx';
 import Team from './pages/Team.jsx';
 import FAQ from './pages/FAQ.jsx';
 import Tracks from './pages/Tracks.jsx';
@@ -19,14 +25,12 @@ import FloatingRegistration from './components/FloatingRegistration.jsx';
 import './styles/shared.css';
 
 // ─── Site Visibility Config ───────────────────────────────────────────────────
-// Set SITE_HIDDEN to `true` to show a landing/teaser page before the full site
-// is revealed. Set it to `false` (default) to show the full site immediately.
-// Access code for revealing the site early: "hackaturi-secret"
 const SITE_HIDDEN = false;
 // ─────────────────────────────────────────────────────────────────────────────
 
 const App = () => {
   const [isSiteRevealed, setIsSiteRevealed] = useState(!SITE_HIDDEN);
+  const [showSchedulePage, setShowSchedulePage] = useState(false);
 
   // On mount: check if an admin has previously revealed the site via localStorage
   useEffect(() => {
@@ -38,7 +42,22 @@ const App = () => {
     }
   }, []);
 
-  // Prompts for an access code and reveals the full site if correct
+  // Hash-based routing: listen for #full-schedule to open/close the overlay
+  useEffect(() => {
+    const handleHash = () => {
+      setShowSchedulePage(window.location.hash === '#full-schedule');
+    };
+    handleHash(); // check on first load too
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  // Close the schedule overlay and restore the hash
+  const handleCloseSchedulePage = () => {
+    window.location.hash = '';
+    setShowSchedulePage(false);
+  };
+
   const handleRevealSite = () => {
     const code = prompt('Enter access code:');
     if (code === 'hackaturi-secret') {
@@ -49,13 +68,11 @@ const App = () => {
     }
   };
 
-  // Resets site visibility back to the landing page (for testing)
   const handleBackToLanding = () => {
     setIsSiteRevealed(false);
     localStorage.removeItem('hackaturi-site-revealed');
   };
 
-  // Smoothly scrolls the page to a section by its HTML element ID
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -66,12 +83,16 @@ const App = () => {
   return (
     <div className="app">
 
+      {/* ── Full Schedule Page Overlay ───────────────────────────────────── */}
+      {showSchedulePage && (
+        <SchedulePage onClose={handleCloseSchedulePage} />
+      )}
+
       {/* ── Global UI Elements ────────────────────────────────────────────── */}
       <RegistrationPopup />
       <FloatingRegistration />
 
-      {/* MLH Trust Badge — required by Major League Hacking for affiliated events.
-          Update the href and utm_source if the event name/season changes. */}
+      {/* MLH Trust Badge */}
       <a
         id="mlh-trust-badge"
         style={{
@@ -98,11 +119,7 @@ const App = () => {
       {/* ── Navigation ────────────────────────────────────────────────────── */}
       <Header scrollToSection={scrollToSection} />
 
-      {/* ── Page Sections ─────────────────────────────────────────────────── 
-          Each section's `id` must match the nav link targets used in Header.
-          To reorder sections on the page, simply move the <section> blocks.
-          To add a new section: import the page component above, then add a
-          new <section id="your-id"> block here and a link in the Header. */}
+      {/* ── Page Sections ─────────────────────────────────────────────────── */}
       <main className="main-content">
         <section id="home" className="section">
           <Home />
@@ -112,6 +129,7 @@ const App = () => {
           <About />
         </section>
 
+        {/* Schedule section: shows Up Next widget + link to full calendar overlay */}
         <section id="schedule" className="section">
           <Schedule />
         </section>
