@@ -21,35 +21,35 @@ const Sponsors = () => {
   // Organized data structure with separate tiers
   const tieredSponsors = {
     lead: [
-      { name: 'yconic', logo: '/images/sponsors/yconic-transparent.png', large: true, url: 'https://yconic.ai/' },
+      { name: 'yconic', logo: '/images/sponsors/yconic-transparent.png', url: 'https://yconic.ai/', large: true },
     ],
     gold: [
-      { name: 'RiseUp', logo: '/images/sponsors/riseup.png' },
-      { name: 'RI Hub', logo: '/images/sponsors/RIHub.png', large: true },
-      { name: 'URI Library Innovation Lab', logo: '/images/sponsors/library_innovation_lab.png', large: true },
-      { name: 'URI Department of Computer Science and Statistics', logo: '/images/sponsors/uri_CSaS.png', large: true },
-      { name: 'URI College of Business', logo: '/images/sponsors/uri_CoB.png', large: true },
+      { name: 'RiseUp', logo: '/images/sponsors/riseup.png', url: 'https://rise-upinnovation.org/' },
+      { name: 'RI Hub', logo: '/images/sponsors/RIHub.png', url: 'https://rihub.org/', large: true },
+      { name: 'URI Library Innovation Lab', logo: '/images/sponsors/library_innovation_lab.png', url: 'https://web.uri.edu/innovate/', large: true },
+      { name: 'URI Department of Computer Science and Statistics', logo: '/images/sponsors/uri_CSaS.png', url: 'https://web.uri.edu/cs/', large: true },
+      { name: 'URI College of Business', logo: '/images/sponsors/uri_CoB.png', url: 'https://web.uri.edu/business/', large: true },
     ],
     silver: [
-      { name: 'Brightstar', logo: '/images/sponsors/brightstar.png', large: true },
-      { name: 'URI Research Foundation', logo: '/images/sponsors/urirf-transparent.png', large: true },
+      { name: 'Brightstar', logo: '/images/sponsors/brightstar.png', url: 'https://www.brightstarlottery.com/',large: true },
+      { name: 'URI Research Foundation', logo: '/images/sponsors/urirf-transparent.png', url: 'https://web.uri.edu/research/', large: true },
     ],
     bronze: [
-      { name: 'MergeFund', logo: '/images/sponsors/mergefund-transparent.png' },
-      { name: 'Factset', logo: '/images/sponsors/factset.png', large: true },
+      { name: 'MergeFund', logo: '/images/sponsors/mergefund-transparent.png', url: 'https://www.mergefund.org/',},
+      { name: 'Factset', logo: '/images/sponsors/factset.png', url: 'https://www.factset.com/', large: true },
       { name: 'Microway', logo: '/images/sponsors/microway.png', large: true, url: 'https://www.microway.com/' },
-      { name: 'URI College of Engineering', logo: '/images/sponsors/uri_CoE.png', large: true },
-      { name: 'URI Digital Forensics and Cyber Security Center', logo: '/images/sponsors/uri_CSF.png', large: true },
-      { name: 'URI Cyber Club', logo: '/images/sponsors/cyberclub.png', large: true },
-      { name: 'Major League Hacking', logo: '/images/sponsors/mlh-logo-color.svg' },
+      { name: 'URI College of Engineering', logo: '/images/sponsors/uri_CoE.png', url: 'https://web.uri.edu/engineering/', large: true },
+      { name: 'URI Digital Forensics and Cyber Security Center', logo: '/images/sponsors/uri_CSF.png', url: 'https://web.uri.edu/cs/dfcsc/', large: true },
+      { name: 'URI Cyber Club', logo: '/images/sponsors/cyberclub.png', url: 'https://www.instagram.com/uricyberclub/', large: true },
+      { name: 'Major League Hacking', logo: '/images/sponsors/mlh-logo-color.png', url: 'https://mlh.io/' },
     ],
     partners: [
-      { name: 'Monster', logo: '/images/sponsors/monster.png', large: true },
+      { name: 'Monster', logo: '/images/sponsors/monster.png', url: 'https://www.monsterenergy.com/en-us/',large: true },
       { name: 'The Move App', logo: '/images/sponsors/themoveapp.png', url: 'https://www.themoveapp.io/', large: true },
-      { name: 'URI AI Lab', logo: '/images/sponsors/uri_ailab.png', large: true },
-      { name: 'CCRI', logo: '/images/sponsors/ccri.png' },
+      { name: 'URI AI Lab', logo: '/images/sponsors/uri_ailab.png', url: 'https://web.uri.edu/iacr/iacr-workshops-outreach/', large: true },
+      { name: 'CCRI', logo: '/images/sponsors/ccri.png', url: 'https://www.ccri.edu/' },
       { name: 'Pure Buttons', logo: '/images/sponsors/Pure-Buttons-Logo.png', url: 'https://mlh.link/MLH-PureButtons-hackathons', large: true },
-      { name: 'URI Institute for AI and Computational Research', logo: '/images/sponsors/uri_IACR.png', large: true },
+      { name: 'URI Institute for AI and Computational Research', logo: '/images/sponsors/uri_IACR.png', url: 'https://events.uri.edu/group/center_for_computational_research', large: true },
     ]
   };
 
