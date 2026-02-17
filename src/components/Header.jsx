@@ -1,231 +1,245 @@
+// src/components/Header.jsx
+// Site navigation header with:
+//   - Desktop: horizontal nav bar with hover dropdowns
+//   - Mobile: hamburger menu with expandable dropdown sections
+//   - Auto-hides on scroll down, reappears on scroll up
+//   - Highlights the active section based on scroll position
+//
+// TO ADD OR REMOVE NAV ITEMS: Edit the NAV_ITEMS array below.
+// TO ADD A DROPDOWN: Add a `dropdown` array to the nav item (see 'Get Involved').
+
 import React, { useState, useEffect } from 'react';
 import '../styles/shared.css';
 import './Header.css';
 
-const nav = [
-  { id: 'home', label: 'Home' },
-  { id: 'about', label: 'About' },
-  { id: 'schedule', label: 'Schedule' },
-  { id: 'tracks', label: 'Tracks' },
-  { id: 'faq', label: 'FAQ' },
-  { 
-    id: 'interest', 
+// ─── Navigation Config ────────────────────────────────────────────────────────
+// Each item needs an `id` (matching the section's HTML element ID) and a `label`.
+// Items with a `dropdown` array render as a hover menu on desktop / tap-to-expand on mobile.
+// Dropdown item IDs can be subsection anchors within the parent section.
+const NAV_ITEMS = [
+  { id: 'home',      label: 'Home' },
+  { id: 'about',     label: 'About' },
+  { id: 'schedule',  label: 'Schedule' },
+  { id: 'tracks',    label: 'Tracks' },
+  { id: 'faq',       label: 'FAQ' },
+  {
+    id: 'interest',
     label: 'Get Involved',
     dropdown: [
-      { id: 'sponsor', label: 'Sponsor' },
+      { id: 'sponsor',   label: 'Sponsor' },
       { id: 'volunteer', label: 'Volunteer' },
-      { id: 'speaker', label: 'Guest Speaker' },
-      { id: 'mentor', label: 'Mentor' },
-      { id: 'judge', label: 'Judge' }
-    ]
+      { id: 'speaker',   label: 'Guest Speaker' },
+      { id: 'mentor',    label: 'Mentor' },
+      { id: 'judge',     label: 'Judge' },
+    ],
   },
-  { id: 'sponsors', label: 'Sponsors' },
-  { id: 'team', label: 'Team' },
-  { id: 'connect', label: 'Connect' }
+  { id: 'sponsors',  label: 'Sponsors' },
+  { id: 'team',      label: 'Team' },
+  { id: 'connect',   label: 'Connect' },
 ];
+// ─────────────────────────────────────────────────────────────────────────────
 
-// Persistent global scroll handler using window object
+// ─── Global Scroll Handler ────────────────────────────────────────────────────
+// The scroll handler lives on the window object so it persists across re-renders
+// and isn't duplicated if the Header mounts more than once.
 if (!window.hackaturiScrollData) {
-  window.hackaturiScrollData = {
-    lastY: 0,
-    handler: null,
-    headerElement: null
-  };
+  window.hackaturiScrollData = { lastY: 0, handler: null, headerElement: null };
 }
 
-const createGlobalScrollHandler = () => {
-  return () => {
-    const y = window.scrollY;
-    const lastY = window.hackaturiScrollData.lastY;
-    const isScrollingDown = y > lastY;
-    const isScrollingUp = y < lastY;
-    const thresholdMet = y > 100;
+const createScrollHandler = () => () => {
+  const y         = window.scrollY;
+  const lastY     = window.hackaturiScrollData.lastY;
+  const header    = window.hackaturiScrollData.headerElement;
+  const app       = document.querySelector('.app');
 
-    if (!window.hackaturiScrollData.headerElement) {
-      window.hackaturiScrollData.headerElement = document.querySelector('.site-header');
-      if (!window.hackaturiScrollData.headerElement) {
-        return;
-      }
-    }
+  if (!header) return;
 
-    if (isScrollingDown && thresholdMet) {
-      window.hackaturiScrollData.headerElement.classList.add('hidden');
-      const appElement = document.querySelector('.app');
-      if (appElement) {
-        appElement.classList.add('scrolled');
-      }
-    }
-    else if (isScrollingUp || y <= 100) {
-      window.hackaturiScrollData.headerElement.classList.remove('hidden');
-      const appElement = document.querySelector('.app');
-      if (appElement) {
-        appElement.classList.remove('scrolled');
-      }
-    }
-    window.hackaturiScrollData.lastY = y;
+  const scrollingDown = y > lastY && y > 100;
+  const scrollingUp   = y < lastY || y <= 100;
 
-    for (let i = nav.length - 1; i >= 0; i--) {
-      const s = document.getElementById(nav[i].id);
-      if (s && s.offsetTop <= (y + 120)) {
-        const activeButton = window.hackaturiScrollData.headerElement.querySelector(`[data-section="${nav[i].id}"]`);
-        if (activeButton) {
-          window.hackaturiScrollData.headerElement.querySelectorAll('.nav-btn, .mobile-nav-btn').forEach(btn => {
-            btn.classList.remove('active');
-          });
-          activeButton.classList.add('active');
-        }
-        break;
-      }
+  // Hide the header when scrolling down past 100px; reveal when scrolling back up
+  if (scrollingDown) {
+    header.classList.add('hidden');
+    app?.classList.add('scrolled');
+  } else if (scrollingUp) {
+    header.classList.remove('hidden');
+    app?.classList.remove('scrolled');
+  }
+
+  window.hackaturiScrollData.lastY = y;
+
+  // Highlight the nav button for whichever section is currently in view
+  for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
+    const section = document.getElementById(NAV_ITEMS[i].id);
+    if (section && section.offsetTop <= y + 120) {
+      header.querySelectorAll('.nav-btn, .mobile-nav-btn').forEach((btn) =>
+        btn.classList.remove('active')
+      );
+      header.querySelector(`[data-section="${NAV_ITEMS[i].id}"]`)?.classList.add('active');
+      break;
     }
-  };
+  }
 };
+// ─────────────────────────────────────────────────────────────────────────────
 
 const Header = ({ scrollToSection }) => {
-  const [activeSection, setActiveSection] = useState('home');
-  const [isVisible, setIsVisible] = useState(true);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null);
-  const [openMobileDropdown, setOpenMobileDropdown] = useState(null);
+  const [activeSection, setActiveSection]         = useState('home');
+  const [isVisible, setIsVisible]                 = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen]   = useState(false);
+  const [isMobile, setIsMobile]                   = useState(false);
+  const [openDropdown, setOpenDropdown]           = useState(null);      // desktop hover dropdown
+  const [openMobileDropdown, setOpenMobileDropdown] = useState(null);   // mobile tap dropdown
 
+  // Track whether we're on mobile to switch between nav layouts
   useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
-    return () => window.removeEventListener('resize', checkScreenSize);
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
   }, []);
 
+  // Register the global scroll handler once on mount
   useEffect(() => {
     if (!window.hackaturiScrollData.handler) {
-      window.hackaturiScrollData.handler = createGlobalScrollHandler();
+      window.hackaturiScrollData.handler = createScrollHandler();
       window.addEventListener('scroll', window.hackaturiScrollData.handler);
     }
-    const headerElement = document.querySelector('.site-header');
-    if (headerElement) {
-      window.hackaturiScrollData.headerElement = headerElement;
-    }
+    // Cache the header DOM element for the scroll handler to use
+    window.hackaturiScrollData.headerElement = document.querySelector('.site-header');
   }, []);
 
-  // Updated handleClick to manage the highlight-section class
-  const handleClick = (id, shouldHighlight = false) => {
-    if (scrollToSection) scrollToSection(id);
+  // Scrolls to a section and optionally flashes it to draw the user's attention.
+  // `highlight: true` is used for dropdown sub-items (e.g. jumping to a specific role card).
+  const handleClick = (id, highlight = false) => {
+    scrollToSection?.(id);
 
-    if (shouldHighlight) {
-      const element = document.getElementById(id);
-      if (element) {
-        element.classList.remove('highlight-section');
-        void element.offsetWidth; // Force reflow to restart animation
-        element.classList.add('highlight-section');
-
-        setTimeout(() => {
-          element.classList.remove('highlight-section');
-        }, 2000);
+    if (highlight) {
+      const el = document.getElementById(id);
+      if (el) {
+        // Remove and re-add class to restart the CSS animation
+        el.classList.remove('highlight-section');
+        void el.offsetWidth; // Force reflow
+        el.classList.add('highlight-section');
+        setTimeout(() => el.classList.remove('highlight-section'), 2000);
       }
     }
 
+    // Reset all menu state after a nav click
     setIsVisible(true);
     setIsMobileMenuOpen(false);
     setOpenDropdown(null);
     setOpenMobileDropdown(null);
   };
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-  const handleMouseEnter = (id) => setOpenDropdown(id);
-  const handleMouseLeave = () => setOpenDropdown(null);
-  const toggleMobileDropdown = (id) => setOpenMobileDropdown(openMobileDropdown === id ? null : id);
-
   return (
     <header className={`site-header ${isVisible ? '' : 'hidden'}`}>
       <div className="header-inner">
+
+        {/* ── Desktop Navigation ──────────────────────────────────────── */}
         {!isMobile ? (
           <nav className="main-nav">
-            {nav.map(item => (
+            {NAV_ITEMS.map((item) =>
               item.dropdown ? (
-                <div 
-                  key={item.id} 
+                // Nav item with hover dropdown
+                <div
+                  key={item.id}
                   className={`nav-item dropdown ${openDropdown === item.id ? 'open' : ''}`}
-                  onMouseEnter={() => handleMouseEnter(item.id)}
-                  onMouseLeave={handleMouseLeave}
+                  onMouseEnter={() => setOpenDropdown(item.id)}
+                  onMouseLeave={() => setOpenDropdown(null)}
                 >
                   <button
                     className={`nav-btn ${activeSection === item.id ? 'active' : ''}`}
-                    onClick={() => handleClick(item.id, false)} // No highlight on general tab
+                    onClick={() => handleClick(item.id)}
                     data-section={item.id}
                   >
                     <strong>{item.label}</strong>
                   </button>
                   <div className="dropdown-menu">
-                    {item.dropdown.map(dropdownItem => (
+                    {item.dropdown.map((child) => (
                       <button
-                        key={dropdownItem.id}
+                        key={child.id}
                         className="dropdown-item"
-                        onClick={() => handleClick(dropdownItem.id, true)} // Highlight specific card
+                        onClick={() => handleClick(child.id, true)}
                       >
-                        {dropdownItem.label}
+                        {child.label}
                       </button>
                     ))}
                   </div>
                 </div>
               ) : (
+                // Standard nav button
                 <button
                   key={item.id}
                   className={`nav-btn ${activeSection === item.id ? 'active' : ''}`}
-                  onClick={() => handleClick(item.id, false)}
+                  onClick={() => handleClick(item.id)}
                   data-section={item.id}
                 >
                   <strong>{item.label}</strong>
                 </button>
               )
-            ))}
+            )}
           </nav>
+
         ) : (
+          // ── Mobile Navigation ────────────────────────────────────────
           <>
-            <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
+            <button
+              className="mobile-menu-toggle"
+              onClick={() => setIsMobileMenuOpen((v) => !v)}
+              aria-label="Toggle navigation menu"
+            >
               <div className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`}>
-                <span></span><span></span><span></span>
+                <span /><span /><span />
               </div>
             </button>
+
             <nav className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}>
-              {nav.map(item => (
+              {NAV_ITEMS.map((item) =>
                 item.dropdown ? (
-                  <div key={item.id} className={`mobile-dropdown ${openMobileDropdown === item.id ? 'open' : ''}`}>
+                  // Mobile expandable dropdown
+                  <div
+                    key={item.id}
+                    className={`mobile-dropdown ${openMobileDropdown === item.id ? 'open' : ''}`}
+                  >
                     <button
                       className={`mobile-nav-btn ${activeSection === item.id ? 'active' : ''}`}
-                      onClick={() => toggleMobileDropdown(item.id)}
+                      onClick={() =>
+                        setOpenMobileDropdown(openMobileDropdown === item.id ? null : item.id)
+                      }
                       data-section={item.id}
                     >
                       <strong>{item.label}</strong>
                     </button>
                     {openMobileDropdown === item.id && (
                       <div className="mobile-dropdown-menu">
-                        {item.dropdown.map(dropdownItem => (
+                        {item.dropdown.map((child) => (
                           <button
-                            key={dropdownItem.id}
+                            key={child.id}
                             className="mobile-dropdown-item"
-                            onClick={() => handleClick(dropdownItem.id, true)} // Highlight on mobile selection
+                            onClick={() => handleClick(child.id, true)}
                           >
-                            {dropdownItem.label}
+                            {child.label}
                           </button>
                         ))}
                       </div>
                     )}
                   </div>
                 ) : (
+                  // Standard mobile nav button
                   <button
                     key={item.id}
                     className={`mobile-nav-btn ${activeSection === item.id ? 'active' : ''}`}
-                    onClick={() => handleClick(item.id, false)}
+                    onClick={() => handleClick(item.id)}
                     data-section={item.id}
                   >
                     <strong>{item.label}</strong>
                   </button>
                 )
-              ))}
+              )}
             </nav>
           </>
         )}
+
       </div>
     </header>
   );
