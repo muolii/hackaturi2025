@@ -7,6 +7,7 @@ import React from 'react';
 import { FaArrowLeft } from 'react-icons/fa';
 import starsSvg from '../assets/stars-bg.svg';
 import ScheduleCalendar from '../components/ScheduleCalendar';
+import UpNext from '../components/UpNext';
 import '../styles/shared.css';
 import './Schedule.css';
 import './SchedulePage.css';
@@ -25,6 +26,9 @@ const SchedulePage = ({ onClose }) => {
         {[1, 2, 3, 4, 5].map((n) => (
           <img key={n} src={starsSvg} alt="" className={`about-star star-${n}`} />
         ))}
+
+        {/* Live "Up Next" widget */}
+        <UpNext />
 
         <h1>Event Schedule</h1>
 
