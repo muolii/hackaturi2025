@@ -472,3 +472,46 @@
     justify-content: center;
   }
 }
+
+/* ==========================================================================
+   10. CLICKABLE WORKSHOP / SPEAKER CARDS
+   Added to support WorkshopModal — cards with speaker data are clickable.
+   ========================================================================== */
+
+.calendar-event.is-clickable {
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, outline 0.15s ease;
+}
+
+.calendar-event.is-clickable:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+  outline: 2px solid rgba(255, 255, 255, 0.45);
+}
+
+.calendar-event.is-clickable:active {
+  transform: scale(0.99);
+}
+
+/* Small person icon shown on clickable cards */
+.event-click-hint {
+  margin-left: 6px;
+  font-size: 0.72em;
+  opacity: 0.85;
+  vertical-align: middle;
+}
+
+
+/* ==========================================================================
+   11. SCHEDULE PAGE HELPER TIP
+   ========================================================================== */
+
+.schedule-click-tip {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #2f2520;
+  opacity: 0.75;
+  margin: -10px auto 22px;
+  max-width: 600px;
+}

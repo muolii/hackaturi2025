@@ -45,3 +45,13 @@
   background: #0f4c54;
   transform: translateX(-3px);
 }
+
+/* Helper tip shown above the schedule */
+.schedule-click-tip {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #2f2520;
+  opacity: 0.72;
+  margin: -6px auto 22px;
+  max-width: 600px;
+}

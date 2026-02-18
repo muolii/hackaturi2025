@@ -1,7 +1,7 @@
 // src/pages/SchedulePage.jsx
-// Full-page schedule view with the two-column calendar and legend.
-// Opened by App.jsx when window.location.hash === 'full-schedule'.
-// The "Up Next" widget is intentionally omitted here since it lives on the main page.
+// Full-page schedule view with the two-column calendar, legend, and
+// click-to-open WorkshopModal for 'workshop' and 'beginner' event types.
+// Opened by App.jsx when window.location.hash === '#full-schedule'.
 
 import React, { useState } from 'react';
 import {
@@ -14,17 +14,28 @@ import {
 import starsSvg from '../assets/stars-bg.svg';
 import {
   SCHEDULE,
-  EVENT_TYPE_COLORS,
   getEventTypeColor,
+  getSpeakerByTitle,
 } from '../components/ScheduleData';
+import WorkshopModal from '../components/WorkshopModal';
 import '../styles/shared.css';
 import './Schedule.css';
 import './SchedulePage.css';
 
-const SchedulePage = ({ onClose }) => {
-  const [isExpanded, setIsExpanded] = useState(true);
+// Types that open the speaker modal on click
+const CLICKABLE_TYPES = ['workshop', 'beginner', 'cyber'];
 
-  // Checks if a given event falls in a raw hour slot
+const SchedulePage = ({ onClose }) => {
+  const [isExpanded, setIsExpanded]         = useState(true);
+  const [selectedEvent, setSelectedEvent]   = useState(null); // event shown in modal
+
+  const handleEventClick = (event, dayLabel) => {
+    if (!CLICKABLE_TYPES.includes(event.type)) return;
+    // Only open modal if we actually have speaker data for it
+    if (!getSpeakerByTitle(event.event)) return;
+    setSelectedEvent({ ...event, day: dayLabel });
+  };
+
   const eventMatchesHour = (event, rawHour, dayKey) => {
     const [timePart, modifier] = event.time.split(' ');
     let h = parseInt(timePart.split(':')[0]);
@@ -93,21 +104,29 @@ const SchedulePage = ({ onClose }) => {
                     <div className="time-label">{row.label}</div>
                     <div className="events-container">
                       {regularEvents.length > 0 ? (
-                        regularEvents.map((event, eventIndex) => (
-                          <div
-                            key={eventIndex}
-                            className="calendar-event"
-                            style={{ backgroundColor: getEventTypeColor(event.type) }}
-                          >
-                            <div className="event-title">{event.event}</div>
-                            <div className="event-location">
-                              <FaClock style={{ marginRight: '6px' }} />{event.time}
-                              <span style={{ margin: '0 8px' }}>|</span>
-                              <FaMapMarkerAlt style={{ marginRight: '6px' }} />{event.location}
+                        regularEvents.map((event, eventIndex) => {
+                          const isClickable = CLICKABLE_TYPES.includes(event.type) && getSpeakerByTitle(event.event);
+                          return (
+                            <div
+                              key={eventIndex}
+                              className={`calendar-event${isClickable ? ' is-clickable' : ''}`}
+                              style={{ backgroundColor: getEventTypeColor(event.type) }}
+                              onClick={() => handleEventClick(event, dayData.date)}
+                              title={isClickable ? 'Click for speaker details' : undefined}
+                            >
+                              <div className="event-title">
+                                {event.event}
+                                {isClickable && <span className="event-click-hint">👤</span>}
+                              </div>
+                              <div className="event-location">
+                                <FaClock style={{ marginRight: '6px' }} />{event.time}
+                                <span style={{ margin: '0 8px' }}>|</span>
+                                <FaMapMarkerAlt style={{ marginRight: '6px' }} />{event.location}
+                              </div>
+                              <div className="event-type-badge">{event.type}</div>
                             </div>
-                            <div className="event-type-badge">{event.type}</div>
-                          </div>
-                        ))
+                          );
+                        })
                       ) : (
                         <div className="empty-slot-text" />
                       )}
@@ -160,6 +179,11 @@ const SchedulePage = ({ onClose }) => {
           </div>
         </div>
 
+        {/* Helper hint */}
+        <p className="schedule-click-tip">
+          Click any <strong>workshop</strong> 👤 session to learn more about the speaker and the event.
+        </p>
+
         {/* Two-column calendar */}
         <div className="schedule-columns">
           {Object.entries(SCHEDULE).map(([dayKey, dayData]) =>
@@ -168,6 +192,14 @@ const SchedulePage = ({ onClose }) => {
         </div>
 
       </div>
+
+      {/* Workshop / Speaker modal */}
+      {selectedEvent && (
+        <WorkshopModal
+          event={selectedEvent}
+          onClose={() => setSelectedEvent(null)}
+        />
+      )}
     </div>
   );
 };
