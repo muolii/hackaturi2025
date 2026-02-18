@@ -7,6 +7,7 @@
 //   onClose  — callback to close the modal
 
 import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { FaTimes, FaMapMarkerAlt, FaClock, FaMicrophone, FaScroll } from 'react-icons/fa';
 import { getSpeakerByTitle, getEventTypeColor } from './ScheduleData';
 import './WorkshopModal.css';
@@ -21,10 +22,16 @@ const WorkshopModal = ({ event, onClose }) => {
     return () => window.removeEventListener('keydown', handler);
   }, [onClose]);
 
-  // Prevent body scroll while modal is open
+  // Prevent scroll while modal is open.
+  // Locks both <body> and .main-content, since the main page scrolls
+  // that container rather than body directly.
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = ''; };
+    const targets = [
+      document.body,
+      document.querySelector('.main-content'),
+    ].filter(Boolean);
+    targets.forEach((el) => { el.style.overflow = 'hidden'; });
+    return () => { targets.forEach((el) => { el.style.overflow = ''; }); };
   }, []);
 
   if (!event) return null;
@@ -32,7 +39,7 @@ const WorkshopModal = ({ event, onClose }) => {
   const typeColor = getEventTypeColor(event.type);
   const typeLabel = event.type === 'beginner' ? 'Beginner Workshop' : 'Workshop';
 
-  return (
+  return createPortal(
     <div className="wm-backdrop" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
       <div className="wm-modal" role="dialog" aria-modal="true" aria-label={event.event}>
 
@@ -123,7 +130,8 @@ const WorkshopModal = ({ event, onClose }) => {
         </div>
 
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 
