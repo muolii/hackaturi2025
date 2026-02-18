@@ -279,9 +279,9 @@ export const SCHEDULE = {
       { time: '11:15 AM', event: 'Pitching Workshop: How to Tell Your Story & Demo Effectively', location: 'ENGR 025C', type: 'beginner' },
       { time: '12:00 PM', event: 'LUNCH',                             location: 'Fascitelli Commons',                  type: 'food' },
       { time: '12:15 PM', event: 'Pitch Practice & Feedback',         location: 'Mentor Lounge',                       type: 'mentoring' },
-      { time: '1:30 PM',  event: 'Project Expo & Judging Begins',     location: 'Expo Area',                           type: 'hacking' },
-      { time: '2:45 PM',  event: 'Judging (Finalist Round)',          location: 'Common/Stage',                        type: 'hacking' },
-      { time: '4:00 PM',  event: 'Closing Ceremony & Awards',         location: 'Common/Stage',                        type: 'ceremony' },
+      { time: '1:00 PM',  event: 'Project Expo & Judging Begins',     location: 'Expo Area',                           type: 'hacking', hero: true },
+      { time: '3:00 PM',  event: 'Finalist Round | Pitching',          location: 'Pharmacy 170',                        type: 'hacking' },
+      { time: '5:00 PM',  event: 'Closing Ceremony & Awards',         location: 'Common/Stage',                        type: 'ceremony' },
     ],
   },
 };
