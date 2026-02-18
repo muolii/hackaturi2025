@@ -7,7 +7,7 @@ export const EVENT_TYPE_COLORS = {
   hacking:  '#27AE60',
   ceremony: '#C0392B',
   food:     '#5B2C6F',
-  workshop: '#1B4F72',
+  workshop: '#275e83',
   activity: '#B8860B',
   mentoring:'#145A32',
   cyber:    '#117A65',
@@ -134,8 +134,26 @@ export const SPEAKERS = {
     company: 'Major League Hacking',
     image: '/images/workshop-speakers/Paul_Horton.png',
     bio: "Paul Horton is a Coach at Major League Hacking where he goes to hackathons all across the globe to make sure hackers have a fantastic weekend. He's been part of the hackathon community since 2016 and helped found ASU's hackathon sunhacks. Paul has a PhD in Exploration Systems Design from ASU and is currently a postdoctoral researcher at UMass Lowell where he designs readout systems for balloon-borne telescopes.",
-    description: 'Get hands-on experience using GitHub Copilot to accelerate your hackathon project. This session covers how to effectively pair with AI coding assistants to write code faster, debug smarter, and explore new APIs — all within the time constraints of a hackathon weekend.',
+    description: 'Learning to use AI throughout your development flow is now an essential skill. GitHub Copilot is a fully-agentic AI pair programmer that can help you write, debug, & understand code. Today we’re learning by doing. We\'ll fork a README for your personal GitHub profile. We\'ll then use the GitHub and MLH MCP servers to pull live, personalized data. GitHub Copilot will use the template and data to create a customized profile just for you.',
     workshopTitle: 'Hacking with GitHub Copilot',
+  },
+    'experiment with google ai studio': {
+    name: 'Paul Horton',
+    role: 'Coach',
+    company: 'Major League Hacking',
+    image: '/images/workshop-speakers/Paul_Horton.png',
+    bio: "Paul Horton is a Coach at Major League Hacking where he goes to hackathons all across the globe to make sure hackers have a fantastic weekend. He's been part of the hackathon community since 2016 and helped found ASU's hackathon sunhacks. Paul has a PhD in Exploration Systems Design from ASU and is currently a postdoctoral researcher at UMass Lowell where he designs readout systems for balloon-borne telescopes.",
+    description: 'Google AI Studio is the fastest way to start building with the Gemini family of multimodal generative AI models. Google AI Studio allows you to try out Gemini\'s massive token context window, grab an API key in seconds, and so much more.',
+    workshopTitle: 'Experiment with Google AI Studio',
+  },
+    'techtogether meetup': {
+    name: 'Paul Horton',
+    role: 'Coach',
+    company: 'Major League Hacking',
+    image: '/images/workshop-speakers/Paul_Horton.png',
+    bio: "Paul Horton is a Coach at Major League Hacking where he goes to hackathons all across the globe to make sure hackers have a fantastic weekend. He's been part of the hackathon community since 2016 and helped found ASU's hackathon sunhacks. Paul has a PhD in Exploration Systems Design from ASU and is currently a postdoctoral researcher at UMass Lowell where he designs readout systems for balloon-borne telescopes.",
+    description: 'TechTogether meetups are relaxed, drop-in spaces for underrepresented gender participants and their allies to connect during the hackathon. Come hang out, meet new people, share experiences, and talk about life in tech in a supportive, inclusive environment.',
+    workshopTitle: 'TechTogether Meetup',
   },
   'from classroom to industry: exploring model-based design with simulink': {
     name: 'Siddharth Jawahar',
@@ -182,6 +200,15 @@ export const SPEAKERS = {
     description: "As builders, we tend to focus on building cool tech — but telling the story in 30 seconds, 60 seconds, or 5 minutes is always so hard! Come to this workshop and prep to pitch your project to the judges. We'll cover storytelling frameworks, demo strategy, and how to handle Q&A under pressure.",
     workshopTitle: 'Pitching Workshop: How to Tell Your Story & Demo Effectively',
   },
+  'graduate studies in computer science/cybersecurity': {
+    name: 'Victor Fay-Wolfe',
+    role: 'Professor of Computer Science',
+    company: 'University of Rhode Island',
+    image: '/images/workshop-speakers/Vic_Fay-Wolfe.jpg',
+    bio: 'Victor Fay-Wolfe is a professor at the University of Rhode Island, based in Kingston, United States. He holds a BS degree from Tufts University. With a wealth of expertise in his field, Fay-Wolfe is responsible for teaching and conducting research at the university, contributing to the advancement of knowledge, and the development of future professionals.',
+    description: "Join us for an informative session designed to demystify the graduate school landscape. This workshop provides a comprehensive overview of the advanced degree options available at the University of Rhode Island, including the Master of Science in Computer Science and the Professional Science Master’s (PSM) in Cybersecurity. We will break down the application timeline, entry requirements, and the distinct advantages of each program to help you determine the best path for your professional goals.",
+    workshopTitle: 'Graduate Studies in Computer Science/Cybersecurity'
+  }
 };
 
 // ─── Speaker Lookup ───────────────────────────────────────────────────────────
