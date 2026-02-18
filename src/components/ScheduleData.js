@@ -29,15 +29,6 @@ export const SPEAKERS = {
     description: 'Yconic has created a novel way of leveraging AI for software engineering. This workshop reframes software engineering for the AI era — participants will learn how modern engineers compress months of development into days by working in partnership with AI systems as active collaborators. The session focuses on real startup-grade workflows used inside yconic and DevAccelerator, where engineers design, build, test, and iterate production-ready applications at extreme speed.',
     workshopTitle: 'Advanced Software Engineering with AI',
   },
-  'from code to production: why ci/cd is essential for modern developers': {
-    name: 'Sandeep Kumar Khandelwal',
-    role: 'Senior Technical Engineer',
-    company: 'Atlassian',
-    image: '/images/workshop-speakers/Sandeep_Khandelwal.png',
-    bio: 'Sandeep Khandelwal is a software engineer at Atlassian working on Bitbucket Cloud, helping power modern developer workflows and software delivery at scale. With a strong focus on CI/CD and DevOps practices, he is passionate about helping developers build, test, and ship software faster and more reliably. He also contributes to the technical community through research peer review and knowledge sharing.',
-    description: 'In this session, you will learn why CI/CD is essential for building, testing, and deploying software quickly and reliably. We will cover practical CI/CD concepts, real-world workflows, and how developers can apply CI/CD thinking even in fast-paced hackathon environments. This session is ideal for developers, students, and engineers interested in modern software delivery practices.',
-    workshopTitle: 'From Code to Production: Why CI/CD Is Essential for Modern Developers',
-  },
   'cloud native digital transformation': {
     name: 'Rupesh Prasad',
     role: 'Senior Manager, Applications Programming',
@@ -243,7 +234,6 @@ export const SCHEDULE = {
       { time: '4:15 PM',  event: 'From Classroom to Industry: Exploring Model-Based Design with Simulink', location: 'ENGR 025C', type: 'workshop' },
       { time: '5:00 PM',  event: 'DINNER',                            location: 'Fascitelli Commons',                  type: 'food' },
       { time: '6:00 PM',  event: 'Guardians of the Model: Defending Against Prompt Injection and Adversarial AI', location: 'ENGR 045C', type: 'cyber' },
-      { time: '6:00 PM',  event: 'From Code to Production: Why CI/CD is Essential for Modern Developers', location: 'ENGR 010C', type: 'workshop' },
       { time: '6:30 PM',  event: 'Breaking Into Tech Consulting: What No One Tells You', location: 'ENGR 025C',      type: 'beginner' },
       { time: '7:30 PM',  event: 'TechTogether Meetup',               location: 'Fascitelli Commons | MLH Help Desk', type: 'beginner' },
       { time: '7:30 PM',  event: 'From Idea to Impact: Solving Real World Problems with Digital Companions', location: 'ENGR 025C', type: 'workshop' },
