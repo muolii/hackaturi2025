@@ -1,16 +1,25 @@
 /* ==========================================================================
-   Countdown.css — Countdown Timer Component
+   Countdown.css — Multi-phase Countdown Timer
    Depends on: shared.css (font vars, --brown-wood, --gold-light, --parchment)
 
-   NOTE: .countdown-wrap, .cd-seg, .cd-num, .cd-label, .cd-sepcolon are also
-   defined in Home.css for the hero layout. This file intentionally overrides
-   those with the standalone component's darker wood style. Load order ensures
-   Countdown.css wins when the component is rendered.
+   Phases:
+     1. .countdown-wrap (default)     — calm wood style, days until event
+     2. .countdown-wrap.cd-active     — nautical urgent style, color shifts by time:
+          .cd-active--blue  (24h–11h) — steady, clear sailing
+          .cd-active--yellow (10h–2h)  — watch the horizon
+          .cd-active--red    (<2h)     — storm incoming
+     3. .countdown-wrap.cd-done       — celebration
    ========================================================================== */
+
+/* ─── Color tokens for the active phase ─────────────────────────────────────
+   Each modifier swaps these three variables; everything else inherits them.  */
+.cd-active--blue  { --cd-accent: #5bc8d4; --cd-accent-dim: rgba(91,200,212,0.18); --cd-accent-glow: rgba(91,200,212,0.35); }
+.cd-active--yellow { --cd-accent: #f5c842; --cd-accent-dim: rgba(245,200,66,0.18); --cd-accent-glow: rgba(245,200,66,0.35); }
+.cd-active--red    { --cd-accent: #f87171; --cd-accent-dim: rgba(248,113,113,0.18); --cd-accent-glow: rgba(248,113,113,0.4); }
 
 
 /* ==========================================================================
-   1. COUNTDOWN CONTAINER
+   1. PHASE 1 — CALM (default wood style)
    ========================================================================== */
 
 .countdown-wrap {
@@ -20,6 +29,7 @@
   box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
   border: 3px solid #654321;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 15px;
@@ -29,10 +39,10 @@
   overflow: hidden;
 }
 
-
-/* ==========================================================================
-   2. TIME SEGMENTS
-   ========================================================================== */
+/* Calm phase stays horizontal */
+.countdown-wrap:not(.cd-active):not(.cd-done) {
+  flex-direction: row;
+}
 
 .cd-seg {
   display: flex;
@@ -50,7 +60,6 @@
   min-width: 50px;
   text-align: center;
   white-space: nowrap;
-  overflow: hidden;
 }
 
 .cd-label {
@@ -60,7 +69,6 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   white-space: nowrap;
-  overflow: hidden;
 }
 
 .cd-sepcolon {
@@ -72,9 +80,157 @@
   flex-shrink: 0;
 }
 
+@keyframes cdColonBlink {
+  0%, 100% { opacity: 1;   }
+  50%       { opacity: 0.35; }
+}
+
 
 /* ==========================================================================
-   3. RESPONSIVE
+   2. PHASE 2 — ACTIVE (urgent pre-event + submission deadline, unified)
+   ========================================================================== */
+
+.cd-active {
+  background: linear-gradient(160deg, #071e22 0%, #0C3A40 50%, #071e22 100%);
+  border: 3px solid var(--cd-accent);
+  box-shadow:
+    0 0 0 1px var(--cd-accent-dim),
+    0 0 30px var(--cd-accent-glow),
+    0 8px 30px rgba(0, 0, 0, 0.55);
+  padding: 18px 30px 20px;
+  gap: 6px;                        /* tight gap between text block and digits */
+  transition: border-color 1.2s ease, box-shadow 1.2s ease;
+  animation: cdSwell 3s ease-in-out infinite;
+}
+
+@keyframes cdSwell {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(-3px); }
+}
+
+/* Wraps label + sublabel together so the gap only applies once */
+.cd-active-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;                        /* near-zero space between the two lines */
+}
+
+/* Primary line: anchors + main label */
+.cd-active-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #5bb4d4;
+  white-space: nowrap;
+}
+
+/* Sublabel: slightly smaller, same teal family */
+.cd-active-sublabel {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #5bb4d4;
+  text-align: center;
+}
+
+.cd-anchor {
+  font-size: 2rem;
+  display: inline-block;
+  animation: cdAnchorBob 3s ease-in-out infinite;
+}
+
+@keyframes cdAnchorBob {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(-3px); }
+}
+
+/* Digit row */
+.cd-active-segs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cd-active-seg {
+  gap: 4px;
+}
+
+/* Digits: full brightness accent — this is the high-contrast focal point */
+.cd-active-num {
+  font-size: 3.2rem;
+  font-weight: 900;
+  font-family: 'Courier New', monospace;
+  color: var(--cd-accent);
+  text-shadow:
+    0 0 12px var(--cd-accent-glow),
+    0 0 28px var(--cd-accent-dim);
+  min-width: 68px;
+  text-align: center;
+  line-height: 1;
+}
+
+@keyframes cdDigitTick {
+  0%, 88%, 100% { opacity: 1;   }
+  94%            { opacity: 0.6; }
+}
+
+/* Labels: same teal as banner for visual cohesion */
+.cd-active-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #5bc8d4;
+  opacity: 0.65;
+}
+
+/* Colons: mid-brightness so they read as separators, not competing with digits */
+.cd-active-colon {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--cd-accent);
+  opacity: 0.4;
+  margin: 0 3px;
+  padding-bottom: 18px; /* align baseline with digit tops */
+  animation: cdColonBlink 2s step-end infinite;
+}
+
+@keyframes cdRedPulse {
+  0%, 100% { text-shadow: 0 0 12px var(--cd-accent-glow), 0 0 28px var(--cd-accent-dim); }
+  50%       { text-shadow: 0 0 22px var(--cd-accent-glow), 0 0 48px var(--cd-accent-dim); }
+}
+
+
+/* ==========================================================================
+   3. PHASE 3 — DONE
+   ========================================================================== */
+
+.cd-done {
+  background: var(--brown-wood);
+  border-color: #654321;
+  flex-direction: row;
+  gap: 12px;
+  padding: 20px 30px;
+}
+
+.cd-done-emoji { font-size: 1.6rem; }
+
+.cd-done-text {
+  color: var(--gold-light);
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+
+/* ==========================================================================
+   4. RESPONSIVE
    ========================================================================== */
 
 @media (max-width: 768px) {
@@ -85,9 +241,11 @@
     max-width: 90vw;
   }
 
-  .cd-num      { font-size: 2rem;   min-width: 40px; }
-  .cd-label    { font-size: 0.8rem; }
-  .cd-sepcolon { font-size: 1.6rem; margin: 0 3px; }
+  .cd-num           { font-size: 2rem;   min-width: 40px; }
+  .cd-label         { font-size: 0.8rem; }
+  .cd-sepcolon      { font-size: 1.6rem; }
+  .cd-active-num    { font-size: 2.4rem; min-width: 52px; }
+  .cd-active-colon  { font-size: 2rem;   }
 }
 
 @media (max-width: 480px) {
@@ -98,7 +256,10 @@
     max-width: 95vw;
   }
 
-  .cd-num      { font-size: 1.8rem; min-width: 35px; }
-  .cd-label    { font-size: 0.7rem; }
-  .cd-sepcolon { font-size: 1.4rem; margin: 0 2px; }
+  .cd-num           { font-size: 1.8rem; min-width: 35px; }
+  .cd-label         { font-size: 0.7rem; }
+  .cd-sepcolon      { font-size: 1.4rem; }
+  .cd-active-banner { font-size: 0.6rem; letter-spacing: 2px; }
+  .cd-active-num    { font-size: 2rem;   min-width: 44px; }
+  .cd-active-colon  { font-size: 1.6rem; }
 }
