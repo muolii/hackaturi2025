@@ -25,6 +25,11 @@ const Schedule = () => {
 
       <h1>Event Schedule</h1>
 
+      {/* Helper tip */}
+      <p className="schedule-click-tip">
+        Click any <strong>workshop</strong> 👤 session to learn more about the speaker and the event!
+      </p>
+
       {/* Live "Up Next" widget */}
       <UpNext />
 

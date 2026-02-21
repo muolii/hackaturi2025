@@ -27,10 +27,15 @@ const SchedulePage = ({ onClose }) => {
           <img key={n} src={starsSvg} alt="" className={`about-star star-${n}`} />
         ))}
 
+        <h1>Event Schedule</h1>
+
+        {/* Helper tip */}
+        <p className="schedule-click-tip">
+          Click any <strong>workshop</strong> 👤 session to learn more about the speaker and the event!
+        </p>
+
         {/* Live "Up Next" widget */}
         <UpNext />
-
-        <h1>Event Schedule</h1>
 
         {/* Shared calendar with legend + workshop modals */}
         <ScheduleCalendar />

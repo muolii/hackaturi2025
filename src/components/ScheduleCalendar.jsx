@@ -150,11 +150,6 @@ const ScheduleCalendar = () => {
         </div>
       </div>
 
-      {/* Helper tip */}
-      <p className="schedule-click-tip">
-        Click any <strong>workshop</strong> 👤 session to learn more about the speaker and the event!
-      </p>
-
       {/* Two-column calendar */}
       <div className="schedule-columns">
         {Object.entries(SCHEDULE).map(([dayKey, dayData]) =>
