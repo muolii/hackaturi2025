@@ -159,6 +159,15 @@ const TEAM_DATA = {
         linkedin: '',
         social: '',
       },
+      {
+        name: 'Anjola Fapohunda',
+        avatar: '/images/team-photos/market/anjola.jpg',
+        major: 'Computer Science, Mathematics, Cybersecurity',
+        classYear: '2026',
+        funFact: "I speak Chinese",
+        linkedin: 'https://www.linkedin.com/in/anjolaoluwa-fapohunda',
+        social: '',
+      },
     ],
   },
 
