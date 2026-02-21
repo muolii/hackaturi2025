@@ -56,7 +56,7 @@
 .toggle-container {
   display: flex;
   justify-content: center;
-  margin-bottom: -30px;
+  margin-bottom: 40px;
   position: relative;
   z-index: 10;
 }
@@ -65,8 +65,8 @@
   background: #0C3A40;
   color: #F6E9C8;
   border: none;
-  padding: 12px 40px;
-  font-size: 2rem;
+  padding: 12px 30px;
+  font-size: 1.1rem;
   font-weight: 700;
   border-radius: 50px;
   cursor: pointer;
@@ -516,12 +516,14 @@
   max-width: 600px;
 }
 
+
 /* ==========================================================================
    12. UP NEXT — CLICKABLE EVENT ROWS
    ========================================================================== */
 
 .next-event-content.upnext-clickable {
   cursor: pointer;
+  border-radius: 10px;
   padding: 8px;
   margin: -8px;
   transition: background 0.18s ease, transform 0.18s ease;
@@ -541,4 +543,51 @@
   font-size: 0.78em;
   opacity: 0.8;
   vertical-align: middle;
+}
+
+
+/* ==========================================================================
+   13. HAPPENING NOW — label + divider variants
+   ========================================================================== */
+
+/* Red "live camera" label */
+.now-label {
+  color: #ff4444;
+}
+
+.now-label .pulse-icon--green {
+  background: #ff4444;
+  box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.7);
+  animation: pulseRed 1.4s ease-out infinite;
+}
+
+@keyframes pulseRed {
+  0%   { box-shadow: 0 0 0 0   rgba(255, 68, 68, 0.7); }
+  70%  { box-shadow: 0 0 0 9px rgba(255, 68, 68, 0);   }
+  100% { box-shadow: 0 0 0 0   rgba(255, 68, 68, 0);   }
+}
+
+/* Distinct divider between "Happening Now" and "Up Next" */
+.upnext-section-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(246, 233, 200, 0.35);
+}
+
+.upnext-section-divider::before,
+.upnext-section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(246, 233, 200, 0.25);
+}
+
+.upnext-section-divider::after {
+  background: rgba(246, 233, 200, 0.25);
 }
