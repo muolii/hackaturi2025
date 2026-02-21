@@ -256,7 +256,7 @@ export const SCHEDULE = {
       { time: '3:15 PM',  duration: 30,  event: 'C2PA - Embrace Authenticity of Digital Content', location: 'ENGR 045C',             type: 'cyber' },
       { time: '3:15 PM',  duration: 45,  event: 'Git: The Hard Way',                 location: 'ENGR 010C',                           type: 'workshop' },
       { time: '3:30 PM',  duration: 30,  event: 'Thinking Like a Project Manager', location: 'ENGR 025C', type: 'beginner' },
-      { time: '4:00 PM',  duration: 30,  event: 'Experiment with Google AI Studio',  location: 'ENGR 010C',                           type: 'beginner' },
+      { time: '4:15 PM',  duration: 30,  event: 'Experiment with Google AI Studio',  location: 'ENGR 010C',                           type: 'beginner' },
       { time: '4:15 PM',  duration: 30,  event: 'Hacking Interfaces and Human Perception', location: 'ENGR 045C',                   type: 'cyber' },
       { time: '4:15 PM',  duration: 60,  event: 'From Classroom to Industry: Exploring Model-Based Design with Simulink', location: 'ENGR 025C', type: 'workshop' },
       { time: '5:00 PM',  duration: 60,  event: 'DINNER',                            location: 'Fascitelli Commons',                  type: 'food' },
