@@ -83,14 +83,14 @@ export const SPEAKERS = {
     description: "Open source is one of the best ways to gain real-world experience, but getting started can be confusing. In this workshop, we'll walk through how students and early-career developers can contribute to real open-source projects using MergeFund, a platform that connects contributors with funded issues from real repositories. No prior contributions required.",
     workshopTitle: 'Contributing to Open Source with MergeFund',
   },
-  'from hackathon project to internship: thinking like a product manager': {
+  'thinking like a product manager': {
     name: 'Kanika Mohan',
     role: 'Associate Product Manager',
     company: 'IBM',
     image: '/images/workshop-speakers/Kanika_Mohan.jpeg',
     bio: 'Kanika Mohan is an Associate Product Manager at IBM, where she works on Cloud Databases focusing on building products that solve real customer problems at scale. She brings experience across product management, engineering collaboration, and go-to-market strategy. She has previously worked at Fortune 500 companies including GE Aerospace, Chrysler, and Dell Technologies.',
     description: 'This workshop focuses on how to turn a hackathon project into a strong internship opportunity by applying product thinking and clear storytelling. Attendees will learn how recruiters evaluate projects, how to frame their work around user problems and impact, and how to present their hackathon experience in resumes and interviews. This session is ideal for developers, designers, and students who want their hackathon work to translate into real career outcomes.',
-    workshopTitle: 'From Hackathon Project to Internship: Thinking Like a Product Manager',
+    workshopTitle: 'Thinking Like a Product Manager',
   },
   'from idea to impact: solving real world problems with digital companions': {
     name: 'Rajnish Singh',
@@ -255,7 +255,7 @@ export const SCHEDULE = {
       { time: '3:00 PM',  event: 'Typeracer Tournament',              location: 'Lounge/Commons',                      type: 'activity' },
       { time: '3:15 PM', event: 'C2PA - Embrace Authenticity of Digital Content', location: 'ENGR 045C',             type: 'cyber' },
       { time: '3:15 PM',  event: 'Git: The Hard Way',                 location: 'ENGR 010C',                           type: 'workshop' },
-      { time: '3:30 PM',  event: 'From Hackathon Project to Internship: Thinking Like a Project Manager', location: 'ENGR 025C', type: 'beginner' },
+      { time: '3:30 PM',  event: 'Thinking Like a Project Manager', location: 'ENGR 025C', type: 'beginner' },
       { time: '4:00 PM',  event: 'Experiment with Google AI Studio',  location: 'ENGR 010C',                           type: 'beginner' },
       { time: '4:15 PM',  event: 'Hacking Interfaces and Human Perception', location: 'ENGR 045C',                   type: 'cyber' },
       { time: '4:15 PM',  event: 'From Classroom to Industry: Exploring Model-Based Design with Simulink', location: 'ENGR 025C', type: 'workshop' },
