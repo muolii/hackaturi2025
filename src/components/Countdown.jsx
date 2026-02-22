@@ -19,7 +19,7 @@ import '../styles/shared.css';
 import './Countdown.css';
 
 const EVENT_START    = '2026-02-21T08:00:00';
-const SUBMISSION_DUE = '2026-02-22T11:00:00';
+const SUBMISSION_DUE = '2026-02-22T09:00:00';
 
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -44,7 +44,7 @@ const getState = () => {
 
   if (msToStart  > 24 * 60 * 60 * 1000) return { phase: 'calm',   remaining: msToStart,  label: 'UNTIL HACK@URI 2026',     sublabel: null };
   if (msToStart  > 0)                    return { phase: 'active', remaining: msToStart,  label: 'ALL HANDS ON DECK!',       sublabel: 'HACK@URI STARTS SOON!' };
-  if (msToSubmit > 0)                    return { phase: 'active', remaining: msToSubmit, label: 'GOOD LUCK HACKERS!',         sublabel: 'SUBMISSIONS DUE SUNDAY @ 11AM' };
+  if (msToSubmit > 0)                    return { phase: 'active', remaining: msToSubmit, label: 'GOOD LUCK HACKERS!',         sublabel: 'SUBMISSIONS DUE SUNDAY @ 9AM' };
   return { phase: 'done', remaining: 0, label: '', sublabel: null };
 };
 
