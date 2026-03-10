@@ -18,8 +18,13 @@ const EVENT_DATE_DISPLAY = 'February 21-22, 2026';
 const EVENT_TITLE = 'Set Sail for Innovation: Hack@URI 2026';
 
 // Update this boolean to show/hide the registration button as it opens/closes.
-const SHOW_REGISTRATION_BUTTON = false; 
+const SHOW_REGISTRATION_BUTTON = false;
 const REGISTRATION_LINK = 'https://forms.gle/7q3LSHYr7gqQ2CaZ9';
+
+// Set to true to replace the countdown with a "View Projects" button.
+// Use this after the hackathon has ended to showcase submitted projects.
+const SHOW_PROJECT_GALLERY = true;
+const PROJECT_GALLERY_LINK = 'https://hack-uri-2026.devpost.com/project-gallery';
 
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -84,21 +89,34 @@ const Home = () => {
                 )}
               </div>
             ))}
-
-            <p className="hero-sub">
-              Embark on a 48-hour innovation adventure at the University of Rhode Island!
-            </p>
           </header>
 
-          {/* Countdown timer — the target date is configured inside the Countdown component */}
-          <div className="hero-countdown">
-            <div className="countdown-date">{EVENT_DATE_DISPLAY}</div>
-            <CountdownTimer />
-          </div>
+          {/* Countdown OR Project Gallery — toggled by SHOW_PROJECT_GALLERY above */}
+          {SHOW_PROJECT_GALLERY ? (
+            <div className="hero-cta hero-cta--gallery">
+              <p className="gallery-sub">Check out the amazing projects from this year's event!</p>
+              <a
+                href={PROJECT_GALLERY_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn view-projects"
+              >
+                Hack@URI 2026 Project Gallery →
+              </a>
+            </div>
+          ) : (
+            <div className="hero-countdown">
+              <div className="countdown-date">{EVENT_DATE_DISPLAY}</div>
+              <CountdownTimer />
+            </div>
+          )}
 
           {/* ── Registration CTA ─ Update the href to the new registration form link each year. */}
           {SHOW_REGISTRATION_BUTTON && (
             <div className="hero-cta">
+              <p className="hero-sub">
+                Embark on a 48-hour innovation adventure at the University of Rhode Island!
+              </p>
               <a
                 href={REGISTRATION_LINK}
                 target="_blank"

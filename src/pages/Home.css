@@ -228,6 +228,35 @@
   box-shadow: 0 15px 35px rgba(12, 58, 64, 0.2);
 }
 
+/* View Projects button — shown in place of the countdown after the event */
+.btn.view-projects {
+  background: var(--teal-dark);
+  color: var(--gold);
+  box-shadow: 0 12px 30px rgba(12, 58, 64, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.06);
+  letter-spacing: 0.3px;
+}
+
+.btn.view-projects:hover {
+  background: #0a2e34;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(12, 58, 64, 0.3);
+}
+
+/* Align the gallery CTA the same way as the countdown (left-aligned, full width) */
+.hero-cta--gallery {
+  margin-top: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.gallery-sub {
+  margin: 0 0 12px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #48392f;
+}
+
 
 /* ==========================================================================
    8. SPONSOR LOGO LOCKUPS (Powered by / Monster / TheMove)
@@ -303,6 +332,9 @@
     flex-wrap: wrap;
     gap: 15px;
   }
+
+  .hero-cta--gallery { margin-top: 8px; align-items: center; }
+  .gallery-sub { text-align: center; }
 
   .btn { padding: 16px 32px; font-size: 1.1rem; }
 }
