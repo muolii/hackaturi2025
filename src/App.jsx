@@ -129,7 +129,6 @@ const App = () => {
           <About />
         </section>
 
-        {/* Schedule section: shows Up Next widget + link to full calendar overlay */}
         <section id="schedule" className="section">
           <Schedule />
         </section>

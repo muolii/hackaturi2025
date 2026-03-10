@@ -3,6 +3,11 @@
 // Shows the live "Up Next" widget, the full inline calendar, and a button
 // to open the dedicated full-screen schedule page overlay.
 
+// ─── Global Config ────────────────────────────────────────────────────────────
+const SCHEDULE_TITLE = 'Hack@URI 2026 Schedule';  // Change this to update the page heading
+const SHOW_SCHEDULE_CALENDAR = false;      // Set to false once the event is over
+// ──────────────────────────────────────────────────────────────────────────────
+
 import React from 'react';
 import UpNext from '../components/UpNext';
 import ScheduleCalendar from '../components/ScheduleCalendar';
@@ -23,22 +28,29 @@ const Schedule = () => {
         <img key={n} src={starsSvg} alt="" className={`about-star star-${n}`} />
       ))}
 
-      <h1>Event Schedule</h1>
+      <h1>{SCHEDULE_TITLE}</h1>
 
-      {/* Helper tip */}
-      <p className="schedule-click-tip">
-        Click any <strong>workshop</strong> 👤 session to learn more about the speaker and the event!
-      </p>
+      {SHOW_SCHEDULE_CALENDAR && (
+        <>
+          {/* Helper tip */}
+          <p className="schedule-click-tip">
+            Click any <strong>workshop</strong> 👤 session to learn more about the speaker and the event!
+          </p>
 
-      {/* Live "Up Next" widget */}
-      <UpNext />
+          {/* Live "Up Next" widget */}
+          <UpNext />
 
-      {/* Full inline calendar with legend + modal support */}
-      <ScheduleCalendar />
+          {/* Full inline calendar with legend + modal support */}
+          <ScheduleCalendar />
+        </>
+      )}
 
       {/* Link to the dedicated full-screen schedule page */}
       <div className="toggle-container" style={{ marginTop: '40px' }}>
-        <button className="schedule-toggle-btn" onClick={openFullSchedule}>
+        <button
+          className={`schedule-toggle-btn${!SHOW_SCHEDULE_CALENDAR ? ' schedule-toggle-btn--prominent' : ''}`}
+          onClick={openFullSchedule}
+        >
           📅 Open Full Schedule Page
         </button>
       </div>
