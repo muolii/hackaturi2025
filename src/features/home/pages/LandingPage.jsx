@@ -7,7 +7,7 @@
 //   - The "Preview" admin button at the bottom calls `onRevealSite` with the access code.
 
 import React from 'react';
-import logo from '../../assets/logo.png';
+import logo from '../../../assets/logo.png';
 import './LandingPage.css';
 
 // ─── Landing Page Content ─────────────────────────────────────────────────────

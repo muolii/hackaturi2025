@@ -94,14 +94,14 @@
    5. SOCIAL LINK BUTTONS
    ========================================================================== */
 
-.social-links {
+.connect-section .social-links {
   display: flex;
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
 }
 
-.social-link {
+.connect-section .social-link {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,7 +118,7 @@
   transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.social-link:hover {
+.connect-section .social-link:hover {
   background: linear-gradient(135deg, #0B4F4F 0%, #0C3A40 100%);
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(12, 58, 64, 0.3);
@@ -126,16 +126,16 @@
   text-decoration: none;
 }
 
-.social-link:active {
+.connect-section .social-link:active {
   transform: translateY(0);
 }
 
-.social-icon {
+.connect-section .social-icon {
   font-size: 1.3rem;
   color: white;
 }
 
-.social-name {
+.connect-section .social-name {
   font-weight: 600;
   color: white;
   font-size: 1.1rem;
@@ -169,9 +169,9 @@
   .connect-section h3 { font-size: 1.4rem; }
   .connect-section p  { font-size: 1rem;   }
 
-  .social-links { gap: 15px; }
+  .connect-section .social-links { gap: 15px; }
 
-  .social-link {
+  .connect-section .social-link {
     padding: 12px 20px;
     min-width: 120px;
   }
@@ -199,18 +199,18 @@
   .connect-section h3 { font-size: 1.2rem; }
   .connect-section p  { font-size: 0.9rem; }
 
-  .social-links {
+  .connect-section .social-links {
     gap: 12px;
     flex-direction: column;
     align-items: stretch;
   }
 
-  .social-link {
+  .connect-section .social-link {
     padding: 15px 20px;
     width: 100%;
     min-width: unset;
     font-size: 1rem;
   }
 
-  .social-name { font-size: 1rem; }
+  .connect-section .social-name { font-size: 1rem; }
 }

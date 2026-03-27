@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { FaHeart } from 'react-icons/fa';
-import '../../shared/styles/shared.css';
+import '../../../shared/styles/shared.css';
 import './Footer.css';
 
 // ─── Footer Config ────────────────────────────────────────────────────────────

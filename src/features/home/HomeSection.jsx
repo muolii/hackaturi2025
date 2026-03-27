@@ -8,7 +8,7 @@ import starsSvg from '../../assets/stars-bg.svg';
 import yconicLogo from '/images/sponsors/yconic-transparent.png';
 import monsterLogo from '/images/sponsors/monster.png';
 import themoveappLogo from '/images/sponsors/themoveapp.png';
-import CountdownTimer from './Countdown';
+import CountdownTimer from './components/Countdown';
 import '../../shared/styles/shared.css';
 import './HomeSection.css';
 

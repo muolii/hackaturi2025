@@ -190,14 +190,14 @@
   font-size: 0.9rem;
 }
 
-.social-links {
+.landing-footer .social-links {
   display: flex;
   gap: 15px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.social-links a {
+.landing-footer .social-links a {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   font-weight: 500;
@@ -209,7 +209,7 @@
   font-size: 0.9rem;
 }
 
-.social-links a:hover {
+.landing-footer .social-links a:hover {
   color: white;
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);

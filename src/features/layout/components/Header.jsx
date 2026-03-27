@@ -9,7 +9,7 @@
 // TO ADD A DROPDOWN: Add a `dropdown` array to the nav item (see 'Get Involved').
 
 import React, { useState, useEffect } from 'react';
-import '../../shared/styles/shared.css';
+import '../../../shared/styles/shared.css';
 import './Header.css';
 
 // ─── Navigation Config ────────────────────────────────────────────────────────

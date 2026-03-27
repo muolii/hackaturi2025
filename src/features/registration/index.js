@@ -1,3 +1,3 @@
-export { default as RegistrationPopup } from './RegistrationPopup.jsx';
-export { default as FloatingRegistration } from './FloatingRegistration.jsx';
+export { default as RegistrationPopup } from './components/RegistrationPopup.jsx';
+export { default as FloatingRegistration } from './components/FloatingRegistration.jsx';
 

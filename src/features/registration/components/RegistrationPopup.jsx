@@ -8,7 +8,7 @@
 //   - POPUP_TEXT: All user-facing strings in the popup.
 
 import React, { useState, useEffect } from 'react';
-import '../../shared/styles/shared.css';
+import '../../../shared/styles/shared.css';
 import './RegistrationPopup.css';
 
 // ─── Config ───────────────────────────────────────────────────────────────────
