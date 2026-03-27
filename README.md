@@ -51,48 +51,32 @@ This serves the production build locally for testing before deployment.
 
 ## Project Structure
 
+Code is organized **by feature** (each folder owns its UI, styles, and local data).
+
 ```
 src/
-├── components/                   # Reusable UI components
-│   ├── Countdown.jsx             # Live countdown timer to event start
-│   ├── Countdown.css
-│   ├── FloatingRegistration.jsx  # Dismissible floating registration banner
-│   ├── FloatingRegistration.css
-│   ├── Footer.jsx                # Site footer
-│   ├── Footer.css
-│   ├── Header.jsx                # Navigation header (desktop + mobile)
-│   ├── Header.css
-│   ├── LandingPage.jsx           # Pre-launch teaser page (used when SITE_HIDDEN=true)
-│   ├── LandingPage.css
-│   ├── RegistrationPopup.jsx     # One-time registration modal (session-based)
-│   ├── RegistrationPopup.css
-│   ├── UpNext.jsx                # "Happening Next" card — shared by Home and SchedulePage
-│   └── UpNext.css
-│   └── scheduleData.js           # All schedule events, colors, and helper functions
-├── pages/                        # Page-level components
-│   ├── About.jsx                 # About the event
-│   ├── About.css
-│   ├── Connect.jsx               # Social media links
-│   ├── Connect.css
-│   ├── FAQ.jsx                   # Accordion FAQ with tabbed categories
-│   ├── FAQ.css
-│   ├── Home.jsx                  # Hero section with countdown and UpNext card
-│   ├── Home.css
-│   ├── Interest.jsx              # Sponsor/volunteer/mentor/judge sign-up links
-│   ├── Interest.css
-│   ├── SchedulePage.jsx          # Full event schedule (dedicated page view)
-│   ├── SchedulePage.css
-│   ├── Sponsors.jsx              # Sponsor logos by tier
-│   ├── Sponsors.css
-│   ├── Team.jsx                  # Flippable team member cards by department
-│   ├── Team.css
-│   ├── Tracks.jsx                # Hackathon tracks/categories
-│   └── Tracks.css
+├── app/
+│   └── App.jsx                   # Root component — layout, hash routing, site visibility
+├── features/
+│   ├── about/                    # About section + About.css
+│   ├── connect/
+│   ├── faq/
+│   ├── home/                     # Home, Countdown, LandingPage (+ CSS)
+│   ├── interest/
+│   ├── layout/                   # Header, Footer
+│   ├── registration/           # RegistrationPopup, FloatingRegistration
+│   ├── schedule/                 # Schedule section, SchedulePage overlay, calendar, UpNext,
+│   │                             # WorkshopModal, ScheduleData.js
+│   ├── sponsors/
+│   ├── team/
+│   ├── tracks/
+│   └── winners/
+├── shared/
+│   └── styles/
+│       └── shared.css            # Global shared styles
 ├── assets/                       # SVGs and images bundled by Vite
-├── styles/
-│   └── shared.css                # Global shared styles
-├── App.jsx                       # Root component — manages views and layout
-└── index.jsx                     # Application entry point
+├── index.jsx                     # Application entry point
+└── index.css                     # Global reset / body
 ```
 
 ---
@@ -102,69 +86,63 @@ src/
 Most year-to-year changes are isolated to a small number of files. Here's where to look:
 
 ### Event details (name, dates, countdown target)
-- **`src/components/Countdown.jsx`** — update `EVENT_ISO` to the new event start datetime
-- **`src/pages/Home.jsx`** — update `EVENT_DATE_DISPLAY` and `EVENT_TITLE`
-- **`src/components/Footer.jsx`** — update the copyright `year` in `FOOTER_CONFIG`
+- **`src/features/home/Countdown.jsx`** — update `EVENT_ISO` to the new event start datetime
+- **`src/features/home/Home.jsx`** — update `EVENT_DATE_DISPLAY` and `EVENT_TITLE`
+- **`src/features/layout/Footer.jsx`** — update the copyright `year` in `FOOTER_CONFIG`
 
 ### Schedule
-- **`src/data/scheduleData.js`** — the single source of truth for all events. Edit the `SCHEDULE` object here. Both the `UpNext` card and the full `SchedulePage` read from this file automatically.
+- **`src/features/schedule/ScheduleData.js`** — the single source of truth for all events. Edit the `SCHEDULE` object here. Both the `UpNext` card and the full `SchedulePage` read from this file automatically.
 
 ### Team members
-- **`src/pages/Team.jsx`** — add/remove members from `TEAM_DATA`, add/remove departments from `TEAM_TABS`
+- **`src/features/team/Team.jsx`** — add/remove members from `TEAM_DATA`, add/remove departments from `TEAM_TABS`
 
 ### Sponsors
-- **`src/pages/Sponsors.jsx`** — add/remove logos from `SPONSOR_TIERS`, update `DONORS`
+- **`src/features/sponsors/Sponsors.jsx`** — add/remove logos from `SPONSOR_TIERS`, update `DONORS`
 - Drop new logo images into `public/images/sponsors/`
 
 ### FAQ
-- **`src/pages/FAQ.jsx`** — edit questions in `FAQ_DATA`, add/remove tabs in `FAQ_TABS`
+- **`src/features/faq/FAQ.jsx`** — edit questions in `FAQ_DATA`, add/remove tabs in `FAQ_TABS`
 
 ### Registration deadline & links
-- **`src/components/RegistrationPopup.jsx`** — update `REGISTRATION_DEADLINE` and `REGISTRATION_URL`
-- **`src/components/FloatingRegistration.jsx`** — same fields: `REGISTRATION_DEADLINE` and `REGISTRATION_URL`
+- **`src/features/registration/RegistrationPopup.jsx`** — update `REGISTRATION_DEADLINE` and `REGISTRATION_URL`
+- **`src/features/registration/FloatingRegistration.jsx`** — same fields: `REGISTRATION_DEADLINE` and `REGISTRATION_URL`
 
 ### Hackathon tracks
-- **`src/pages/Tracks.jsx`** — add/remove entries from the `TRACKS` array
+- **`src/features/tracks/Tracks.jsx`** — add/remove entries from the `TRACKS` array
 
 ### Navigation links
-- **`src/components/Header.jsx`** — edit the `NAV_ITEMS` array. Add `isSchedulePage: true` to any item that should open the schedule page view instead of scrolling.
+- **`src/features/layout/Header.jsx`** — edit the `NAV_ITEMS` array. Add `isSchedulePage: true` to any item that should open the schedule page view instead of scrolling.
 
 ### Pre-launch teaser page
-- **`src/App.jsx`** — set `SITE_HIDDEN = true` to show `LandingPage` instead of the full site. Access code for early preview: `"hackaturi-secret"`.
-- **`src/components/LandingPage.jsx`** — update `LANDING_CONFIG` with new event info and social links.
+- **`src/app/App.jsx`** — set `SITE_HIDDEN = true` to show `LandingPage` instead of the full site. Access code for early preview: `"hackaturi-secret"`.
+- **`src/features/home/LandingPage.jsx`** — update `LANDING_CONFIG` with new event info and social links.
 
 ---
 
 ## View System (No Router Required)
 
-The site uses a lightweight view-switching system in `App.jsx` instead of a router library. The `currentView` state controls what's rendered:
-
-| Value | What's shown |
-|---|---|
-| `'main'` | Normal single-page scroll layout |
-| `'schedule'` | Dedicated full-schedule page |
+The site has no React Router dependency. The main shell is a single-page scroll. When `window.location.hash` is `#full-schedule`, `App.jsx` mounts the full-screen `SchedulePage` overlay on top.
 
 To add another dedicated page in the future:
-1. Create `src/pages/MyPage.jsx` with an `onBack` prop
-2. Import it in `App.jsx`
-3. Add a new view string (e.g. `'mypage'`) and render branch to `App.jsx`
-4. Trigger `setCurrentView('mypage')` from a button or nav link
+1. Create `src/features/<name>/MyPage.jsx` with any props you need (e.g. `onBack`)
+2. Import it in `src/app/App.jsx`
+3. Add state or hash routing and a render branch in `App.jsx`
+4. Trigger navigation from a button or nav link
 
 ---
 
 ## Adding New Sections
 
-1. Create `src/pages/MySection.jsx` and `MySection.css`
-2. Import and add `<section id="my-section"><MySection /></section>` in `App.jsx`
-3. Add a matching entry to `NAV_ITEMS` in `src/components/Header.jsx`
+1. Create `src/features/<name>/MySection.jsx` and `MySection.css`
+2. Import and add `<section id="my-section"><MySection /></section>` in `src/app/App.jsx`
+3. Add a matching entry to `NAV_ITEMS` in `src/features/layout/Header.jsx`
 
 ---
 
 ## Styling
 
-- **Global/shared styles**: `src/styles/shared.css`
-- **Component styles**: each component has a paired `.css` file in the same folder
-- **Page styles**: each page has a paired `.css` file in `src/pages/`
+- **Global/shared styles**: `src/shared/styles/shared.css`
+- **Feature styles**: each feature keeps its `.css` files next to its `.jsx` files under `src/features/<feature>/`
 
 ---
 

@@ -3,13 +3,13 @@
 // Shows the event title, sponsor logos, event date, and a countdown timer.
 
 import React from 'react';
-import pirateLogo from '../assets/pirate_ram.svg';
-import starsSvg from '../assets/stars-bg.svg';
+import pirateLogo from '../../assets/pirate_ram.svg';
+import starsSvg from '../../assets/stars-bg.svg';
 import yconicLogo from '/images/sponsors/yconic-transparent.png';
 import monsterLogo from '/images/sponsors/monster.png';
 import themoveappLogo from '/images/sponsors/themoveapp.png';
-import CountdownTimer from '../components/Countdown';
-import '../styles/shared.css';
+import CountdownTimer from './Countdown';
+import '../../shared/styles/shared.css';
 import './Home.css';
 
 // ─── Event Info ───────────────────────────────────────────────────────────────

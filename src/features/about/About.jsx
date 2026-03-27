@@ -3,8 +3,8 @@
 // Update the text content each year to reflect any changes to the event's scope or mission.
 
 import React from 'react';
-import starsSvg from '../assets/stars-bg.svg';
-import '../styles/shared.css';
+import starsSvg from '../../assets/stars-bg.svg';
+import '../../shared/styles/shared.css';
 import './About.css';
 
 // ─── About Content ────────────────────────────────────────────────────────────

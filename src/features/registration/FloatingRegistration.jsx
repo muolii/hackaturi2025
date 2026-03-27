@@ -8,7 +8,7 @@
 //   - BANNER_TEXT: The headline and call-to-action text shown on the banner.
 
 import React, { useState, useEffect } from 'react';
-import '../styles/shared.css';
+import '../../shared/styles/shared.css';
 import './FloatingRegistration.css';
 
 // ─── Config ───────────────────────────────────────────────────────────────────

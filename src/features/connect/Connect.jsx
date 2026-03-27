@@ -6,7 +6,7 @@
 
 import React from 'react';
 import { FaLinkedin, FaInstagram } from 'react-icons/fa';
-import '../styles/shared.css';
+import '../../shared/styles/shared.css';
 import './Connect.css';
 
 // ─── Social Links ─────────────────────────────────────────────────────────────

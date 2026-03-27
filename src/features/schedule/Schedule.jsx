@@ -9,10 +9,10 @@ const SHOW_SCHEDULE_CALENDAR = false;      // Set to false once the event is ove
 // ──────────────────────────────────────────────────────────────────────────────
 
 import React from 'react';
-import UpNext from '../components/UpNext';
-import ScheduleCalendar from '../components/ScheduleCalendar';
-import starsSvg from '../assets/stars-bg.svg';
-import '../styles/shared.css';
+import UpNext from './UpNext';
+import ScheduleCalendar from './ScheduleCalendar';
+import starsSvg from '../../assets/stars-bg.svg';
+import '../../shared/styles/shared.css';
 import './Schedule.css';
 
 const Schedule = () => {

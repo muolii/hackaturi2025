@@ -1,4 +1,4 @@
-// src/App.jsx
+// src/app/App.jsx
 // Root component: assembles all page sections and global UI elements.
 // The site is a single-page scroll layout — each "page" is a <section> stacked vertically.
 //
@@ -8,21 +8,22 @@
 //   The main Schedule section shows only the "Up Next" widget + a button to open it.
 
 import React, { useState, useEffect } from 'react';
-import Header from './components/Header.jsx';
-import Footer from './components/Footer.jsx';
-import Home from './pages/Home.jsx';
-import About from './pages/About.jsx';
-import Interest from './pages/Interest.jsx';
-import Sponsors from './pages/Sponsors.jsx';
-import Schedule from './pages/Schedule.jsx';
-import SchedulePage from './pages/SchedulePage.jsx';
-import Team from './pages/Team.jsx';
-import FAQ from './pages/FAQ.jsx';
-import Tracks from './pages/Tracks.jsx';
-import Connect from './pages/Connect.jsx';
-import RegistrationPopup from './components/RegistrationPopup.jsx';
-import FloatingRegistration from './components/FloatingRegistration.jsx';
-import './styles/shared.css';
+import Header from '../features/layout/Header.jsx';
+import Footer from '../features/layout/Footer.jsx';
+import Home from '../features/home/Home.jsx';
+import About from '../features/about/About.jsx';
+import Interest from '../features/interest/Interest.jsx';
+import Sponsors from '../features/sponsors/Sponsors.jsx';
+import Schedule from '../features/schedule/Schedule.jsx';
+import SchedulePage from '../features/schedule/SchedulePage.jsx';
+import Team from '../features/team/Team.jsx';
+import FAQ from '../features/faq/FAQ.jsx';
+import Tracks from '../features/tracks/Tracks.jsx';
+import Connect from '../features/connect/Connect.jsx';
+import RegistrationPopup from '../features/registration/RegistrationPopup.jsx';
+import FloatingRegistration from '../features/registration/FloatingRegistration.jsx';
+import Winners from '../features/winners/Winners.jsx';
+import '../shared/styles/shared.css';
 
 // ─── Site Visibility Config ───────────────────────────────────────────────────
 const SITE_HIDDEN = false;
@@ -128,6 +129,10 @@ const App = () => {
         <section id="about" className="section">
           <About />
         </section>
+
+        {/*<section id="winners" className="section">
+          <Winners />
+        </section>*/}
 
         <section id="schedule" className="section">
           <Schedule />

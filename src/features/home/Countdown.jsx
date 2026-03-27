@@ -15,7 +15,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import React, { useEffect, useState } from 'react';
-import '../styles/shared.css';
+import '../../shared/styles/shared.css';
 import './Countdown.css';
 
 const EVENT_START    = '2026-02-21T08:00:00';

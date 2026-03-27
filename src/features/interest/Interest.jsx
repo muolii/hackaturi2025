@@ -6,7 +6,7 @@
 // TO ADD A NEW ROLE: Add a new object to INTEREST_FORMS.
 
 import React from 'react';
-import '../styles/shared.css';
+import '../../shared/styles/shared.css';
 import './Interest.css';
 
 // ─── Sponsor Info ─────────────────────────────────────────────────────────────
