@@ -1,0 +1,333 @@
+/* ==========================================================================
+   Winners.css — Winners section
+   ========================================================================== */
+
+/* ==========================================================================
+   1. SECTION SHELL
+   ========================================================================== */
+
+.winners-section {
+  width: 100%;
+  padding: 40px 20px 20px;
+  box-sizing: border-box;
+  background: var(--cream);
+  font-family: var(--font-main);
+  color: var(--brown-dark);
+}
+
+/* ==========================================================================
+   2. HEADER
+   ========================================================================== */
+
+.winners-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.winners-header__eyebrow {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+  margin: 0 0 8px;
+  opacity: 0.85;
+}
+
+.winners-header__title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+  color: var(--brown-dark);
+  text-shadow: 2px 2px 4px rgba(47, 37, 32, 0.1);
+}
+
+.winners-header__line {
+  width: 56px;
+  height: 3px;
+  background: var(--teal-border);
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   3. GRID
+   ========================================================================== */
+
+.winners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* First card spans full width on larger screens for extra emphasis */
+@media (min-width: 768px) {
+  .winners-grid .winner-card:first-child {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 340px 1fr;
+  }
+}
+
+/* ==========================================================================
+   4. CARD
+   ========================================================================== */
+
+.winner-card {
+  position: relative;
+  background: rgba(246, 233, 200, 0.9);
+  border: 3px solid var(--teal-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.winner-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Grand prize card gets a subtle highlight */
+.winner-card--grand {
+  border-color: var(--teal-nav);
+  box-shadow: 0 0 0 2px rgba(10, 78, 78, 0.25), var(--shadow-card);
+}
+
+.winner-card--grand:hover {
+  box-shadow: 0 0 0 2px rgba(10, 78, 78, 0.3), var(--shadow-card-hover);
+}
+
+/* ==========================================================================
+   5. CROWN BADGE
+   ========================================================================== */
+
+.winner-card__crown {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 1.4rem;
+  z-index: 2;
+  filter: drop-shadow(0 2px 6px rgba(47, 37, 32, 0.25));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+
+/* ==========================================================================
+   6. IMAGE
+   ========================================================================== */
+
+.winner-card__image-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: rgba(12, 58, 64, 0.08);
+  flex-shrink: 0;
+}
+
+/* Full-width grand card: image column keeps fixed ratio */
+@media (min-width: 768px) {
+  .winner-card--grand .winner-card__image-wrap {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 260px;
+  }
+}
+
+.winner-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.winner-card:hover .winner-card__image {
+  transform: scale(1.04);
+}
+
+.winners-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(249, 233, 192, 0.7) 0%, rgba(246, 233, 200, 1) 100%);
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--teal-border);
+  opacity: 0.35;
+  letter-spacing: -0.05em;
+  min-height: 200px;
+}
+
+/* ==========================================================================
+   7. CARD BODY
+   ========================================================================== */
+
+.winner-card__body {
+  padding: 24px 26px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ==========================================================================
+   8. TRACK BADGES
+   ========================================================================== */
+
+.winner-card__tracks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.winner-card__track-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: rgba(12, 58, 64, 0.08);
+  color: var(--teal-dark);
+  border: 1px solid rgba(12, 58, 64, 0.2);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   9. PROJECT NAME
+   ========================================================================== */
+
+.winner-card__project-name {
+  font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+  font-weight: 800;
+  margin: 0;
+  color: var(--brown-dark);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   10. DESCRIPTION
+   ========================================================================== */
+
+.winner-card__description {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #48392f;
+  margin: 0;
+}
+
+/* ==========================================================================
+   11. TEAM MEMBERS
+   ========================================================================== */
+
+.winner-card__team {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+  padding-top: 4px;
+}
+
+.winner-card__team-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(47, 37, 32, 0.65);
+  flex-shrink: 0;
+}
+
+.winner-card__team-members {
+  font-size: 0.82rem;
+  color: #48392f;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   12. DEVPOST LINK
+   ========================================================================== */
+
+.winner-card__devpost-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  padding: 10px 18px;
+  border-radius: 32px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: var(--teal-dark);
+  color: var(--gold);
+  border: 2px solid rgba(255, 255, 255, 0.06);
+  text-decoration: none;
+  width: fit-content;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.winner-card__devpost-link:hover {
+  background: #0a2e34;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px rgba(12, 58, 64, 0.2);
+}
+
+.winner-card__devpost-link svg {
+  transition: transform 0.2s ease;
+}
+
+.winner-card__devpost-link:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* ==========================================================================
+   13. TBD STATE
+   ========================================================================== */
+
+.winners-tbd {
+  text-align: center;
+  padding: 80px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.winners-tbd__icon {
+  font-size: 3rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.winners-tbd__text {
+  font-size: 1.1rem;
+  color: #48392f;
+  margin: 0;
+}
+
+/* ==========================================================================
+   14. RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .winners-section {
+    padding: 30px 15px 20px;
+  }
+
+  .winners-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .winner-card--grand {
+    display: block; /* override grid layout on mobile */
+  }
+}

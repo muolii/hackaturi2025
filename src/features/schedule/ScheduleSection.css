@@ -1,0 +1,108 @@
+/* ==========================================================================
+   ScheduleSection.css — Schedule section + shared calendar styles
+   Depends on: shared.css (twinkle animation, .star-1..5 delays,
+               slideDown + pulse keyframes, font vars)
+   ========================================================================== */
+
+/* ==========================================================================
+   1. PAGE WRAPPER
+   ========================================================================== */
+
+.content {
+  position: relative;
+  min-height: auto;
+  z-index: 10;
+  padding: 40px 20px 60px;
+  background: #F6E9C8;
+  overflow: hidden;
+  font-family: var(--font-main);
+  color: #2f2520;
+}
+
+.content h1 {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #2f2520;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   2. DECORATIVE STARS
+   Positions unique to the Schedule page; animation + delays live in shared.css
+   ========================================================================== */
+
+.about-star {
+  width: 35px;
+  height: 35px;
+  font-size: 1.5rem;
+  z-index: 1; /* sits behind calendar content */
+}
+
+.about-star.star-1 { top:  5%; left:  5%; }
+.about-star.star-2 { top: 15%; right:  7%; }
+.about-star.star-3 { top: 80%; left:  3%; }
+.about-star.star-4 { top: 85%; right:  8%; }
+.about-star.star-5 { top: 45%; left: 92%; }
+
+/* ==========================================================================
+   3. DAY-VIEW TOGGLE BUTTON
+   ========================================================================== */
+
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.schedule-toggle-btn {
+  background: #0C3A40;
+  color: #F6E9C8;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 5px 15px rgba(12, 58, 64, 0.3);
+  font-family: var(--font-main);
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.schedule-toggle-btn:hover {
+  background: #0f4c54;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(12, 58, 64, 0.4);
+}
+
+.schedule-toggle-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(12, 58, 64, 0.3);
+}
+
+/* Larger, more prominent variant shown when the calendar is hidden */
+.schedule-toggle-btn--prominent {
+  padding: 20px 52px;
+  font-size: 1.45rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 8px 28px rgba(12, 58, 64, 0.4);
+}
+
+.schedule-toggle-btn--prominent:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(12, 58, 64, 0.5);
+}
+
+@media (max-width: 600px) {
+  .schedule-toggle-btn--prominent {
+    padding: 18px 36px;
+    font-size: 1.25rem;
+  }
+}
+

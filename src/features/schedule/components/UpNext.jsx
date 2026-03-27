@@ -1,4 +1,3 @@
-// src/components/UpNext.jsx
 // Reusable "Up Next" widget — shows events happening right now and events
 // scheduled at the next upcoming time slot (handles multiple simultaneous events).
 //
@@ -7,6 +6,7 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import { FaMapMarkerAlt, FaClock, FaHourglassHalf } from 'react-icons/fa';
+import './UpNext.css';
 
 import {
   SCHEDULE,
@@ -15,8 +15,8 @@ import {
   formatEndTime,
   getEventTypeColor,
   getSpeakerByTitle,
-} from './ScheduleData';
-import WorkshopModal from './WorkshopModal';
+} from '../data/scheduleData.js';
+import WorkshopModal from './WorkshopModal.jsx';
 
 const CLICKABLE_TYPES = ['workshop', 'beginner', 'cyber'];
 
@@ -34,9 +34,7 @@ const UpNext = () => {
     return Object.entries(SCHEDULE).flatMap(([dayKey, dayData]) =>
       dayData.events.map((event) => {
         const startDate = parseEventDateTime(dayData.date, event.time, dayKey);
-        const endDate   = event.duration
-          ? new Date(startDate.getTime() + event.duration * 60 * 1000)
-          : startDate;
+        const endDate = event.duration ? new Date(startDate.getTime() + event.duration * 60 * 1000) : startDate;
         return { ...event, day: dayData.date, dateTime: startDate, endDateTime: endDate };
       })
     );
@@ -44,9 +42,7 @@ const UpNext = () => {
 
   // Events whose window overlaps right now (started but not yet ended)
   const nowEvents = useMemo(() => {
-    return allEvents.filter(
-      (e) => e.dateTime <= currentTime && e.endDateTime > currentTime && e.duration > 0
-    );
+    return allEvents.filter((e) => e.dateTime <= currentTime && e.endDateTime > currentTime && e.duration > 0);
   }, [allEvents, currentTime]);
 
   // The next batch: earliest future start time, all events at that same time
@@ -71,15 +67,12 @@ const UpNext = () => {
     <>
       <div className="next-event-section">
         <div className="next-event-card">
-
           {/* ── Happening Now ─────────────────────────────────────────── */}
           {nowEvents.length > 0 && (
             <>
               <div className="next-event-label now-label">
                 <span className="pulse-icon pulse-icon--green" />
-                {nowEvents.length > 1
-                  ? `HAPPENING NOW — ${nowEvents.length} EVENTS`
-                  : 'HAPPENING NOW'}
+                {nowEvents.length > 1 ? `HAPPENING NOW — ${nowEvents.length} EVENTS` : 'HAPPENING NOW'}
               </div>
 
               <div className="next-events-list">
@@ -90,7 +83,15 @@ const UpNext = () => {
                     <div
                       key={i}
                       className={`next-event-content${isClickable ? ' upnext-clickable' : ''}`}
-                      style={i > 0 ? { borderTop: '1px solid rgba(246,233,200,0.2)', paddingTop: '12px', marginTop: '12px' } : {}}
+                      style={
+                        i > 0
+                          ? {
+                              borderTop: '1px solid rgba(246,233,200,0.2)',
+                              paddingTop: '12px',
+                              marginTop: '12px',
+                            }
+                          : {}
+                      }
                       onClick={() => handleEventClick(ev)}
                       title={isClickable ? 'Click for speaker details' : undefined}
                     >
@@ -100,8 +101,13 @@ const UpNext = () => {
                           {isClickable && <span className="upnext-click-hint">👤</span>}
                         </h4>
                         <div className="next-event-details">
-                          <span><FaClock /> {ev.time}{endTime ? ` – ${endTime}` : ''}</span>
-                          <span><FaMapMarkerAlt /> {ev.location}</span>
+                          <span>
+                            <FaClock /> {ev.time}
+                            {endTime ? ` – ${endTime}` : ''}
+                          </span>
+                          <span>
+                            <FaMapMarkerAlt /> {ev.location}
+                          </span>
                         </div>
                       </div>
                       <div className="next-event-right-col">
@@ -115,9 +121,7 @@ const UpNext = () => {
               </div>
 
               {/* Divider between sections */}
-              {nextEvents.length > 0 && (
-                <div className="upnext-section-divider" />
-              )}
+              {nextEvents.length > 0 && <div className="upnext-section-divider" />}
             </>
           )}
 
@@ -133,7 +137,9 @@ const UpNext = () => {
 
               <div className="countdown-display" style={{ marginBottom: '12px' }}>
                 <FaHourglassHalf className="hourglass" />
-                <span>Starts in: <strong>{formatCountdown(timeUntil)}</strong></span>
+                <span>
+                  Starts in: <strong>{formatCountdown(timeUntil)}</strong>
+                </span>
               </div>
 
               <div className="next-events-list">
@@ -144,7 +150,15 @@ const UpNext = () => {
                     <div
                       key={i}
                       className={`next-event-content${isClickable ? ' upnext-clickable' : ''}`}
-                      style={i > 0 ? { borderTop: '1px solid rgba(246,233,200,0.2)', paddingTop: '12px', marginTop: '12px' } : {}}
+                      style={
+                        i > 0
+                          ? {
+                              borderTop: '1px solid rgba(246,233,200,0.2)',
+                              paddingTop: '12px',
+                              marginTop: '12px',
+                            }
+                          : {}
+                      }
                       onClick={() => handleEventClick(ev)}
                       title={isClickable ? 'Click for speaker details' : undefined}
                     >
@@ -154,8 +168,13 @@ const UpNext = () => {
                           {isClickable && <span className="upnext-click-hint">👤</span>}
                         </h4>
                         <div className="next-event-details">
-                          <span><FaClock /> {ev.time}{endTime ? ` – ${endTime}` : ''}</span>
-                          <span><FaMapMarkerAlt /> {ev.location}</span>
+                          <span>
+                            <FaClock /> {ev.time}
+                            {endTime ? ` – ${endTime}` : ''}
+                          </span>
+                          <span>
+                            <FaMapMarkerAlt /> {ev.location}
+                          </span>
                         </div>
                       </div>
                       <div className="next-event-right-col">
@@ -169,15 +188,13 @@ const UpNext = () => {
               </div>
             </>
           )}
-
         </div>
       </div>
 
-      {selectedEvent && (
-        <WorkshopModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />
-      )}
+      {selectedEvent && <WorkshopModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />}
     </>
   );
 };
 
 export default UpNext;
+

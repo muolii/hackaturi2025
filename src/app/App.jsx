@@ -14,8 +14,6 @@ import Home from '../features/home/Home.jsx';
 import About from '../features/about/About.jsx';
 import Interest from '../features/interest/Interest.jsx';
 import Sponsors from '../features/sponsors/Sponsors.jsx';
-import Schedule from '../features/schedule/Schedule.jsx';
-import SchedulePage from '../features/schedule/SchedulePage.jsx';
 import Team from '../features/team/Team.jsx';
 import FAQ from '../features/faq/FAQ.jsx';
 import Tracks from '../features/tracks/Tracks.jsx';
@@ -23,6 +21,7 @@ import Connect from '../features/connect/Connect.jsx';
 import RegistrationPopup from '../features/registration/RegistrationPopup.jsx';
 import FloatingRegistration from '../features/registration/FloatingRegistration.jsx';
 import Winners from '../features/winners/Winners.jsx';
+import Schedule, { SchedulePage } from '../features/schedule';
 import '../shared/styles/shared.css';
 
 // ─── Site Visibility Config ───────────────────────────────────────────────────
@@ -130,9 +129,9 @@ const App = () => {
           <About />
         </section>
 
-        {/*<section id="winners" className="section">
+        <section id="winners" className="section">
           <Winners />
-        </section>*/}
+        </section>
 
         <section id="schedule" className="section">
           <Schedule />

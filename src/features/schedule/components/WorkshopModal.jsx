@@ -1,4 +1,3 @@
-// src/components/WorkshopModal.jsx
 // Displays speaker bio, photo, and workshop description when a user clicks
 // on a workshop or beginner-track event card in the schedule.
 //
@@ -9,7 +8,7 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { FaTimes, FaMapMarkerAlt, FaClock, FaMicrophone, FaScroll } from 'react-icons/fa';
-import { getSpeakerByTitle, getEventTypeColor } from './ScheduleData';
+import { getSpeakerByTitle, getEventTypeColor } from '../data/scheduleData.js';
 import './WorkshopModal.css';
 
 const WorkshopModal = ({ event, onClose }) => {
@@ -17,7 +16,9 @@ const WorkshopModal = ({ event, onClose }) => {
 
   // Close on Escape key
   useEffect(() => {
-    const handler = (e) => { if (e.key === 'Escape') onClose(); };
+    const handler = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
   }, [onClose]);
@@ -26,12 +27,15 @@ const WorkshopModal = ({ event, onClose }) => {
   // Locks both <body> and .main-content, since the main page scrolls
   // that container rather than body directly.
   useEffect(() => {
-    const targets = [
-      document.body,
-      document.querySelector('.main-content'),
-    ].filter(Boolean);
-    targets.forEach((el) => { el.style.overflow = 'hidden'; });
-    return () => { targets.forEach((el) => { el.style.overflow = ''; }); };
+    const targets = [document.body, document.querySelector('.main-content')].filter(Boolean);
+    targets.forEach((el) => {
+      el.style.overflow = 'hidden';
+    });
+    return () => {
+      targets.forEach((el) => {
+        el.style.overflow = '';
+      });
+    };
   }, []);
 
   if (!event) return null;
@@ -40,10 +44,13 @@ const WorkshopModal = ({ event, onClose }) => {
   const typeLabel = event.type === 'beginner' ? 'Beginner Workshop' : 'Workshop';
 
   return createPortal(
-    <div className="wm-backdrop" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+    <div
+      className="wm-backdrop"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
       <div className="wm-modal" role="dialog" aria-modal="true" aria-label={event.event}>
-
-        {/* ── Header bar ───────────────────────────────────────────────── */}
         <div className="wm-header" style={{ '--accent': typeColor }}>
           <div className="wm-header-left">
             <span className="wm-type-pill" style={{ background: typeColor }}>
@@ -51,8 +58,12 @@ const WorkshopModal = ({ event, onClose }) => {
             </span>
             <h2 className="wm-title">{event.event}</h2>
             <div className="wm-meta">
-              <span><FaClock /> {event.day} · {event.time}</span>
-              <span><FaMapMarkerAlt /> {event.location}</span>
+              <span>
+                <FaClock /> {event.day} · {event.time}
+              </span>
+              <span>
+                <FaMapMarkerAlt /> {event.location}
+              </span>
             </div>
           </div>
           <button className="wm-close" onClick={onClose} aria-label="Close modal">
@@ -60,12 +71,9 @@ const WorkshopModal = ({ event, onClose }) => {
           </button>
         </div>
 
-        {/* ── Body ─────────────────────────────────────────────────────── */}
         <div className="wm-body">
-
           {speaker ? (
             <>
-              {/* Speaker section */}
               <section className="wm-section">
                 <h3 className="wm-section-heading">
                   <FaMicrophone className="wm-section-icon" style={{ color: typeColor }} />
@@ -84,11 +92,12 @@ const WorkshopModal = ({ event, onClose }) => {
                         e.target.nextSibling.style.display = 'flex';
                       }}
                     />
-                    <div
-                      className="wm-headshot-fallback"
-                      style={{ background: typeColor, display: 'none' }}
-                    >
-                      {speaker.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
+                    <div className="wm-headshot-fallback" style={{ background: typeColor, display: 'none' }}>
+                      {speaker.name
+                        .split(' ')
+                        .map((n) => n[0])
+                        .join('')
+                        .slice(0, 2)}
                     </div>
                   </div>
 
@@ -103,7 +112,6 @@ const WorkshopModal = ({ event, onClose }) => {
 
               <div className="wm-divider" />
 
-              {/* Workshop overview section */}
               <section className="wm-section">
                 <h3 className="wm-section-heading">
                   <FaScroll className="wm-section-icon" style={{ color: typeColor }} />
@@ -113,7 +121,6 @@ const WorkshopModal = ({ event, onClose }) => {
               </section>
             </>
           ) : (
-            // No speaker data found — show a minimal fallback
             <section className="wm-section">
               <p className="wm-description">
                 Details for this session will be posted soon. Check back before the event!
@@ -122,13 +129,11 @@ const WorkshopModal = ({ event, onClose }) => {
           )}
         </div>
 
-        {/* ── Footer ───────────────────────────────────────────────────── */}
         <div className="wm-footer">
           <button className="wm-close-btn" onClick={onClose} style={{ '--accent': typeColor }}>
             Close
           </button>
         </div>
-
       </div>
     </div>,
     document.body
@@ -136,3 +141,4 @@ const WorkshopModal = ({ event, onClose }) => {
 };
 
 export default WorkshopModal;
+
