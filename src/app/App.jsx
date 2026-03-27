@@ -1,26 +1,19 @@
 // src/app/App.jsx
 // Root component: assembles all page sections and global UI elements.
 // The site is a single-page scroll layout — each "page" is a <section> stacked vertically.
-//
-// SCHEDULE PAGE:
-//   The full schedule calendar lives in SchedulePage.jsx. It renders as a
-//   full-screen overlay when window.location.hash === '#full-schedule'.
-//   The main Schedule section shows only the "Up Next" widget + a button to open it.
 
 import React, { useState, useEffect } from 'react';
-import Header from '../features/layout/Header.jsx';
-import Footer from '../features/layout/Footer.jsx';
-import Home from '../features/home/Home.jsx';
-import About from '../features/about/About.jsx';
-import Interest from '../features/interest/Interest.jsx';
-import Sponsors from '../features/sponsors/Sponsors.jsx';
-import Team from '../features/team/Team.jsx';
-import FAQ from '../features/faq/FAQ.jsx';
-import Tracks from '../features/tracks/Tracks.jsx';
-import Connect from '../features/connect/Connect.jsx';
-import RegistrationPopup from '../features/registration/RegistrationPopup.jsx';
-import FloatingRegistration from '../features/registration/FloatingRegistration.jsx';
-import Winners from '../features/winners/Winners.jsx';
+import { Header, Footer } from '../features/layout';
+import Home from '../features/home';
+import About from '../features/about';
+import Interest from '../features/interest';
+import Sponsors from '../features/sponsors';
+import Team from '../features/team';
+import FAQ from '../features/faq';
+import Tracks from '../features/tracks';
+import Connect from '../features/connect';
+import { RegistrationPopup, FloatingRegistration } from '../features/registration';
+import Winners from '../features/winners';
 import Schedule, { SchedulePage } from '../features/schedule';
 import '../shared/styles/shared.css';
 
@@ -129,9 +122,9 @@ const App = () => {
           <About />
         </section>
 
-        <section id="winners" className="section">
+        {/*<section id="winners" className="section">
           <Winners />
-        </section>
+        </section>*/}
 
         <section id="schedule" className="section">
           <Schedule />
