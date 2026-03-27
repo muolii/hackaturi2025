@@ -5,7 +5,7 @@
 import React from 'react';
 import starsSvg from '../../assets/stars-bg.svg';
 import '../../shared/styles/shared.css';
-import './About.css';
+import './AboutSection.css';
 
 // ─── About Content ────────────────────────────────────────────────────────────
 // Edit these paragraphs each year to keep the about section current.
@@ -27,10 +27,9 @@ const ABOUT_PARAGRAPHS = [
 ];
 // ─────────────────────────────────────────────────────────────────────────────
 
-const About = () => {
+const AboutSection = () => {
   return (
     <div className="pirate-about">
-
       {/* Decorative stars scattered in the background */}
       {[1, 2, 3, 4, 5].map((n) => (
         <img key={n} src={starsSvg} alt="" className={`about-star star-${n}`} />
@@ -42,9 +41,9 @@ const About = () => {
           <p key={i}>{text}</p>
         ))}
       </div>
-
     </div>
   );
 };
 
-export default About;
+export default AboutSection;
+

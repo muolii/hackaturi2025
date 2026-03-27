@@ -7,7 +7,7 @@
 import React from 'react';
 import { FaLinkedin, FaInstagram } from 'react-icons/fa';
 import '../../shared/styles/shared.css';
-import './Connect.css';
+import './ConnectSection.css';
 
 // ─── Social Links ─────────────────────────────────────────────────────────────
 // Add or remove entries to update which platforms are shown.
@@ -25,7 +25,7 @@ const SOCIAL_LINKS = [
 ];
 // ─────────────────────────────────────────────────────────────────────────────
 
-const Connect = () => {
+const ConnectSection = () => {
   return (
     <div className="connect-page">
       <div className="connect-content">
@@ -58,4 +58,5 @@ const Connect = () => {
   );
 };
 
-export default Connect;
+export default ConnectSection;
+
