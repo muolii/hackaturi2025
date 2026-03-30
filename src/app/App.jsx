@@ -3,7 +3,7 @@
 // The site is a single-page scroll layout — each "page" is a <section> stacked vertically.
 
 import React, { useState, useEffect } from 'react';
-import { Header, Footer } from '../features/layout';
+import { Header, Footer, BottomBanner } from '../features/layout';
 import Home from '../features/home';
 import About from '../features/about';
 import Interest from '../features/interest';
@@ -24,6 +24,7 @@ const SITE_HIDDEN = false;
 const App = () => {
   const [isSiteRevealed, setIsSiteRevealed] = useState(!SITE_HIDDEN);
   const [showSchedulePage, setShowSchedulePage] = useState(false);
+  const [showBottomBanner, setShowBottomBanner] = useState(true);
 
   // On mount: check if an admin has previously revealed the site via localStorage
   useEffect(() => {
@@ -156,6 +157,9 @@ const App = () => {
       </main>
 
       <Footer />
+      {showBottomBanner && (
+        <BottomBanner onDismiss={() => setShowBottomBanner(false)} />
+      )}
 
     </div>
   );

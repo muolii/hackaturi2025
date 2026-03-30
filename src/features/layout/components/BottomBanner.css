@@ -1,0 +1,57 @@
+.bottom-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: none;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(7, 61, 60, 0.98), rgba(10, 78, 78, 0.98));
+  color: var(--parchment);
+  border-radius: 0;
+  box-shadow: 0 -8px 22px rgba(0, 0, 0, 0.3);
+  z-index: 12000;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bottom-banner__message {
+  margin: 0;
+  flex: 1;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  line-height: 1.45;
+}
+
+.bottom-banner__dismiss {
+  border: 2px solid var(--gold-light);
+  background: var(--parchment);
+  color: var(--teal-nav);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bottom-banner__dismiss:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24);
+}
+
+@media (max-width: 720px) {
+  .bottom-banner {
+    bottom: 0;
+    padding: 12px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .bottom-banner__dismiss {
+    align-self: flex-end;
+  }
+}
