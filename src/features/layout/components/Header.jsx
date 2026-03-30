@@ -19,7 +19,7 @@ import './Header.css';
 // Dropdown item IDs can be subsection anchors within the parent section.
 const NAV_ITEMS = [
   { id: 'home',      label: 'Home' },
-  { id: 'about',     label: 'About' },
+  /*{ id: 'about',     label: 'About' },*/
   { id: 'schedule',  label: 'Schedule' },
   { id: 'tracks',    label: 'Tracks' },
   { id: 'faq',       label: 'FAQ' },
@@ -45,52 +45,12 @@ const NAV_ITEMS = [
 ];
 // ─────────────────────────────────────────────────────────────────────────────
 
-// ─── Global Scroll Handler ────────────────────────────────────────────────────
-// The scroll handler lives on the window object so it persists across re-renders
-// and isn't duplicated if the Header mounts more than once.
-if (!window.hackaturiScrollData) {
-  window.hackaturiScrollData = { lastY: 0, handler: null, headerElement: null };
-}
-
-const createScrollHandler = () => () => {
-  const y         = window.scrollY;
-  const lastY     = window.hackaturiScrollData.lastY;
-  const header    = window.hackaturiScrollData.headerElement;
-  const app       = document.querySelector('.app');
-
-  if (!header) return;
-
-  const scrollingDown = y > lastY && y > 100;
-  const scrollingUp   = y < lastY || y <= 100;
-
-  // Hide the header when scrolling down past 100px; reveal when scrolling back up
-  if (scrollingDown) {
-    header.classList.add('hidden');
-    app?.classList.add('scrolled');
-  } else if (scrollingUp) {
-    header.classList.remove('hidden');
-    app?.classList.remove('scrolled');
-  }
-
-  window.hackaturiScrollData.lastY = y;
-
-  // Highlight the nav button for whichever section is currently in view
-  for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
-    const section = document.getElementById(NAV_ITEMS[i].id);
-    if (section && section.offsetTop <= y + 120) {
-      header.querySelectorAll('.nav-btn, .mobile-nav-btn').forEach((btn) =>
-        btn.classList.remove('active')
-      );
-      header.querySelector(`[data-section="${NAV_ITEMS[i].id}"]`)?.classList.add('active');
-      break;
-    }
-  }
-};
-// ─────────────────────────────────────────────────────────────────────────────
-
-const Header = ({ scrollToSection }) => {
-  const [activeSection, setActiveSection]         = useState('home');
+const Header = ({ scrollToSection, scrollContainerRef, scrollRootElement }) => {
+  const isArchiveNav = Boolean(scrollContainerRef);
+  const [activeSection, setActiveSection] = useState(() => (isArchiveNav ? 'archive' : 'home'));
   const [isVisible, setIsVisible]                 = useState(true);
+  /** Scroll-hide must be React state — re-renders (e.g. archive carousel) would drop classList-only "hidden". */
+  const [scrollHidden, setScrollHidden]           = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen]   = useState(false);
   const [isMobile, setIsMobile]                   = useState(false);
   const [openDropdown, setOpenDropdown]           = useState(null);      // desktop hover dropdown
@@ -104,15 +64,67 @@ const Header = ({ scrollToSection }) => {
     return () => window.removeEventListener('resize', check);
   }, []);
 
-  // Register the global scroll handler once on mount
   useEffect(() => {
-    if (!window.hackaturiScrollData.handler) {
-      window.hackaturiScrollData.handler = createScrollHandler();
-      window.addEventListener('scroll', window.hackaturiScrollData.handler);
+    if (isArchiveNav) {
+      setActiveSection('archive');
     }
-    // Cache the header DOM element for the scroll handler to use
-    window.hackaturiScrollData.headerElement = document.querySelector('.site-header');
-  }, []);
+  }, [isArchiveNav]);
+
+  // Auto-hide header + active nav: window on main page; overlay element on archive
+  useEffect(() => {
+    if (isArchiveNav && scrollRootElement == null) {
+      return undefined;
+    }
+
+    const scrollRoot = isArchiveNav
+      ? (scrollRootElement ?? scrollContainerRef?.current ?? window)
+      : window;
+    const app = document.querySelector('.app');
+    const overlayEl =
+      scrollRoot !== window && scrollRoot instanceof HTMLElement ? scrollRoot : null;
+
+    let lastY = scrollRoot === window ? window.scrollY : scrollRoot.scrollTop;
+
+    const onScroll = () => {
+      const y = scrollRoot === window ? window.scrollY : scrollRoot.scrollTop;
+
+      const scrollingDown = y > lastY && y > 100;
+      const scrollingUp = y < lastY || y <= 100;
+
+      if (scrollingDown) {
+        setScrollHidden(true);
+        if (scrollRoot === window) {
+          app?.classList.add('scrolled');
+        } else {
+          overlayEl?.classList.add('archive-scrolled');
+        }
+      } else if (scrollingUp) {
+        setScrollHidden(false);
+        if (scrollRoot === window) {
+          app?.classList.remove('scrolled');
+        } else {
+          overlayEl?.classList.remove('archive-scrolled');
+        }
+      }
+
+      lastY = y;
+
+      if (scrollRoot === window) {
+        for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
+          const section = document.getElementById(NAV_ITEMS[i].id);
+          if (section && section.offsetTop <= y + 120) {
+            setActiveSection(NAV_ITEMS[i].id);
+            break;
+          }
+        }
+      }
+    };
+
+    scrollRoot.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    return () => scrollRoot.removeEventListener('scroll', onScroll);
+  }, [isArchiveNav, scrollRootElement, scrollContainerRef]);
 
   // Scrolls to a section and optionally flashes it to draw the user's attention.
   // `highlight: true` is used for dropdown sub-items (e.g. jumping to a specific role card).
@@ -132,6 +144,7 @@ const Header = ({ scrollToSection }) => {
 
     // Reset all menu state after a nav click
     setIsVisible(true);
+    setScrollHidden(false);
     setIsMobileMenuOpen(false);
     setOpenDropdown(null);
     setOpenMobileDropdown(null);
@@ -142,13 +155,14 @@ const Header = ({ scrollToSection }) => {
     window.location.hash = targetHash.replace(/^##/, '#');
 
     setIsVisible(true);
+    setScrollHidden(false);
     setIsMobileMenuOpen(false);
     setOpenDropdown(null);
     setOpenMobileDropdown(null);
   };
 
   return (
-    <header className={`site-header ${isVisible ? '' : 'hidden'}`}>
+    <header className={`site-header ${!isVisible || scrollHidden ? 'hidden' : ''}`}>
       <div className="header-inner">
 
         {/* ── Desktop Navigation ──────────────────────────────────────── */}

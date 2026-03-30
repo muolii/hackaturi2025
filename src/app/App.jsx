@@ -2,7 +2,7 @@
 // Root component: assembles all page sections and global UI elements.
 // The site is a single-page scroll layout — each "page" is a <section> stacked vertically.
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Header, Footer, BottomBanner } from '../features/layout';
 import Home from '../features/home';
 import About from '../features/about';
@@ -27,6 +27,21 @@ const App = () => {
   const [showSchedulePage, setShowSchedulePage] = useState(false);
   const [archiveEvent, setArchiveEvent] = useState(null);
   const [showBottomBanner, setShowBottomBanner] = useState(true);
+  const scrollAfterArchiveCloseRef = useRef(null);
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  /** When the archive overlay is open, close it first; scroll runs after unmount (see effect below). */
+  const scrollToSectionFromArchive = (sectionId) => {
+    scrollAfterArchiveCloseRef.current = sectionId;
+    window.location.hash = '';
+    setArchiveEvent(null);
+  };
 
   // On mount: check if an admin has previously revealed the site via localStorage
   useEffect(() => {
@@ -57,6 +72,18 @@ const App = () => {
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
 
+  // After archive overlay unmounts, scroll to the section requested from the archive header
+  useEffect(() => {
+    if (archiveEvent) return;
+    const sectionId = scrollAfterArchiveCloseRef.current;
+    if (!sectionId) return;
+    scrollAfterArchiveCloseRef.current = null;
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [archiveEvent]);
+
   // Close the schedule overlay and restore the hash
   const handleCloseSchedulePage = () => {
     window.location.hash = '';
@@ -83,13 +110,6 @@ const App = () => {
     localStorage.removeItem('hackaturi-site-revealed');
   };
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <div className="app">
 
@@ -100,7 +120,11 @@ const App = () => {
 
       {/* ── Archive Page Overlay ─────────────────────────────────────────── */}
       {archiveEvent && (
-        <ArchivePage eventId={archiveEvent} onClose={handleCloseArchivePage} />
+        <ArchivePage
+          eventId={archiveEvent}
+          onClose={handleCloseArchivePage}
+          scrollToSection={scrollToSectionFromArchive}
+        />
       )}
 
       {/* ── Global UI Elements ────────────────────────────────────────────── */}
@@ -131,8 +155,8 @@ const App = () => {
         />
       </a>
 
-      {/* ── Navigation ────────────────────────────────────────────────────── */}
-      <Header scrollToSection={scrollToSection} />
+      {/* ── Navigation (single instance: archive overlay renders its own copy) ─ */}
+      {!archiveEvent && <Header scrollToSection={scrollToSection} />}
 
       {/* ── Page Sections ─────────────────────────────────────────────────── */}
       <main className="main-content">
@@ -143,10 +167,6 @@ const App = () => {
         <section id="about" className="section">
           <About />
         </section>
-
-        {/*<section id="winners" className="section">
-          <Winners />
-        </section>*/}
 
         <section id="schedule" className="section">
           <Schedule />

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { FaArrowLeft, FaChevronLeft, FaChevronRight, FaExternalLinkAlt, FaCamera } from 'react-icons/fa';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { FaChevronLeft, FaChevronRight, FaExternalLinkAlt } from 'react-icons/fa';
 import Winners from './components/Winners.jsx';
 import { ARCHIVE_EVENTS_BY_ID, DEFAULT_ARCHIVE_EVENT_ID } from './data/events/index.js';
 import '../../shared/styles/shared.css';
 import './ArchivePage.css';
+import { Header } from '../layout';
 
 const REPO_IMAGE_FILES = import.meta.glob('/{src,public}/**/*.{png,jpg,jpeg,webp,avif,gif}', {
   eager: true,
@@ -29,7 +30,13 @@ const getImagesFromPhotoDirectory = (photoDirectory) => {
     .filter(Boolean);
 };
 
-const ArchivePage = ({ eventId = DEFAULT_ARCHIVE_EVENT_ID, onClose }) => {
+const ArchivePage = ({ eventId = DEFAULT_ARCHIVE_EVENT_ID, onClose, scrollToSection }) => {
+  const overlayRef = useRef(null);
+  const [scrollRootElement, setScrollRootElement] = useState(null);
+  const setOverlayNode = useCallback((node) => {
+    overlayRef.current = node;
+    setScrollRootElement(node);
+  }, []);
   const event = ARCHIVE_EVENTS_BY_ID[eventId] || ARCHIVE_EVENTS_BY_ID[DEFAULT_ARCHIVE_EVENT_ID];
   const photoLinks = event.links?.photos || [];
   const directoryImages = getImagesFromPhotoDirectory(event.photoDirectory);
@@ -58,12 +65,13 @@ const ArchivePage = ({ eventId = DEFAULT_ARCHIVE_EVENT_ID, onClose }) => {
   }, [heroImages.length]);
 
   return (
-    <div className="archive-page-overlay">
-      <div className="archive-page-inner content">
-        <button className="archive-back-btn" onClick={onClose}>
-          <FaArrowLeft /> Back to Main Site
-        </button>
-
+    <div ref={setOverlayNode} className="archive-page-overlay">
+      <Header
+        scrollToSection={scrollToSection}
+        scrollContainerRef={overlayRef}
+        scrollRootElement={scrollRootElement}
+      />
+      <div className="archive-page-inner">
         <div className="archive-intro">
           {/* LEFT — Image Carousel */}
           <div className="archive-intro__left">
