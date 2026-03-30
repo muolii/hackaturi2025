@@ -13,8 +13,9 @@ import FAQ from '../features/faq';
 import Tracks from '../features/tracks';
 import Connect from '../features/connect';
 import { RegistrationPopup, FloatingRegistration } from '../features/registration';
-import Winners from '../features/winners';
 import Schedule, { SchedulePage } from '../features/schedule';
+import ArchivePage from '../features/archive/ArchivePage.jsx';
+import { DEFAULT_ARCHIVE_EVENT_ID } from '../features/archive/data/events/index.js';
 import '../shared/styles/shared.css';
 
 // ─── Site Visibility Config ───────────────────────────────────────────────────
@@ -24,6 +25,7 @@ const SITE_HIDDEN = false;
 const App = () => {
   const [isSiteRevealed, setIsSiteRevealed] = useState(!SITE_HIDDEN);
   const [showSchedulePage, setShowSchedulePage] = useState(false);
+  const [archiveEvent, setArchiveEvent] = useState(null);
   const [showBottomBanner, setShowBottomBanner] = useState(true);
 
   // On mount: check if an admin has previously revealed the site via localStorage
@@ -39,7 +41,16 @@ const App = () => {
   // Hash-based routing: listen for #full-schedule to open/close the overlay
   useEffect(() => {
     const handleHash = () => {
-      setShowSchedulePage(window.location.hash === '#full-schedule');
+      const hash = window.location.hash;
+
+      setShowSchedulePage(hash === '#full-schedule');
+
+      if (hash.startsWith('#archive-')) {
+        const eventId = hash.replace('#archive-', '');
+        setArchiveEvent(eventId || DEFAULT_ARCHIVE_EVENT_ID);
+      } else {
+        setArchiveEvent(null);
+      }
     };
     handleHash(); // check on first load too
     window.addEventListener('hashchange', handleHash);
@@ -50,6 +61,11 @@ const App = () => {
   const handleCloseSchedulePage = () => {
     window.location.hash = '';
     setShowSchedulePage(false);
+  };
+
+  const handleCloseArchivePage = () => {
+    window.location.hash = '';
+    setArchiveEvent(null);
   };
 
   const handleRevealSite = () => {
@@ -80,6 +96,11 @@ const App = () => {
       {/* ── Full Schedule Page Overlay ───────────────────────────────────── */}
       {showSchedulePage && (
         <SchedulePage onClose={handleCloseSchedulePage} />
+      )}
+
+      {/* ── Archive Page Overlay ─────────────────────────────────────────── */}
+      {archiveEvent && (
+        <ArchivePage eventId={archiveEvent} onClose={handleCloseArchivePage} />
       )}
 
       {/* ── Global UI Elements ────────────────────────────────────────────── */}

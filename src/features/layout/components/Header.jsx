@@ -9,6 +9,7 @@
 // TO ADD A DROPDOWN: Add a `dropdown` array to the nav item (see 'Get Involved').
 
 import React, { useState, useEffect } from 'react';
+import { ARCHIVE_NAV_ITEMS } from '../../archive/data/events/index.js';
 import '../../../shared/styles/shared.css';
 import './Header.css';
 
@@ -36,6 +37,11 @@ const NAV_ITEMS = [
   { id: 'sponsors',  label: 'Sponsors' },
   { id: 'team',      label: 'Team' },
   { id: 'connect',   label: 'Connect' },
+  {
+    id: 'archive',
+    label: 'Archive',
+    dropdown: ARCHIVE_NAV_ITEMS,
+  },
 ];
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -131,6 +137,16 @@ const Header = ({ scrollToSection }) => {
     setOpenMobileDropdown(null);
   };
 
+  const openArchive = (hash) => {
+    const targetHash = hash.startsWith('#') ? hash : `#${hash}`;
+    window.location.hash = targetHash.replace(/^##/, '#');
+
+    setIsVisible(true);
+    setIsMobileMenuOpen(false);
+    setOpenDropdown(null);
+    setOpenMobileDropdown(null);
+  };
+
   return (
     <header className={`site-header ${isVisible ? '' : 'hidden'}`}>
       <div className="header-inner">
@@ -159,7 +175,11 @@ const Header = ({ scrollToSection }) => {
                       <button
                         key={child.id}
                         className="dropdown-item"
-                        onClick={() => handleClick(child.id, true)}
+                        onClick={() =>
+                          child.id.startsWith('#archive-')
+                            ? openArchive(child.id)
+                            : handleClick(child.id, true)
+                        }
                       >
                         {child.label}
                       </button>
@@ -216,7 +236,11 @@ const Header = ({ scrollToSection }) => {
                           <button
                             key={child.id}
                             className="mobile-dropdown-item"
-                            onClick={() => handleClick(child.id, true)}
+                            onClick={() =>
+                              child.id.startsWith('#archive-')
+                                ? openArchive(child.id)
+                                : handleClick(child.id, true)
+                            }
                           >
                             {child.label}
                           </button>

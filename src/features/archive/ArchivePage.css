@@ -1,0 +1,357 @@
+/* ==========================================================================
+   ArchivePage.css — Full-page archive overlay for past events
+   ========================================================================== */
+
+/* ==========================================================================
+   1. OVERLAY SHELL + ANIMATION
+   ========================================================================== */
+
+   .archive-page-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    background: #F6E9C8;
+    overflow-y: auto;
+    animation: slideInFromRightArchive 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  @keyframes slideInFromRightArchive {
+    from { transform: translateX(100%); opacity: 0; }
+    to   { transform: translateX(0);    opacity: 1; }
+  }
+  
+  .archive-page-inner {
+    min-height: 100vh;
+  }
+  
+  /* ==========================================================================
+     2. HEADER / INTRO
+     ========================================================================== */
+  
+  .archive-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #0C3A40;
+    color: #F6E9C8;
+    border: none;
+    padding: 10px 22px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    font-family: var(--font-main);
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  
+  .archive-back-btn:hover {
+    background: #0f4c54;
+    transform: translateX(-3px);
+  }
+  
+  /* ==========================================================================
+     3. TWO-COLUMN INTRO LAYOUT
+     ========================================================================== */
+  
+.archive-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: stretch;
+  max-width: 1200px;
+  margin: 0 auto 48px;
+}
+  
+  /* LEFT COLUMN — Image Carousel */
+  .archive-intro__left {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .archive-carousel {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    background: linear-gradient(135deg, rgba(12, 58, 64, 0.06) 0%, rgba(12, 58, 64, 0.12) 100%);
+  }
+  
+  .archive-carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .archive-carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    z-index: 2;
+  }
+
+  .archive-carousel-arrow:hover {
+    background: rgba(0, 0, 0, 0.65);
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  .archive-carousel-arrow:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+
+  .archive-carousel-arrow--left {
+    left: 12px;
+  }
+
+  .archive-carousel-arrow--right {
+    right: 12px;
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0.6; transform: scale(1.02); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  .archive-carousel-dots {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+  
+  .archive-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .archive-dot.active {
+    background: #ffffff;
+  }
+  
+  /* Placeholder when no image is provided */
+  .archive-event-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--teal-dark);
+    opacity: 0.6;
+  }
+  
+  .archive-event-image-placeholder svg {
+    width: 28px;
+    height: 28px;
+    opacity: 0.7;
+  }
+  
+  .archive-event-image-placeholder span {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  
+  /* RIGHT COLUMN — Text & Links */
+  .archive-intro__right {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    justify-content: center;
+  }
+  
+  .archive-intro__text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .archive-intro__title {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+  margin: 0 auto 16px;
+    color: var(--brown-dark);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  
+  .archive-subtitle {
+    font-size: 1rem;
+    color: #2f2520;
+    opacity: 0.8;
+    margin: 0;
+    line-height: 1.6;
+  }
+  
+  .archive-description {
+    margin-top: 8px;
+  }
+  
+  /* ==========================================================================
+     4. BLENDED LINK CARDS
+     ========================================================================== */
+  
+  .archive-intro__links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-top: 2px solid rgba(12, 58, 64, 0.1);
+    padding-top: 24px;
+  }
+  
+  .archive-link-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    color: inherit;
+    text-decoration: none;
+    background: transparent;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  
+  .archive-link-card--photos {
+    align-items: flex-start;
+    flex-direction: row;
+  }
+  
+  .archive-link-card:hover {
+    transform: translateX(4px);
+    opacity: 0.85;
+  }
+  
+  .archive-link-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(12, 58, 64, 0.08);
+    color: var(--teal-dark);
+    flex-shrink: 0;
+    transition: background 0.2s ease;
+  }
+  
+  .archive-link-card:hover .archive-link-icon {
+    background: var(--teal-dark);
+    color: var(--gold);
+  }
+  
+  .archive-link-body h2 {
+    font-size: 1.1rem;
+    margin: 0 0 4px;
+    color: var(--brown-dark);
+    text-align: center;
+  }
+  
+  .archive-link-body p {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.75;
+    text-align: center;
+  }
+  
+  /* ==========================================================================
+     5. PHOTO GALLERY LINKS + CREDIT
+     ========================================================================== */
+  
+  .archive-photo-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    justify-content: center;
+  }
+  
+  .archive-photo-pill {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(12, 58, 64, 0.08);
+    color: var(--teal-dark);
+    border: 1px solid rgba(12, 58, 64, 0.25);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    text-align: center;
+  }
+  
+  .archive-photo-pill:hover {
+    background: rgba(12, 58, 64, 0.12);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(12, 58, 64, 0.2);
+  }
+  
+  .archive-photo-credit {
+    margin-top: 12px;
+    padding-top: 10px;
+    font-size: 0.8rem;
+    color: #5b4a3d;
+    opacity: 0.9;
+    text-align: center;
+  }
+  
+  .archive-photo-credit span {
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  /* ==========================================================================
+     6. WINNERS SECTION WRAPPER
+     ========================================================================== */
+  
+  .archive-winners-wrapper {
+    margin-top: 18px;
+  }
+  
+  /* ==========================================================================
+     7. RESPONSIVE
+     ========================================================================== */
+  
+  @media (max-width: 900px) {
+    .archive-intro {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .archive-intro__right {
+      justify-content: flex-start;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .archive-link-card {
+      align-items: flex-start;
+    }
+  }

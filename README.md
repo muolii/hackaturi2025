@@ -109,6 +109,7 @@ src/
 
 - No React Router; app is a single scroll page.
 - `App.jsx` listens for `#full-schedule` and renders the schedule overlay page.
+- `App.jsx` also listens for `#archive-<eventId>` and renders the archive overlay page.
 - Feature folders expose public entry points through `index.js` files.
 
 ## Common Yearly Updates
@@ -159,6 +160,33 @@ src/
 ### Navigation
 - `src/features/layout/components/Header.jsx`
   - `NAV_ITEMS`
+
+### Archive (past events / winners)
+
+The archive is an overlay page opened via the URL hash `#archive-<eventId>` (for example `#archive-2026`). The header “Archive” dropdown is generated from `ARCHIVE_NAV_ITEMS`, so adding a new event automatically adds a new dropdown entry.
+
+- **Page**: `src/features/archive/ArchivePage.jsx`
+- **Event data (source of truth)**:
+  - `src/features/archive/data/events/index.js`
+  - `src/features/archive/data/events/<event>.js` (example: `hackaturi2026.js`)
+- **Winners UI**: `src/features/archive/components/Winners.jsx`
+- **Photo assets**: `public/images/past-events/<eventFolder>/...`
+
+#### Adding a new archive event
+
+1. Create a new event file in `src/features/archive/data/events/` (copy an existing one like `hackaturi2026.js`).
+2. Add it to `ARCHIVE_EVENTS` in `src/features/archive/data/events/index.js` (order matters; the first item becomes `DEFAULT_ARCHIVE_EVENT_ID`).
+3. Set a unique:
+   - `id` (used in the hash: `#archive-<id>`)
+   - `navLabel` (used in the header dropdown)
+4. Photos / hero carousel:
+   - Prefer using `photoDirectory: '/public/images/past-events/<eventFolder>'`
+   - Put images under `public/images/past-events/<eventFolder>/` and the carousel will auto-load them (sorted by filename).
+   - If you don’t want repo-hosted images, you can use `heroImages: [...]` as a fallback list of explicit image URLs.
+5. Winners:
+   - `winners.announced` toggles “Winners have not been announced…” vs the winners grid.
+   - Each `winners.items[]` entry expects:
+     - `projectName`, `teamMembers` (array), `description`, `tracks` (array), `image` (optional), `devpostUrl`
 
 ### Footer
 - `src/features/layout/components/Footer.jsx`
