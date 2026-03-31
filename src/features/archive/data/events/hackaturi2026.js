@@ -2,7 +2,7 @@ const hackaturi2026 = {
   id: '2026',
   navLabel: 'Hack@URI 2026',
   pageTitle: 'Hack@URI 2026',
-  pageSubtitle: 'This weekend brought together developers, designers, and creators from all backgrounds to push the boundaries of what\'s possible. From the opening keynote to the final project demos, the energy was unmatched. Explore the photo galleries to see teams in action, and head over to Devpost to dive deep into every single submission, honorable mention, and category winner that made this event a massive success.',
+  pageSubtitle: 'As organizers, we were incredibly proud to host URI’s first large-scale, multi-track hackathon in affiliation with Major League Hacking. Held at the Fascitelli Center for Advanced Engineering, Hack@URI 2026 brought together over 200 students from 60 universities—including teams from MIT, Brown, and Georgia Tech. Even an unexpected blizzard couldn’t slow us down; our participants adapted in real-time to submit 40 innovative projects across six specialized tracks. With the support of mentors from industry leaders like Google, Microsoft, and IBM, this weekend proved what students can achieve when given a platform for ambition. We invite you to explore our photo galleries to relive the energy and visit Devpost to see the submissions and category winners that made this event a historic success.',
   links: {
     devpostUrl: 'https://hack-uri-2026.devpost.com/project-gallery',
     photos: [
