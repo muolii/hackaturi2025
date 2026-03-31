@@ -12,6 +12,7 @@ import '../../../shared/styles/shared.css';
 import './FloatingRegistration.css';
 
 // ─── Config ───────────────────────────────────────────────────────────────────
+const SHOW_DEADLINE_INFO   = true; // Set false to hide deadline copy and ignore cutoff gating
 const REGISTRATION_DEADLINE = '2026-02-07T23:59:59'; // Last day to register
 const REGISTRATION_URL      = 'https://forms.gle/7q3LSHYr7gqQ2CaZ9';
 
@@ -26,9 +27,11 @@ const FloatingRegistration = () => {
   const [daysLeft, setDaysLeft]   = useState(null);
 
   useEffect(() => {
-    const deadline = new Date(REGISTRATION_DEADLINE);
-    const diffDays = Math.ceil((deadline - new Date()) / (1000 * 60 * 60 * 24));
-    setDaysLeft(diffDays);
+    if (SHOW_DEADLINE_INFO) {
+      const deadline = new Date(REGISTRATION_DEADLINE);
+      const diffDays = Math.ceil((deadline - new Date()) / (1000 * 60 * 60 * 24));
+      setDaysLeft(diffDays);
+    }
   }, []);
 
   const handleClose = (e) => {
@@ -38,8 +41,9 @@ const FloatingRegistration = () => {
     setIsVisible(false);
   };
 
-  // Don't render if dismissed or if the deadline has already passed
-  if (!isVisible || daysLeft === null || daysLeft < 0) return null;
+  // Don't render if dismissed or, in deadline mode, if the deadline has passed
+  if (!isVisible) return null;
+  if (SHOW_DEADLINE_INFO && (daysLeft === null || daysLeft < 0)) return null;
 
   return (
     <a
@@ -55,7 +59,7 @@ const FloatingRegistration = () => {
 
       <div className="floating-content">
         <span className="floating-sub">{BANNER_TEXT.headline}</span>
-        <span className="floating-days">{daysLeft} Days Left</span>
+        {SHOW_DEADLINE_INFO && <span className="floating-days">{daysLeft} Days Left</span>}
         <span className="floating-cta">{BANNER_TEXT.cta}</span>
       </div>
     </a>

@@ -89,6 +89,12 @@
   opacity: 0.8;
 }
 
+.reg-sub-text--no-deadline {
+  font-size: 1.2rem;
+  font-weight: 600;
+  opacity: 1;
+}
+
 
 /* ==========================================================================
    4. CTA BUTTON
