@@ -18,8 +18,8 @@ import React, { useEffect, useState } from 'react';
 import '../../../shared/styles/shared.css';
 import './Countdown.css';
 
-const EVENT_START    = '2026-02-21T08:00:00';
-const SUBMISSION_DUE = '2026-02-22T09:00:00';
+const EVENT_START    = '2026-04-21T08:00:00';
+const SUBMISSION_DUE = '2026-04-22T09:00:00';
 
 // ─────────────────────────────────────────────────────────────────────────────
 

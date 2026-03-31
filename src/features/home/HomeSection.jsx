@@ -9,6 +9,7 @@ import yconicLogo from '/images/sponsors/yconic-transparent.png';
 import monsterLogo from '/images/sponsors/monster.png';
 import themoveappLogo from '/images/sponsors/themoveapp.png';
 import CountdownTimer from './components/Countdown';
+import { ARCHIVE_NAV_ITEMS } from '../archive/data/events/index.js';
 import '../../shared/styles/shared.css';
 import './HomeSection.css';
 
@@ -17,7 +18,7 @@ const EVENT_TITLE = 'Set Sail for Innovation: Hack@URI 2026';
 const SHOW_REGISTRATION_BUTTON = false;
 const REGISTRATION_LINK = 'https://forms.gle/7q3LSHYr7gqQ2CaZ9';
 const SHOW_PROJECT_GALLERY = true;
-const PROJECT_GALLERY_LINK = 'https://hack-uri-2026.devpost.com/project-gallery';
+const PROJECT_GALLERY_HREF = ARCHIVE_NAV_ITEMS.find(item => item.id === `#archive-${2026}`).id;
 
 const HERO_SPONSORS = [
   { label: 'Powered by', name: 'Yconic', logo: yconicLogo, url: 'https://yconic.ai/', className: 'yconic-logo' },
@@ -52,28 +53,31 @@ const HomeSection = () => {
             ))}
           </header>
 
-          {SHOW_PROJECT_GALLERY ? (
-            <div className="hero-cta hero-cta--gallery">
-              <p className="gallery-sub">Check out the amazing projects from this year's event!</p>
-              <a href={PROJECT_GALLERY_LINK} target="_blank" rel="noopener noreferrer" className="btn view-projects">
-                Hack@URI 2026 Project Gallery →
-              </a>
-            </div>
-          ) : (
-            <div className="hero-countdown">
-              <div className="countdown-date">{EVENT_DATE_DISPLAY}</div>
-              <CountdownTimer />
-            </div>
-          )}
+          {/* Replace the existing SHOW_PROJECT_GALLERY block with this: */}
+        {SHOW_PROJECT_GALLERY ? (
+          <div className="hero-gallery-card">
+            <p className="gallery-sub">
+            🎉 Check out the amazing projects from Hack@URI 2026! 🎉
+            </p>
+            <a href={PROJECT_GALLERY_HREF} className="btn view-projects">
+              Hack@URI 2026 Archive & Projects →
+            </a>
+          </div>
+        ) : (
+          <div className="hero-countdown">
+            <div className="countdown-date">{EVENT_DATE_DISPLAY}</div>
+            <CountdownTimer />
+          </div>
+        )}
 
           {SHOW_REGISTRATION_BUTTON && (
             <div className="hero-cta">
-              <p className="hero-sub">
-                Embark on a 48-hour innovation adventure at the University of Rhode Island!
-              </p>
-              <a href={REGISTRATION_LINK} target="_blank" rel="noopener noreferrer" className="btn register">
-                Register Now →
-              </a>
+              <a href={REGISTRATION_LINK} target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn register"
+            >
+            Register Now!
+            </a>
             </div>
           )}
         </div>
