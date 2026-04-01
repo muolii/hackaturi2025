@@ -1,9 +1,17 @@
-/* Landing Page Styles - Matching existing site design */
+/* ==========================================================================
+   LandingPage.css — Landing / Pre-Reveal Page
+   Depends on: shared.css (design tokens, panel-card, btn-primary, star animation)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. PAGE WRAPPER
+   ========================================================================== */
 .landing-app {
-  font-family: 'Poppins', 'Nunito', 'Quicksand', sans-serif;
+  font-family: var(--font-main);
   margin: 0;
   padding: 0;
-  background: #0a2d5a;
+  background: var(--teal-nav);
   min-height: 100vh;
   width: 100vw;
   max-width: 100%;
@@ -13,7 +21,7 @@
 
 .landing-page {
   min-height: 100vh;
-  background-color: #0a2d5a; /* Darker background */
+  background-color: var(--teal-nav);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,11 +31,14 @@
   overflow: hidden;
 }
 
+/* ==========================================================================
+   2. MAIN LAYOUT
+   ========================================================================== */
 .landing-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 60px;
+  gap: clamp(10px, 2vw, 24px);
   max-width: 1200px;
   width: 100%;
   margin-bottom: 40px;
@@ -35,14 +46,14 @@
   z-index: 2;
 }
 
-.leftContent {
+.landing-left {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.rightContent {
+.landing-right {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -50,64 +61,35 @@
   text-align: center;
 }
 
-/* Browser window styles (matching existing site) */
-.browser-window {
-  max-width: 500px;
-  width: 100%;
-  height: 400px;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  margin: 0 auto;
-}
-
-.browser-header {
-  background-color: #0e437d;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  padding: 0 15px;
-}
-
-.browser-controls {
-  display: flex;
-  gap: 8px;
-}
-
-.control {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: white;
-}
-
-.browser-content {
-  height: calc(100% - 40px);
+/* ==========================================================================
+   3. HERO IMAGE (Pirate + Ring)
+   ========================================================================== */
+.pirate-logo-wrap {
+  width: clamp(280px, 30vw, 420px);
+  height: clamp(280px, 30vw, 420px);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
+  border-radius: 50%;
+  background: #f9e9c0;
+  box-shadow: 0 22px 40px rgba(12, 58, 64, 0.18);
+  border: 6px solid var(--teal-dark);
+  padding: clamp(12px, 1.5vw, 18px);
 }
 
-.browser-content img {
-  max-width: 80%;
-  height: auto;
+.pirate-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
-/* Countdown section */
-.countdown-section {
-  margin-bottom: 40px;
-}
-
-/* Landing info styles */
+/* ==========================================================================
+   4. CONTENT CARD + TYPOGRAPHY
+   ========================================================================== */
 .landing-info {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
+  background: rgba(246, 233, 200, 0.9);
   padding: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   max-width: 500px;
   width: 100%;
 }
@@ -115,38 +97,40 @@
 .landing-title {
   font-size: 2.5rem;
   font-weight: 800;
-  color: white;
+  color: var(--teal-dark);
   margin: 0 0 15px 0;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  line-height: 1.1;
 }
 
 .landing-subtitle {
   font-size: 1.3rem;
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0 0 30px 0;
-  font-weight: 300;
+  color: #48392f;
+  margin: 0 0 1px 0;
+  font-weight: 600;
   letter-spacing: 1px;
 }
 
 .landing-description {
-  margin-bottom: 30px;
+  margin-bottom: 1px;
+  color: var(--gold-light);
 }
 
 .landing-description p {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-dark);
   font-size: 1.1rem;
   margin: 10px 0;
   line-height: 1.6;
 }
 
-.landing-description p:last-child {
+.landing-dates {
   font-weight: 600;
   font-size: 1.2rem;
-  color: #ffd700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  color: var(--teal-dark);
 }
 
-/* Preregistration button styles */
+/* ==========================================================================
+   5. PRIMARY CTA
+   ========================================================================== */
 .preregistration-section {
   margin-bottom: 30px;
   display: flex;
@@ -154,38 +138,43 @@
 }
 
 .preregistration-button {
-  padding: 18px 40px;
-  background: linear-gradient(45deg, #4c9aed, #0e437d);
-  color: white;
-  text-decoration: none;
-  border-radius: 30px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(76, 154, 237, 0.4);
-  text-align: center;
-  display: inline-block;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   text-transform: uppercase;
 }
 
 .preregistration-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(76, 154, 237, 0.5);
-  background: linear-gradient(45deg, #0e437d, #4c9aed);
-  color: white;
   text-decoration: none;
 }
 
-/* Landing footer */
+.organizer-cta-section {
+  border-top: 1px solid rgba(12, 58, 64, 0.15);
+  margin-top: -6px;
+  margin-bottom: 26px;
+  padding-top: 20px;
+}
+
+.organizer-cta-copy {
+  margin: 0 0 14px;
+  font-size: 1rem;
+  color: var(--text-dark);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.organizer-cta-button {
+  width: 100%;
+}
+
+/* ==========================================================================
+   6. FOOTER + SOCIAL LINKS
+   ========================================================================== */
 .landing-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(12, 58, 64, 0.15);
   padding-top: 20px;
 }
 
 .landing-footer p {
-  color: rgba(255, 255, 255, 0.8);
+  color: #5a4b40;
   margin: 0 0 15px 0;
   font-size: 0.9rem;
 }
@@ -198,24 +187,25 @@
 }
 
 .landing-footer .social-links a {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--teal-dark);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   padding: 8px 16px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(12, 58, 64, 0.08);
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
   font-size: 0.9rem;
 }
 
 .landing-footer .social-links a:hover {
-  color: white;
-  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  background: var(--teal-mid);
   transform: translateY(-2px);
 }
 
-/* Admin controls - More subtle */
+/* ==========================================================================
+   7. ADMIN CONTROLS
+   ========================================================================== */
 .admin-controls {
   position: fixed;
   bottom: 20px;
@@ -225,21 +215,20 @@
 
 .admin-button {
   padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(12, 58, 64, 0.2);
+  color: rgba(12, 58, 64, 0.8);
+  border: 1px solid rgba(12, 58, 64, 0.3);
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
 }
 
 .admin-button:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-  color: rgba(255, 255, 255, 0.8);
+  background: rgba(12, 58, 64, 0.35);
+  border-color: rgba(12, 58, 64, 0.45);
+  color: #fff;
   transform: translateY(-1px);
 }
 
@@ -253,38 +242,52 @@
   opacity: 1;
 }
 
-/* Responsive Design */
+/* ==========================================================================
+   8. DECORATIVE STARS
+   Positioning for .decor-star instances rendered by LandingPage.jsx.
+   Animation + delay helpers come from shared.css.
+   ========================================================================== */
+.decor-star {
+  width: 40px;
+  height: 40px;
+}
+
+.decor-star.star-1 { top: 15%; left: 8%; }
+.decor-star.star-2 { top: 25%; right: 12%; }
+.decor-star.star-3 { top: 45%; left: 5%; }
+.decor-star.star-4 { top: 60%; right: 8%; }
+.decor-star.star-5 { top: 35%; left: 85%; }
+
+/* ==========================================================================
+   9. RESPONSIVE
+   ========================================================================== */
 @media (max-width: 768px) {
   .landing-content {
     flex-direction: column;
+    align-items: center;
     gap: 40px;
     padding: 20px;
   }
-  
-  .browser-window {
-    max-width: 350px;
-    height: 300px;
-  }
-  
+
   .landing-info {
     padding: 30px 20px;
   }
-  
+
   .landing-title {
     font-size: 2rem;
   }
-  
+
   .landing-subtitle {
     font-size: 1.1rem;
   }
-  
+
   .landing-description p {
     font-size: 1rem;
   }
-  
-  .preregistration-button {
-    padding: 15px 30px;
-    font-size: 1rem;
+
+  .pirate-logo-wrap {
+    width: clamp(240px, 48vw, 320px);
+    height: clamp(240px, 48vw, 320px);
   }
 }
 
@@ -300,17 +303,12 @@
   .landing-info {
     padding: 20px 15px;
   }
-  
-  .browser-window {
-    max-width: 300px;
-    height: 250px;
-  }
-  
+
   .admin-controls {
     bottom: 10px;
     right: 10px;
   }
-  
+
   .admin-button {
     padding: 10px 20px;
     font-size: 0.8rem;

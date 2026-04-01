@@ -12,6 +12,13 @@ const REPO_IMAGE_FILES = import.meta.glob('/{src,public}/**/*.{png,jpg,jpeg,webp
   query: '?url',
 });
 
+// Important archive settings (timing, mode-specific UI labels/spacing).
+const ARCHIVE_PAGE_CONFIG = {
+  carouselAutoCycleMs: 10000,
+  landingTopPadding: 'clamp(22px, 4vh, 42px)',
+  returnToLandingLabel: 'Return to Landing Page',
+};
+
 const normalizeDirectoryPath = (path = '') => {
   const trimmed = path.trim();
   if (!trimmed) return '';
@@ -30,8 +37,15 @@ const getImagesFromPhotoDirectory = (photoDirectory) => {
     .filter(Boolean);
 };
 
-const ArchivePage = ({ eventId = DEFAULT_ARCHIVE_EVENT_ID, onClose, scrollToSection }) => {
+const ArchivePage = ({
+  eventId = DEFAULT_ARCHIVE_EVENT_ID,
+  onClose,
+  scrollToSection,
+  mode = 'main',
+  onReturnToLanding,
+}) => {
   const overlayRef = useRef(null);
+  const isLandingMode = mode === 'landing';
   const [scrollRootElement, setScrollRootElement] = useState(null);
   const setOverlayNode = useCallback((node) => {
     overlayRef.current = node;
@@ -53,25 +67,45 @@ const ArchivePage = ({ eventId = DEFAULT_ARCHIVE_EVENT_ID, onClose, scrollToSect
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
   };
 
-  // Auto-cycle through the images every 10 seconds
+  // Auto-cycle through the images
   useEffect(() => {
     if (heroImages.length <= 1) return;
 
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
-    }, 10000);
+    }, ARCHIVE_PAGE_CONFIG.carouselAutoCycleMs);
 
     return () => clearInterval(interval);
   }, [heroImages.length]);
 
   return (
-    <div ref={setOverlayNode} className="archive-page-overlay">
-      <Header
-        scrollToSection={scrollToSection}
-        scrollContainerRef={overlayRef}
-        scrollRootElement={scrollRootElement}
-      />
+    <div
+      ref={setOverlayNode}
+      className={`archive-page-overlay ${isLandingMode ? 'archive-page-overlay--landing' : 'archive-page-overlay--main'}`}
+      style={{ '--archive-landing-top-padding': ARCHIVE_PAGE_CONFIG.landingTopPadding }}
+    >
+      {!isLandingMode && (
+        <Header
+          scrollToSection={scrollToSection}
+          scrollContainerRef={overlayRef}
+          scrollRootElement={scrollRootElement}
+        />
+      )}
       <div className="archive-page-inner">
+        {isLandingMode && (
+          <div className="archive-landing-controls">
+            <button
+              type="button"
+              className="archive-return-landing-btn"
+              onClick={() => {
+                onClose?.();
+                onReturnToLanding?.();
+              }}
+            >
+              {ARCHIVE_PAGE_CONFIG.returnToLandingLabel}
+            </button>
+          </div>
+        )}
         <div className="archive-intro">
           {/* LEFT — Image Carousel */}
           <div className="archive-intro__left">

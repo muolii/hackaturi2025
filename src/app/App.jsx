@@ -3,8 +3,8 @@
 // The site is a single-page scroll layout — each "page" is a <section> stacked vertically.
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Header, Footer, BottomBanner } from '../features/layout';
-import Home from '../features/home';
+import { Header, Footer } from '../features/layout';
+import { Home, LandingPage } from '../features/home';
 import About from '../features/about';
 import Interest from '../features/interest';
 import Sponsors from '../features/sponsors';
@@ -19,14 +19,13 @@ import { DEFAULT_ARCHIVE_EVENT_ID } from '../features/archive/data/events/index.
 import '../shared/styles/shared.css';
 
 // ─── Site Visibility Config ───────────────────────────────────────────────────
-const SITE_HIDDEN = false;
+const SITE_HIDDEN = true;
 // ─────────────────────────────────────────────────────────────────────────────
 
 const App = () => {
   const [isSiteRevealed, setIsSiteRevealed] = useState(!SITE_HIDDEN);
   const [showSchedulePage, setShowSchedulePage] = useState(false);
   const [archiveEvent, setArchiveEvent] = useState(null);
-  const [showBottomBanner, setShowBottomBanner] = useState(true);
   const scrollAfterArchiveCloseRef = useRef(null);
 
   const scrollToSection = (sectionId) => {
@@ -110,8 +109,24 @@ const App = () => {
     localStorage.removeItem('hackaturi-site-revealed');
   };
 
+  if (SITE_HIDDEN && !isSiteRevealed) {
+    return (
+      <div className="app landing-mode">
+        {archiveEvent && (
+          <ArchivePage
+            eventId={archiveEvent}
+            onClose={handleCloseArchivePage}
+            mode="landing"
+            onReturnToLanding={handleBackToLanding}
+          />
+        )}
+        <LandingPage onRevealSite={handleRevealSite} />
+      </div>
+    );
+  }
+
   return (
-    <div className="app">
+    <div className="app main-mode">
 
       {/* ── Full Schedule Page Overlay ───────────────────────────────────── */}
       {showSchedulePage && (
@@ -124,6 +139,8 @@ const App = () => {
           eventId={archiveEvent}
           onClose={handleCloseArchivePage}
           scrollToSection={scrollToSectionFromArchive}
+          mode="main"
+          onReturnToLanding={handleBackToLanding}
         />
       )}
 
@@ -198,9 +215,6 @@ const App = () => {
       </main>
 
       <Footer />
-      {showBottomBanner && (
-        <BottomBanner onDismiss={() => setShowBottomBanner(false)} />
-      )}
 
     </div>
   );

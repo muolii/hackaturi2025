@@ -43,6 +43,10 @@
     transition: transform 200ms ease, opacity 200ms ease, visibility 200ms ease;
   }
 
+  .archive-page-overlay--landing::before {
+    content: none;
+  }
+
   .archive-page-overlay.archive-scrolled::before {
     transform: scaleX(1.1) translateY(-100%) !important;
     opacity: 0 !important;
@@ -62,6 +66,45 @@
     box-sizing: border-box;
     width: 100%;
     padding: clamp(120px, 12vh, 180px) 15px 15px;
+  }
+
+  .archive-page-overlay--landing .archive-page-inner {
+    padding-top: var(--archive-landing-top-padding, clamp(22px, 4vh, 42px));
+  }
+
+  .archive-page-overlay .archive-page-inner .archive-landing-controls {
+    max-width: 1200px;
+    margin: 0 auto 24px;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .archive-return-landing-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 22px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-family: var(--font-main);
+    cursor: pointer;
+    color: var(--parchment);
+    background: linear-gradient(135deg, var(--teal-border) 0%, var(--teal-mid) 100%);
+    box-shadow: 0 6px 18px rgba(12, 58, 64, 0.22);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+
+  .archive-return-landing-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(12, 58, 64, 0.28);
+    background: linear-gradient(135deg, var(--teal-mid) 0%, var(--teal-border) 100%);
+  }
+
+  .archive-return-landing-btn:focus-visible {
+    outline: 2px solid var(--teal-dark);
+    outline-offset: 3px;
   }
 
   /* Full-bleed nav; sticky inside overlay (sibling of padded inner, not inset by horizontal padding). */
