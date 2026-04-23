@@ -2,7 +2,9 @@
    SchedulePage.css — Full-page schedule overlay
    ========================================================================== */
 
-/* Full-screen overlay that slides in over the main site */
+/* ==========================================================================
+   1. OVERLAY SHELL + ENTRANCE ANIMATION
+   ========================================================================== */
 .schedule-page-overlay {
   position: fixed;
   inset: 0;
@@ -21,7 +23,9 @@
   min-height: 100vh;
 }
 
-/* Back button */
+/* ==========================================================================
+   2. BACK NAVIGATION BUTTON
+   ========================================================================== */
 .schedule-back-btn {
   display: flex;
   align-items: center;
@@ -46,7 +50,9 @@
   transform: translateX(-3px);
 }
 
-/* Helper tip shown above the schedule */
+/* ==========================================================================
+   3. HELPER COPY
+   ========================================================================== */
 .schedule-click-tip {
   text-align: center;
   font-size: 0.9rem;

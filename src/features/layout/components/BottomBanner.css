@@ -1,3 +1,11 @@
+/* ==========================================================================
+   BottomBanner.css — Fixed bottom announcement banner
+   Depends on: shared.css (--parchment, --gold-light, --teal-nav)
+   ========================================================================== */
+
+/* ==========================================================================
+   1. BANNER SHELL
+   ========================================================================== */
 .bottom-banner {
   position: fixed;
   left: 0;
@@ -16,7 +24,10 @@
   gap: 12px;
 }
 
-.bottom-banner__message {
+/* ==========================================================================
+   2. BANNER COPY
+   ========================================================================== */
+.bottom-banner-message {
   margin: 0;
   flex: 1;
   font-size: 1.02rem;
@@ -25,7 +36,10 @@
   line-height: 1.45;
 }
 
-.bottom-banner__dismiss {
+/* ==========================================================================
+   3. DISMISS ACTION
+   ========================================================================== */
+.bottom-banner-dismiss {
   border: 2px solid var(--gold-light);
   background: var(--parchment);
   color: var(--teal-nav);
@@ -37,12 +51,15 @@
   transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
 }
 
-.bottom-banner__dismiss:hover {
+.bottom-banner-dismiss:hover {
   transform: translateY(-1px);
   filter: brightness(1.03);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24);
 }
 
+/* ==========================================================================
+   4. RESPONSIVE
+   ========================================================================== */
 @media (max-width: 720px) {
   .bottom-banner {
     bottom: 0;
@@ -51,7 +68,7 @@
     flex-direction: column;
   }
 
-  .bottom-banner__dismiss {
+  .bottom-banner-dismiss {
     align-self: flex-end;
   }
 }

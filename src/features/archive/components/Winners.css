@@ -24,7 +24,7 @@
     margin-bottom: 30px;
   }
   
-  .winners-header__eyebrow {
+  .winners-header-eyebrow {
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.2em;
@@ -34,7 +34,7 @@
     opacity: 0.85;
   }
   
-  .winners-header__title {
+  .winners-header-title {
     font-size: 3rem;
     font-weight: 800;
     margin: 0 0 16px;
@@ -43,7 +43,7 @@
     text-shadow: 2px 2px 4px rgba(47, 37, 32, 0.1);
   }
   
-  .winners-header__line {
+  .winners-header-line {
     width: 56px;
     height: 3px;
     background: var(--teal-border);
@@ -101,7 +101,7 @@
      5. IMAGE / PLACEHOLDER
      ========================================================================== */
   
-  .winner-card__image-wrap {
+  .winner-card-image-wrap {
     width: 100%;
     aspect-ratio: 16 / 9;
     overflow: hidden;
@@ -109,7 +109,7 @@
     flex-shrink: 0;
   }
   
-  .winner-card__image {
+  .winner-card-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -117,7 +117,7 @@
     transition: transform 0.4s ease;
   }
   
-  .winner-card:hover .winner-card__image {
+  .winner-card:hover .winner-card-image {
     transform: scale(1.04);
   }
   
@@ -140,7 +140,7 @@
      6. CARD CONTENT
      ========================================================================== */
   
-  .winner-card__body {
+  .winner-card-body {
     padding: 24px 26px 26px;
     /* Full-height flex column: description fills space, team + link stay at bottom */
     display: flex;
@@ -150,14 +150,14 @@
     gap: 0;
   }
   
-  .winner-card__tracks {
+  .winner-card-tracks {
     display: flex;
     flex-wrap: wrap;
     gap: 7px;
     margin-bottom: 12px;
   }
   
-  .winner-card__track-badge {
+  .winner-card-track-badge {
     display: inline-block;
     padding: 4px 10px;
     border-radius: 20px;
@@ -170,7 +170,7 @@
     white-space: nowrap;
   }
   
-  .winner-card__project-name {
+  .winner-card-project-name {
     font-size: clamp(1.2rem, 2.5vw, 1.55rem);
     font-weight: 800;
     margin: 0 0 12px;
@@ -181,7 +181,7 @@
     text-align: left;
   }
   
-  .winner-card__description {
+  .winner-card-description {
     font-size: 0.88rem;
     line-height: 1.65;
     color: #48392f;
@@ -192,21 +192,21 @@
   }
   
   /* Spacer between description and the bottom block */
-  .winner-card__bottom {
+  .winner-card-bottom {
     display: flex;
     flex-direction: column;
     gap: 14px;
     margin-top: 20px;
   }
   
-  .winner-card__team {
+  .winner-card-team {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     gap: 6px;
   }
   
-  .winner-card__team-label {
+  .winner-card-team-label {
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -215,7 +215,7 @@
     flex-shrink: 0;
   }
   
-  .winner-card__team-members {
+  .winner-card-team-members {
     font-size: 0.82rem;
     color: #48392f;
     line-height: 1.5;
@@ -226,7 +226,7 @@
      7. ACTION LINK
      ========================================================================== */
   
-  .winner-card__devpost-link {
+  .winner-card-devpost-link {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -243,17 +243,17 @@
     transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
   }
   
-  .winner-card__devpost-link:hover {
+  .winner-card-devpost-link:hover {
     background: #0a2e34;
     transform: translateY(-1px);
     box-shadow: 0 12px 30px rgba(12, 58, 64, 0.2);
   }
   
-  .winner-card__devpost-link svg {
+  .winner-card-devpost-link svg {
     transition: transform 0.2s ease;
   }
   
-  .winner-card__devpost-link:hover svg {
+  .winner-card-devpost-link:hover svg {
     transform: translate(2px, -2px);
   }
   
@@ -270,12 +270,12 @@
     gap: 16px;
   }
   
-  .winners-tbd__icon {
+  .winners-tbd-icon {
     font-size: 3rem;
     animation: float 3s ease-in-out infinite;
   }
   
-  .winners-tbd__text {
+  .winners-tbd-text {
     font-size: 1.1rem;
     color: #48392f;
     margin: 0;

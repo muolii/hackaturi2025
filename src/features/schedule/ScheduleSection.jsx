@@ -21,10 +21,10 @@ const ScheduleSection = () => {
   };
 
   return (
-    <div className="content">
+    <div className="schedule-content">
       {/* ── Decorative Star Field ───────────────────────────────────────── */}
       {[1, 2, 3, 4, 5].map((n) => (
-        <img key={n} src={starsSvg} alt="" className={`about-star star-${n}`} />
+        <img key={n} src={starsSvg} alt="" className={`schedule-star star-${n}`} />
       ))}
 
       {/* ── Section Heading ──────────────────────────────────────────────── */}

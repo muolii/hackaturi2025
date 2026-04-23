@@ -120,7 +120,7 @@ const ArchivePage = ({
         {/* ── Archive Intro Layout ───────────────────────────────────────── */}
         <div className="archive-intro">
           {/* ── Left Column: Event Gallery ───────────────────────────────── */}
-          <div className="archive-intro__left">
+          <div className="archive-intro-left">
             <div className="archive-carousel">
               {heroImages.length > 0 ? (
                 <>
@@ -202,9 +202,9 @@ const ArchivePage = ({
           </div>
 
           {/* ── Right Column: Event Details + Links ─────────────────────── */}
-          <div className="archive-intro__right">
-            <div className="archive-intro__text">
-            <h1 className="archive-intro__title">{event.pageTitle}</h1>
+          <div className="archive-intro-right">
+            <div className="archive-intro-text">
+            <h1 className="archive-intro-title">{event.pageTitle}</h1>
               {event.pageSubtitle && (
                 <p className="archive-subtitle">{event.pageSubtitle}</p>
               )}
@@ -213,7 +213,7 @@ const ArchivePage = ({
               )}
             </div>
 
-            <div className="archive-intro__links">
+            <div className="archive-intro-links">
               <a
                 href={event.links?.devpostUrl}
                 target="_blank"

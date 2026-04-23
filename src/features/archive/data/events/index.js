@@ -1,6 +1,6 @@
-import hackaturi2026 from './hackaturi2026.js';
+import HACKATURI_2026 from './hackaturi2026.js';
 
-export const ARCHIVE_EVENTS = [hackaturi2026];
+export const ARCHIVE_EVENTS = [HACKATURI_2026];
 
 export const ARCHIVE_EVENTS_BY_ID = ARCHIVE_EVENTS.reduce((acc, event) => {
   acc[event.id] = event;

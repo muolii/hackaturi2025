@@ -1,4 +1,4 @@
-const hackaturi2026 = {
+const HACKATURI_2026 = {
   id: '2026',
   navLabel: 'Hack@URI 2026',
   pageTitle: 'Hack@URI 2026',
@@ -107,4 +107,4 @@ const hackaturi2026 = {
   },
 };
 
-export default hackaturi2026;
+export default HACKATURI_2026;

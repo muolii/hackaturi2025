@@ -159,7 +159,7 @@
 }
   
   /* LEFT COLUMN — Image Carousel */
-  .archive-intro__left {
+  .archive-intro-left {
     display: flex;
     flex-direction: column;
   }
@@ -277,20 +277,20 @@
   }
   
   /* RIGHT COLUMN — Text & Links */
-  .archive-intro__right {
+  .archive-intro-right {
     display: flex;
     flex-direction: column;
     gap: 32px;
     justify-content: center;
   }
   
-  .archive-intro__text {
+  .archive-intro-text {
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
   
-  .archive-intro__title {
+  .archive-intro-title {
     font-size: clamp(1.8rem, 3.5vw, 2.5rem);
     font-weight: 800;
   margin: 0 auto 16px;
@@ -316,7 +316,7 @@
      4. BLENDED LINK CARDS
      ========================================================================== */
   
-  .archive-intro__links {
+  .archive-intro-links {
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -441,7 +441,7 @@
       gap: 32px;
     }
 
-    .archive-intro__right {
+    .archive-intro-right {
       justify-content: flex-start;
     }
   }

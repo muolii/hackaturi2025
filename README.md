@@ -1,4 +1,4 @@
-# Hack@URI 2026 Website
+# Hack@URI Website
 
 Single-page React + Vite site for Hack@URI 2026, organized by feature folders.
 
@@ -10,14 +10,14 @@ Single-page React + Vite site for Hack@URI 2026, organized by feature folders.
 ## Setup
 
 1. Clone the repository:
-   ```bash
+  ```bash
    git clone https://github.com/muolii/hackaturi2025.git
    cd hackaturi2025
-   ```
+  ```
 2. Install dependencies:
-   ```bash
+  ```bash
    npm install
-   ```
+  ```
 
 ## Scripts
 
@@ -56,6 +56,13 @@ src/
 │   │   ├── ConnectSection.jsx
 │   │   ├── ConnectSection.css
 │   │   └── index.js
+│   ├── archive/
+│   │   ├── ArchivePage.jsx
+│   │   ├── ArchivePage.css
+│   │   ├── components/
+│   │   │   ├── Winners.jsx
+│   │   │   └── Winners.css
+│   │   └── data/
 │   ├── faq/
 │   │   ├── FAQSection.jsx
 │   │   ├── FAQSection.css
@@ -79,7 +86,9 @@ src/
 │   │   │   ├── Header.jsx
 │   │   │   ├── Header.css
 │   │   │   ├── Footer.jsx
-│   │   │   └── Footer.css
+│   │   │   ├── Footer.css
+│   │   │   ├── BottomBanner.jsx
+│   │   │   └── BottomBanner.css
 │   │   └── index.js
 │   ├── registration/
 │   │   ├── components/
@@ -92,7 +101,11 @@ src/
 │   │   ├── ScheduleSection.jsx
 │   │   ├── ScheduleSection.css
 │   │   ├── components/
+│   │   │   ├── ScheduleCalendar.jsx
+│   │   │   ├── UpNext.jsx
+│   │   │   └── WorkshopModal.jsx
 │   │   ├── pages/
+│   │   │   └── SchedulePage.jsx
 │   │   ├── data/
 │   │   └── index.js
 │   ├── sponsors/
@@ -112,9 +125,32 @@ src/
 - `App.jsx` also listens for `#archive-<eventId>` and renders the archive overlay page.
 - Feature folders expose public entry points through `index.js` files.
 
+## Naming Conventions
+
+Use these conventions for all new code and when touching existing files:
+
+### JavaScript / JSX
+
+- `camelCase` for variables and functions
+- `PascalCase` for React components
+- `CONSTANT_CASE` for module-level constants/config objects
+
+### CSS
+
+- `kebab-case` class names
+- Avoid feature-local BEM element naming with `__` (use kebab-case equivalents instead)
+
+### Contract Boundaries
+
+- Avoid broad renames of shared/global hooks in `src/shared/styles/shared.css` unless doing a coordinated repo-wide update.
+- Be careful with dynamic state classes (`active`, `open`, `hidden`, etc.) that are toggled in JSX logic.
+
 ## Common Yearly Updates
 
+When updating yearly values, preserve naming conventions for any new symbols/classes added in the same files.
+
 ### Event title/date/home content
+
 - `src/features/home/HomeSection.jsx`
   - `EVENT_DATE_DISPLAY`
   - `EVENT_TITLE`
@@ -124,6 +160,7 @@ src/
   - `SUBMISSION_DUE`
 
 ### Landing (pre-launch) page
+
 - `src/features/home/pages/LandingPage.jsx`
   - `LANDING_CONFIG`
   - `MLH_BADGE`
@@ -131,33 +168,40 @@ src/
   - `SITE_HIDDEN` and reveal behavior
 
 ### Schedule
+
 - `src/features/schedule/data/scheduleData.js` (source of truth)
 - `src/features/schedule/components/*`
 - `src/features/schedule/pages/SchedulePage.jsx`
+- Schedule section wrappers use schedule-specific naming (`schedule-content`, `schedule-star`) in `ScheduleSection`/`SchedulePage`.
 
 ### FAQ
+
 - `src/features/faq/FAQSection.jsx`
   - `FAQ_TABS`
   - `FAQ_DATA`
 
 ### Team
+
 - `src/features/team/TeamSection.jsx`
   - `TEAM_TABS`
   - `TEAM_DATA`
 
 ### Sponsors/Donors
+
 - `src/features/sponsors/SponsorsSection.jsx`
   - `SPONSOR_TIERS`
   - `DONORS`
 - Sponsor image assets in `public/images/sponsors/`
 
 ### Registration callouts
+
 - `src/features/registration/components/RegistrationPopup.jsx`
 - `src/features/registration/components/FloatingRegistration.jsx`
   - `REGISTRATION_DEADLINE`
   - `REGISTRATION_URL`
 
 ### Navigation
+
 - `src/features/layout/components/Header.jsx`
   - `NAV_ITEMS`
 
@@ -175,20 +219,22 @@ The archive is an overlay page opened via the URL hash `#archive-<eventId>` (for
 #### Adding a new archive event
 
 1. Create a new event file in `src/features/archive/data/events/` (copy an existing one like `hackaturi2026.js`).
+  - Keep the module-level exported event object in `CONSTANT_CASE` (example: `HACKATURI_2026`).
 2. Add it to `ARCHIVE_EVENTS` in `src/features/archive/data/events/index.js` (order matters; the first item becomes `DEFAULT_ARCHIVE_EVENT_ID`).
 3. Set a unique:
-   - `id` (used in the hash: `#archive-<id>`)
-   - `navLabel` (used in the header dropdown)
+  - `id` (used in the hash: `#archive-<id>`)
+  - `navLabel` (used in the header dropdown)
 4. Photos / hero carousel:
-   - Prefer using `photoDirectory: '/public/images/past-events/<eventFolder>'`
-   - Put images under `public/images/past-events/<eventFolder>/` and the carousel will auto-load them (sorted by filename).
-   - If you don’t want repo-hosted images, you can use `heroImages: [...]` as a fallback list of explicit image URLs.
+  - Prefer using `photoDirectory: '/public/images/past-events/<eventFolder>'`
+  - Put images under `public/images/past-events/<eventFolder>/` and the carousel will auto-load them (sorted by filename).
+  - If you don’t want repo-hosted images, you can use `heroImages: [...]` as a fallback list of explicit image URLs.
 5. Winners:
-   - `winners.announced` toggles “Winners have not been announced…” vs the winners grid.
-   - Each `winners.items[]` entry expects:
-     - `projectName`, `teamMembers` (array), `description`, `tracks` (array), `image` (optional), `devpostUrl`
+  - `winners.announced` toggles “Winners have not been announced…” vs the winners grid.
+  - Each `winners.items[]` entry expects:
+    - `projectName`, `teamMembers` (array), `description`, `tracks` (array), `image` (optional), `devpostUrl`
 
 ### Footer
+
 - `src/features/layout/components/Footer.jsx`
   - `FOOTER_CONFIG.year`
 
@@ -199,6 +245,23 @@ The archive is an overlay page opened via the URL hash `#archive-<eventId>` (for
 3. Export it from `src/features/<feature>/index.js`.
 4. Render it in `src/app/App.jsx` with a section ID.
 5. Add a matching nav item in `src/features/layout/components/Header.jsx`.
+6. Follow naming conventions:
+  - component names: `PascalCase`
+  - local vars/functions: `camelCase`
+  - module constants: `CONSTANT_CASE`
+  - CSS classes: `kebab-case`
+
+## Contributing Style Checklist
+
+Before opening a PR:
+
+- Naming conventions are followed (JS/JSX/CSS).
+- Section/comment style stays consistent with neighboring files.
+- Renames have no stale symbol/class references.
+- Lint passes:
+  ```bash
+  npm run lint
+  ```
 
 ## Styling
 
@@ -219,13 +282,16 @@ Deploy `dist/` to your static host (Netlify, Vercel, GitHub Pages, S3, etc.).
 ## Troubleshooting
 
 ### Port already in use
+
 ```bash
 npx kill-port 5173
 npm run dev -- --port 3000
 ```
 
 ### Dependency issues
+
 PowerShell:
+
 ```powershell
 Remove-Item -Recurse -Force node_modules
 Remove-Item -Force package-lock.json
@@ -233,12 +299,14 @@ npm install
 ```
 
 macOS/Linux:
+
 ```bash
 rm -rf node_modules package-lock.json
 npm install
 ```
 
 ### HMR not updating
+
 - Confirm you are running `npm run dev`
 - Hard refresh browser (`Ctrl+Shift+R`)
 

@@ -14,7 +14,7 @@ import './SchedulePage.css';
 const SchedulePage = ({ onClose }) => {
   return (
     <div className="schedule-page-overlay">
-      <div className="schedule-page-inner content">
+      <div className="schedule-page-inner schedule-content">
         {/* ── Back Navigation ─────────────────────────────────────────────── */}
         <button className="schedule-back-btn" onClick={onClose}>
           <FaArrowLeft /> Back to Main Site
@@ -22,7 +22,7 @@ const SchedulePage = ({ onClose }) => {
 
         {/* ── Decorative Star Field ───────────────────────────────────────── */}
         {[1, 2, 3, 4, 5].map((n) => (
-          <img key={n} src={starsSvg} alt="" className={`about-star star-${n}`} />
+          <img key={n} src={starsSvg} alt="" className={`schedule-star star-${n}`} />
         ))}
 
         {/* ── Page Heading ────────────────────────────────────────────────── */}

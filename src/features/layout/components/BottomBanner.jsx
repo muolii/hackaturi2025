@@ -17,11 +17,11 @@ const BottomBanner = ({ onDismiss }) => {
   return (
     <div className="bottom-banner" role="status" aria-live="polite">
       {/* ── Banner Copy ─────────────────────────────────────────────────── */}
-      <p className="bottom-banner__message">{BANNER_MESSAGE}</p>
+      <p className="bottom-banner-message">{BANNER_MESSAGE}</p>
       {/* ── Banner Dismiss Action ───────────────────────────────────────── */}
       <button
         type="button"
-        className="bottom-banner__dismiss"
+        className="bottom-banner-dismiss"
         onClick={onDismiss}
         aria-label="Dismiss announcement banner"
       >

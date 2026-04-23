@@ -16,12 +16,12 @@ const WinnerCard = ({ winner }) => {
   return (
     <article className="winner-card">
       {/* ── Winner Image ────────────────────────────────────────────────── */}
-      <div className="winner-card__image-wrap">
+      <div className="winner-card-image-wrap">
         {winner.image && !imgError ? (
           <img
             src={winner.image}
             alt={`${winner.projectName} project screenshot`}
-            className="winner-card__image"
+            className="winner-card-image"
             onError={() => setImgError(true)}
           />
         ) : (
@@ -29,22 +29,22 @@ const WinnerCard = ({ winner }) => {
         )}
       </div>
       {/* ── Winner Details + Team + Devpost ────────────────────────────── */}
-      <div className="winner-card__body">
-        <div className="winner-card__tracks">
+      <div className="winner-card-body">
+        <div className="winner-card-tracks">
           {winner.tracks.map((track) => (
-            <span key={track} className="winner-card__track-badge">{track}</span>
+            <span key={track} className="winner-card-track-badge">{track}</span>
           ))}
         </div>
-        <h3 className="winner-card__project-name">{winner.projectName}</h3>
-        <p className="winner-card__description">{winner.description}</p>
+        <h3 className="winner-card-project-name">{winner.projectName}</h3>
+        <p className="winner-card-description">{winner.description}</p>
 
         {/* Bottom block always sits at the end of the card */}
-        <div className="winner-card__bottom">
-          <div className="winner-card__team">
-            <span className="winner-card__team-label">Team</span>
-            <span className="winner-card__team-members">{winner.teamMembers.join(' · ')}</span>
+        <div className="winner-card-bottom">
+          <div className="winner-card-team">
+            <span className="winner-card-team-label">Team</span>
+            <span className="winner-card-team-members">{winner.teamMembers.join(' · ')}</span>
           </div>
-          <a href={winner.devpostUrl} target="_blank" rel="noopener noreferrer" className="winner-card__devpost-link">
+          <a href={winner.devpostUrl} target="_blank" rel="noopener noreferrer" className="winner-card-devpost-link">
             View on Devpost
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
@@ -68,16 +68,16 @@ const Winners = ({
     <div className="winners-section">
       {/* ── Winners Header ──────────────────────────────────────────────── */}
       <div className="winners-header">
-        <p className="winners-header__eyebrow">{subtitle}</p>
-        <h2 className="winners-header__title">{title}</h2>
-        <div className="winners-header__line" aria-hidden="true" />
+        <p className="winners-header-eyebrow">{subtitle}</p>
+        <h2 className="winners-header-title">{title}</h2>
+        <div className="winners-header-line" aria-hidden="true" />
       </div>
 
       {/* ── Winners Content State ───────────────────────────────────────── */}
       {!winnersAnnounced ? (
         <div className="winners-tbd">
-          <div className="winners-tbd__icon" aria-hidden="true">🏆</div>
-          <p className="winners-tbd__text">Winners have not been announced for this event yet.</p>
+          <div className="winners-tbd-icon" aria-hidden="true">🏆</div>
+          <p className="winners-tbd-text">Winners have not been announced for this event yet.</p>
         </div>
       ) : (
         <div className="winners-grid">

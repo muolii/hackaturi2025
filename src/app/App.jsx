@@ -9,7 +9,7 @@ import About from '../features/about';
 import Interest from '../features/interest';
 import Sponsors from '../features/sponsors';
 import Team from '../features/team';
-import FAQ from '../features/faq';
+import Faq from '../features/faq';
 import Tracks from '../features/tracks';
 import Connect from '../features/connect';
 import { RegistrationPopup, FloatingRegistration } from '../features/registration';
@@ -200,7 +200,7 @@ const App = () => {
         </section>
 
         <section id="faq" className="section">
-          <FAQ />
+          <Faq />
         </section>
 
         <section id="interest" className="section">

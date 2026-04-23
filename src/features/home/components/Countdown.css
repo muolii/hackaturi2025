@@ -11,8 +11,10 @@
      3. .countdown-wrap.cd-done       — celebration
    ========================================================================== */
 
-/* ─── Color tokens for the active phase ─────────────────────────────────────
-   Each modifier swaps these three variables; everything else inherits them.  */
+/* ==========================================================================
+   0. ACTIVE PHASE COLOR TOKENS
+   Each modifier swaps these three variables; everything else inherits them.
+   ========================================================================== */
 .cd-active--blue  { --cd-accent: #5bc8d4; --cd-accent-dim: rgba(91,200,212,0.18); --cd-accent-glow: rgba(91,200,212,0.35); }
 .cd-active--yellow { --cd-accent: #f5c842; --cd-accent-dim: rgba(245,200,66,0.18); --cd-accent-glow: rgba(245,200,66,0.35); }
 .cd-active--red    { --cd-accent: #f87171; --cd-accent-dim: rgba(248,113,113,0.18); --cd-accent-glow: rgba(248,113,113,0.4); }

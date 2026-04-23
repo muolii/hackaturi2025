@@ -8,7 +8,7 @@
    1. PAGE WRAPPER
    ========================================================================== */
 
-.content {
+.schedule-content {
   position: relative;
   min-height: auto;
   z-index: 10;
@@ -19,7 +19,7 @@
   color: #2f2520;
 }
 
-.content h1 {
+.schedule-content h1 {
   text-align: center;
   font-size: 3rem;
   font-weight: 800;
@@ -33,18 +33,18 @@
    Positions unique to the Schedule page; animation + delays live in shared.css
    ========================================================================== */
 
-.about-star {
+.schedule-star {
   width: 35px;
   height: 35px;
   font-size: 1.5rem;
   z-index: 1; /* sits behind calendar content */
 }
 
-.about-star.star-1 { top:  5%; left:  5%; }
-.about-star.star-2 { top: 15%; right:  7%; }
-.about-star.star-3 { top: 80%; left:  3%; }
-.about-star.star-4 { top: 85%; right:  8%; }
-.about-star.star-5 { top: 45%; left: 92%; }
+.schedule-star.star-1 { top:  5%; left:  5%; }
+.schedule-star.star-2 { top: 15%; right:  7%; }
+.schedule-star.star-3 { top: 80%; left:  3%; }
+.schedule-star.star-4 { top: 85%; right:  8%; }
+.schedule-star.star-5 { top: 45%; left: 92%; }
 
 /* ==========================================================================
    3. DAY-VIEW TOGGLE BUTTON
