@@ -1,6 +1,5 @@
-// src/pages/About.jsx
-// Describes what Hack@URI is, who it's for, and the mission behind the event.
-// Update the text content each year to reflect any changes to the event's scope or mission.
+// src/features/about/AboutSection.jsx
+// About section describing the event mission, audience, and community goals.
 
 import React from 'react';
 import starsSvg from '../../assets/stars-bg.svg';
@@ -30,11 +29,12 @@ const ABOUT_PARAGRAPHS = [
 const AboutSection = () => {
   return (
     <div className="pirate-about">
-      {/* Decorative stars scattered in the background */}
+      {/* ── Decorative Star Field ─────────────────────────────────────────── */}
       {[1, 2, 3, 4, 5].map((n) => (
         <img key={n} src={starsSvg} alt="" className={`about-star star-${n}`} />
       ))}
 
+      {/* ── About Copy Blocks ─────────────────────────────────────────────── */}
       <div className="about-content">
         <h1>About Hack@URI</h1>
         {ABOUT_PARAGRAPHS.map((text, i) => (

@@ -1,17 +1,11 @@
-// src/components/RegistrationPopup.jsx
-// A modal popup that appears 500ms after first page load, prompting visitors
-// to register before the deadline. Only shown once per browser session.
-//
-// TO UPDATE:
-//   - REGISTRATION_DEADLINE: The cutoff date for registration.
-//   - REGISTRATION_URL: The link to the registration form.
-//   - POPUP_TEXT: All user-facing strings in the popup.
+// src/features/registration/components/RegistrationPopup.jsx
+// Session-scoped prompt modal for organizer interest/registration messaging.
 
 import React, { useState, useEffect } from 'react';
 import '../../../shared/styles/shared.css';
 import './RegistrationPopup.css';
 
-// ─── Config ───────────────────────────────────────────────────────────────────
+// ─── Registration Popup Config ────────────────────────────────────────────────
 const SHOW_DEADLINE_INFO   = false; // Set false to hide deadline copy and ignore cutoff gating
 const REGISTRATION_DEADLINE = '2027-02-07T23:59:59'; // Last day to register
 const REGISTRATION_URL      = 'https://docs.google.com/forms/d/e/1FAIpQLSfvNrL-fWzOD5FGZ7sW3_Njzdup-KZG4uXOGhuRlPzFjrT4Wg/viewform?usp=publish-editor';
@@ -30,6 +24,7 @@ const RegistrationPopup = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [daysLeft, setDaysLeft]   = useState(null);
 
+  // On first mount, decide whether this session should see the popup.
   useEffect(() => {
     let diffDays = null;
     if (SHOW_DEADLINE_INFO) {
@@ -48,6 +43,7 @@ const RegistrationPopup = () => {
     }
   }, []);
 
+  // Close modal and persist "seen" state for the current browser session.
   const handleClose = () => {
     setShowPopup(false);
     // Mark as seen so it won't reappear during this browser session
@@ -58,6 +54,7 @@ const RegistrationPopup = () => {
 
   return (
     <div className="reg-popup-overlay">
+      {/* ── Popup Card ───────────────────────────────────────────────────── */}
       <div className="reg-popup-content">
         <button className="reg-popup-close" onClick={handleClose} aria-label="Close">
           &times;
@@ -65,6 +62,7 @@ const RegistrationPopup = () => {
 
         <h2 className="reg-popup-title">{POPUP_TEXT.title}</h2>
 
+        {/* ── Popup Body Copy ────────────────────────────────────────────── */}
         <div className="reg-popup-body">
           {SHOW_DEADLINE_INFO ? (
             <>
@@ -81,6 +79,7 @@ const RegistrationPopup = () => {
           )}
         </div>
 
+        {/* ── Primary CTA ────────────────────────────────────────────────── */}
         <a
           href={REGISTRATION_URL}
           target="_blank"

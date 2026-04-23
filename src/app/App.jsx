@@ -1,6 +1,6 @@
 // src/app/App.jsx
-// Root component: assembles all page sections and global UI elements.
-// The site is a single-page scroll layout — each "page" is a <section> stacked vertically.
+// Root shell for the site: renders the main single-page section layout, 
+// plus conditional full-page overlays (schedule/archive) and landing lock mode.
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Header, Footer } from '../features/layout';
@@ -23,11 +23,15 @@ const SITE_HIDDEN = true;
 // ─────────────────────────────────────────────────────────────────────────────
 
 const App = () => {
+  // Gate controls for landing lock, full schedule modal, and selected archive event.
   const [isSiteRevealed, setIsSiteRevealed] = useState(!SITE_HIDDEN);
   const [showSchedulePage, setShowSchedulePage] = useState(false);
   const [archiveEvent, setArchiveEvent] = useState(null);
+
+  // Stores deferred section navigation while archive overlay is closing.
   const scrollAfterArchiveCloseRef = useRef(null);
 
+  // Shared smooth-scroll helper used by the main header navigation.
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -94,6 +98,7 @@ const App = () => {
     setArchiveEvent(null);
   };
 
+  // Simple access-code gate used while the site is hidden pre-launch.
   const handleRevealSite = () => {
     const code = prompt('Enter access code:');
     if (code === 'hackaturi-secret') {
@@ -109,6 +114,7 @@ const App = () => {
     localStorage.removeItem('hackaturi-site-revealed');
   };
 
+  // Hidden mode: render only landing screen (and archive page if hash points to it).
   if (SITE_HIDDEN && !isSiteRevealed) {
     return (
       <div className="app landing-mode">

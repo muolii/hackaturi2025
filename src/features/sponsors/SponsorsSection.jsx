@@ -1,9 +1,13 @@
+// src/features/sponsors/SponsorsSection.jsx
+// Sponsor showcase section with desktop scroll layout and mobile stacked layout.
+
 import React, { useState, useEffect } from 'react';
 import starsSvg from '../../assets/stars-bg.svg';
 import sponsorScrollSvg from '../../assets/sponsor-scroll.svg';
 import '../../shared/styles/shared.css';
 import './SponsorsSection.css';
 
+// ─── Sponsors Config Controls ────────────────────────────────────────────────
 const SPONSOR_TIERS = {
   lead: [{ name: 'yconic', logo: '/images/sponsors/yconic-transparent.png', url: 'https://yconic.ai/', large: true }],
   gold: [
@@ -37,9 +41,11 @@ const SPONSOR_TIERS = {
 };
 const DONORS = ['Stacey Azevedo', 'Erin Butera', 'Joseph Graf', 'Tara Rugg', 'Anne Totoro', 'Joel Totoro'];
 const TIER_LABELS = { lead: 'Lead Sponsor', gold: 'Gold Sponsors', silver: 'Silver Sponsors', bronze: 'Bronze Sponsors', partners: 'Partners' };
+// ─────────────────────────────────────────────────────────────────────────────
 
 const SponsorLogo = ({ sponsor, sizeClass }) => {
   const imgClass = `sponsor-img ${sponsor.large ? `${sizeClass}-large` : sizeClass}`;
+  // If a logo fails to load, reveal plain text fallback so sponsor still appears.
   const image = (
     <>
       <img src={sponsor.logo} alt={sponsor.name} className={imgClass} onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }} />
@@ -51,6 +57,7 @@ const SponsorLogo = ({ sponsor, sizeClass }) => {
 
 const SponsorsSection = () => {
   const [isMobile, setIsMobile] = useState(false);
+  // Keep layout mode responsive so mobile uses the stacked sponsor list.
   useEffect(() => {
     const checkScreenSize = () => setIsMobile(window.innerWidth <= 768);
     checkScreenSize();
@@ -60,10 +67,13 @@ const SponsorsSection = () => {
 
   return (
     <div className="pirate-sponsors">
+      {/* ── Decorative Star Field ───────────────────────────────────────── */}
       {[1, 2, 3, 4, 5].map((n) => (<img key={n} src={starsSvg} alt="" className={`sponsor-star star-${n}`} />))}
+      {/* ── Sponsors Content Container ───────────────────────────────────── */}
       <div className="sponsors-content">
         <h1 className="sponsors-title">Our Sponsors</h1>
         <p>We're grateful to our amazing sponsors who make Hack@URI 2026 possible!</p>
+        {/* ── Desktop Scroll Layout / Mobile Stacked Layout ─────────────── */}
         {!isMobile ? (
           <div className="scroll-container">
             <img src={sponsorScrollSvg} alt="Sponsor Scroll" className="sponsor-scroll-bg" />

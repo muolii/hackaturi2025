@@ -1,17 +1,11 @@
-// src/components/FloatingRegistration.jsx
-// A dismissible floating banner linking to the registration form.
-// Automatically hides after the registration deadline passes.
-//
-// TO UPDATE:
-//   - REGISTRATION_DEADLINE: Set to the last day registrations are accepted.
-//   - REGISTRATION_URL: The Google Form or registration link.
-//   - BANNER_TEXT: The headline and call-to-action text shown on the banner.
+// src/features/registration/components/FloatingRegistration.jsx
+// Dismissible floating registration card with optional deadline gating.
 
 import React, { useState, useEffect } from 'react';
 import '../../../shared/styles/shared.css';
 import './FloatingRegistration.css';
 
-// ─── Config ───────────────────────────────────────────────────────────────────
+// ─── Floating Card Config ─────────────────────────────────────────────────────
 const SHOW_DEADLINE_INFO   = true; // Set false to hide deadline copy and ignore cutoff gating
 const REGISTRATION_DEADLINE = '2026-02-07T23:59:59'; // Last day to register
 const REGISTRATION_URL      = 'https://forms.gle/7q3LSHYr7gqQ2CaZ9';
@@ -26,6 +20,7 @@ const FloatingRegistration = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [daysLeft, setDaysLeft]   = useState(null);
 
+  // Compute remaining days once on mount for deadline-gated display logic.
   useEffect(() => {
     if (SHOW_DEADLINE_INFO) {
       const deadline = new Date(REGISTRATION_DEADLINE);
@@ -34,6 +29,7 @@ const FloatingRegistration = () => {
     }
   }, []);
 
+  // Dismiss only the floating card; do not follow the surrounding link.
   const handleClose = (e) => {
     // Prevent the click from also triggering the link navigation
     e.stopPropagation();
@@ -52,11 +48,12 @@ const FloatingRegistration = () => {
       rel="noopener noreferrer"
       className="floating-reg-card"
     >
-      {/* Close button — stops propagation so it doesn't open the link */}
+      {/* ── Dismiss Action ──────────────────────────────────────────────── */}
       <button className="floating-close" onClick={handleClose} aria-label="Dismiss">
         &times;
       </button>
 
+      {/* ── Banner Content ──────────────────────────────────────────────── */}
       <div className="floating-content">
         <span className="floating-sub">{BANNER_TEXT.headline}</span>
         {SHOW_DEADLINE_INFO && <span className="floating-days">{daysLeft} Days Left</span>}

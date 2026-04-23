@@ -1,3 +1,6 @@
+// src/features/team/TeamSection.jsx
+// Team directory section with tabbed groups and flip-card member details.
+
 import React, { useState } from 'react';
 import { FaLinkedin, FaGithub, FaArrowRight } from 'react-icons/fa';
 import starsSvg from '../../assets/stars-bg.svg';
@@ -5,6 +8,7 @@ import portholeSvg from '../../assets/porthole.svg';
 import '../../shared/styles/shared.css';
 import './TeamSection.css';
 
+// ─── Team Config Controls ─────────────────────────────────────────────────────
 const TEAM_TABS = [
   { id: 'leadership', label: 'Leadership' },
   { id: 'techDev', label: 'Tech Dev' },
@@ -59,17 +63,22 @@ const TEAM_DATA = {
     { name: 'Roquibat Adetunji', avatar: '/images/team-photos/finance/roquibat.jpg', major: 'Computer Science', classYear: '2027', funFact: "I'm double jointed", linkedin: '', social: '' },
   ]},
 };
+// ─────────────────────────────────────────────────────────────────────────────
 
 const TeamSection = () => {
   const [activeTab, setActiveTab] = useState(TEAM_TABS[0].id);
   const [flippedCards, setFlippedCards] = useState({});
+  // Flip one specific member card while keeping other card states unchanged.
   const toggleCardFlip = (memberId) => setFlippedCards((prev) => ({ ...prev, [memberId]: !prev[memberId] }));
 
   return (
     <div className="pirate-team">
+      {/* ── Decorative Star Field ───────────────────────────────────────── */}
       {[1, 2, 3, 4, 5].map((n) => (<img key={n} src={starsSvg} alt="" className={`team-star star-${n}`} />))}
+      {/* ── Team Directory Content ───────────────────────────────────────── */}
       <div className="team-content">
         <h1 className="team-title">Meet the Crew!</h1>
+        {/* ── Team Category Tabs ─────────────────────────────────────────── */}
         <div className="team-tabs">
           {TEAM_TABS.map((tab) => (
             <button key={tab.id} className={`team-tab ${activeTab === tab.id ? 'active' : ''}`} onClick={() => setActiveTab(tab.id)}>
@@ -77,6 +86,7 @@ const TeamSection = () => {
             </button>
           ))}
         </div>
+        {/* ── Active Team Grid ───────────────────────────────────────────── */}
         <div className="team-section">
           <div className="team-header"><h2>{TEAM_DATA[activeTab].title}</h2></div>
           <div className="team-grid">

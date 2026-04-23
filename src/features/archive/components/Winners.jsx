@@ -1,3 +1,6 @@
+// src/features/archive/components/Winners.jsx
+// Winner grid/cards used within the archive event pages.
+
 import React, { useState } from 'react';
 import './Winners.css';
 
@@ -12,6 +15,7 @@ const WinnerCard = ({ winner }) => {
 
   return (
     <article className="winner-card">
+      {/* ── Winner Image ────────────────────────────────────────────────── */}
       <div className="winner-card__image-wrap">
         {winner.image && !imgError ? (
           <img
@@ -24,6 +28,7 @@ const WinnerCard = ({ winner }) => {
           <PlaceholderImage name={winner.projectName} />
         )}
       </div>
+      {/* ── Winner Details + Team + Devpost ────────────────────────────── */}
       <div className="winner-card__body">
         <div className="winner-card__tracks">
           {winner.tracks.map((track) => (
@@ -61,12 +66,14 @@ const Winners = ({
 }) => {
   return (
     <div className="winners-section">
+      {/* ── Winners Header ──────────────────────────────────────────────── */}
       <div className="winners-header">
         <p className="winners-header__eyebrow">{subtitle}</p>
         <h2 className="winners-header__title">{title}</h2>
         <div className="winners-header__line" aria-hidden="true" />
       </div>
 
+      {/* ── Winners Content State ───────────────────────────────────────── */}
       {!winnersAnnounced ? (
         <div className="winners-tbd">
           <div className="winners-tbd__icon" aria-hidden="true">🏆</div>

@@ -1,9 +1,13 @@
+// src/features/faq/FAQSection.jsx
+// Multi-tab FAQ with collapsible answer rows and smooth height transitions.
+
 import React, { useState, useEffect, useRef } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import starsSvg from '../../assets/stars-bg.svg';
 import '../../shared/styles/shared.css';
 import './FAQSection.css';
 
+// ─── FAQ Config Controls ──────────────────────────────────────────────────────
 const FAQ_TABS = [
   { id: 'general', label: 'General' },
   { id: 'eventDetails', label: 'Event Details' },
@@ -42,17 +46,20 @@ const FAQ_DATA = {
     { question: 'Can I volunteer without being a mentor or judge?', answer: 'Absolutely! We need volunteers for setup, registration, food service, and general event support. Contact us at hackaturi25@gmail.com to learn more about volunteer opportunities.' },
   ],
 };
+// ─────────────────────────────────────────────────────────────────────────────
 
 const FAQSection = () => {
   const [activeTab, setActiveTab] = useState(FAQ_TABS[0].id);
   const [openItems, setOpenItems] = useState({});
   const answerRefs = useRef({});
 
+  // Toggle one FAQ row open/closed while preserving other rows.
   const toggleItem = (category, index) => {
     const key = `${category}-${index}`;
     setOpenItems((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
+  // Animate answer heights by measuring content and writing max-height per open row.
   useEffect(() => {
     const calculateHeight = (element) => {
       if (!element) return 0;
@@ -75,9 +82,12 @@ const FAQSection = () => {
 
   return (
     <div className="pirate-faq">
+      {/* ── Decorative Star Field ───────────────────────────────────────── */}
       {[1, 2, 3, 4, 5].map((n) => (<img key={n} src={starsSvg} alt="" className={`faq-star star-${n}`} />))}
+      {/* ── FAQ Content Container ────────────────────────────────────────── */}
       <div className="faq-content">
         <h1 className="faq-title">Frequently Asked Questions</h1>
+        {/* ── FAQ Category Tabs ──────────────────────────────────────────── */}
         <div className="faq-tabs">
           {FAQ_TABS.map((tab) => (
             <button key={tab.id} className={`faq-tab ${activeTab === tab.id ? 'active' : ''}`} onClick={() => setActiveTab(tab.id)}>
@@ -85,6 +95,7 @@ const FAQSection = () => {
             </button>
           ))}
         </div>
+        {/* ── FAQ Items for Active Category ──────────────────────────────── */}
         <div className="faq-container">
           {FAQ_DATA[activeTab].map((item, index) => {
             const key = `${activeTab}-${index}`;

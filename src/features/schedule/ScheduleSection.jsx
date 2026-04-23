@@ -15,35 +15,37 @@ import '../../shared/styles/shared.css';
 import './ScheduleSection.css';
 
 const ScheduleSection = () => {
+  // Hash-driven route into the full schedule overlay handled in App.jsx.
   const openFullSchedule = () => {
     window.location.hash = 'full-schedule';
   };
 
   return (
     <div className="content">
-      {/* Decorative stars */}
+      {/* ── Decorative Star Field ───────────────────────────────────────── */}
       {[1, 2, 3, 4, 5].map((n) => (
         <img key={n} src={starsSvg} alt="" className={`about-star star-${n}`} />
       ))}
 
+      {/* ── Section Heading ──────────────────────────────────────────────── */}
       <h1>{SCHEDULE_TITLE}</h1>
 
       {SHOW_SCHEDULE_CALENDAR && (
         <>
-          {/* Helper tip */}
+          {/* ── Calendar Helper Tip ─────────────────────────────────────── */}
           <p className="schedule-click-tip">
             Click any <strong>workshop</strong> 👤 session to learn more about the speaker and the event!
           </p>
 
-          {/* Live "Up Next" widget */}
+          {/* ── Live Up Next Widget ─────────────────────────────────────── */}
           <UpNext />
 
-          {/* Full inline calendar with legend + modal support */}
+          {/* ── Inline Calendar + Modals ────────────────────────────────── */}
           <ScheduleCalendar />
         </>
       )}
 
-      {/* Link to the dedicated full-screen schedule page */}
+      {/* ── Full Schedule Page Trigger ───────────────────────────────────── */}
       <div className="toggle-container" style={{ marginTop: '40px' }}>
         <button
           className={`schedule-toggle-btn${

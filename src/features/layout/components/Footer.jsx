@@ -1,9 +1,5 @@
-// src/components/Footer.jsx
-// Simple site footer with copyright, MLH Code of Conduct link, and a credit line.
-//
-// TO UPDATE:
-//   - FOOTER_CONFIG.year: Update the copyright year each year.
-//   - FOOTER_CONFIG.conductUrl: Update if the MLH policy URL changes.
+// src/features/layout/components/Footer.jsx
+// Global site footer containing legal copy, policy link, and team credit.
 
 import React from 'react';
 import { FaHeart } from 'react-icons/fa';
@@ -20,6 +16,7 @@ const FOOTER_CONFIG = {
 const Footer = () => {
   return (
     <footer className="footer">
+      {/* ── Footer Content ──────────────────────────────────────────────── */}
       <div className="footer-bottom">
         <p>&copy; {FOOTER_CONFIG.year} Hack@URI. All rights reserved.</p>
         <a

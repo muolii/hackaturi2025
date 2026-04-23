@@ -12,6 +12,7 @@ import { getSpeakerByTitle, getEventTypeColor } from '../data/scheduleData.js';
 import './WorkshopModal.css';
 
 const WorkshopModal = ({ event, onClose }) => {
+  // Resolve speaker profile from schedule metadata by event title.
   const speaker = getSpeakerByTitle(event?.event);
 
   // Close on Escape key
@@ -40,6 +41,7 @@ const WorkshopModal = ({ event, onClose }) => {
 
   if (!event) return null;
 
+  // Accent values keep chip/button styling in sync with event type.
   const typeColor = getEventTypeColor(event.type);
   const typeLabel = event.type === 'beginner' ? 'Beginner Workshop' : 'Workshop';
 
@@ -51,6 +53,7 @@ const WorkshopModal = ({ event, onClose }) => {
       }}
     >
       <div className="wm-modal" role="dialog" aria-modal="true" aria-label={event.event}>
+        {/* ── Modal Header ──────────────────────────────────────────────── */}
         <div className="wm-header" style={{ '--accent': typeColor }}>
           <div className="wm-header-left">
             <span className="wm-type-pill" style={{ background: typeColor }}>
@@ -71,6 +74,7 @@ const WorkshopModal = ({ event, onClose }) => {
           </button>
         </div>
 
+        {/* ── Modal Body ────────────────────────────────────────────────── */}
         <div className="wm-body">
           {speaker ? (
             <>
@@ -129,6 +133,7 @@ const WorkshopModal = ({ event, onClose }) => {
           )}
         </div>
 
+        {/* ── Modal Footer ──────────────────────────────────────────────── */}
         <div className="wm-footer">
           <button className="wm-close-btn" onClick={onClose} style={{ '--accent': typeColor }}>
             Close

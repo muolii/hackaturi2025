@@ -1,12 +1,9 @@
-// src/components/Header.jsx
+// src/features/layout/components/Header.jsx
 // Site navigation header with:
 //   - Desktop: horizontal nav bar with hover dropdowns
 //   - Mobile: hamburger menu with expandable dropdown sections
 //   - Auto-hides on scroll down, reappears on scroll up
 //   - Highlights the active section based on scroll position
-//
-// TO ADD OR REMOVE NAV ITEMS: Edit the NAV_ITEMS array below.
-// TO ADD A DROPDOWN: Add a `dropdown` array to the nav item (see 'Get Involved').
 
 import React, { useState, useEffect } from 'react';
 import { ARCHIVE_NAV_ITEMS } from '../../archive/data/events/index.js';
@@ -49,7 +46,6 @@ const Header = ({ scrollToSection, scrollContainerRef, scrollRootElement }) => {
   const isArchiveNav = Boolean(scrollContainerRef);
   const [activeSection, setActiveSection] = useState(() => (isArchiveNav ? 'archive' : 'home'));
   const [isVisible, setIsVisible]                 = useState(true);
-  /** Scroll-hide must be React state — re-renders (e.g. archive carousel) would drop classList-only "hidden". */
   const [scrollHidden, setScrollHidden]           = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen]   = useState(false);
   const [isMobile, setIsMobile]                   = useState(false);
@@ -65,6 +61,7 @@ const Header = ({ scrollToSection, scrollContainerRef, scrollRootElement }) => {
   }, []);
 
   useEffect(() => {
+    // Archive overlay should always highlight Archive in nav.
     if (isArchiveNav) {
       setActiveSection('archive');
     }
@@ -150,6 +147,7 @@ const Header = ({ scrollToSection, scrollContainerRef, scrollRootElement }) => {
     setOpenMobileDropdown(null);
   };
 
+  // Shared reset used after archive jumps to keep nav closed/visible.
   const openArchive = (hash) => {
     const targetHash = hash.startsWith('#') ? hash : `#${hash}`;
     window.location.hash = targetHash.replace(/^##/, '#');

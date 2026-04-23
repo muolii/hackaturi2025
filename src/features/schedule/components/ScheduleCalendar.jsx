@@ -7,6 +7,7 @@ import { SCHEDULE, getEventTypeColor, getSpeakerByTitle } from '../data/schedule
 import WorkshopModal from './WorkshopModal.jsx';
 import './ScheduleCalendar.css';
 
+// ─── Calendar Config Controls ────────────────────────────────────────────────
 const CLICKABLE_TYPES = ['workshop', 'beginner', 'cyber'];
 
 const LEGEND_ENTRIES = {
@@ -19,17 +20,20 @@ const LEGEND_ENTRIES = {
   mentoring: 'Mentoring',
   food: 'Food',
 };
+// ─────────────────────────────────────────────────────────────────────────────
 
 const ScheduleCalendar = () => {
   const [isExpanded, setIsExpanded] = useState(true);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
+  // Open modal only for event types with speaker metadata.
   const handleEventClick = (event, dayLabel) => {
     if (!CLICKABLE_TYPES.includes(event.type)) return;
     if (!getSpeakerByTitle(event.event)) return;
     setSelectedEvent({ ...event, day: dayLabel });
   };
 
+  // Convert event's 12-hour timestamp to a row match in the hour grid.
   const eventMatchesHour = (event, rawHour, dayKey) => {
     const [timePart, modifier] = event.time.split(' ');
     let h = parseInt(timePart.split(':')[0]);
@@ -38,6 +42,7 @@ const ScheduleCalendar = () => {
     return h === rawHour;
   };
 
+  // Build one day column with hero milestones and regular hourly events.
   const renderCalendar = (dayData, dayKey) => {
     const heroEvents = dayData.events.filter((e) => e.hero === true);
     const startHour = 8;
@@ -139,7 +144,7 @@ const ScheduleCalendar = () => {
 
   return (
     <>
-      {/* Legend */}
+      {/* ── Event Type Legend ────────────────────────────────────────────── */}
       <div className="schedule-legend">
         <h3>Event Types</h3>
         <div className="legend-items">
@@ -152,12 +157,12 @@ const ScheduleCalendar = () => {
         </div>
       </div>
 
-      {/* Two-column calendar */}
+      {/* ── Two-Column Calendar Grid ─────────────────────────────────────── */}
       <div className="schedule-columns">
         {Object.entries(SCHEDULE).map(([dayKey, dayData]) => renderCalendar(dayData, dayKey))}
       </div>
 
-      {/* Workshop / Speaker modal */}
+      {/* ── Workshop Speaker Modal ───────────────────────────────────────── */}
       {selectedEvent && <WorkshopModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />}
     </>
   );

@@ -15,27 +15,28 @@ const SchedulePage = ({ onClose }) => {
   return (
     <div className="schedule-page-overlay">
       <div className="schedule-page-inner content">
-        {/* Back button */}
+        {/* ── Back Navigation ─────────────────────────────────────────────── */}
         <button className="schedule-back-btn" onClick={onClose}>
           <FaArrowLeft /> Back to Main Site
         </button>
 
-        {/* Decorative stars */}
+        {/* ── Decorative Star Field ───────────────────────────────────────── */}
         {[1, 2, 3, 4, 5].map((n) => (
           <img key={n} src={starsSvg} alt="" className={`about-star star-${n}`} />
         ))}
 
+        {/* ── Page Heading ────────────────────────────────────────────────── */}
         <h1>Event Schedule</h1>
 
-        {/* Helper tip */}
+        {/* ── Calendar Helper Tip ─────────────────────────────────────────── */}
         <p className="schedule-click-tip">
           Click any <strong>workshop</strong> 👤 session to learn more about the speaker and the event!
         </p>
 
-        {/* Live "Up Next" widget */}
+        {/* ── Live Up Next Widget ─────────────────────────────────────────── */}
         <UpNext />
 
-        {/* Shared calendar with legend + workshop modals */}
+        {/* ── Shared Calendar + Workshop Modals ──────────────────────────── */}
         <ScheduleCalendar />
       </div>
     </div>

@@ -1,3 +1,6 @@
+// src/features/archive/ArchivePage.jsx
+// Full archive overlay for past events, including carousel, links, and winners grid.
+
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { FaChevronLeft, FaChevronRight, FaExternalLinkAlt } from 'react-icons/fa';
 import Winners from './components/Winners.jsx';
@@ -6,6 +9,7 @@ import '../../shared/styles/shared.css';
 import './ArchivePage.css';
 import { Header } from '../layout';
 
+// Repository images available to archive event photo directory scanning.
 const REPO_IMAGE_FILES = import.meta.glob('/{src,public}/**/*.{png,jpg,jpeg,webp,avif,gif}', {
   eager: true,
   import: 'default',
@@ -19,6 +23,7 @@ const ARCHIVE_PAGE_CONFIG = {
   returnToLandingLabel: 'Return to Landing Page',
 };
 
+// Normalize provided directory strings to a canonical "/path/" form for matching.
 const normalizeDirectoryPath = (path = '') => {
   const trimmed = path.trim();
   if (!trimmed) return '';
@@ -26,6 +31,7 @@ const normalizeDirectoryPath = (path = '') => {
   return withLeadingSlash.endsWith('/') ? withLeadingSlash : `${withLeadingSlash}/`;
 };
 
+// Resolve all image URLs under the configured archive photo directory.
 const getImagesFromPhotoDirectory = (photoDirectory) => {
   const normalizedDir = normalizeDirectoryPath(photoDirectory);
   if (!normalizedDir) return [];
@@ -47,6 +53,7 @@ const ArchivePage = ({
   const overlayRef = useRef(null);
   const isLandingMode = mode === 'landing';
   const [scrollRootElement, setScrollRootElement] = useState(null);
+  // Keep both ref and state in sync so Header can subscribe to overlay scroll.
   const setOverlayNode = useCallback((node) => {
     overlayRef.current = node;
     setScrollRootElement(node);
@@ -60,9 +67,11 @@ const ArchivePage = ({
     ? directoryImages
     : (event.heroImages || []).filter(Boolean);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  // Move carousel backward with wraparound at the first image.
   const goToPreviousImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex - 1 + heroImages.length) % heroImages.length);
   };
+  // Move carousel forward with wraparound at the last image.
   const goToNextImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
   };
@@ -84,6 +93,7 @@ const ArchivePage = ({
       className={`archive-page-overlay ${isLandingMode ? 'archive-page-overlay--landing' : 'archive-page-overlay--main'}`}
       style={{ '--archive-landing-top-padding': ARCHIVE_PAGE_CONFIG.landingTopPadding }}
     >
+      {/* ── Archive Header (main mode only) ─────────────────────────────── */}
       {!isLandingMode && (
         <Header
           scrollToSection={scrollToSection}
@@ -92,6 +102,7 @@ const ArchivePage = ({
         />
       )}
       <div className="archive-page-inner">
+        {/* ── Landing Mode Controls ──────────────────────────────────────── */}
         {isLandingMode && (
           <div className="archive-landing-controls">
             <button
@@ -106,8 +117,9 @@ const ArchivePage = ({
             </button>
           </div>
         )}
+        {/* ── Archive Intro Layout ───────────────────────────────────────── */}
         <div className="archive-intro">
-          {/* LEFT — Image Carousel */}
+          {/* ── Left Column: Event Gallery ───────────────────────────────── */}
           <div className="archive-intro__left">
             <div className="archive-carousel">
               {heroImages.length > 0 ? (
@@ -150,7 +162,7 @@ const ArchivePage = ({
                 </div>
               )}
 
-              {/* Optional dot indicators */}
+              {/* ── Carousel Dot Indicators ──────────────────────────────── */}
               {heroImages.length > 1 && (
                 <div className="archive-carousel-dots">
                   {heroImages.map((_, idx) => (
@@ -164,7 +176,7 @@ const ArchivePage = ({
               )}
             </div>
 
-            {/* PHOTO GALLERY LINKS */}
+            {/* ── Photo Gallery Links ────────────────────────────────────── */}
             {photoLinks.length > 0 && (
               <div className="archive-link-body">
                 <div className="archive-photo-links">
@@ -189,7 +201,7 @@ const ArchivePage = ({
             )}
           </div>
 
-          {/* RIGHT — Description & Blended Links */}
+          {/* ── Right Column: Event Details + Links ─────────────────────── */}
           <div className="archive-intro__right">
             <div className="archive-intro__text">
             <h1 className="archive-intro__title">{event.pageTitle}</h1>
@@ -220,6 +232,7 @@ const ArchivePage = ({
           </div>
         </div>
 
+        {/* ── Winners Section ─────────────────────────────────────────────── */}
         <section className="archive-winners-wrapper">
           <Winners
             title={event.winners?.title}

@@ -1,10 +1,5 @@
-// src/components/LandingPage.jsx
-// "Coming Soon" teaser page shown before the main site is revealed.
-// Displayed when SITE_HIDDEN is set to `true` in App.jsx.
-//
-// TO UPDATE:
-//   - LANDING_CONFIG: Edit event name, dates, pre-registration link, and social URLs.
-//   - The "Preview" admin button at the bottom calls `onRevealSite` with the access code.
+// src/features/home/pages/LandingPage.jsx
+// Pre-launch landing experience shown while the main site is hidden in App-level config.
 
 import React from 'react';
 import pirateLogo from '../../../assets/pirate_ram.svg';
@@ -36,12 +31,12 @@ const MLH_BADGE = {
 // ─────────────────────────────────────────────────────────────────────────────
 
 // Props:
-//   onRevealSite   — called when the admin clicks "Preview"; triggers the access code prompt
+//   onRevealSite — called by the admin preview button to trigger the reveal flow.
 const LandingPage = ({ onRevealSite }) => {
   return (
     <div className="landing-app">
 
-      {/* MLH Trust Badge (fixed top-right) */}
+      {/* ── MLH Trust Badge ──────────────────────────────────────────────── */}
       <a
         id="mlh-trust-badge"
         href={MLH_BADGE.href}
@@ -64,14 +59,14 @@ const LandingPage = ({ onRevealSite }) => {
       <div className="landing-page">
         <div className="landing-content">
 
-          {/* ── Left: Pirate Hero Image ───────────────────────────────── */}
+          {/* ── Left Hero Art ───────────────────────────────────────────── */}
           <div className="landing-left">
             <div className="pirate-logo-wrap">
               <img src={pirateLogo} alt="Hack@URI Pirate Logo" className="pirate-logo" />
             </div>
           </div>
 
-          {/* ── Right: Event Info ────────────────────────────────────── */}
+          {/* ── Right Event Content ────────────────────────────────────── */}
           <div className="landing-right">
             <div className="landing-info panel-card">
               <h1 className="landing-title">{LANDING_CONFIG.eventName}</h1>
@@ -105,7 +100,7 @@ const LandingPage = ({ onRevealSite }) => {
                 </a>
               </div>
 
-              {/* Social media links */}
+              {/* ── Social Links ─────────────────────────────────────────── */}
               <div className="landing-footer">
                 <p>Follow us for updates:</p>
                 <div className="social-links">
@@ -130,7 +125,7 @@ const LandingPage = ({ onRevealSite }) => {
           <img key={n} src={starsSvg} alt="" className={`decor-star star-${n}`} />
         ))}
 
-        {/* ── Admin Controls ───────────────────────────────────────────── 
+        {/* ── Admin Controls ─────────────────────────────────────────────
             Intentionally subtle — lets organizers preview the full site
             without revealing the button to casual visitors.
             Clicking this triggers the access code prompt in App.jsx. */}

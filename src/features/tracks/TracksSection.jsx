@@ -1,3 +1,6 @@
+// src/features/tracks/TracksSection.jsx
+// Track overview cards with descriptions, icons, and optional sponsor branding.
+
 import React from 'react';
 import { FaHeartbeat, FaBrain, FaAnchor, FaPalette, FaShieldAlt } from 'react-icons/fa';
 import { GiWaterSplash } from 'react-icons/gi';
@@ -6,6 +9,7 @@ import yconicLogo from '/images/sponsors/yconic-transparent.png';
 import '../../shared/styles/shared.css';
 import './TracksSection.css';
 
+// ─── Tracks Config ────────────────────────────────────────────────────────────
 const TRACKS = [
   { id: 'hack-to-health', title: 'Hack to Health', icon: <FaHeartbeat />, color: '#0C3A40', description: 'Technology for better care and well-being', detailedDescription: 'Build solutions that improve patient outcomes and streamline health services. Create wearables for health monitoring, telemedicine platforms for underserved communities, accessibility apps, or health data dashboards.' },
   { id: 'neural-tide', title: 'Neural Tide', icon: <FaBrain />, color: '#2f2520', description: 'AI-powered startups, technical projects, and compute-intensive experiments.', sponsorLogo: yconicLogo, detailedDescription: 'Participants can choose between launching an AI-native startup with an emphasis on validation and scalability, developing a focused AI project that demonstrates strong engineering or creative application, or leveraging high-performance hardware for advanced AI workloads. The track is designed for teams interested in applying AI to real problems through strong execution, technical depth, and experimentation.' },
@@ -14,13 +18,16 @@ const TRACKS = [
   { id: 'safe-harbor', title: 'Safe Harbor', icon: <FaShieldAlt />, color: '#0a4e4e', description: 'Explore, test, and secure — within trusted waters', detailedDescription: 'Chart a course through the world of ethical hacking. Safe Harbor invites participants to probe systems responsibly, discover vulnerabilities, and strengthen defenses — all within a protected, fully authorized environment. Tackle web exploits, break misconfigurations, analyze binaries, test authentication flows, or uncover hidden weaknesses in networks.' },
   { id: 'splashzone', title: 'SplashZone', icon: <GiWaterSplash />, color: '#2f2520', description: 'Make your first splash into hacking and exploration', detailedDescription: 'Perfect for first-time hackers and coding beginners. Build your first website or mobile app, create simple games, experiment with beginner-friendly AI tools, or try anything experimental and fun. Focus on learning, creativity, and growth rather than pressure.' },
 ];
+// ─────────────────────────────────────────────────────────────────────────────
 
 const TracksSection = () => {
   return (
     <div className="pirate-tracks">
+      {/* ── Decorative Star Field ───────────────────────────────────────── */}
       {[1, 2, 3, 4, 5].map((n) => (
         <img key={n} src={starsSvg} alt="" className={`tracks-star star-${n}`} />
       ))}
+      {/* ── Track Cards Content ──────────────────────────────────────────── */}
       <div className="tracks-content">
         <h1 className="tracks-title">Hackathon Tracks</h1>
         <p className="tracks-intro">Choose your track and build something amazing!</p>

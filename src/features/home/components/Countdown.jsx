@@ -1,4 +1,4 @@
-// src/components/Countdown.jsx
+// src/features/home/components/Countdown.jsx
 // Multi-phase countdown timer that automatically transitions through states:
 //
 //   Phase 1 — "calm"    (> 24h before EVENT_START):  classic wood style
@@ -8,23 +8,20 @@
 //                          yellow — 10h–2h remaining
 //                          red    — under 2h remaining
 //   Phase 3 — "done"    (after SUBMISSION_DUE): celebration message
-//
-// ─── TO UPDATE DATES ─────────────────────────────────────────────────────────
-//   EVENT_START    — when hacking begins
-//   SUBMISSION_DUE — when DevPost submissions close
-// ─────────────────────────────────────────────────────────────────────────────
 
 import React, { useEffect, useState } from 'react';
 import '../../../shared/styles/shared.css';
 import './Countdown.css';
 
+// ─── Countdown Config Controls ────────────────────────────────────────────────
 const EVENT_START    = '2026-04-21T08:00:00';
 const SUBMISSION_DUE = '2026-04-22T09:00:00';
-
 // ─────────────────────────────────────────────────────────────────────────────
 
+// Milliseconds remaining until a target ISO datetime (clamped to zero).
 const msUntil = (iso) => Math.max(0, new Date(iso).getTime() - Date.now());
 
+// Split milliseconds into day/hour/minute/second display buckets.
 const breakdown = (ms) => {
   const totalSeconds = Math.floor(ms / 1000);
   const seconds      = totalSeconds % 60;
@@ -61,6 +58,7 @@ const Countdown = () => {
   const [state, setState]             = useState(getState);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
+  // Recompute countdown state every second.
   useEffect(() => {
     const tick = () => setState(getState());
     tick();
@@ -68,6 +66,7 @@ const Countdown = () => {
     return () => clearInterval(id);
   }, []);
 
+  // Track tiny screens so seconds can be hidden for layout stability.
   useEffect(() => {
     const check = () => setIsSmallScreen(window.innerWidth <= 480);
     check();

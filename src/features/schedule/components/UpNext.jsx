@@ -18,12 +18,15 @@ import {
 } from '../data/scheduleData.js';
 import WorkshopModal from './WorkshopModal.jsx';
 
+// ─── Up Next Config Controls ─────────────────────────────────────────────────
 const CLICKABLE_TYPES = ['workshop', 'beginner', 'cyber'];
+// ─────────────────────────────────────────────────────────────────────────────
 
 const UpNext = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [selectedEvent, setSelectedEvent] = useState(null);
 
+  // Re-evaluate "now" and countdown every second.
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timer);
@@ -55,6 +58,7 @@ const UpNext = () => {
 
   const timeUntil = nextEvents.length > 0 ? nextEvents[0].dateTime - currentTime : 0;
 
+  // Open workshop modal only when that event has speaker profile data.
   const handleEventClick = (ev) => {
     if (!CLICKABLE_TYPES.includes(ev.type)) return;
     if (!getSpeakerByTitle(ev.event)) return;
@@ -65,6 +69,7 @@ const UpNext = () => {
 
   return (
     <>
+      {/* ── Up Next Card Container ──────────────────────────────────────── */}
       <div className="next-event-section">
         <div className="next-event-card">
           {/* ── Happening Now ─────────────────────────────────────────── */}
@@ -191,6 +196,7 @@ const UpNext = () => {
         </div>
       </div>
 
+      {/* ── Workshop Speaker Modal ───────────────────────────────────────── */}
       {selectedEvent && <WorkshopModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />}
     </>
   );

@@ -1,8 +1,5 @@
-// src/pages/Connect.jsx
-// Social media links section — invites visitors to follow Hack@URI online.
-//
-// TO ADD/UPDATE SOCIAL LINKS: Edit the SOCIAL_LINKS array below.
-// Each entry needs: platform name, URL, icon (React Icons component), and a CSS class.
+// src/features/connect/ConnectSection.jsx
+// Social hub section with outbound links to Hack@URI community channels.
 
 import React from 'react';
 import { FaLinkedin, FaInstagram } from 'react-icons/fa';
@@ -31,6 +28,7 @@ const ConnectSection = () => {
       <div className="connect-content">
         <h1 className="connect-title">Connect With Us!</h1>
 
+        {/* ── Social Intro + Link Grid ──────────────────────────────────── */}
         <div className="connect-section">
           <p>
             Follow us on social media for updates, announcements, and to connect with the
